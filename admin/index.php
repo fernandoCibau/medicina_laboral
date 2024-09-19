@@ -1,11 +1,9 @@
 <?php
     session_start();
-    if( !isset($_SESSION['usuario']['idSesion']) ){
+    if( !isset($_SESSION['idUsuario']) ){
         header('Location: ../abm');
         exit;
     }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

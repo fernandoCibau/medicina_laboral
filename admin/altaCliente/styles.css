@@ -49,7 +49,7 @@ main{
     align-items: center;
 }
 
-.form-container {
+.form-contenedor {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -57,19 +57,21 @@ main{
     width: 300px;
 }
 
-.form-container h2 {
+.form-contenedor h2 {
     margin-bottom: 20px;
 }
 
-.form-container label {
+.form-contenedor label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
 }
 
-.form-container input[type="text"],
-.form-container input[type="email"],
-.form-container input[type="password"] {
+.form-contenedor input[type="text"],
+.form-contenedor input[type="email"],
+.form-contenedor input[type="password"],
+.form-contenedor textarea,
+.form-contenedor select{
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -77,7 +79,7 @@ main{
     border-radius: 4px;
 }
 
-.form-container button {
+.form-contenedor button {
     background-color: #28a745;
     color: #fff;
     border: none;
@@ -89,7 +91,7 @@ main{
     margin: 0.5em 0 0 0;
 }
 
-.form-container button:hover {
+.form-contenedor button:hover {
     background-color: #218838;
 }
 

@@ -1,11 +1,11 @@
 <?php
     session_start();
-    if( !isset( $_SESSION["usuario"]["idSesion"] ) ){
+    if( !isset( $_SESSION["idUsuario"] ) ){
         header( "location: ../index.php");
         exit;
     }
 
-    if( $_SESSION['usuario']['admin'] ){
+    if( $_SESSION['admin'] ){
         header('Location: ../admin');
         exit; 
     }

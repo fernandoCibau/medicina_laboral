@@ -1,7 +1,7 @@
 <?php 
     session_start();
-    if( !isset($_SESSION['usuario']['idSesion']) ){
-        if( !$_SESSION['usuario']['admin'] ){
+    if( !isset($_SESSION['idUsuario']) ){
+        if( !$_SESSION['admin'] ){
             header('Location: ../../abm');
             exit; 
         }
@@ -26,7 +26,7 @@
 
     <main>
             
-        <div class="form-container">
+        <div class="form-contenedor">
 
             <h2>Formulario de Registro</h2>
 
@@ -46,8 +46,15 @@
                 <label for="dni">DNI:</label>
                 <input type="text" id="dni" name="dni" required>
 
+                <label for="asunto">Asunto:</label>
+                <select name="asunto" id="asunto">
+                    <option value=""></option>
+                    <option value="Alta Cliente">Alta Cliente</option>
+                    <option value="Cambio Contrasenia">Cambio Contraseña</option>
+                </select>
+
                 <label for="mensaje">Mensaje:</label>
-                <input type="text" id="mensaje" name="mensaje" required>
+                <textarea id="mensaje" name="mensaje"  placeholder="Escribe tu descripción aquí..."></textarea>
 
                 <fieldset>
                     <legend>¿Es administrador?</legend>

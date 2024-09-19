@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if( isset( $_SESSION["usuario"]["idSesion"] ) ){
+    if( isset( $_SESSION["idUsuario"] ) ){
         header( "location: index");
         exit;
     }
@@ -25,8 +25,9 @@
                     
                     if(  password_verify($_POST['contrasenia'], $usuario["contrasenia"]) || $_POST['contrasenia'] == $usuario['contrasenia'] ){
                         
-                        $_SESSION['usuario']['idSesion'] = session_create_id();
-                        $_SESSION['usuario']['nombre'] = $usuario['nombre'];
+                        $_SESSION['idUsuario'] = $usuario['id'];
+                        $_SESSION['nombre'] = $usuario['nombre'];
+                        $_SESSION['email'] = $usuario['email'];
 
                         $datos = new stdClass();
                         $datos->admin = false;
@@ -37,10 +38,10 @@
                         
                         if ($usuario['admin']) {
                             $datos->admin = true;       
-                            $datos->idSesion = $_SESSION['usuario']['idSesion'];  
-                            $_SESSION['usuario']['admin'] = $usuario['admin'];
+                            $datos->idSesion = $_SESSION['idUsuario'];  
+                            $_SESSION['admin'] = $usuario['admin'];
                         }else{
-                            $_SESSION['usuario']['adm'] = false;
+                            $_SESSION['adm'] = false;
                         }
 
                         echo json_encode($datos);
@@ -75,8 +76,7 @@
         $datos = new stdClass();
         $datos->operacion = false;
         $datos->mensaje = "ERROR EN LOS DATOS ENVIADOS " . "LINEA : " . __LINE__;
+        mysqli_free_result($resultado);
         echo json_encode( $datos );
     }
-                            
-    mysqli_free_result($resultado);
 ?>

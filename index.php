@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if( isset( $_SESSION["usuario"]["idSesion"] ) ){
+    if( isset( $_SESSION["idUsuario"] ) ){
         header("location: abm");
         exit;
     }
