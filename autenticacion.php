@@ -12,71 +12,39 @@
             include 'conexion.php';
 
             $email = $_POST['email'] ;
+            $contrasenia = $_POST['contrasenia'];
+            $contraseniaa = password_hash( $_POST['contrasenia'],  PASSWORD_DEFAULT);
 
-            $resultado = mysqli_query( $conexion, "SELECT * FROM empresa WHERE email =  '$email' ");
-            
+            $resultado = mysqli_query( $conexion, "SELECT * FROM usuarios WHERE email= '$email' ");
+
             mysqli_close($conexion);
-
+            
             if($resultado){
                 
-                $flag = false;
+                $datos = mysqli_fetch_assoc($resultado);
 
-                foreach( $resultado as $usuario ){
+                if(  password_verify( $contrasenia, $datos["contrasenia"]) ){
+
+                    $_SESSION['idUsuario']  = session_id();    // CAMBIAR POR ID DE USUARIO O LEGAJO
+                    $_SESSION['nombre']  = $datos['nombre'];
+                    $_SESSION['email']     = $datos['email'];
+                    $_SESSION['admin']    = $datos['admin'];
+                    echo json_encode( ['mensaje' => 'Bienvenido '. $datos['nombre'], 'operacion' => TRUE]);
                     
-                    if(  password_verify($_POST['contrasenia'], $usuario["contrasenia"]) || $_POST['contrasenia'] == $usuario['contrasenia'] ){
-                        
-                        $_SESSION['idUsuario'] = $usuario['id'];
-                        $_SESSION['nombre'] = $usuario['nombre'];
-                        $_SESSION['email'] = $usuario['email'];
-
-                        $datos = new stdClass();
-                        $datos->admin = false;
-                        $datos->nombre = $usuario['nombre'];
-                        $datos->operacion = true;
-
-                        $flag = true;
-                        
-                        if ($usuario['admin']) {
-                            $datos->admin = true;       
-                            $datos->idSesion = $_SESSION['idUsuario'];  
-                            $_SESSION['admin'] = $usuario['admin'];
-                        }else{
-                            $_SESSION['adm'] = false;
-                        }
-
-                        echo json_encode($datos);
-                    }
+                    mysqli_free_result($resultado);
+                }else{
+                    echo json_encode( [ 'mensaje' => 'LA CONTASEÑA ES INCORRECTA', 'operacion' => FALSE ]);
                 }
-
-                if( !$flag ){
-                    $datos = new stdClass();
-                    $datos->operacion = false;
-                    $datos-> mensaje = "LA CONTASEÑA ES INCORRECTA";
-                    echo json_encode($datos);
-                }
-
+                
             }else{
-                $datos = new stdClass();
-                $datos->mensaje ="EL  MAIL INGRESADO NO EXISTE";
-                mysqli_free_result($resultado);
-                echo json_encode($datos);
+                echo json_encode( [ 'mensaje' => 'EL  MAIL INGRESADO NO EXISTE' ]);
             }
-
-        } catch (Exception $e) {
-            // include "funcionError.php";
-            $datos = new stdClass();
-            $mensaje = $e->getMessage();
-            $linea = "autenticacion.php" . " : LINEA  : " . __LINE__  ;
-            // error($mensaje, $linea );
-            $datos->mensaje =   $mensaje . " || " . $linea;
-            echo json_encode( $datos );
-        }
             
+        } catch (Exception $e) {
+            echo json_encode( [ 'mensaje' => 'Error, ' .  $e->getMessage() . "autenticacion.php" . " : LINEA  : " . __LINE__  ] );
+        }
+        
     }else{
-        $datos = new stdClass();
-        $datos->operacion = false;
-        $datos->mensaje = "ERROR EN LOS DATOS ENVIADOS " . "LINEA : " . __LINE__;
-        mysqli_free_result($resultado);
-        echo json_encode( $datos );
+        echo json_encode( ['mensaje' => 'Error, ingreados :' . 'LINEA' . __LINE__, 'operacion'=> FALSE ] );
     }
 ?>

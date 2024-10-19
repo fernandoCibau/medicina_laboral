@@ -1,12 +1,7 @@
 <?php
-    // $servidor           = 'localhost';
-    // $usuario  = 'u833023896_medicina_lab';
-    // $baseDeDatos    = 'u833023896_medicina_lab';
-    // $contrasenia   = '=n*~Th&aT4';
-
-    $servidor           = 'localhost';
-    $usuario             = 'root';
-    $contrasenia        = '';
+    $servidor   = 'localhost';
+    $usuario  = 'root';
+    $contrasenia   = '';
     $baseDeDatos    = 'medicina_laboral';
     
     try{

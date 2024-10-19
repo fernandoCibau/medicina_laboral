@@ -17,9 +17,9 @@
     
     <header>
         <h1>Medicina Laboral S.A.</h1>
-        <!-- <div class="contenedorBtnHeader">
+        <div class="contenedorBtnHeader">
             <img src="../icon/boton-de-encendido.png" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">
-        </div> -->
+        </div>
     </header>
 
     <main>
@@ -41,10 +41,26 @@
 
                 <h2>Panel Administrador</h2>
                 
-                <div class="accesos" id="accesoAltaCliente">
-                    <h3>Alta Cliente</h3>
+                <div class="accesos" id="accesoAltaUsuario">
+                    <h3>Nuevo usuario</h3>
                     <!-- <img src="../icon/formulario.png" alt="tabla"> -->
                 </div>
+
+                <div class="accesos" id="accesoAltaEmpresa">
+                    <h3>Nueva empresa</h3>
+                    <!-- <img src="../icon/formulario.png" alt="tabla"> -->
+                </div>
+
+                <div class="accesos" id="accesoAltaTurnos">
+                    <h3>Turnos</h3>
+                    <!-- <img src="../icon/formulario.png" alt="tabla"> -->
+                </div>
+
+                <div class="accesos" id="accesoCIE-10">
+                    <h3>CIE-10</h3>
+                    <!-- <img src="../icon/formulario.png" alt="tabla"> -->
+                </div>
+
                 <div class="accesos">
                     <h3>Otro</h3>
                     <!-- <img src="../icon/tabla.png" alt="tabla"> -->

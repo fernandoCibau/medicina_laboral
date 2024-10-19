@@ -1,104 +1,87 @@
-
-*{
+body, html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    font-family: "Roboto", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #f0f0f0;
 }
 
-html, body{
-    width: 100%;
-    height: 100%;
-    background-image: url('img/medicina.jpg');
-    background-size: cover;
-    /* background-position: center; */
-}
-
-header{
-    width: 100%;
-    height: 20%;
+.container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    color: rgb(255, 255, 255);
+    margin-top: 200px;
 }
 
-h1{
-    margin: 0 0 0 2em;
+.logo h1 {
+    color: #007bff;
+    margin-bottom: 50px;
 }
 
-main{
-    width: 100%;
-    height: 65%;
-    margin: auto;
+.login-box {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
 }
 
-.seccionForm{
-    width: 100%;
-    margin: auto;
+.left-panel {
+    background-color: #539bfc;
+    color: white;
+    padding: 20px;
+    width: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Estilos generales del formulario */
-.formSesion {
-    max-width: 20em;
-    margin: 0 auto;
-    padding: 1.3em;
-    border: 1px solid #ccc;
-    background-color: #f9f9f976;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.right-panel {
+    padding: 20px;
+    width: 300px;
 }
 
-/* Estilos para las etiquetas de los campos */
-.formSesion label {
-    display: block;
-    margin-bottom: 0.5em;
-    color: #333;
+h3 {
+    margin-top: 0;
 }
 
-/* Estilos para los campos de entrada */
-.formSesion input[type="email"],
-.formSesion input[type="password"] {
-    width: 100%;
-    padding: 10px;
+.input-group {
     margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 1em;
 }
 
-/* Estilos para el botón de enviar */
-.formSesion button {
-    width: 100%;
+input {
+    width: calc(100% - 22px);
     padding: 10px;
-    background-color: #4CAF50;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #539bfc;
     color: white;
     border: none;
-    border-radius: 3px;
+    padding: 10px 20px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 1em;
+    width: 100%;
+    margin-top: 10px;
 }
 
-.formSesion button:hover {
-    background-color: #45a049;
+button:hover {
+    background-color: #007bff;
 }
 
-/* Estilos para el foco en los campos */
-.formSesion input:focus {
-    outline: none;
-    border-color: #4CAF50;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+.forgot-password {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: #007bff;
+    text-decoration: none;
 }
 
-
-
-/* --------------------------------------------- */
-@media (min-Width: 600 ) and (max-width: 768px){
-    .formSesion {
-        max-width: 22em;
-    }
+.forgot-password:hover {
+    text-decoration: underline;
 }
+

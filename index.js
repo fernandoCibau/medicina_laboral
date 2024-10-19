@@ -47,3 +47,8 @@ let ajaxAutenticacion = (formData)=>{
         }
     })
 }
+
+
+$('#btnRecuperarContrasenia').click( () =>{
+    alert("FALTA  HACER")
+})
