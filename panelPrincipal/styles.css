@@ -1,0 +1,185 @@
+
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    font-family: "Roboto", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
+
+header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    background: linear-gradient(to bottom, #539bfc, #ffffff);
+    /* background-color: #539bfc; */
+    color: white;
+    position: relative;
+}
+
+h1{
+    width: 20vw;
+    text-align: center;
+    color: #007bff;
+}
+
+.contenedorBtnHeader{
+    width: 10%;
+    position: absolute;
+    right: 5%;
+}
+
+.contenedorBtnHeader .btmCerrarSesion{
+    width: 2em;
+    height: 2em;
+    background-color: rgb(57, 146, 57);
+    border-radius: 50%;
+    transition: 1s;
+}
+
+.contenedorBtnHeader .btmCerrarSesion:hover{
+    background-color: red;
+    transition: 1s;
+}
+
+main{
+    display: flex;
+    width: 100%;
+    height: 90%;
+}
+
+.secMenu{
+    background-color: #539bfc;
+    color: white;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: larger;
+}
+
+.secMenu .contenedorMenu{
+    width: 80%;
+}
+
+.secMenu .contenedorMenu a {
+    text-decoration: none;
+    font-size: larger;
+    color: white;
+}
+
+.seccionAccesosDirectos{
+    display: flex;
+    width: 85%;
+}
+
+.contenedorAccesos h2{
+    position: absolute;
+}
+
+.seccionAccesosDirectos .contenedorAccesos{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.accesos{
+    width: 20em;
+    height: 15em;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 3em;
+    box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    margin: 3em 0 0 0;
+    margin: auto;
+}
+
+.accesos:hover{
+        box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.seccionAccesosDirectos .contenedorAccesos  .accesos h3{
+    position: absolute;
+    top: 1em;
+}
+
+.seccionAccesosDirectos .contenedorAccesos  .accesos img{
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+
+.seccionAccesosDirectos .contenedorAccesosDos{
+    width: 40%;
+    position: relative;
+    margin: auto;
+}
+
+.seccionAccesosDirectos .contenedorAccesosDos .perfil{
+    width: 90%;
+    height: 15em;
+    box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.5);
+    border-radius: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+.seccionAccesosDirectos .contenedorAccesosDos .perfil:hover{
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.seccionAccesosDirectos .contenedorAccesosDos .perfil h3{
+    position: absolute;
+    top: 10%;
+}
+
+.seccionAccesosDirectos .contenedorAccesosDos  .contenedorFoto{
+    width: 8em;
+    margin: auto;
+}
+
+.seccionAccesosDirectos .contenedorAccesosDos  .contenedorFoto img{
+    width: 100%;
+}
+
+.seccionAccesosDirectos .contenedorAccesosDos .perfilDatos{
+    width: 10em;
+    margin: auto;
+}
+
+.seccionAccesosDirectos .contenedorAccesosDos .perfilDatos p{
+    margin: 0 0 0.5em 0;
+    font-size: larger;
+}
+
+.seccionAccesosDirectos .contenedorAccesosDos .perfilDatos .btnEditarPerfil{
+    cursor: pointer;
+    transition: 1s;
+    padding: 0.5em;
+    font-weight: bold;
+}
+
+.seccionAccesosDirectos .contenedorAccesosDos .perfilDatos .btnEditarPerfil:hover{
+    background-color: rgba(0, 128, 0, 0.5);
+    transition: 1s;
+}
+
+
+
+

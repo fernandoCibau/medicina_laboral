@@ -32,7 +32,7 @@ let ajaxAutenticacion = (formData)=>{
                 console.log(datos)
 
                 if( datos.operacion ){
-                    location.href="./abm";
+                    location.href="./panelPrincipal";
                 }
                 else{
                     alert(datos.mensaje);

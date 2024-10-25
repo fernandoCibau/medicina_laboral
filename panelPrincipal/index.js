@@ -21,3 +21,8 @@ $("#accesoAltaTurnos").click( ()=>{
 $("#accesoCIE-10").click( ()=>{
     window.location.href = "../cie_10";
 });
+
+//Envia a empresas
+$("#accesoEmpresas").click( () =>{
+    window.location.href = "./empresas";
+});

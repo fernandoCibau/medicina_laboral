@@ -1,7 +1,7 @@
 <?php
     session_start();
     if( !isset($_SESSION['idUsuario']) ){
-        header('Location: ../abm');
+        header( "location: ../index.php");
         exit;
     }
 ?>
@@ -35,47 +35,51 @@
         </section>
 
         <section name="accesosDirectos" class="seccionAccesosDirectos">
-
-            
             <div class="contenedorAccesos">
 
-                <h2>Panel Administrador</h2>
+                <h2>Panel Principal</h2>
                 
-                <div class="accesos" id="accesoAltaUsuario">
-                    <h3>Nuevo usuario</h3>
-                    <!-- <img src="../icon/formulario.png" alt="tabla"> -->
-                </div>
+                <!-- Solo administador -->
+                <?php   if (isset($_SESSION['admin'])) {  ?>
+                        <div class="accesos" id="accesoAltaUsuario">
+                            <h3>Nuevo usuario</h3>
+                            <!-- <img src="../icon/formulario.png" alt="tabla"> -->
+                        </div>
+                <?php } ?>
 
-                <div class="accesos" id="accesoAltaEmpresa">
-                    <h3>Nueva empresa</h3>
-                    <!-- <img src="../icon/formulario.png" alt="tabla"> -->
-                </div>
-
+                
                 <div class="accesos" id="accesoAltaTurnos">
                     <h3>Turnos</h3>
                     <!-- <img src="../icon/formulario.png" alt="tabla"> -->
                 </div>
-
+                
                 <div class="accesos" id="accesoCIE-10">
                     <h3>CIE-10</h3>
                     <!-- <img src="../icon/formulario.png" alt="tabla"> -->
                 </div>
-
-                <div class="accesos">
-                    <h3>Otro</h3>
+                
+                <div class="accesos" id="accesoPacientes">
+                    <h3>Pacientes</h3>
                     <!-- <img src="../icon/tabla.png" alt="tabla"> -->
                 </div>
+                
+                <div class="accesos" id="accesoEmpresas">
+                    <h3>Empresas</h3>
+                    <!-- <img src="../icon/formulario.png" alt="tabla"> -->
+                </div>
+                
+                <div class="accesos" id="accesoPersMedico">
+                    <h3>Pers. Medico</h3>
+                    <!-- <img src="../icon/tabla.png" alt="tabla"> -->
+                </div>
+
             </div>
 
-            <div class="contenedorAccesosDos">
+            <!-- <div class="contenedorAccesosDos">
                 
                 <div class="perfil">
                     
                     <h3>Perfil</h3>
-
-                    <!-- <div class="contenedorFoto">
-                        <img src="../icon/perfil.png" alt="perfil">
-                    </div> -->
 
                     <div class="perfilDatos">
                         <p>Nombre De Empresa</p>
@@ -84,7 +88,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
 
         </section>
 
