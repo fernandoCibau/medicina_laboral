@@ -22,11 +22,12 @@
                 if(  password_verify( trim($_POST['contrasenia']), $datos["contrasenia"]) ){
 
                     $_SESSION['idUsuario']  = session_id();    // CAMBIAR POR ID DE USUARIO O LEGAJO------------------------------
-                    $_SESSION['nombre']  = $datos['nombre'];
+                    $_SESSION['nombre']  = $datos['nombre_usuario'];
                     $_SESSION['email']     = $datos['email'];
-                    $_SESSION['admin']    = $datos['admin'];
+                    // $_SESSION['admin']    = $datos['admin'];
+                    $_SESSION['admin']    = $datos['tipo_usuario'];
                     
-                    echo json_encode( ['mensaje' => 'Bienvenido '. $datos['nombre'], 'operacion' => TRUE]);
+                    echo json_encode( ['mensaje' => 'Bienvenido '. $datos['nombre_usuario'], 'operacion' => TRUE]);
                     mysqli_free_result($resultado);
                 
                 }else{

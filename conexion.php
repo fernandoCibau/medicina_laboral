@@ -7,7 +7,7 @@
     $servidor           = 'localhost';
     $usuario             = 'root';
     $contrasenia        = '';
-    $baseDeDatos    = 'medicina_laboral';
+    $baseDeDatos    = 'el_salvador';
     
     try{
         @$conexion = mysqli_connect( $servidor, $usuario, $contrasenia, $baseDeDatos     ) ;

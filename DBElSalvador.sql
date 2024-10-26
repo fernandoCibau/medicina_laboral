@@ -1,8 +1,8 @@
 -- Crear la base de datos y usarla
 
-CREATE DATABASE IF NOT EXISTS medicina_laboral;
+CREATE DATABASE IF NOT EXISTS el_salvador;
 
-USE medicina_laboral;
+USE el_salvador;
 
 
 -- Estructura de tabla para la tabla `categorias`

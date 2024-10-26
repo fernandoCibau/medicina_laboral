@@ -272,7 +272,6 @@ const eliminarAutomatico = () =>{
                 const datos = JSON.parse(resultado);
                 console.log(datos);
             }catch (error) {
-                alert(datos.mensaje);
                 console.log(resultado);
                 console.error("Error al eliminar automaticamente los datos:", error);
                 alert("Error al eliminar automatico de los datos. Consulta la consola para más detalles.");
