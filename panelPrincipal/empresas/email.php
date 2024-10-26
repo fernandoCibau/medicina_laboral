@@ -35,6 +35,5 @@
             $datos->email=    $para;
             echo json_encode($datos);
         }
-
     }
 ?>

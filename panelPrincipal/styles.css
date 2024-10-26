@@ -16,19 +16,36 @@ html, body{
 
 header{
     display: flex;
-    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    height: 10%;
-    background: linear-gradient(to bottom, #539bfc, #ffffff);
-    /* background-color: #539bfc; */
-    color: white;
-    position: relative;
+    height: 8%;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-h1{
-    width: 20vw;
-    text-align: center;
+h1 {
     color: #007bff;
+    margin: 0;
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+
+}
+
+.logout-button {
+    background-color: #539bfc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .contenedorBtnHeader{
@@ -38,25 +55,26 @@ h1{
 }
 
 .contenedorBtnHeader .btmCerrarSesion{
-    width: 2em;
-    height: 2em;
-    background-color: rgb(57, 146, 57);
-    border-radius: 50%;
-    transition: 1s;
+    background-color: #539bfc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .contenedorBtnHeader .btmCerrarSesion:hover{
-    background-color: red;
+    background-color: #007bff;
     transition: 1s;
 }
 
 main{
     display: flex;
     width: 100%;
-    height: 90%;
+    height: 92%;
 }
 
-.secMenu{
+/* .secMenu{
     background-color: #539bfc;
     color: white;
     width: 15%;
@@ -64,21 +82,23 @@ main{
     flex-direction: column;
     align-items: center;
     font-size: larger;
-}
+} */
 
-.secMenu .contenedorMenu{
+/* .secMenu .contenedorMenu{
     width: 80%;
-}
-
+} */
+/* 
 .secMenu .contenedorMenu a {
     text-decoration: none;
     font-size: larger;
     color: white;
-}
+} */
 
 .seccionAccesosDirectos{
     display: flex;
     width: 85%;
+    height: 100%;
+    margin: auto;
 }
 
 .contenedorAccesos h2{
@@ -93,33 +113,36 @@ main{
 }
 
 .accesos{
-    width: 20em;
-    height: 15em;
+    width: 15em;
+    height: 20em;
+    background-color: #f9f9f9;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    border-radius: 3em;
-    box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.5);
+    border-radius: 1em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     margin: 3em 0 0 0;
     margin: auto;
 }
 
 .accesos:hover{
-        box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5);
+        box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .seccionAccesosDirectos .contenedorAccesos  .accesos h3{
     position: absolute;
-    top: 1em;
+    bottom: 20%;
 }
 
 .seccionAccesosDirectos .contenedorAccesos  .accesos img{
-    width: 30%;
+    width: 50%;
     display: flex;
     align-items: center;
+    position: absolute;
+    top: 20%;
 }
 
 .seccionAccesosDirectos .contenedorAccesosDos{
