@@ -1,0 +1,40 @@
+[2024-07-27 07:55:46] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line 49 : usuarioAlta.php
+[2024-07-27 07:56:40] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : 49
+[2024-07-27 07:57:20] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 49
+[2024-07-27 07:58:23] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NULL, NULL, NULL)' at line 2 in line usuarioAlta.php : LINEA : 49
+[2024-07-27 08:17:07] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NULL, NULL, NULL)' at line 2 in line usuarioAlta.php : LINEA : 50
+[2024-07-27 08:19:17] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NULL, NULL, NULL)' at line 2 in line usuarioAlta.php : LINEA : 50
+[2024-07-27 08:22:50] Error: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in line usuarioAlta.php : LINEA : 52
+[2024-07-27 08:26:36] Error: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in line usuarioAlta.php : LINEA : 52
+[2024-07-27 08:31:20] Error: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in line usuarioAlta.php : LINEA : 53
+[2024-07-27 08:35:41] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''10') 
+                            VALUES ('jorge', 'Fernando' 'arielschinoc...' at line 1 in line usuarioAlta.php : LINEA : 55
+[2024-07-27 08:39:49] Error: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in line usuarioAlta.php : LINEA : 53
+[2024-07-27 08:41:00] Error: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in line usuarioAlta.php : LINEA : 53
+[2024-07-27 08:41:01] Error: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in line usuarioAlta.php : LINEA : 53
+[2024-07-27 08:41:13] Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'inmobiliaria.usuario' doesn't exist in line usuarioAlta.php : LINEA : 53
+[2024-07-27 08:41:21] Error: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in line usuarioAlta.php : LINEA : 53
+[2024-07-27 08:45:06] Error: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in line usuarioAlta.php : LINEA : 53
+[2024-07-27 08:45:11] Error: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in line usuarioAlta.php : LINEA : 53
+[2024-07-27 08:45:12] Error: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in line usuarioAlta.php : LINEA : 53
+[2024-07-27 08:45:12] Error: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in line usuarioAlta.php : LINEA : 53
+[2024-07-27 08:46:08] Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'VALUES ('jorge', 'Fernando' 'arielschinocca@gmail.com', '123', '123')' at line 2 in line usuarioAlta.php : LINEA : 53
+[2024-07-27 08:46:39] Error: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in line usuarioAlta.php : LINEA : 53
+[2024-07-27 08:47:38] Error: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:15:24] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:17:27] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:17:28] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:17:35] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:20:25] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:22:20] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:22:20] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:22:21] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:23:00] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:24:06] Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '' for key 'PRIMARY' in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:25:08] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:25:27] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:29:28] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:29:40] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:29:45] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:29:46] Error: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in line usuarioAlta.php : LINEA : 53
+[2024-07-27 13:30:28] Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '' for key 'PRIMARY' in line usuarioAlta.php : LINEA : 53
