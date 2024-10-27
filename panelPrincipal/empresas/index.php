@@ -41,7 +41,7 @@
 
 
     <section class="seccion-tabla">
-        <table id="cie10Table">
+        <table>
             <thead>
                 <tr>
                     <th>Razon_Social</th>
@@ -60,21 +60,18 @@
         </table>
     </section>
 
+    <div class="contenedor-modal off" id="contenedorModal">
+        <div class="encabezado-modal">
+            <button id="btn-modal-X">X</button>
+        </div>
+        <div id="contenedorDatos" class="contendor-datos">
 
+        </div>
+    </div>
 
-
-    <!-- <section name="accesosDirectos" class="seccionAccesosDirectos">
-        <div class="contenedorAccesos">
-            
-            <div class="accesos" id="accesoAltaTurnos">
-                <h3>Nueva Emprasa</h3>
-                <img src="../icon/formulario.png" alt="tabla">
-            </div>
-            
-
-    </section> -->
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="./index.js"></script>
 <footer>
