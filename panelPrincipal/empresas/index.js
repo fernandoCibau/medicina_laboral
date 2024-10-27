@@ -63,6 +63,7 @@ const cargarTabla = () =>{
 
                 tr.append($("<td>").append(botonVer));
 
+                // Boton modificar empresa
                 const botonModificar =  $("<img src='../../icon/editar.png'>").on( 'click', ()=>{
                     $("#contenedorDatos").empty()
                     modalOnOff();
@@ -70,7 +71,7 @@ const cargarTabla = () =>{
                 
                 tr.append($("<td>").append(botonModificar));
 
-                // Boton modificar empresa
+                // Boton eliminar empresa
                 const botonEliminar=  $("<img src='../../icon/borrar.png'>").on( 'click', ()=>{
                     Swal.fire({
                         title: "Esta seguro de eliminar?",
@@ -102,8 +103,6 @@ const cargarTabla = () =>{
                 tr.append( $("<td>").append(botonEliminar ) );
 
                 $("tbody").append(tr);
-
-
             });
 
         }

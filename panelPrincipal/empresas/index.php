@@ -48,15 +48,14 @@
                         <th>Razon_Social</th>
                         <th>Cuit</th>
                         <th>Domicilio</th>
-                    <th>Telefono</th>
-                    <th>Email</th>
-                    <th>Ver</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th> 
-                    
-                </tr>
-            </thead>
-            <tbody>
+                        <th>Telefono</th>
+                        <th>Email</th>
+                        <th>Ver empleados</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th> 
+                    </tr>
+                </thead>
+                <tbody>
                 </tbody>
             </table>
         </section>
