@@ -143,6 +143,7 @@ const empleadosDeEmpresa = (idEmpresa) =>{
                 const tabla = $('<table>').attr('class', 'tabla-empleados');
                 const tr = $('<tr>');
 
+
                 /* Carga el thead */
                 for( key in datos.datos[0] ){
                     tr.append( $("<th>").text( key ) );
@@ -160,6 +161,7 @@ const empleadosDeEmpresa = (idEmpresa) =>{
                     tbody.append( tr );
                 });
                 
+                $("#tituloModal").text('Empleados')
                 tabla.append(  thead, tbody ); 
                 $("#contenedorDatos").empty().append(tabla);
 
