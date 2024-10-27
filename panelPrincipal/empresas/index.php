@@ -19,61 +19,65 @@
     <link rel="stylesheet" href="styles.css">
     <title>Clínica El Salvador - Panel</title>
 </head>
+<body>
     
     <header>
-        <h1>Medicina Laboral S.A.</h1>
+        <h1>Empresas</h1>
         <div class="contenedorBtnHeader">
             <!-- <img src="../icon/boton-de-encendido.png" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido"> -->
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>
         </div>
     </header>
-
+    
     <main>
-
-    <section name="menu" class="secMenu" id="secMenu" >
-
-        <div class="contenedorMenu">
-            <a href="../index.php"><img src="../../icon/home.png" alt=""><p>Inicio</p></a>
+        
+        <section name="menu" class="secMenu" id="secMenu" >
             
-        </div>
-
-    </section>
-
-
-    <section class="seccion-tabla">
-        <table>
-            <thead>
-                <tr>
-                    <th>Razon_Social</th>
-                    <th>Cuit</th>
-                    <th>Domicilio</th>
+            <div class="contenedorMenu">
+                <a href="../index.php"><img src="../../icon/home.png" alt=""><p>Inicio</p></a>
+                
+            </div>
+            
+        </section>
+        
+        
+        <section class="seccion-tabla">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Razon_Social</th>
+                        <th>Cuit</th>
+                        <th>Domicilio</th>
                     <th>Telefono</th>
                     <th>Email</th>
                     <th>Ver</th>
                     <th>Editar</th>
                     <th>Eliminar</th> 
-
+                    
                 </tr>
             </thead>
             <tbody>
-            </tbody>
-        </table>
-    </section>
-
-    <div class="contenedor-modal off" id="contenedorModal">
-        <div class="encabezado-modal">
-            <button id="btn-modal-X">X</button>
-        </div>
-        <div id="contenedorDatos" class="contendor-datos">
-
-        </div>
-    </div>
-
-</main>
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="./index.js"></script>
-<footer>
-
-</footer>
+                </tbody>
+            </table>
+        </section>
+        
+        <div class="contenedor-modal off" id="contenedorModal">
+            <div class="encabezado-modal">
+                <button id="btn-modal-X">X</button>
+            </div>
+            <div id="contenedorDatos" class="contendor-datos">
+                
+                </div>
+            </div>
+            
+        </main>
+    </body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="./index.js"></script>
+        
+    <footer>
+        
+    </footer>
+            

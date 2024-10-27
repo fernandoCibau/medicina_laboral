@@ -42,45 +42,23 @@ const cargarTabla = () =>{
                 cuit : item.cuit,
                 domicilio : item.domicilio,
                 telefono : item.telefono,
-                email : item.email
+                email : item.email,
+                id : item.id
             }));
-            
-            console.log(datosMap)
             
             datosMap.forEach( fila=> {
                 const tr = $("<tr>");
                 
                 for( key in fila ){
-                    const td = $("<td>");
-                    td.append( fila[key]);
-                    tr.append(td);
-                    
+                    if( key != 'id'){
+                        const td =  $("<td>").text( fila[key] );
+                        tr.append(td);
+                    } 
                 }
                 
-                // Boton ver datos completos
+                // Boton ver empleados de la empresa
                 const botonVer= $("<img src='../../icon/ojo.png'>").on( 'click', ()=>{
-                    modalOnOff();
-
-                    const contenedorLista = $("<div>").attr('class', 'contendor-lista');
-                    
-                    const divRazon_social = $("<div>").attr('class', 'contenedor-item');
-                    const divCuit = $('<div>').attr('class', 'contenedor-item');
-                    const divDomicilio = $('<div>').attr('class', 'contenedor-item');
-                    const divTelefono = $('<div>').attr('class', 'contenedor-item');
-                    const divEmail = $('<div>').attr('class', 'contenedor-item');
-                    
-                    // Agregar contenido a cada div
-                    divRazon_social.append($("<span>Razón Social: </span>"), $(`<span>${ fila['razon_social']}</span>`));
-                    divCuit.append($("<span>CUIT: </span>"), $(`<span>${ fila['cuit']}</span>`));
-                    divDomicilio.append($("<span>Domicilio: </span>"), $(`<span>${ fila['domicilio']}</span>`));
-                    divTelefono.append($("<span>Teléfono: </span>"), $(`<span>${ fila['telefono']}</span>`));
-                    divEmail.append($("<span>Email: </span>"), $(`<span>${ fila['email']}</span>`));
-                    
-                    // Agregar todos los divs al contenedor de la lista
-                    contenedorLista.append(divRazon_social, divCuit, divDomicilio, divTelefono, divEmail);
-                    
-                    // Limpiar el contenido anterior y agregar el nuevo
-                    $("#contenedorDatos").empty().append(contenedorLista);
+                    empleadosDeEmpresa(fila['id']);
                 } ) ;
 
                 tr.append($("<td>").append(botonVer));
@@ -128,17 +106,11 @@ const cargarTabla = () =>{
 
             });
 
-            // if(datos.rta){
-            //     alert( datos.mensaje);
-            //     // location.href="";
-            // }else{
-            //     alert(datos.error);
-            // }
-
         }
     })
 };
 
+//Abre y cierra el modal
 const modalOnOff = () =>{
     if($("#contenedorModal").hasClass("on") ){
         $("#contenedorModal").attr("class","contenedor-modal off");
@@ -154,6 +126,74 @@ const modalOnOff = () =>{
     }
 };
 
+//Consulta de datos completos de la empresa
+const empleadosDeEmpresa = (idEmpresa) =>{
+    
+    $.ajax({
+        url : "empleadosDeEmpresa.php",
+        method : "get",
+        data : {idEmpresa : idEmpresa},
+
+        success: (resultado, estado)=>{
+
+            try {
+                const datos = JSON.parse(resultado);
+                
+                modalOnOff();
+                const tabla = $('<table>').attr('class', 'tabla-empleados');
+                const tr = $('<tr>');
+
+                /* Carga el thead */
+                for( key in datos.datos[0] ){
+                    tr.append( $("<th>").text( key ) );
+                }
+                const thead = $("<thead>").append(tr);
+                
+                
+                const tbody = $("<tbody>");
+                // //Carga el tbody
+                datos.datos.forEach( fila => {
+                    const tr = $("<tr>");
+                    for( key in fila ){
+                        tr.append( $("<td>").text( fila[key] ) ); 
+                    }
+                    tbody.append( tr );
+                });
+                
+                tabla.append(  thead, tbody ); 
+                $("#contenedorDatos").empty().append(tabla);
+
+
+
+                
+                
+                console.log (datos)
+            
+            }catch (error) {
+                console.log(resultado);
+                console.error("Error en la carga de empleados:", error);
+                alert("Error en la carga de datos. Consulta la consola para más detalles.");
+            }
+
+        }
+
+
+
+    })
+}
+
+
+const eliminarEmpresa = () =>{
+    const resultado = confirm("SIMULADOR DE RESPUESTA BD ");
+
+    // Verifica la respuesta del usuario
+    if (resultado) {
+        return true;
+        // Aquí puedes agregar el código para eliminar el elemento
+    } else {
+        return false;
+    }
+}
 //------------------------------------------------------------------
 //                  BOTONES
 //------------------------------------------------------------------
@@ -169,14 +209,28 @@ $("#btn-modal-X").click( () => {
 
 
 
-const eliminarEmpresa = () =>{
-    const resultado = confirm("SIMULADOR DE RESPUESTA BD ");
 
-    // Verifica la respuesta del usuario
-    if (resultado) {
-        return true;
-        // Aquí puedes agregar el código para eliminar el elemento
-    } else {
-        return false;
-    }
-}
+
+
+
+
+// const contenedorLista = $("<div>").attr('class', 'contendor-lista');
+                    
+//                     const divRazon_social = $("<div>").attr('class', 'contenedor-item');
+//                     const divCuit = $('<div>').attr('class', 'contenedor-item');
+//                     const divDomicilio = $('<div>').attr('class', 'contenedor-item');
+//                     const divTelefono = $('<div>').attr('class', 'contenedor-item');
+//                     const divEmail = $('<div>').attr('class', 'contenedor-item');
+                    
+//                     // Agregar contenido a cada div
+//                     divRazon_social.append($("<span>Razón Social: </span>"), $(`<span>${ fila['razon_social']}</span>`));
+//                     divCuit.append($("<span>CUIT: </span>"), $(`<span>${ fila['cuit']}</span>`));
+//                     divDomicilio.append($("<span>Domicilio: </span>"), $(`<span>${ fila['domicilio']}</span>`));
+//                     divTelefono.append($("<span>Teléfono: </span>"), $(`<span>${ fila['telefono']}</span>`));
+//                     divEmail.append($("<span>Email: </span>"), $(`<span>${ fila['email']}</span>`));
+                    
+//                     // Agregar todos los divs al contenedor de la lista
+//                     contenedorLista.append(divRazon_social, divCuit, divDomicilio, divTelefono, divEmail);
+                    
+//                     // Limpiar el contenido anterior y agregar el nuevo
+//                     $("#contenedorDatos").empty().append(contenedorLista);
