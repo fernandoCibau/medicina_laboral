@@ -128,21 +128,37 @@ main{
     margin: auto;
 }
 
+.accesos div{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    width: 10em;
+    height: 10em;
+    background-color: #539bfc;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* .accesos div img{
+    max-width: 80px;
+    margin-top: 45px;
+} */
+
 .accesos:hover{
         box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .seccionAccesosDirectos .contenedorAccesos  .accesos h3{
     position: absolute;
-    bottom: 20%;
+    bottom: 10%;
 }
 
 .seccionAccesosDirectos .contenedorAccesos  .accesos img{
     width: 50%;
     display: flex;
     align-items: center;
-    position: absolute;
-    top: 20%;
+    justify-content: ;
 }
 
 .seccionAccesosDirectos .contenedorAccesosDos{

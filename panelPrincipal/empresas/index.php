@@ -22,7 +22,7 @@
 <body>
     
     <header>
-        <h1>Empresas</h1>
+        <h1>EMPRESAS</h1>
         <div class="contenedorBtnHeader">
             <!-- <img src="../icon/boton-de-encendido.png" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido"> -->
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>
@@ -35,7 +35,9 @@
             
             <div class="contenedorMenu">
                 <a href="../index.php"><img src="../../icon/home.png" alt=""><p>Inicio</p></a>
-                
+                <a href="../../sistema_de_turnos"><img src="../../icon/turnos_blanco.png" alt=""><p>Turnos</p></a>
+                <a href=""><img src="../../icon/paciente_blanco.png" alt=""><p>Pacientes</p></a>
+                <a href=""><img src="../../icon/empresa_blanco.png" alt=""><p>Empresas</p></a>
             </div>
             
         </section>

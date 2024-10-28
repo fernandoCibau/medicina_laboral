@@ -19,7 +19,7 @@
 </head>
     
     <header>
-        <h1>El Salvador</h1>
+        <h1>CLINICA EL SALVADOR</h1>
         <div class="contenedorBtnHeader">
             <!-- <img src="../icon/boton-de-encendido.png" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido"> -->
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>
@@ -34,6 +34,7 @@
                 <!-- Solo administador -->
                 <?php   if (isset($_SESSION['admin'])) {  ?>
                         <div class="accesos" id="accesoAltaUsuario">
+                            <div><img src="../icon/nuevo_user_grande.png" alt="nuevo usuario"></div>
                             <h3>Nuevo usuario</h3>
                             <!-- <img src="../icon/formulario.png" alt="tabla"> -->
                         </div>
@@ -41,26 +42,27 @@
 
                 
                 <div class="accesos" id="accesoAltaTurnos">
-                    <img src="../icon/turnos.png" alt="cita-medica">
+                    <div><img src="../icon/turnos_blanco_grande.png" alt="cita-medica"></div>
                     <h3>Turnos</h3>
                 </div>
                 
                 <div class="accesos" id="accesoCIE-10">
+                    <div><img src="../icon/tabla.png" alt="CIE-10"></div>
                     <h3>CIE-10</h3>
-                    <!-- <img src="../icon/formulario.png" alt="tabla"> -->
                 </div>
                 
                 <div class="accesos" id="accesoPacientes">
-                    <img src="../icon/paciente.png" alt="empleados">
+                    <div><img src="../icon/paciente_grande.png" alt="pacientes"></div>
                     <h3>Pacientes</h3>
                 </div>
                 
                 <div class="accesos" id="accesoEmpresas">
-                    <img src="../icon/empresa.png" alt="empresas">
+                    <div><img src="../icon/empresa_blanco_grande.png" alt="empresas"></div>
                     <h3>Empresas</h3>
                 </div>
                 
                 <div class="accesos" id="accesoPersMedico">
+                    <div><img src="../icon/personal_medico.png" alt="personal medico"></div>
                     <h3>Pers. Medico</h3>
                     <!-- <img src="../icon/tabla.png" alt="tabla"> -->
                 </div>
