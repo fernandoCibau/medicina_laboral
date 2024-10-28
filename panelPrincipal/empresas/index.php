@@ -45,7 +45,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Razon_Social</th>
+                        <th>Nombre</th>
                         <th>Cuit</th>
                         <th>Domicilio</th>
                         <th>Telefono</th>
