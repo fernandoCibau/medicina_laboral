@@ -51,13 +51,15 @@
 <h2>Formulario de Registro</h2>
                 
                 <form  method="post" id="formAlta">
-                    <label for="nombre">Nombre de usuario:</label>
-                    <input type="text" id="nombre" name="nombre_usuario" required>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
                     
-                    <label for="apellido">empresa</label>
+                    <label for="apellido">Apellido:</label>
                     <input type="text" id="apellido" name="apellido" required>
                     
-                        
+                        <div class="contenedorDni" id="contenedorDni">
+                        <label for="dni">Dni:</label> 
+                        <input type="text" id="dni" name="dni" required placeholder="Ingrese el DNI sin puntos" >
                     </div>
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
@@ -92,6 +94,7 @@
     </footer>
 </body>
 </html>
+
 
 
 

@@ -38,7 +38,7 @@
                         </div>
                         <button type="submit">Ingresar</button>
                     </form>
-                    <a href="#" id="btnRecuperarContrasenia" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                    <a href="./recuperarContrasenia/recuContrasenia.php" id="btnRecuperarContrasenia" class="forgot-password">¿Olvidaste tu contraseña?</a>
                 </div>
             </div>
         </div>
