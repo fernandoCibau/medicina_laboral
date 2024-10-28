@@ -65,7 +65,6 @@ const cargarTabla = () => {
                     
                     // Crear los inputs con los valores de la fila seleccionada
                     $("#contenedorDatos").append(`
-                        <label for="inputId">ID</label>
                         <input type="text" id="inputId" value="${fila['id']}" readonly>
                         
                         <label for="inputRazonSocial">Razón Social</label>
@@ -84,7 +83,7 @@ const cargarTabla = () => {
                         <input type="text" id="inputEmail" value="${fila['email']}">
                         
                         <div id="modalButtons">
-                            <button id="guardarCambiosBtn" class="btn btn-primary">Guardar Cambios</button>
+                            <button id="guardarCambiosBtn" class="btn btn-primary">Modificar</button>
                             <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
                         </div>
                     `);

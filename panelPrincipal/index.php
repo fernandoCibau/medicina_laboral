@@ -19,7 +19,7 @@
 </head>
     
     <header>
-        <h1>Medicina Laboral S.A.</h1>
+        <h1>El Salvador</h1>
         <div class="contenedorBtnHeader">
             <!-- <img src="../icon/boton-de-encendido.png" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido"> -->
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>
