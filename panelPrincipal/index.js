@@ -1,5 +1,3 @@
-
-
 //Dirige la pagina a altas de usuarios
 $("#accesoAltaUsuario").click( ()=>{
     window.location.href = "./altaUsuario";
@@ -7,7 +5,7 @@ $("#accesoAltaUsuario").click( ()=>{
 
 //Cierra la sesion de usuario
 $("#btmCerrarSesion").click( ()=>{
-    if(confirm("¿Confirmar?")){
+    if(confirm("¿Desea cerrar la sesión?")){
         window.location.href = "../cerrarSesion.php";
     }
 });

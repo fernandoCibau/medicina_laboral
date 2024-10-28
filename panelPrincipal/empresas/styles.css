@@ -51,7 +51,7 @@ h1 {
 .contenedorBtnHeader{
     width: 10%;
     position: absolute;
-    right: 5%;
+    right: 0%;
 }
 
 .contenedorBtnHeader .btmCerrarSesion{

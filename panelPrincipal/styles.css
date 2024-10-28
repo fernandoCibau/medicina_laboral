@@ -43,7 +43,7 @@ h1 {
     background-color: #539bfc;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px, 20px;
     border-radius: 4px;
     cursor: pointer;
 }
@@ -51,7 +51,7 @@ h1 {
 .contenedorBtnHeader{
     width: 10%;
     position: absolute;
-    right: 5%;
+    right: 0%;
 }
 
 .contenedorBtnHeader .btmCerrarSesion{
