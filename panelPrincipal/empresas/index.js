@@ -32,7 +32,10 @@ const cargarTabla = () => {
         success: (resultado, estado) => {
             let datos = JSON.parse(resultado);
             console.log(datos);
-            
+
+            // Vaciar el contenido de la tabla antes de agregar nuevas filas
+            $("tbody").empty();
+
             const datosMap = datos.datos.map(item => ({
                 razon_social: item.razon_social,
                 cuit: item.cuit,
@@ -147,20 +150,22 @@ const cargarTabla = () => {
                         confirmButtonText: "Confirmar, Eliminar la empresa!"
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            if (eliminarEmpresa(fila['id'])) {
-                                Swal.fire({
-                                    title: "Se eliminó correctamente!",
-                                    text: "La empresa fue eliminada.",
-                                    icon: "success"
+                            eliminarEmpresa(fila['id'])
+                                .then(() => {
+                                    Swal.fire({
+                                        title: "Se eliminó correctamente!",
+                                        text: "La empresa fue eliminada.",
+                                        icon: "success"
+                                    });
+                                    cargarTabla(); // Recargar la tabla con los datos actualizados
+                                })
+                                .catch(() => {
+                                    Swal.fire({
+                                        icon: "error",
+                                        title: "Oops...",
+                                        text: "Ocurrió un error al eliminar la empresa"
+                                    });
                                 });
-                                cargarTabla();
-                            } else {
-                                Swal.fire({
-                                    icon: "error",
-                                    title: "Oops...",
-                                    text: "Ocurrió un error al eliminar la empresa"
-                                });
-                            }
                         }
                     });
                 });
@@ -170,7 +175,9 @@ const cargarTabla = () => {
             });
         }
     });
-}
+};
+
+
 
 //Abre y cierra el modal
 const modalOnOff = () =>{
