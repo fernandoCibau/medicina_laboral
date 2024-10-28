@@ -45,17 +45,14 @@
 
 
 
-    
-
-
 <h2>Formulario de Registro</h2>
                 
                 <form  method="post" id="formAlta">
                     <label for="nombre">Nombre de usuario:</label>
                     <input type="text" id="nombre" name="nombre_usuario" required>
                     
-                    <label for="apellido">empresa</label>
-                    <input type="text" id="apellido" name="apellido" required>
+                    <label for="empresa">empresa</label>
+                    <input type="text" id="apellido" name="empresa" required>
                     
                         
                     </div>

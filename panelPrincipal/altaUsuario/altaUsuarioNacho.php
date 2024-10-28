@@ -11,8 +11,6 @@
             $contrasenia = $_POST['contrasenia'];
             $admin = $_POST['admin'];
 
-            
-        
     
             
             $sql = "SELECT * FROM usuarios WHERE email= '$email' ";
