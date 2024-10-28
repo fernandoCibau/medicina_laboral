@@ -12,6 +12,7 @@ if (isset($_POST['id'])) {
         $resultado = $stmt->get_result();
 
         if ($resultado->num_rows > 0) {
+
             // Si existe, eliminar la empresa
             $stmt = $conexion->prepare("DELETE FROM empresas WHERE id = ?");
             $stmt->bind_param("i", $id); // Cambiado a "i" para integer

@@ -83,7 +83,7 @@ const cargarTabla = () =>{
                         confirmButtonText: "Confirmar, Eliminar la empresa!"
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            if ( eliminarEmpresa() ){
+                            if ( eliminarEmpresa(fila['id']) ){
                                 Swal.fire({
                                 title: "Se elimino correctamente!",
                                 text: "La empresa fue eliminada.",
@@ -184,17 +184,26 @@ const empleadosDeEmpresa = (idEmpresa) =>{
 }
 
 
-const eliminarEmpresa = () =>{
-    const resultado = confirm("SIMULADOR DE RESPUESTA BD ");
-
-    // Verifica la respuesta del usuario
-    if (resultado) {
-        return true;
-        // Aquí puedes agregar el código para eliminar el elemento
-    } else {
-        return false;
-    }
-}
+const eliminarEmpresa = (idEmpresa) => {
+    return $.ajax({
+        url: "bajaEmpresa.php",  // Asegúrate de ajustar la ruta correctamente
+        type: "POST",
+        data: { id: idEmpresa },
+        dataType: "json",
+        success: function(response) {
+            if (response.operacion) {
+                return true;  // Se usará en el bloque .then() de la promesa en la función principal
+            } else {
+                console.error("Error en el servidor:", response.mensaje);
+                return false;
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("Error en la solicitud AJAX:", error);
+            return false;
+        }
+    });
+};
 //------------------------------------------------------------------
 //                  BOTONES
 //------------------------------------------------------------------
