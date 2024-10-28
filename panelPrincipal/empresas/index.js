@@ -23,59 +23,124 @@ $("#formAlta").submit( e=>{
 //                  FUNCIONES
 //------------------------------------------------------------------
 
-const cargarTabla = () =>{
-
+const cargarTabla = () => {
     $.ajax({
         url: "cargarTabla.php",
         method: "get",
-        data: {todos:"todos"},
-
+        data: { todos: "todos" },
         
-        success: (resultado, estado) =>{
-            
+        success: (resultado, estado) => {
             let datos = JSON.parse(resultado);
-            
             console.log(datos);
             
             const datosMap = datos.datos.map(item => ({
-                razon_social : item.razon_social,
-                cuit : item.cuit,
-                domicilio : item.domicilio,
-                telefono : item.telefono,
-                email : item.email,
-                id : item.id
+                razon_social: item.razon_social,
+                cuit: item.cuit,
+                domicilio: item.domicilio,
+                telefono: item.telefono,
+                email: item.email,
+                id: item.id
             }));
             
-            datosMap.forEach( fila=> {
+            datosMap.forEach(fila => {
                 const tr = $("<tr>");
                 
-                for( key in fila ){
-                    if( key != 'id'){
-                        const td =  $("<td>").text( fila[key] );
+                // Crear una celda para cada campo excepto el ID
+                for (let key in fila) {
+                    if (key !== 'id') {
+                        const td = $("<td>").text(fila[key]);
                         tr.append(td);
-                    } 
+                    }
                 }
                 
-                // Boton ver empleados de la empresa
-                const botonVer= $("<img src='../../icon/ojo.png'>").on( 'click', ()=>{
+                // Botón Ver Empleados
+                const botonVer = $("<img src='../../icon/ojo.png'>").on('click', () => {
                     empleadosDeEmpresa(fila['id']);
-                } ) ;
-
+                });
                 tr.append($("<td>").append(botonVer));
 
-                // Boton modificar empresa
-                const botonModificar =  $("<img src='../../icon/editar.png'>").on( 'click', ()=>{
-                    $("#contenedorDatos").empty()
+                // Botón Modificar Empresa
+                const botonModificar = $("<img src='../../icon/editar.png'>").on('click', () => {
+                    $("#contenedorDatos").empty();
+                    
+                    // Crear los inputs con los valores de la fila seleccionada
+                    $("#contenedorDatos").append(`
+                        <label for="inputId">ID</label>
+                        <input type="text" id="inputId" value="${fila['id']}" readonly>
+                        
+                        <label for="inputRazonSocial">Razón Social</label>
+                        <input type="text" id="inputRazonSocial" value="${fila['razon_social']}">
+                        
+                        <label for="inputCuit">CUIT</label>
+                        <input type="text" id="inputCuit" value="${fila['cuit']}">
+                        
+                        <label for="inputDomicilio">Domicilio</label>
+                        <input type="text" id="inputDomicilio" value="${fila['domicilio']}">
+                        
+                        <label for="inputTelefono">Teléfono</label>
+                        <input type="text" id="inputTelefono" value="${fila['telefono']}">
+                        
+                        <label for="inputEmail">Email</label>
+                        <input type="text" id="inputEmail" value="${fila['email']}">
+                        
+                        <div id="modalButtons">
+                            <button id="guardarCambiosBtn" class="btn btn-primary">Guardar Cambios</button>
+                            <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
+                        </div>
+                    `);
+
+                    $("#tituloModal").text("Modificar Empresa");
                     modalOnOff();
-                } ) ;
-                
+
+                    // Evento del botón Guardar Cambios
+                    $("#guardarCambiosBtn").on("click", () => {
+                        const datosActualizados = {
+                            id: $("#inputId").val(),
+                            razon_social: $("#inputRazonSocial").val(),
+                            cuit: $("#inputCuit").val(),
+                            domicilio: $("#inputDomicilio").val(),
+                            telefono: $("#inputTelefono").val(),
+                            email: $("#inputEmail").val()
+                        };
+
+                        $.ajax({
+                            url: "modificacionEmpresa.php",
+                            method: "POST",
+                            data: datosActualizados,
+                            success: (response) => {
+                                const resultado = JSON.parse(response);
+                                if (resultado.operacion) {
+                                    Swal.fire({
+                                        title: "Empresa modificada",
+                                        text: "Los cambios fueron guardados con éxito.",
+                                        icon: "success"
+                                    }).then(() => {
+                                        modalOnOff();  // Cerrar modal
+                                        cargarTabla(); // Recargar la tabla con los datos actualizados
+                                    });
+                                } else {
+                                    Swal.fire("Error", resultado.mensaje, "error");
+                                }
+                            },
+                            error: (xhr, status, error) => {
+                                console.error("Error en la solicitud AJAX:", error);
+                                Swal.fire("Error", "Ocurrió un problema al guardar los cambios.", "error");
+                            }
+                        });
+                    });
+
+                    // Evento del botón Cancelar
+                    $("#cancelarBtn").on("click", () => {
+                        modalOnOff(); // Cerrar el modal sin guardar
+                    });
+                });
                 tr.append($("<td>").append(botonModificar));
 
-                // Boton eliminar empresa
-                const botonEliminar=  $("<img src='../../icon/borrar.png'>").on( 'click', ()=>{
+                // Botón Eliminar Empresa
+                const botonEliminar = $("<img src='../../icon/borrar.png'>").on('click', () => {
                     Swal.fire({
-                        title: "Esta seguro de eliminar?",
-                        text: "Esta a punto de eliminar la empresa",
+                        title: "¿Está seguro de eliminar?",
+                        text: "Está a punto de eliminar la empresa",
                         icon: "warning",
                         showCancelButton: true,
                         confirmButtonColor: "#3085d6",
@@ -83,31 +148,30 @@ const cargarTabla = () =>{
                         confirmButtonText: "Confirmar, Eliminar la empresa!"
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            if ( eliminarEmpresa(fila['id']) ){
+                            if (eliminarEmpresa(fila['id'])) {
                                 Swal.fire({
-                                title: "Se elimino correctamente!",
-                                text: "La empresa fue eliminada.",
-                                icon: "success"
+                                    title: "Se eliminó correctamente!",
+                                    text: "La empresa fue eliminada.",
+                                    icon: "success"
                                 });
-                            }else{
+                                cargarTabla();
+                            } else {
                                 Swal.fire({
                                     icon: "error",
                                     title: "Oops...",
-                                    text: "Ocurrio un Error al eliminar la empresa",
-                                    // footer: '<a href="#">Why do I have this issue?</a>'
+                                    text: "Ocurrió un error al eliminar la empresa"
                                 });
                             }
                         }
                     });
-                } ) ;
-                tr.append( $("<td>").append(botonEliminar ) );
+                });
+                tr.append($("<td>").append(botonEliminar));
 
                 $("tbody").append(tr);
             });
-
         }
-    })
-};
+    });
+}
 
 //Abre y cierra el modal
 const modalOnOff = () =>{
