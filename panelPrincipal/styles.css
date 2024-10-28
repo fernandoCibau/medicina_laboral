@@ -140,11 +140,6 @@ main{
     margin-bottom: 20px;
 }
 
-/* .accesos div img{
-    max-width: 80px;
-    margin-top: 45px;
-} */
-
 .accesos:hover{
         box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2);
 }
