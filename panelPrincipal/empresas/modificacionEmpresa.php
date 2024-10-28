@@ -1,12 +1,13 @@
 <?php
-if (isset($_POST['id']) && (isset($_POST['razon_social']) || isset($_POST['cuit']) || isset($_POST['direccion_fisica']) || isset($_POST['email']))) {
+if (isset($_POST['id']) && (isset($_POST['razon_social']) || isset($_POST['cuit']) || isset($_POST['domicilio']) || isset($_POST['telefono']) || isset($_POST['email']))) {
     try {
         include "../../conexion.php";
 
         $id = $_POST['id'];
         $razon_social = $_POST['razon_social'] ?? null;
         $cuit = $_POST['cuit'] ?? null;
-        $direccion_fisica = $_POST['direccion_fisica'] ?? null;
+        $domicilio = $_POST['domicilio'] ?? null;
+        $telefono = $_POST['telefono'];
         $email = $_POST['email'] ?? null;
 
         // Verificar si la empresa con el id existe
@@ -33,10 +34,16 @@ if (isset($_POST['id']) && (isset($_POST['razon_social']) || isset($_POST['cuit'
                 $tipos .= "i";
             }
 
-            if ($direccion_fisica) {
-                $campos[] = "direccion_fisica = ?";
-                $valores[] = $direccion_fisica;
+            if ($domicilio) {
+                $campos[] = "domicilio = ?";
+                $valores[] = $domicilio;
                 $tipos .= "s";
+            }
+
+            if ($telefono) {
+                $campos[] = "telefono = ?";
+                $valores[] = $telefono;
+                $tipos .= "i";
             }
 
             if ($email) {

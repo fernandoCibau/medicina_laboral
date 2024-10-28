@@ -51,13 +51,13 @@
                 </div>
                 
                 <div class="accesos" id="accesoPacientes">
+                    <img src="../icon/paciente.png" alt="empleados">
                     <h3>Pacientes</h3>
-                    <!-- <img src="../icon/tabla.png" alt="tabla"> -->
                 </div>
                 
                 <div class="accesos" id="accesoEmpresas">
+                    <img src="../icon/empresa.png" alt="empresas">
                     <h3>Empresas</h3>
-                    <!-- <img src="../icon/formulario.png" alt="tabla"> -->
                 </div>
                 
                 <div class="accesos" id="accesoPersMedico">
