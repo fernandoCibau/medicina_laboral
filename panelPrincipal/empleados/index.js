@@ -82,7 +82,7 @@ const cargarTabla = () => {
                         <label for="inputLegajo">Legajo</label>
                         <input type="text" id="inputLegajo" value="${fila['legajo']}">
                         
-                        <label for="inputDNI">CUIT</label>
+                        <label for="inputDNI">DNI</label>
                         <input type="text" id="inputDNI" value="${fila['dni']}">
                         
                         <label for="inputApellido">Apellido</label>
@@ -123,7 +123,7 @@ const cargarTabla = () => {
                         const datosActualizados = {
                             id: $("#inputId").val(),
                             legajo: $("#inputLegajo").val(),
-                            cuit: $("#inputDNI").val(),
+                            dni: $("#inputDNI").val(),
                             nombre: $("#inputNombre").val(),
                             apellido: $("#inputApellido").val(),
                             domicilio: $("#inputDomicilio").val(),
