@@ -24,3 +24,8 @@ $("#accesoCIE-10").click( ()=>{
 $("#accesoEmpresas").click( () =>{
     window.location.href = "./empresas";
 });
+
+//Envio al dashboard EMPLEADOS
+$("#accesoPacientes").click( () => {
+    window.location.href = "./empleados";
+});
