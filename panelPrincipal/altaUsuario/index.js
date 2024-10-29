@@ -27,6 +27,8 @@ let ajaxUsuarioAlta = (formData) => {
   });
 };
 
+/* TRAE LA LISTA DE EMPRESAS A MEDIDA QUE ESCRIBO */
+
 $(document).ready(function() {
   $('#empresa').on('keyup', function() {
       let nombreEmpresa = $(this).val();
@@ -38,16 +40,33 @@ $(document).ready(function() {
               data: { buscar_empresa: nombreEmpresa },
               success: function(data) {
                   $('#resultados').html(data);
+                  if (data.trim() !== "") {
+                      $('#resultados').addClass('visible');
+                  } else {
+                      $('#resultados').removeClass('visible');
+                  }
                   $('#resultados li').on('click', function() {
-                  $('#empresa').val($(this).text());
-                  $('#resultados').html('');
+                      $('#empresa').val($(this).text());
+                      $('#resultados').html('');
+                      $('#resultados').removeClass('visible');
+                  });
+              }
           });
-        }
-        });
       } else {
           $('#resultados').html('');
+          $('#resultados').removeClass('visible');
       }
   });
+
+
+ /*  OCULTA LA LISTA DE EMPRESAS CUANDO HAGO CLICK FUERA */
+
+  $(document).on('click', function(e) {
+    if (!$(e.target).closest('#empresa').length && !$(e.target).closest('#resultados').length) {
+        $('#resultados').html('');
+        $('#resultados').removeClass('visible');
+    }
+});
 });
 
 

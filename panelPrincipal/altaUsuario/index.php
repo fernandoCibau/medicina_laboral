@@ -51,10 +51,11 @@
                     <label for="nombre">Nombre de usuario:</label>
                     <input type="text" id="nombre" name="nombre_usuario" required>
                     
+                    <div class= "container-empresa">
                     <label for="empresa">Empresa</label>
                     <input type="text" id="empresa" name="empresa" required>
                     <div id="resultados"></div>
-                    
+                    </div>
     
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>

@@ -136,6 +136,11 @@ main{
     color: #333;
 }
 
+.conteiner-empresa{
+    position: relative;
+    width: 100%;
+}
+
 fieldset{
     display: flex;
     flex-flow: row;
@@ -185,5 +190,30 @@ fieldset{
 
 .form-contenedor button:hover {
     background-color: #218838;
+}
+
+#resultados {
+    position: absolute;
+    top: 45%;
+    background-color: #ffffff;
+    width: 45.5%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+#resultados.visible {
+    display: block;
+    border: 1px solid #ddd;
+}
+
+#resultados li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+#resultados li:hover {
+    background-color: #f0f0f0;
 }
 
