@@ -22,19 +22,27 @@
             <form method="post" id="formActualizarContrasenia">
               <div class="input-group1">
                 <label for="">Correo de usuario</label>
-                <input required type="email" name="correo" />
+                <input required type="email" name="correo" id="correo" />
               </div>
               <div class="input-group1">
                 <label for="">Nueva contraseña</label>
-                <input required type="text" name="contrasenia" />
+                <input
+                  required
+                  type="password"
+                  name="contrasenia"
+                  id="contrasenia"
+                />
               </div>
               <div class="input-group">
                 <label for="">Repita contraseña</label>
-                <input required type="text" name="contrasenia2" />
+                <input
+                  required
+                  type="password"
+                  name="contrasenia2"
+                  id="contrasenia2"
+                />
               </div>
-              <p id="mensaje" class="hidde">-</p>
-
-              <!-- <div class="loader"></div> -->
+              <p id="mensaje2" class="hidde">-</p>
               <button id="enviarBTN">Aceptar</button>
             </form>
           </div>

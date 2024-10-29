@@ -8,16 +8,40 @@ $("#formContraseña").submit((e) => {
   let formData = new FormData(form[0]);
   $(".loader").removeClass("hidde");
   envioDeCorreo(formData);
-  /* auntenticar(formData); */
 });
 
 $("#formActualizarContrasenia").submit((e) => {
   e.preventDefault();
   let form = $("#formActualizarContrasenia");
   let formData = new FormData(form[0]);
-  $(".loader").removeClass("hidde");
-  actuContra(formData);
-  window.location.href = "../index.php";
+
+  let checkEmails = (formData) => {
+    $.ajax({
+      url: "auntenticacionDeCorreo.php",
+      method: "post",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: (resultado, estado) => {
+        let datos = JSON.parse(resultado);
+        if (datos.operacion) {
+          if ($("#contrasenia").val() == $("#contrasenia2").val()) {
+            $(".loader").removeClass("hidde");
+            actuContra(formData);
+            window.location.href = "../index.php";
+          } else {
+            $("p").removeClass("hidde");
+            $("#mensaje2").text("Las contraseñas deben coincidir");
+          }
+        } else if (datos.operacion == false) {
+          $("p").removeClass("hidde");
+          $("#mensaje2").text("El correo no pertenece a un usuario");
+        }
+      },
+    });
+  };
+
+  checkEmails(formData);
 });
 
 //------------------------------------------------------------------
@@ -32,28 +56,21 @@ let envioDeCorreo = (formData) => {
     contentType: false,
     processData: false,
     success: (resultado, estado) => {
+      let datos = JSON.parse(resultado);
       try {
-        $("#mensaje").text(resultado);
-        $("p").removeClass("hidde");
-        $(".loader").addClass("hidde");
-        $("p").addClass("show");
-      } catch (error) {
-        alert(error);
-      }
-    },
-  });
-};
-
-let auntenticar = (formData) => {
-  $.ajax({
-    url: "auntenticacionCon.php",
-    method: "post",
-    data: formData,
-    contentType: false,
-    processData: false,
-    success: (resultado, estado) => {
-      try {
-        alert(resultado);
+        if (datos.operacion) {
+          $("#mensaje").text(datos.mensaje);
+          $("p").removeClass("hidde");
+          $("p").removeClass("show-error");
+          $(".loader").addClass("hidde");
+          $("p").addClass("show");
+        } else {
+          $("#mensaje").text(datos.mensaje);
+          $("p").removeClass("hidde");
+          $("p").removeClass("show");
+          $(".loader").addClass("hidde");
+          $("p").addClass("show-error");
+        }
       } catch (error) {
         alert(error);
       }
@@ -69,11 +86,28 @@ let actuContra = (formData) => {
     contentType: false,
     processData: false,
     success: (resultado, estado) => {
-      try {
-        alert(resultado);
-      } catch (error) {
-        alert(error);
+      alert(resultado);
+      $("#mensaje").text(resultado);
+    },
+  });
+};
+
+let checkEmails = (formData) => {
+  result = "dasdsa";
+  $.ajax({
+    url: "auntenticacionDeCorreo.php",
+    method: "post",
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: (resultado, estado) => {
+      if (resultado == "true") {
+        result = true;
+      } else {
+        result = false;
       }
     },
   });
+
+  return result;
 };

@@ -7,9 +7,9 @@ if(isset($_POST["correo"])){
     if(!empty($_POST["correo"]))
     {
         $para = $_POST["correo"];
-        $de = "From: melgarejoclts@gmail.com";
+        $de = "From: nachomelga123@gmail.com";
         $asunto = "Prueba PHP";
-        $mensaje = "http://localhost/medicina_laboral/recuperarContrasenia/actualizacionContrasenia.html";
+        $mensaje = "http://localhost/Medicinal_laboral/recuperarContrasenia/actualizacionContrasenia.html";
 
 
         $sql = "SELECT * FROM usuarios WHERE email = '$para'"; 
@@ -21,12 +21,12 @@ if(isset($_POST["correo"])){
             $enviarMail = mail($para,$asunto,$mensaje,$de);
 
             if($enviarMail){
-                echo "Se envio el correo de recuperacion exitosamente!";
-            }
+                echo json_encode( [ 'mensaje' => 'Se envio el correo de recuperacion exitosamente', 'operacion' => true ]); 
+                
+           }
 
-         }else{
-           
-            echo "El correo no pertenece a un usuario"; 
+         }else{ 
+            echo json_encode( [ 'mensaje' => 'El correo no pertenece a un usuario', 'operacion' => false ]); 
          }
 
         
