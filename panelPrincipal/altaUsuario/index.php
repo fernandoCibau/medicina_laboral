@@ -54,8 +54,8 @@
                     <label for="nombre">Nombre de usuario:</label>
                     <input type="text" id="nombre" name="nombre_usuario" required>
                     
-                    <label for="apellido">empresa</label>
-                    <input type="text" id="apellido" name="apellido" required>
+                    <label for="empresa">empresa</label>
+                    <input type="text" id="empresa" name="empresa" required>
                     
                         
                     </div>

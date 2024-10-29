@@ -7,9 +7,9 @@ if(isset($_POST["correo"])){
     if(!empty($_POST["correo"]))
     {
         $para = $_POST["correo"];
-        $de = "From: nachomelga123@gmail.com";
+        $de = "From: melgarejoclts@gmail.com";
         $asunto = "Prueba PHP";
-        $mensaje = "http://localhost/Medicinal_laboral/recuperarContrasenia/actualizacionContrasenia.html";
+        $mensaje = "http://localhost/medicina_laboral/recuperarContrasenia/actualizacionContrasenia.html";
 
 
         $sql = "SELECT * FROM usuarios WHERE email = '$para'"; 
@@ -22,8 +22,7 @@ if(isset($_POST["correo"])){
 
             if($enviarMail){
                 echo "Se envio el correo de recuperacion exitosamente!";
-                
-           }
+            }
 
          }else{
            
@@ -34,3 +33,5 @@ if(isset($_POST["correo"])){
     } 
   
 }
+
+?>

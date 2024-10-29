@@ -8,7 +8,7 @@ $("#formContraseña").submit((e) => {
   let formData = new FormData(form[0]);
   $(".loader").removeClass("hidde");
   envioDeCorreo(formData);
-  auntenticar(formData);
+  /* auntenticar(formData); */
 });
 
 $("#formActualizarContrasenia").submit((e) => {
