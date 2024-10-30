@@ -54,15 +54,7 @@
                     <div class= "container-empresa">
                     <label for="empresa">Empresa</label>
                     <input type="text" id="empresa" name="empresa" required>
-<<<<<<< HEAD
-=======
-                    <input type="text" id="apellido" name="empresa" required>
->>>z
-                    
-                        
-=======
                     <div id="resultados"></div>
->>>>>>> f09697cffe1af4c5cfc469aaaeb923bdc05cbc4b
                     </div>
     
                     <label for="email">Email:</label>
