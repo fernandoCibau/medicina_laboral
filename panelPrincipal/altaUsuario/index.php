@@ -32,7 +32,7 @@
         <section name="menu" class="secMenu" id="secMenu" >
             
             <div class="contenedorMenu">
-                <a href="../index.php"><img src="../../icon/home.png" alt=""><p>Inicio</p></a>
+                <a href="../index.php"><img src="../../icon/home.png" alt="" class="saturate"><p class="pe">Inicio</p></a>
                 <a href="../../sistema_de_turnos"><img src="../../icon/turnos_blanco.png" alt=""><p>Turnos</p></a>
                 <a href=""><img src="../../icon/paciente_blanco.png" alt=""><p>Pacientes</p></a>
                 <a href="../empresas/index.php"><img src="../../icon/empresa_blanco.png" alt=""><p>Empresas</p></a>
