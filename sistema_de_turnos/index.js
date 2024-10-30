@@ -150,7 +150,7 @@ const cargarTablaTurnos = (idDelDia) =>{
                 console.log(datos)
                 
                 $("tbody").empty();
-                
+            
                 datos.datos.forEach( fila => {
                     const tr = $("<tr>");
                     
@@ -179,8 +179,10 @@ const cargarTablaTurnos = (idDelDia) =>{
                     });
 
                     tr.append($("<td>").append(botonEliminar));
-                    $("tbody").append(tr);
+
+                    $('tbody').append(tr);
                 });
+                
                 
             }catch (error) {
                 alert(datos.mensaje);
@@ -286,6 +288,28 @@ const vaciarFormModal = () =>{
     setHorasDelDia();
 };
 
+//Cargar el select empresa del modal turnos
+const cargarSelectEmpresa = () =>{
+    $.ajax({
+        url : "cargarSelectEmpresa.php",
+        method : "get",
+        data : {empresas:empresas},
+
+        success:( resultado, estado )=>{
+
+            try {
+                const datos = JSON.parse(resultado);
+                console.log(datos);
+
+
+            }catch (error) {
+                console.log(resultado);
+                console.error("Error al cargar select empresas del modal:", error);
+                alert("Error al cargar datos en el select empresas. Consulta la consola para más detalles.");
+            }
+        }
+    })
+}
 
 // -----------------------------------------------
 //    FUNCIONES SWEETALERT
@@ -322,6 +346,7 @@ $("#btn-buscar").click( ()=>{
 $("#btn-nuevo-turno").click(() => {
     modalOnOff ();
     $("#contenedor-tabla").attr('class', 'contenedor-tabla off');
+    cargarSelectEmpresa();
 });
 
 //Boton para cerrar modal

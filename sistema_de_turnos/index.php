@@ -9,35 +9,23 @@
 <body>
 
     <header>
-        <h1>Medicina Laboral S.A.</h1>
-
+        <h1>Calendario De Turnos</h1>
         <div class="contenedorBtnHeader">
-            <input type="button" value="Boton" id="cargarDatos">
-            <input type="button" value="Boton" id="altaInmueble">
-            <input type="button" value="Cerrar Sesion" id="cerrarSesion">
+            <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>
         </div>
-        <p>
-            * Eliminar los horarios de turnos que fueron ocupados<br>
-            * Envio de mail al agendar un turno
-        </p>
     </header>
 
     <main>
-    <section name="menu" class="secMenu" id="secMenu" >
-
-        <h2>Menu</h2>
-
-        <div class="contenedor">
-            <!-- <img src="../icon/casa.png" alt=""> -->
-            <a href="../inicio">Inicio</a>
-        </div>
-
-        <div class="contenedor">
-            <!-- <img src="../icon/personas.png" alt=""> -->
-            <a href="/">otro</a>
-        </div>
-
-    </section>
+        <section name="menu" class="secMenu" id="secMenu" >
+            
+            <div class="contenedorMenu">
+                <a href="../index.php"><img src="../icon/home.png" alt=""><p>Inicio</p></a>
+                <a href="../sistema_de_turnos"><img src="../icon/turnos_blanco.png" alt=""><p>Turnos</p></a>
+                <a href=""><img src="../icon/paciente_blanco.png" alt=""><p>Pacientes</p></a>
+                <a href=""><img src="../icon/empresa_blanco.png" alt=""><p>Empresas</p></a>
+            </div>
+            
+        </section>
 
         <section class="seccion-mes" id="seccion-mes">
             
@@ -74,16 +62,16 @@
 
             <div class="contenedor-tabla" id="contenedor-tabla">
                 <h2>Lista de Turnos</h2>
-                <table>
+                <table id='modalTablaTurnos'>
                     <thead>
                         <tr>
-                            <!-- <th>Id/Legajo</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Dni</th> -->
+                            <th>Empleado_id</th>
                             <th>Fecha</th>
+                            <th>Doctor</th>
                             <th>Hora</th>
                             <th>Eliminar</th>
+                            <!-- <th>Hora</th>
+                            <th>Eliminar</th> -->
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -96,11 +84,7 @@
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- <script type="module" src="sweetAlert.js"></script> -->
     <script src="./index.js"></script>  
-    <footer>
-    <body>
-        <h2>Pie</h2>
-    </footer>
+
 </body>
 </html>
