@@ -40,12 +40,6 @@ if (isset($_POST['id']) && (isset($_POST['razon_social']) || isset($_POST['cuit'
                 $tipos .= "s";
             }
 
-            if ($telefono) {
-                $campos[] = "telefono = ?";
-                $valores[] = $telefono;
-                $tipos .= "i";
-            }
-
             if ($email) {
                 $campos[] = "email = ?";
                 $valores[] = $email;

@@ -67,6 +67,11 @@
                     <!-- <img src="../icon/tabla.png" alt="tabla"> -->
                 </div>
 
+                <div class="accesos" id="accesoConfiguracion">
+                    <div><img src="../icon/config.jpg" alt="configuracion"></div>
+                    <h3>Configuracion</h3>
+                </div>
+
             </div>
 
             <!-- <div class="contenedorAccesosDos">

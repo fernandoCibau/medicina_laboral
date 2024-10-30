@@ -50,7 +50,6 @@
                         <th>Nombre</th>
                         <th>Cuit</th>
                         <th>Domicilio</th>
-                        <th>Telefono</th>
                         <th>Email</th>
                         <th>Ver empleados</th>
                         <th>Editar</th>
