@@ -77,7 +77,7 @@ const cargarTabla = () => {
                         <input type="text" id="inputId" value="${fila['id']}" readonly>
 
                         <label for="inputIdEmpresa">Empresa</label>
-                        <input type="text" id="inputIdEmpresa" value="${fila['id_empresa']}" readonly>
+                        <input type="text" id="inputIdEmpresa" value="${fila['empresa_nombre']}" readonly>
                         
                         <label for="inputLegajo">Legajo</label>
                         <input type="text" id="inputLegajo" value="${fila['legajo']}">
@@ -101,10 +101,10 @@ const cargarTabla = () => {
                         <input type="date" id="inputFechaIng" value="${fila['fecha_ingreso']}">
                                                 
                         <label for="inputCategoria">Categoria</label>
-                        <input type="text" id="inputCategoria" value="${fila['id_categoria']}">
+                        <input type="text" id="inputCategoria" value="${fila['categoria_nombre']}">
                                                 
                         <label for="inputSeccion">Seccion</label>
-                        <input type="text" id="inputSeccion" value="${fila['id_seccion']}">
+                        <input type="text" id="inputSeccion" value="${fila['seccion_nombre']}">
                                                 
                         <label for="inputObservaciones">Observaciones</label>
                         <input type="text" id="inputObservaciones" value="${fila['observaciones']}">
