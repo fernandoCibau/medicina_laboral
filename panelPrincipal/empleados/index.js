@@ -38,17 +38,17 @@ const cargarTabla = () => {
 
             const datosMap = datos.datos.map(item => ({
                 id: item.id || '',  // Manten el ID al principio si es importante
-                id_empresa: item.id_empresa || '',
-                legajo: item.legajo || '',
-                dni: item.dni || '',
-                apellido: item.apellido || '',
-                nombre: item.nombre || '',
-                domicilio: item.domicilio || '',
-                fecha_nacimiento: item.fecha_nacimiento || '',
-                fecha_ingreso: item.fecha_ingreso || '',
-                id_categoria: item.id_categoria || '',
-                id_seccion: item.id_seccion || '',
-                observaciones: item.observaciones || ''       
+                empresa_nombre: item.empresa_nombre || '',  // Nombre de la empresa
+                legajo: item.legajo || '',            
+                dni: item.dni || '',            
+                apellido: item.apellido || '',          
+                nombre: item.nombre || '',           
+                domicilio: item.domicilio || '',          
+                fecha_nacimiento: item.fecha_nacimiento || '',            
+                fecha_ingreso: item.fecha_ingreso || '',            
+                categoria_nombre: item.categoria_nombre || '',  // Nombre de la categoría            
+                seccion_nombre: item.seccion_nombre || '',  // Nombre de la sección            
+                observaciones: item.observaciones || ''      
             }));
             
             datosMap.forEach(fila => {
