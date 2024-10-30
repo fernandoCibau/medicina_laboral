@@ -78,12 +78,17 @@ button:hover {
 
 #mensaje {
     margin-top: 5px;
-    color: #00b928;
     font-size: small;
 }
 
 .show {
     visibility: visible;
+    color: #00b928;
+}
+
+.show-error {
+    color: #b10000;
+
 }
 
 .hidde {

@@ -1,36 +1,40 @@
 <?php
 
 include '../conexion.php';
-$mensa = "1";
 
 
-      $mensa = $mensa + "2";
-      try{
-         $email =$_POST["correo"];
-         $nuevaContrasenia = $_POST["contrasenia"];
-         $repNuevaContrasenia = $_POST["contrasenia2"];
- 
-         $hashContrasenia = password_hash( trim($nuevaContrasenia), PASSWORD_DEFAULT);
- 
-         $sql = "UPDATE usuarios SET contrasenia = '$hashContrasenia' WHERE email = '$email'"; 
-         $resultado = mysqli_query($conexion, $sql);
-         $mensa = $mensa + "3";
- 
-          if($resultado)
-          {
-             echo $mensa;
-          }else{
-             echo $mensa;
-          }
-      }catch(Exception $e){
-         echo $mensa;
-      }
+
+   if(isset($_POST["correo"]) && isset($_POST["contrasenia"]) && isset($_POST["contrasenia2"])){
+      $email =$_POST["correo"];
+/*
+        $emailCheck = "SELECT * FROM usuarios WHERE email = ' $email '"; 
+        $resultado = mysqli_query($conexion, $emailCheck);
+        $num_filas = mysqli_num_rows($resultado);
+*/
+       
+         try{
+        
+            $nuevaContrasenia = $_POST["contrasenia"];
+    
+            $hashContrasenia = password_hash( trim($nuevaContrasenia), PASSWORD_DEFAULT);
+    
+            $sql = "UPDATE usuarios SET contrasenia = '$hashContrasenia' WHERE email = '$email'"; 
+            $result = mysqli_query($conexion, $sql);
+    
+             if($result)
+             {
+                echo "Se cambio la contraseña con exito";
+             }else{
+                 echo "Error";
+             }
+         }catch(Exception $e){
+            echo $e;
+         }
+        
+
       
+   }
 
-
-
-//$2y$10$h4e5NXg.tvyXeuVDFcVCtOEvYmL6IYKeBmkZmtSOyMc
-//$2y$10$h4e5NXg.tvyXeuVDFcVCtOEvYmL6IYKeBmkZmtSOyMc..
 
 ?>
 
