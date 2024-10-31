@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <title>Medicina Laboral | Calendario de Turnos</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,13 +19,14 @@
     </header>
 
     <main>
-        <section name="menu" class="secMenu" id="secMenu" >
+              
+    <section name="menu" class="secMenu" id="secMenu" >
             
             <div class="contenedorMenu">
-                <a href="../index.php"><img src="../icon/home.png" alt=""><p>Inicio</p></a>
-                <a href="../sistema_de_turnos"><img src="../icon/turnos_blanco.png" alt=""><p>Turnos</p></a>
-                <a href=""><img src="../icon/paciente_blanco.png" alt=""><p>Pacientes</p></a>
-                <a href=""><img src="../icon/empresa_blanco.png" alt=""><p>Empresas</p></a>
+                <div class="icon-cont"><a href="../index.php"><img src="../icon/home.png" alt="" class="saturate"><p class="pe">Inicio</p></a></div>
+                <div class="icon-cont"><a href="../../sistema_de_turnos"><img src="../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
+                <div class="icon-cont"> <a href=""><img src="../icon/paciente_blanco.png" alt=""><p class="pe">Pacientes</p ></a></div>
+                <div class="icon-cont"> <a href="../empresas/index.php"><img src="../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
             </div>
             
         </section>

@@ -24,18 +24,13 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.saturate:hover {
-    filter: invert(71%) sepia(43%) saturate(6386%) hue-rotate(192deg) brightness(100%) contrast(98%);
-}
+
 
 a:hover {
     /* background-color: white;*/
     color: #007bff;
 }
 
-.pe:hover {
-    color: #007bff;
-}
 
 h1 {
     color: #007bff;
@@ -90,22 +85,59 @@ main {
     font-size: larger;
 }
 
+
+.icon-cont {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.icon-cont:hover {
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.icon-cont:hover .pe {
+    color: #007bff;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+.icon-cont:hover a img {
+    filter: invert(71%) sepia(43%) saturate(6386%) hue-rotate(192deg) brightness(100%) contrast(98%);
+}
+
 .secMenu .contenedorMenu {
-    width: 80%;
+    width: 100%;
+    height: 50%;
     display: flex;
     flex-flow: column;
     align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
 }
+
+
 
 .secMenu .contenedorMenu a {
     text-decoration: none;
     font-size: larger;
     text-align: center;
-    margin-top: 2em;
+    /* margin-top: 2em;*/
 }
+
+
+
 
 .secMenu .contenedorMenu a img {
     width: 35px;
+
 }
 
 .secMenu .contenedorMenu a p {

@@ -1,15 +1,19 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Roboto", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
 
-html, body{
+html,
+body {
     width: 100%;
     height: 100%;
 }
 
-header{
+header {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -43,13 +47,13 @@ h1 {
     cursor: pointer;
 }
 
-.contenedorBtnHeader{
+.contenedorBtnHeader {
     width: 10%;
     position: absolute;
     right: 0%;
 }
 
-.contenedorBtnHeader .btmCerrarSesion{
+.contenedorBtnHeader .btmCerrarSesion {
     background-color: #539bfc;
     color: white;
     border: none;
@@ -58,12 +62,12 @@ h1 {
     cursor: pointer;
 }
 
-.contenedorBtnHeader .btmCerrarSesion:hover{
+.contenedorBtnHeader .btmCerrarSesion:hover {
     background-color: #007bff;
     transition: 1s;
 }
 
-main{
+main {
     display: flex;
     width: 100%;
     height: 92%;
@@ -74,19 +78,19 @@ main{
 /*               SECCION MENU                    */
 /* ------------------------------------------------ */
 
-
-.secMenu{
+/*
+.secMenu {
     background-color: #539bfc;
     color: white;
     width: 5%;
-    height: 100% ;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: larger;
 }
 
-.secMenu .contenedorMenu{
+.secMenu .contenedorMenu {
     width: 100%;
     display: flex;
     flex-flow: column;
@@ -100,14 +104,89 @@ main{
     margin-top: 2em;
 }
 
-.secMenu .contenedorMenu a img{
+.secMenu .contenedorMenu a img {
     width: 35px;
 }
 
-.secMenu .contenedorMenu a p{
+.secMenu .contenedorMenu a p {
     color: white;
     font-size: small;
 }
+*/
+
+
+
+
+.secMenu {
+    background-color: #539bfc;
+    color: white;
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: larger;
+}
+
+
+.icon-cont {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.icon-cont:hover {
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.icon-cont:hover .pe {
+    color: #007bff;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+.icon-cont:hover a img {
+    filter: invert(71%) sepia(43%) saturate(6386%) hue-rotate(192deg) brightness(100%) contrast(98%);
+}
+
+.secMenu .contenedorMenu {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+
+
+.secMenu .contenedorMenu a {
+    text-decoration: none;
+    font-size: larger;
+    text-align: center;
+    /* margin-top: 2em;*/
+}
+
+
+
+
+.secMenu .contenedorMenu a img {
+    width: 35px;
+
+}
+
+.secMenu .contenedorMenu a p {
+    color: white;
+    font-size: small;
+}
+
 /* ------------------------------------------------ */
 /*               SECCION MES                    */
 /* ------------------------------------------------ */
@@ -133,7 +212,8 @@ main{
 
 .seccion-mes .contenedor-nombre-dias {
     width: calc(100% / 7);
-    background: linear-gradient(to bottom, #d1d1d1, #ffffff); /* Gris claro a blanco */
+    background: linear-gradient(to bottom, #d1d1d1, #ffffff);
+    /* Gris claro a blanco */
     border: solid wheat 0.01em;
     height: 5%;
 }
@@ -141,13 +221,16 @@ main{
 .seccion-mes .contenedor-dias {
     width: calc(100% / 7);
     height: calc(100% / 5);
-    border: solid 1px #f0f0f0; /* Borde gris claro */
-    background-color: #e0e0e0; /* Gris claro de fondo */
+    border: solid 1px #f0f0f0;
+    /* Borde gris claro */
+    background-color: #e0e0e0;
+    /* Gris claro de fondo */
     cursor: pointer;
 }
 
 .seccion-mes .contenedor-dias:hover {
-    background-color: #c0c0c0; /* Gris claro */
+    background-color: #c0c0c0;
+    /* Gris claro */
     transition: 0.4s;
 }
 
@@ -162,11 +245,11 @@ main{
 
 
 .contenedor-numero-turnos p {
-    color: #4a4a4a;          
-    font-size: 3em;         
-    margin: 0;             
-    text-align: center;     
-    font-weight: bold;      
+    color: #4a4a4a;
+    font-size: 3em;
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -175,7 +258,7 @@ main{
 /* ------------------------------------------------ */
 /*            SECCION-MODAL                 */
 /* ------------------------------------------------ */
-.seccion-modal{
+.seccion-modal {
     width: 80%;
     height: 80%;
     position: absolute;
@@ -186,34 +269,34 @@ main{
     border-radius: 8px;
 }
 
-.contenedor-encabezado-modal{
+.contenedor-encabezado-modal {
     width: 100%;
     background-color: red;
 }
 
-.contenedor-encabezado-modal .btn-cerrar{
+.contenedor-encabezado-modal .btn-cerrar {
     width: 5%;
     position: absolute;
     right: 2%;
 }
 
-.on{
+.on {
     display: block;
 }
 
-.off{
+.off {
     display: none;
 }
 
-.bloqueado{
+.bloqueado {
     pointer-events: none;
 }
 
-.desbloqueado{
-    pointer-events:all;
+.desbloqueado {
+    pointer-events: all;
 }
 
-.contenedor-tabla{
+.contenedor-tabla {
     width: 100%;
     margin: 0 auto;
     padding: 20px;
@@ -229,51 +312,65 @@ h2 {
 
 table {
     width: 100%;
-    border-collapse: collapse; /* Colapsar bordes */
-    margin-top: 20px; /* Espacio superior */
+    border-collapse: collapse;
+    /* Colapsar bordes */
+    margin-top: 20px;
+    /* Espacio superior */
     margin: auto;
 }
 
 thead {
-    background-color: #007bff; /* Color de fondo del encabezado */
-    color: white; /* Color del texto del encabezado */
+    background-color: #007bff;
+    /* Color de fondo del encabezado */
+    color: white;
+    /* Color del texto del encabezado */
     width: 100%;
     display: block;
 }
 
-th, td {
-    width: calc( 100% / 5);
-    padding: 12px 15px; 
-    text-align: left; 
-    border-bottom: 1px solid #ddd; 
+th,
+td {
+    width: calc(100% / 5);
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
 tbody {
-    display: block; /* Convertir tbody en bloque */
-    height: 35em; /* Altura máxima */
+    display: block;
+    /* Convertir tbody en bloque */
+    height: 35em;
+    /* Altura máxima */
     width: 100%;
-    overflow-y: auto; /* Scroll vertical */
-    overflow-x: hidden; /* Ocultar scroll horizontal */
+    overflow-y: auto;
+    /* Scroll vertical */
+    overflow-x: hidden;
+    /* Ocultar scroll horizontal */
 }
 
 tr {
-    display: table; /* Asegura que las filas se comporten como tabla */
-    width: 100%; /* Ancho total del tbody */
+    display: table;
+    /* Asegura que las filas se comporten como tabla */
+    width: 100%;
+    /* Ancho total del tbody */
 }
 
 tbody tr:hover {
-    background-color: #f1f1f1; /* Color de fondo al pasar el mouse */
+    background-color: #f1f1f1;
+    /* Color de fondo al pasar el mouse */
 }
 
 tbody tr:nth-child(even) {
-    background-color: #f9f9f9; /* Color de fondo para filas pares */
+    background-color: #f9f9f9;
+    /* Color de fondo para filas pares */
 }
 
 tbody tr:last-child {
-    border-bottom: 2px solid #007bff; /* Borde inferior para la última fila */
+    border-bottom: 2px solid #007bff;
+    /* Borde inferior para la última fila */
 }
 
-.btn-eliminar{
+.btn-eliminar {
     width: 1.5em;
     cursor: pointer;
 }
