@@ -1,4 +1,3 @@
-// import { alertExitoso, alertMensaje } from './funcionesSweetAlert/sweetAlert.js';
 
 // -----------------------------------------------
 //                      INICIO
@@ -6,7 +5,7 @@
 $(document).ready( ()=>{
     eliminarAutomatico();
     setFechaActual();
-    setHorasDelDia();
+    // setHorasDelDia();
     matrizMes();
 });
 
@@ -24,7 +23,7 @@ const consultaCantidadDeTurnos = (anioYMes, cantidadDeDias) =>{
 
         success: (resultado, estado) => {
             const listaDeTurnos = JSON.parse(resultado);
-            console.log(listaDeTurnos);
+            // console.log(listaDeTurnos);
 
             ////Agrega la cantidad de turnos en la fecha calendario
             for (let i = 0; i < listaDeTurnos.length; i++) {
@@ -53,16 +52,77 @@ const setFechaActual = () => {
 };
 
 //Carga el SELECT con todos los horarios
-const setHorasDelDia = () =>{
-    
-    for (let i = 0; i < 24; i++) {
-        for (let j = 0; j < 6; j++) {
-            
-            const option = $(`<option value="${i < 10 ? 0 : ''}${ i }:${ j }0">  ${i < 10 ? 0 : ''}${ i }:${ j }0:00</option>`);
-            
-            $("#horas-del-dia").append( option );
+// const setHorasDelDia = ( listaDeTurnos ) =>{
+
+//     $("#horas-del-dia").append( $(`<option value=''>-- : -- : --</option>`) );
+
+//     for (let i = 0; i < 24; i++) {
+//         for (let j = 0; j < 6; j++) {  
+
+//             const hora = `  ${i < 10 ? 0 : ' ' }${ i }:${ j }0:00 `;
+//             listaDeTurnos.forEach( turno => {
+//                 console.log(turno['hora'])
+//                 if( hora = turno[ 'hora' ] ) {
+//                     // $(`<option value="${hora}" class="disabled-option" disabled>${hora}</option>`)
+//                     $("#horas-del-dia").append( $(`<option value="${ hora }" class="disabled-option" disabled >  ${hora} </option>`) );
+//                 }
+//             });            
+//         }
+//     }
+// }
+
+
+const buscarHorariosTurnos  = ( fecha ) =>{
+    $.ajax({
+        url : "buscarHorarios.php",
+        method : "get",
+        data : {fecha : fecha },
+        
+        success:( resultado, estado )=>{
+
+            try {
+                const datos = JSON.parse(resultado);
+                // console.log(datos.datos);
+                $("#horas-del-dia").empty();
+
+// Agregar opción inicial
+$("#horas-del-dia").append($(`<option value=''>-- : -- : --</option>`));
+
+for (let i = 0; i < 24; i++) {
+    // Solo dos iteraciones para 0 y 30 minutos
+    for (let j = 0; j <= 1; j++) {
+        const minutos = j * 30; // 0 o 30 minutos
+        const hora = `${i < 10 ? '0' : ''}${i}:${minutos < 10 ? '0' : ''}${minutos}:00`; // Formato correcto de hora
+
+        let isDisabled = false;
+
+        // Verificar si la hora está en los turnos
+        datos.datos.forEach(turno => {
+            if (hora === turno['hora']) {
+                isDisabled = true; // Marcar como deshabilitada si coincide
+            }
+        });
+
+        // Agregar la opción
+        if (isDisabled) {
+            $("#horas-del-dia").append(
+                $(`<option value="${hora}" class="disabled-option" disabled>${hora}</option>`)
+            );
+        } else {
+            $("#horas-del-dia").append(
+                $(`<option value="${hora}">${hora}</option>`)
+            );
         }
     }
+}
+
+                
+            }catch (error) {
+                console.log(resultado);
+                console.error("Error al cargar select empleados del modal:", error);
+                alert("Error al cargar datos en el select empleados. Consulta la consola para más detalles.");
+            }
+        }})
 }
 
 //Carga la matriz del mes con todos los dias del mes
@@ -282,12 +342,6 @@ const eliminarAutomatico = () =>{
     });
 };
 
-//Vaciar datos de modal turnos
-const vaciarFormModal = () =>{
-    $("input[name='nombre'], input[name='fecha'], select[name='horas-del-dia'] ").val(" ");
-    setHorasDelDia();
-};
-
 //Cargar el select empresa del modal turnos
 const cargarSelectEmpresa = () =>{
     $.ajax({
@@ -301,7 +355,7 @@ const cargarSelectEmpresa = () =>{
                 const datos = JSON.parse(resultado);
                 console.log(datos.datos);
                 
-                $('#selectEmpresas').append( $('<option value="" selected>Selecciona una empresa</option>'));
+                $('#selectEmpresas').empty().append( $('<option value="" selected>Selecciona una empresa</option>'));
 
                 $('#selectEmpleados').prop('disabled', true).append($('<option value="" selected>Selecciona un empleado</option>') );
                 
@@ -321,9 +375,10 @@ const cargarSelectEmpresa = () =>{
 //Cargar el select empleados del modal turnos
 const cargarSelectEmpleados = ( idEmpresa ) =>{
     if ($('#selectEmpresas').val() === "") {
-        $('#selectEmpleados').prop('disabled', true);
+        // $('#selectEmpleados').prop('disabled', true);
+        $('#selectEmpleados').prop('disabled', true).append($('<option value="" selected>Selecciona un empleado</option>') );
     }else{
-        $('#selectEmpleados').prop('disabled', false);
+        $('#selectEmpleados').empty().prop('disabled', false).append($('<option value="" selected>Selecciona un empleado</option>') );
 
         $.ajax({
         url : "cargarSelectEmpleados.php",
@@ -346,6 +401,16 @@ const cargarSelectEmpleados = ( idEmpresa ) =>{
                 alert("Error al cargar datos en el select empleados. Consulta la consola para más detalles.");
             }
         }})
+    }
+}
+
+const validarInputTurnos = ( ) =>{
+
+    if($('#selectEmpresas').val() == "" || $('#fecha').val() === "" || $('#selectEmpleados').val()  == "" || $('#horas-del-dia').val() == ""){
+        $('#btnAgregarTurno').prop('disabled', true)
+        
+    }else{
+        $('#btnAgregarTurno').prop('disabled', false)
     }
 }
 
@@ -385,45 +450,27 @@ $("#btn-nuevo-turno").click(() => {
     modalOnOff ();
     $("#contenedor-tabla").attr('class', 'contenedor-tabla off');
     cargarSelectEmpresa();
+    validarInputTurnos();
 });
 
 //Boton para cerrar modal
 $("#btn-cerrar").click( ()=>{
     modalOnOff ();
-    vaciarFormModal();
+    // vaciarFormModal();
     $("#contenedor-tabla").attr('class', 'contenedor-tabla on')
     $("#contenedor-fom").attr('class', 'contenedor-fom on')
 });
-
-//Captura cada letra del input nombre del modal agenda                   //  <= FALTA TERMINAR LA CARGA AL HTML/MODAL
-// $("#nombre").on( 'input', () =>{
-//     const consulta = $('#nombre').val();
-//     if( consulta.length >= 3 ){
-//         console.log(consulta)
-//         $.ajax({
-//             url:'consulta.php',
-//             method:'get',
-//             data: {consulta:consulta},
-
-//             success:(resultado, estado)=>{
-//                 const datos = JSON.parse(resultado);
-//                 console.log( datos);
-//             }
-//         });
-
-//     }
-// });
 
 //Boton del formulario de turnos
 $("#form-nuevo-turno").submit( e =>{
     e.preventDefault();
     const form =  $("#form-nuevo-turno")[0];
-
+    
     let formData = new FormData(form);
-
+    
     console.log( formData.get("nombre"));
     console.log( formData.get("horas-del-dia"));
-
+    
     guardarNuevoTurno( formData );
 });
 
@@ -431,6 +478,13 @@ $('#selectEmpresas').on( 'input', () =>{
     cargarSelectEmpleados( $('#selectEmpresas').val());
 });
 
+$('#form-nuevo-turno').on( 'input', ()=>{
+    validarInputTurnos();
+}) 
+
+$('#fecha').on( 'input', () =>{
+    buscarHorariosTurnos( $("#fecha").val() );
+})
 
 
 

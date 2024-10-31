@@ -47,7 +47,7 @@
                 <h2>Agenda de Turnos</h2>
                 <form action="" method="post"   id="form-nuevo-turno">
 
-                    <label for="selectEmpresas">Empresas</label>
+                    <label for="selectEmpresas" require>Empresas</label>
                     <select name="selectEmpresas" id="selectEmpresas"></select>
 
                     <label for="selectEmpleados">Empleados</label>
@@ -57,9 +57,12 @@
                     <input  type="date" name="fecha" id="fecha" />
 
                     <label for="horas-del-dia">Horario</label>
-                    <select name="horas-del-dia" id="horas-del-dia" ></select>
+                    <select name="horas-del-dia" id="horas-del-dia" >
+                        <option value="">-- : -- : --</option>
+                    </select>
 
-                    <input type="submit" name="agregarTurno" value="Agregar turno">
+
+                    <input type="submit" name="agregarTurno" id="btnAgregarTurno" value="Agenda turno">
                 </form>
             </div>
 
