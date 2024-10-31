@@ -1,0 +1,193 @@
+
+// -----------------------------------------------
+//                      INICIO
+// -----------------------------------------------
+$(document).ready( ()=>{
+    cargarTabla();
+});
+
+
+//------------------------------------------------------------------
+//                  FORMULARIO
+//------------------------------------------------------------------
+
+$("#formAlta").submit( e=>{
+    e.preventDefault();
+    let form = $("#formAlta");
+    let formData = new FormData(form[0]);
+    ajaxUsuarioAlta(formData);
+
+});
+
+//------------------------------------------------------------------
+//                  FUNCIONES
+//------------------------------------------------------------------
+
+const cargarTabla = () => {
+    $.ajax({
+        url: "cargarTabla.php",
+        method: "get",
+        data: { todos: "todos" },
+        
+        success: (resultado, estado) => {
+            let datos = JSON.parse(resultado);
+            console.log(datos);
+
+            // Vaciar el contenido de la tabla antes de agregar nuevas filas
+            $("tbody").empty();
+
+            const datosMap = datos.datos.map(item => ({
+                id: item.consulta_id,                        // ID de la consulta médica
+                empleado_apellido: item.empleado_apellido,      // Apellido del empleado
+                empresa_razon_social: item.empresa_razon_social, // Razón social de la empresa
+                fecha: item.fecha,                           // Fecha de la consulta
+                diagnostico_cie10: item.diagnostico_cie10,   // Diagnóstico
+                solicitud_ausentismo: item.solicitud_ausentismo, // Tipo de solicitud de ausentismo
+                fecha_inicio_ausentismo: item.fecha_inicio_ausentismo, // Fecha de inicio del ausentismo
+                fecha_fin_ausentismo: item.fecha_fin_ausentismo,       // Fecha de fin del ausentismo
+                id_empleado: item.id_empleado,               // ID del empleado asociado a la consulta
+                medico_certificado: item.medico_certificado, // Certificado del médico   
+                observaciones: item.observaciones,           // Observaciones (si existen)
+                empleado_nombre: item.empleado_nombre,       // Nombre del empleado
+                   
+                
+            }));
+            
+            datosMap.forEach(fila => {
+                const tr = $("<tr>");
+                
+                // Crear una celda para cada campo excepto el ID
+                for (let key in fila) {
+                    if (key !== 'id' && key !== 'medico_certificado' && key !== 'observaciones' && key !== 'empleado_nombre' && key !== 'id_empleado') {
+                        const td = $("<td>").text(fila[key]);
+                        tr.append(td);
+                    }
+                }
+                
+                // Botón Ver Empleados
+                const botonVer = $("<img src='../../icon/ojo.png'>").on('click', () => {
+                    empleadosDeEmpresa(fila['id']);
+                });
+                tr.append($("<td>").append(botonVer));
+
+                // Botón Eliminar Empresa
+                const botonEliminar = $("<img src='../../icon/borrar.png'>").on('click', () => {
+                    Swal.fire({
+                        title: "¿Está seguro de eliminar?",
+                        text: "Está a punto de eliminar un informe.",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Confirmar, Eliminar informe!"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            eliminarConsulta(fila['id'])
+                                .then(() => {
+                                    Swal.fire({
+                                        title: "Se eliminó correctamente!",
+                                        text: "El informe fue eliminada.",
+                                        icon: "success"
+                                    });
+                                    cargarTabla(); // Recargar la tabla con los datos actualizados
+                                })
+                                .catch(() => {
+                                    Swal.fire({
+                                        icon: "error",
+                                        title: "Oops...",
+                                        text: "Ocurrió un error al eliminar informe"
+                                    });
+                                });
+                        }
+                    });
+                });
+                tr.append($("<td>").append(botonEliminar));
+                
+
+                $("tbody").append(tr);
+            });
+        }
+    });
+};
+
+
+
+//Abre y cierra el modal
+const modalOnOff = () =>{
+    if($("#contenedorModal").hasClass("on") ){
+        $("#contenedorModal").attr("class","contenedor-modal off");
+        $("table").attr("class", "desbloqueado");
+        $("#secMenu").attr("class", "secMenu desbloqueado");
+        $("header").attr("class", "desbloqueado");
+    }
+    else{
+        $("#contenedorModal").attr("class","contenedor-modal on");
+        $("table").attr("class", "bloqueado");
+        $("#secMenu").attr("class", "secMenu bloqueado");
+        $("header").attr("class", "bloqueado");
+    }
+};
+
+
+
+
+const eliminarConsulta = (idConsulta) => {
+    return $.ajax({
+        url: "bajaConsulta.php",  // Asegúrate de ajustar la ruta correctamente
+        type: "POST",
+        data: { id: idConsulta },
+        dataType: "json",
+        success: function(response) {
+            if (response.operacion) {
+                return true;  // Se usará en el bloque .then() de la promesa en la función principal
+            } else {
+                console.error("Error en el servidor:", response.mensaje);
+                return false;
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("Error en la solicitud AJAX:", error);
+            return false;
+        }
+    });
+};
+//------------------------------------------------------------------
+//                  BOTONES
+//------------------------------------------------------------------
+$("#btmCerrarSesion").click( ()=>{
+    if(confirm("¿Confirmar?")){
+        location.href="../../cerrarSesion.php";
+    }
+})
+
+$("#btn-modal-X").click( () => {
+    modalOnOff();
+})
+
+
+
+
+
+
+
+
+// const contenedorLista = $("<div>").attr('class', 'contendor-lista');
+                    
+//                     const divRazon_social = $("<div>").attr('class', 'contenedor-item');
+//                     const divCuit = $('<div>').attr('class', 'contenedor-item');
+//                     const divDomicilio = $('<div>').attr('class', 'contenedor-item');
+//                     const divTelefono = $('<div>').attr('class', 'contenedor-item');
+//                     const divEmail = $('<div>').attr('class', 'contenedor-item');
+                    
+//                     // Agregar contenido a cada div
+//                     divRazon_social.append($("<span>Razón Social: </span>"), $(`<span>${ fila['razon_social']}</span>`));
+//                     divCuit.append($("<span>CUIT: </span>"), $(`<span>${ fila['cuit']}</span>`));
+//                     divDomicilio.append($("<span>Domicilio: </span>"), $(`<span>${ fila['domicilio']}</span>`));
+//                     divTelefono.append($("<span>Teléfono: </span>"), $(`<span>${ fila['telefono']}</span>`));
+//                     divEmail.append($("<span>Email: </span>"), $(`<span>${ fila['email']}</span>`));
+                    
+//                     // Agregar todos los divs al contenedor de la lista
+//                     contenedorLista.append(divRazon_social, divCuit, divDomicilio, divTelefono, divEmail);
+                    
+//                     // Limpiar el contenido anterior y agregar el nuevo
+//                     $("#contenedorDatos").empty().append(contenedorLista);

@@ -35,6 +35,11 @@ $("#accesoConfiguracion").click( () => {
     window.location.href = "./configuracion";
 });
 
+//Envia a dashboard de Historias Clinicas
+$("#accesoHistClinic").click( () => {
+    window.location.href = "./historiasClinicas";
+});
+
 //Envia a doctores
 $("#accesoPersMedico").click( () => {
     window.location.href = "./doctores";

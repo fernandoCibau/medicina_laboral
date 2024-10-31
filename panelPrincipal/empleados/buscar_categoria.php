@@ -5,7 +5,7 @@ include "../../conexion.php";
 if (isset($_POST['buscar_categoria'])) {
     $nombre_categoria = $conexion->real_escape_string($_POST['buscar_categoria']);
 
-    $query = "SELECT * FROM categorias WHERE nombre LIKE '%$nombrecategoria%' LIMIT 10";
+    $query = "SELECT * FROM categorias WHERE nombre LIKE '%$nombre_categoria%' LIMIT 10";
     $resultado = mysqli_query($conexion, $query);
 
     if (mysqli_num_rows($resultado) > 0) {

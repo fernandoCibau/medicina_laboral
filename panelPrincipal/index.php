@@ -67,6 +67,11 @@
                     <!-- <img src="../icon/tabla.png" alt="tabla"> -->
                 </div>
 
+                <div class="accesos" id="accesoHistClinic">
+                    <div><img src="../icon/historiasClinicasBlanco.png" alt="historia clinica"></div>
+                    <h3>Historias Clinicas</h3>
+                </div>
+
                 <div class="accesos" id="accesoConfiguracion">
                     <div><img src="../icon/config.jpg" alt="configuracion"></div>
                     <h3>Configuracion</h3>
