@@ -17,6 +17,18 @@
         <input type="text" name="buscarPorCodigo" id="buscarPorCodigo" placeholder="Ingrese min 1 caracter">
     </header>
 
+<main>
+    <section name="menu" class="secMenu" id="secMenu" >
+            
+            <div class="contenedorMenu">
+                <div class="icon-cont"><a href="../index.php"><img src="../icon/home.png" alt="" class="saturate"><p class="pe">Inicio</p></a></div>
+                <div class="icon-cont"><a href="../../sistema_de_turnos"><img src="../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
+                <div class="icon-cont"> <a href=""><img src="../icon/paciente_blanco.png" alt=""><p class="pe">Pacientes</p ></a></div>
+                <div class="icon-cont"> <a href="../empresas/index.php"><img src="../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
+            </div>
+            
+        </section>
+
         <table id="cie10Table">
             <thead>
                 <tr>
