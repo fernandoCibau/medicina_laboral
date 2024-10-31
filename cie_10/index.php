@@ -17,8 +17,6 @@
         <input type="text" name="buscarPorCodigo" id="buscarPorCodigo" placeholder="Ingrese min 1 caracter">
     </header>
 
-    <main>
-
         <table id="cie10Table">
             <thead>
                 <tr>
