@@ -29,17 +29,16 @@
 
     <main>
 
-        <section name="menu" class="secMenu" id="secMenu" >
+    <section name="menu" class="secMenu" id="secMenu" >
             
             <div class="contenedorMenu">
-                <a href="../index.php"><img src="../../icon/home.png" alt=""><p>Inicio</p></a>
-                <a href="../../sistema_de_turnos"><img src="../../icon/turnos_blanco.png" alt=""><p>Turnos</p></a>
-                <a href=""><img src="../../icon/paciente_blanco.png" alt=""><p>Pacientes</p></a>
-                <a href="../empresas/index.php"><img src="../../icon/empresa_blanco.png" alt=""><p>Empresas</p></a>
+                <div class="icon-cont"><a href="../index.php"><img src="../../icon/home.png" alt="" class="saturate"><p class="pe">Inicio</p></a></div>
+                <div class="icon-cont"><a href="../../sistema_de_turnos"><img src="../../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
+                <div class="icon-cont"> <a href=""><img src="../../icon/paciente_blanco.png" alt=""><p class="pe">Pacientes</p ></a></div>
+                <div class="icon-cont"> <a href="../empresas/index.php"><img src="../../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
             </div>
             
         </section>
-        
             
         <section name="formAltaUsuario" class="sec-form-altaUsuario">
 
