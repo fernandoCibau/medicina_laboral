@@ -24,25 +24,28 @@
     <header>
         <h1>EMPLEADOS</h1>
         <div class="contenedorBtnHeader">
-            <!-- <img src="../icon/boton-de-encendido.png" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido"> -->
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>
         </div>
     </header>
     
     <main>
         
-    <section name="menu" class="secMenu" id="secMenu" >
-            
+        <section name="menu" class="secMenu" id="secMenu">
             <div class="contenedorMenu">
                 <div class="icon-cont"><a href="../index.php"><img src="../../icon/home.png" alt="" class="saturate"><p class="pe">Inicio</p></a></div>
                 <div class="icon-cont"><a href="../../sistema_de_turnos"><img src="../../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
                 <div class="icon-cont"> <a href=""><img src="../../icon/paciente_blanco.png" alt=""><p class="pe">Pacientes</p ></a></div>
                 <div class="icon-cont"> <a href="../empresas/index.php"><img src="../../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
             </div>
-            
         </section>
         
         <section class="seccion-tabla">
+            <!-- Input de búsqueda -->
+            <div class="buscador">
+                <input type="text" id="inputBuscar" placeholder="Buscar DNI..." />
+                <button id="btnBuscar">Buscar</button>
+            </div>
+            
             <table>
                 <thead>
                     <tr>
@@ -68,19 +71,17 @@
                 <h2 class="titulo-empleados" id="tituloModal"></h2>
                 <button id="btn-modal-X">X</button>
             </div>
-            <div id="contenedorDatos" class="contendor-datos">
-                
-                </div>
-            </div>
-            
-        </main>
-    </body>
+            <div id="contenedorDatos" class="contendor-datos"></div>
+        </div>
         
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="index.js"></script>
-        
-    <footer>
-        
-    </footer>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+    
+    <footer></footer>
+</body>
+</html>
+
             

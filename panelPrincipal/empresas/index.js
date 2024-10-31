@@ -261,6 +261,19 @@ const eliminarEmpresa = (idEmpresa) => {
     },
   });
 };
+
+//Buscador
+
+$(document).ready(function() {
+  $('#btnBuscar').on('click', function() {
+      const buscarTexto = $('#inputBuscar').val().toLowerCase();
+      
+      $('table tbody tr').filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(buscarTexto) > -1);
+      });
+  });
+});
+
 //------------------------------------------------------------------
 //                  BOTONES
 //------------------------------------------------------------------

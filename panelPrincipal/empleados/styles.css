@@ -206,6 +206,35 @@ td {
     text-align: center;
 }
 
+.buscador {
+    margin: 1em 0; /* Espaciado superior e inferior */
+    display: flex;  /* Usar flexbox para alinear el input y el botón */
+    justify-content: center; /* Centrar en el contenedor */
+}
+
+.buscador input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    width: 300px; /* Ancho del input */
+    margin-right: 10px; /* Espaciado entre input y botón */
+}
+
+.buscador button {
+    padding: 10px 20px; /* Espaciado interno del botón */
+    background-color: #539bfc; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar el ratón */
+}
+
+.buscador button:hover {
+    background-color: #007bff; /* Color de fondo al pasar el ratón */
+    transition: background-color 0.3s; /* Transición suave del color */
+}
+
+
 @media (max-width: 600px) {
     table {
         font-size: 14px;
