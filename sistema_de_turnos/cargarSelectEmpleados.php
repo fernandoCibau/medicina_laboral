@@ -1,11 +1,13 @@
 <?php
-if(isset($_GET['empresas'])){
+if(isset($_GET['idEmpresa'])){
 
     try{
 
         include('conexion.php');
         
-        $sql = "SELECT  * FROM empresas";
+        $idEmpresa = $_GET['idEmpresa'];
+
+        $sql = "SELECT  * FROM empleados WHERE id_empresa='$idEmpresa' ";
         
         $resultado = mysqli_query($conexion, $sql );
         
@@ -20,7 +22,7 @@ if(isset($_GET['empresas'])){
 
         mysqli_close($conexion);
     } catch (Exception $e) {
-        echo json_encode( [ 'mensaje' => 'Error, ' .  $e->getMessage() . "cargarSelectEmpresa.php" . " : LINEA  : " . __LINE__  ] );
+        echo json_encode( [ 'mensaje' => 'Error, ' .  $e->getMessage() . "cargarSelectEmpleado.php" . " : LINEA  : " . __LINE__  ] );
     }
 
 

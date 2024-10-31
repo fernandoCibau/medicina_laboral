@@ -293,14 +293,21 @@ const cargarSelectEmpresa = () =>{
     $.ajax({
         url : "cargarSelectEmpresa.php",
         method : "get",
-        data : {empresas:empresas},
+        data : {empresas:'empresas'},
 
         success:( resultado, estado )=>{
 
             try {
                 const datos = JSON.parse(resultado);
-                console.log(datos);
+                console.log(datos.datos);
+                
+                $('#selectEmpresas').append( $('<option value="" selected>Selecciona una empresa</option>'));
 
+                $('#selectEmpleados').prop('disabled', true).append($('<option value="" selected>Selecciona un empleado</option>') );
+                
+                datos.datos.forEach( fila => {            
+                    $('#selectEmpresas').append( $( `<option value="${fila['id']}">${fila['razon_social']}</option>`) );
+                });
 
             }catch (error) {
                 console.log(resultado);
@@ -309,6 +316,37 @@ const cargarSelectEmpresa = () =>{
             }
         }
     })
+}
+
+//Cargar el select empleados del modal turnos
+const cargarSelectEmpleados = ( idEmpresa ) =>{
+    if ($('#selectEmpresas').val() === "") {
+        $('#selectEmpleados').prop('disabled', true);
+    }else{
+        $('#selectEmpleados').prop('disabled', false);
+
+        $.ajax({
+        url : "cargarSelectEmpleados.php",
+        method : "get",
+        data : {idEmpresa : idEmpresa },
+        
+        success:( resultado, estado )=>{
+
+            try {
+                const datos = JSON.parse(resultado);
+                console.log(datos.datos);
+                
+                datos.datos.forEach( fila => {
+                    $('#selectEmpleados').append( $( `<option value="${fila['id']}">${fila['nombre']} ${fila['apellido']}</option>`) );
+                });
+                
+            }catch (error) {
+                console.log(resultado);
+                console.error("Error al cargar select empleados del modal:", error);
+                alert("Error al cargar datos en el select empleados. Consulta la consola para más detalles.");
+            }
+        }})
+    }
 }
 
 // -----------------------------------------------
@@ -358,23 +396,23 @@ $("#btn-cerrar").click( ()=>{
 });
 
 //Captura cada letra del input nombre del modal agenda                   //  <= FALTA TERMINAR LA CARGA AL HTML/MODAL
-$("#nombre").on( 'input', () =>{
-    const consulta = $('#nombre').val();
-    if( consulta.length >= 3 ){
-        console.log(consulta)
-        $.ajax({
-            url:'consulta.php',
-            method:'get',
-            data: {consulta:consulta},
+// $("#nombre").on( 'input', () =>{
+//     const consulta = $('#nombre').val();
+//     if( consulta.length >= 3 ){
+//         console.log(consulta)
+//         $.ajax({
+//             url:'consulta.php',
+//             method:'get',
+//             data: {consulta:consulta},
 
-            success:(resultado, estado)=>{
-                const datos = JSON.parse(resultado);
-                console.log( datos);
-            }
-        });
+//             success:(resultado, estado)=>{
+//                 const datos = JSON.parse(resultado);
+//                 console.log( datos);
+//             }
+//         });
 
-    }
-});
+//     }
+// });
 
 //Boton del formulario de turnos
 $("#form-nuevo-turno").submit( e =>{
@@ -389,7 +427,9 @@ $("#form-nuevo-turno").submit( e =>{
     guardarNuevoTurno( formData );
 });
 
-
+$('#selectEmpresas').on( 'input', () =>{
+    cargarSelectEmpleados( $('#selectEmpresas').val());
+});
 
 
 
