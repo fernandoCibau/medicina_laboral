@@ -67,7 +67,7 @@ const cargarTabla = () => {
                     
                     // Crear los inputs con los valores de la fila seleccionada
                     $("#contenedorDatos").append(`
-                        <input type="text" id="inputId" value="${fila['id']}" readonly>
+                        <input type="text" id="inputId" value="${fila['id']}" readonly hidden>
                         
                         <label for="inputRazonSocial">Matricula</label>
                         <input type="text" id="inputMatricula" value="${fila['matricula']}">

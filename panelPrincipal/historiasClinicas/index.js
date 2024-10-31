@@ -64,10 +64,58 @@ const cargarTabla = () => {
                     }
                 }
                 
-                // Botón Ver Empleados
+                // Botón Ver Informe Completo
                 const botonVer = $("<img src='../../icon/ojo.png'>").on('click', () => {
-                    empleadosDeEmpresa(fila['id']);
+                    $("#contenedorDatos").empty();
+                    
+                    // Verificar que los datos de la fila están disponibles
+                    if (!fila) {
+                        console.error("Datos de la fila no disponibles.");
+                        return;
+                    }
+                    
+                    // Crear los inputs con los valores del objeto de datos seleccionado
+                    $("#contenedorDatos").append(`
+                        <input type="text" id="inputId" value="${fila['id']}" readonly hidden>
+                        
+                        <label for="inputRazonSocial">Empresa</label>
+                        <input type="text" id="inputRazonSocial" value="${fila['empresa_razon_social']}" readonly>
+
+                        <label for="inputEmpleadoNombre">Empleado</label>
+                        <input type="text" id="inputEmpleadoNombre" value="${fila['empleado_nombre']} ${fila['empleado_apellido']}" readonly>
+
+                        <label for="inputMedicoCertificado">Certificado Médico</label>
+                        <input type="text" id="inputMedicoCertificado" value="${fila['medico_certificado']}" readonly>
+                        
+                        <label for="inputFechaConsulta">Fecha de la Consulta</label>
+                        <input type="text" id="inputFechaConsulta" value="${fila['fecha']}" readonly>
+                        
+                        <label for="inputDiagnostico">Diagnóstico</label>
+                        <input type="text" id="inputDiagnostico" value="${fila['diagnostico_cie10']}" readonly>
+                        
+                        <label for="inputSolicitudAusentismo">Solicitud de Ausentismo</label>
+                        <input type="text" id="inputSolicitudAusentismo" value="${fila['solicitud_ausentismo']}" readonly>
+                        
+                        <label for="inputFechaInicioAusentismo">Fecha Inicio Ausentismo</label>
+                        <input type="text" id="inputFechaInicioAusentismo" value="${fila['fecha_inicio_ausentismo']}" readonly>
+                        
+                        <label for="inputFechaFinAusentismo">Fecha Fin Ausentismo</label>
+                        <input type="text" id="inputFechaFinAusentismo" value="${fila['fecha_fin_ausentismo']}" readonly>
+                        
+                        <label for="inputObservaciones">Observaciones</label>
+                        <input type="text" id="inputObservaciones" value="${fila['observaciones'] || ''}" readonly>
+                        
+                        <div id="modalButtons">
+                            <button id="enviarInforme" class="btn btn-primary">Enviar Informe</button>
+                            <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
+                        </div>
+                    `);
+                
+                    $("#tituloModal").text("Informe Medico");
+                    modalOnOff();
                 });
+                
+                // Añadir el botón a la fila de la tabla
                 tr.append($("<td>").append(botonVer));
 
                 // Botón Eliminar Empresa
