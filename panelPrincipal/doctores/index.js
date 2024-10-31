@@ -37,50 +37,40 @@ const cargarTabla = () => {
             $("tbody").empty();
 
             const datosMap = datos.datos.map(item => ({
-                id: item.id || '',  // Manten el ID al principio si es importante
-                empresa_nombre: item.empresa_nombre || '',  // Nombre de la empresa
-                legajo: item.legajo || '',            
-                dni: item.dni || '',            
-                apellido: item.apellido || '',          
-                nombre: item.nombre || '',           
-                domicilio: item.domicilio || '',          
-                fecha_nacimiento: item.fecha_nacimiento || '',            
-                fecha_ingreso: item.fecha_ingreso || '',            
-                categoria_nombre: item.categoria_nombre || '',  // Nombre de la categoría            
-                seccion_nombre: item.seccion_nombre || '',  // Nombre de la sección            
-                observaciones: item.observaciones || ''      
+                matricula: item.matricula,
+                dni: item.dni,
+                apellido: item.apellido,
+                nombre: item.nombre,
+                id: item.id
             }));
             
             datosMap.forEach(fila => {
                 const tr = $("<tr>");
+                
                 // Crear una celda para cada campo excepto el ID
                 for (let key in fila) {
-                    if (key !== 'id' && key !== 'fecha_nacimiento' && key !== 'fecha_ingreso' && key !== 'domicilio' && key !== 'observaciones') {
+                    if (key !== 'id') {
                         const td = $("<td>").text(fila[key]);
-                        console.log("Se cargó el campo: " + key + " con valor: " + fila[key]);
                         tr.append(td);
                     }
                 }
-                
+                /*
                 // Botón Ver Empleados
                 const botonVer = $("<img src='../../icon/ojo.png'>").on('click', () => {
                     empleadosDeEmpresa(fila['id']);
                 });
                 tr.append($("<td>").append(botonVer));
-            
-                // Botón Modificar Empleado
+                */
+                // Botón Modificar Empresa
                 const botonModificar = $("<img src='../../icon/editar.png'>").on('click', () => {
                     $("#contenedorDatos").empty();
                     
                     // Crear los inputs con los valores de la fila seleccionada
                     $("#contenedorDatos").append(`
                         <input type="text" id="inputId" value="${fila['id']}" readonly>
-
-                        <label for="inputIdEmpresa">Empresa</label>
-                        <input type="text" id="inputIdEmpresa" value="${fila['empresa_nombre']}" readonly>
                         
-                        <label for="inputLegajo">Legajo</label>
-                        <input type="text" id="inputLegajo" value="${fila['legajo']}">
+                        <label for="inputRazonSocial">Matricula</label>
+                        <input type="text" id="inputMatricula" value="${fila['matricula']}">
                         
                         <label for="inputDNI">DNI</label>
                         <input type="text" id="inputDNI" value="${fila['dni']}">
@@ -90,60 +80,35 @@ const cargarTabla = () => {
                         
                         <label for="inputNombre">Nombre</label>
                         <input type="text" id="inputNombre" value="${fila['nombre']}">
-                        
-                        <label for="inputDomicilio">Domicilio</label>
-                        <input type="text" id="inputDomicilio" value="${fila['domicilio']}">
-                                                
-                        <label for="inputFechaNac">Fecha Nac:</label>
-                        <input type="date" id="inputFechaNac" value="${fila['fecha_nacimiento']}">
-                                                
-                        <label for="inputFechaIng">Fecha Ing:</label>
-                        <input type="date" id="inputFechaIng" value="${fila['fecha_ingreso']}">
-                                                
-                        <label for="inputCategoria">Categoria</label>
-                        <input type="text" id="inputCategoria" value="${fila['categoria_nombre']}">
-                                                
-                        <label for="inputSeccion">Seccion</label>
-                        <input type="text" id="inputSeccion" value="${fila['seccion_nombre']}">
-                                                
-                        <label for="inputObservaciones">Observaciones</label>
-                        <input type="text" id="inputObservaciones" value="${fila['observaciones']}">
-                        
+
                         <div id="modalButtons">
                             <button id="guardarCambiosBtn" class="btn btn-primary">Modificar</button>
                             <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
                         </div>
                     `);
 
-                    $("#tituloModal").text("Modificar Empleado");
+                    $("#tituloModal").text("Modificar Doctor");
                     modalOnOff();
-                
+
                     // Evento del botón Guardar Cambios
                     $("#guardarCambiosBtn").on("click", () => {
                         const datosActualizados = {
                             id: $("#inputId").val(),
-                            legajo: $("#inputLegajo").val(),
+                            matricula: $("#inputMatricula").val(),
                             dni: $("#inputDNI").val(),
-                            nombre: $("#inputNombre").val(),
                             apellido: $("#inputApellido").val(),
-                            domicilio: $("#inputDomicilio").val(),
-                            fecha_nacimiento: $("#inputFechaNac").val(),
-                            fecha_ingreso: $("#inputFechaIng").val(),
-                            id_categoria: $("#inputCategoria").val(),
-                            id_seccion: $("#inputSeccion").val(),
-                            observaciones: $("#inputObservaciones").val(),
-                            id_empresa: $("#inputIdEmpresa").val()
+                            nombre: $("#inputNombre").val()
                         };
 
                         $.ajax({
-                            url: "modificacionEmpleado.php",
+                            url: "modificacionDoctor.php",
                             method: "POST",
                             data: datosActualizados,
                             success: (response) => {
                                 const resultado = JSON.parse(response);
                                 if (resultado.operacion) {
                                     Swal.fire({
-                                        title: "Empleado modificado",
+                                        title: "Medico modificado",
                                         text: "Los cambios fueron guardados con éxito.",
                                         icon: "success"
                                     }).then(() => {
@@ -167,24 +132,24 @@ const cargarTabla = () => {
                     });
                 });
                 tr.append($("<td>").append(botonModificar));
-                
-                // Botón Eliminar Empresa
+
+                // Botón Eliminar Medico
                 const botonEliminar = $("<img src='../../icon/borrar.png'>").on('click', () => {
                     Swal.fire({
                         title: "¿Está seguro de eliminar?",
-                        text: "Está a punto de eliminar un empleado",
+                        text: "Está a punto de eliminar un medico.",
                         icon: "warning",
                         showCancelButton: true,
                         confirmButtonColor: "#3085d6",
                         cancelButtonColor: "#d33",
-                        confirmButtonText: "Confirmar"
+                        confirmButtonText: "Confirmar, Eliminar al medico!"
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            eliminarEmpleado(fila['id'])
+                            eliminarDoctor(fila['id'])
                                 .then(() => {
                                     Swal.fire({
                                         title: "Se eliminó correctamente!",
-                                        text: "La empresa fue eliminada.",
+                                        text: "El medico fue eliminada.",
                                         icon: "success"
                                     });
                                     cargarTabla(); // Recargar la tabla con los datos actualizados
@@ -193,7 +158,7 @@ const cargarTabla = () => {
                                     Swal.fire({
                                         icon: "error",
                                         title: "Oops...",
-                                        text: "Ocurrió un error al eliminar el empleado"
+                                        text: "Ocurrió un error al eliminar la empresa"
                                     });
                                 });
                         }
@@ -225,69 +190,14 @@ const modalOnOff = () =>{
     }
 };
 
-//Consulta de datos completos de la empresa
-const empleadosDeEmpresa = (idEmpresa) =>{
-    
-    $.ajax({
-        url : "cargarTabla.php",
-        method : "get",
-        data : {idEmpresa : idEmpresa},
-
-        success: (resultado, estado)=>{
-
-            try {
-                const datos = JSON.parse(resultado);
-                
-                modalOnOff();
-                const tabla = $('<table>').attr('class', 'tabla-empleados');
-                const tr = $('<tr>');
-
-
-                /* Carga el thead */
-                for( key in datos.datos[0] ){
-                    tr.append( $("<th>").text( key ) );
-                }
-                const thead = $("<thead>").append(tr);
-                
-                
-                const tbody = $("<tbody>");
-                // //Carga el tbody
-                datos.datos.forEach( fila => {
-                    const tr = $("<tr>");
-                    for( key in fila ){
-                        tr.append( $("<td>").text( fila[key] ) ); 
-                    }
-                    tbody.append( tr );
-                });
-                
-                $("#tituloModal").text('Empleados')
-                tabla.append(  thead, tbody ); 
-                $("#contenedorDatos").empty().append(tabla);
 
 
 
-                
-                
-                console.log (datos)
-            
-            }catch (error) {
-                console.log(resultado);
-                console.error("Error en la carga de empleados:", error);
-                alert("Error en la carga de datos. Consulta la consola para más detalles.");
-            }
-
-        }
-
-
-
-    })
-}
-
-const eliminarEmpleado = (idEmpleado) => {
+const eliminarDoctor = (idDoctor) => {
     return $.ajax({
-        url: "bajaEmpleado.php",  // Asegúrate de ajustar la ruta correctamente
+        url: "bajaDoctor.php",  // Asegúrate de ajustar la ruta correctamente
         type: "POST",
-        data: { id: idEmpleado },
+        data: { id: idDoctor },
         dataType: "json",
         success: function(response) {
             if (response.operacion) {
@@ -303,53 +213,6 @@ const eliminarEmpleado = (idEmpleado) => {
         }
     });
 };
-
-/* TRAE LA LISTA DE CATEGORIAS A MEDIDA QUE ESCRIBO */
-
-$(document).ready(function() {
-    $('#inputCategoria').on('keyup', function() {
-        let nombreCategoria = $(this).val();
-  
-        if (nombreCategoria.length > 0) {
-            $.ajax({
-                url: 'buscar_categoria.php',
-                type: 'POST',
-                data: { buscar_categoria: nombreCategoria },
-                success: function(data) {
-                    $('#resultados').html(data);
-                    if (data.trim() !== "") {
-                        $('#resultados').addClass('visible');
-                    } else {
-                        $('#resultados').removeClass('visible');
-                    }
-                    $('#resultados li').on('click', function() {
-                        $('#categoria').val($(this).text());
-                        $('#resultados').html('');
-                        $('#resultados').removeClass('visible');
-                    });
-                }
-            });
-        } else {
-            $('#resultados').html('');
-            $('#resultados').removeClass('visible');
-        }
-    });
-  
-  
-   /*  OCULTA LA LISTA DE EMPRESAS CUANDO HAGO CLICK FUERA */
-  
-    $(document).on('click', function(e) {
-      if (!$(e.target).closest('#categoria').length && !$(e.target).closest('#resultados').length) {
-          $('#resultados').html('');
-          $('#resultados').removeClass('visible');
-      }
-  });
-  });
-
-
-
-
-
 //------------------------------------------------------------------
 //                  BOTONES
 //------------------------------------------------------------------

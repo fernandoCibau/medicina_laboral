@@ -17,12 +17,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <title>Clínica El Salvador - Empresas</title>
+    <title>Clínica El Salvador - Doctores</title>
 </head>
 <body>
     
     <header>
-        <h1>EMPRESAS</h1>
+        <h1>DOCTORES</h1>
         <div class="contenedorBtnHeader">
             <!-- <img src="../icon/boton-de-encendido.png" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido"> -->
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>
@@ -46,11 +46,10 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Matricula</th>
+                        <th>DNI</th>
+                        <th>Apellido</th>
                         <th>Nombre</th>
-                        <th>Cuit</th>
-                        <th>Domicilio</th>
-                        <th>Email</th>
-                        <th>Ver empleados</th>
                         <th>Editar</th>
                         <th>Eliminar</th> 
                     </tr>

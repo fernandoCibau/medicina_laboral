@@ -34,3 +34,8 @@ $("#accesoPacientes").click( () => {
 $("#accesoConfiguracion").click( () => {
     window.location.href = "./configuracion";
 });
+
+//Envia a doctores
+$("#accesoPersMedico").click( () => {
+    window.location.href = "./doctores";
+});

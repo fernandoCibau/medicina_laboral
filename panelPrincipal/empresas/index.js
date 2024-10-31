@@ -137,7 +137,7 @@ const cargarTabla = () => {
                 const botonEliminar = $("<img src='../../icon/borrar.png'>").on('click', () => {
                     Swal.fire({
                         title: "¿Está seguro de eliminar?",
-                        text: "Está a punto de eliminar la empresa",
+                        text: "Está a punto de eliminar la empresa.",
                         icon: "warning",
                         showCancelButton: true,
                         confirmButtonColor: "#3085d6",
