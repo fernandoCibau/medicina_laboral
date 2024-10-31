@@ -40,7 +40,6 @@ const cargarTabla = () => {
                 razon_social: item.razon_social,
                 cuit: item.cuit,
                 domicilio: item.domicilio,
-                telefono: item.telefono,
                 email: item.email,
                 id: item.id
             }));
@@ -79,12 +78,9 @@ const cargarTabla = () => {
                         <label for="inputDomicilio">Domicilio</label>
                         <input type="text" id="inputDomicilio" value="${fila['domicilio']}">
                         
-                        <label for="inputTelefono">Teléfono</label>
-                        <input type="text" id="inputTelefono" value="${fila['telefono']}">
-                        
                         <label for="inputEmail">Email</label>
                         <input type="text" id="inputEmail" value="${fila['email']}">
-                        
+
                         <div id="modalButtons">
                             <button id="guardarCambiosBtn" class="btn btn-primary">Modificar</button>
                             <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
@@ -101,7 +97,6 @@ const cargarTabla = () => {
                             razon_social: $("#inputRazonSocial").val(),
                             cuit: $("#inputCuit").val(),
                             domicilio: $("#inputDomicilio").val(),
-                            telefono: $("#inputTelefono").val(),
                             email: $("#inputEmail").val()
                         };
 

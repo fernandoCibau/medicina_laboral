@@ -1,11 +1,13 @@
 <?php
-if(isset($_GET['empresas'])){
+if(isset($_GET['fecha'])){
 
     try{
 
         include('conexion.php');
         
-        $sql = "SELECT  * FROM empresas";
+        $fecha = $_GET['fecha'];
+
+        $sql = "SELECT hora FROM turnos WHERE fecha='$fecha' ";
         
         $resultado = mysqli_query($conexion, $sql );
         
@@ -22,7 +24,7 @@ if(isset($_GET['empresas'])){
         mysqli_close($conexion);
 
     } catch (Exception $e) {
-        echo json_encode( [ 'mensaje' => 'Error, ' .  $e->getMessage() . "cargarSelectEmpresa.php" . " : LINEA  : " . __LINE__  ] );
+        echo json_encode( [ 'mensaje' => 'Error, ' .  $e->getMessage() . "buscarHorarios.php" . " : LINEA  : " . __LINE__  ] );
     }
 
 

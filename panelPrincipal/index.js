@@ -29,3 +29,8 @@ $("#accesoEmpresas").click( () =>{
 $("#accesoPacientes").click( () => {
     window.location.href = "./empleados";
 });
+
+//Envio a configuracion
+$("#accesoConfiguracion").click( () => {
+    window.location.href = "./configuracion";
+});
