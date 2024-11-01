@@ -350,11 +350,14 @@ $(document).ready(function() {
 //Buscador
 
 $(document).ready(function() {
-    $('#btnBuscar').on('click', function() {
-        const buscarTexto = $('#inputBuscar').val().toLowerCase();
-        
+    $('#inputBuscar').on('keyup', function() {
+        const buscarTexto = $(this).val(); // Obtiene el texto a buscar
+
+        // Filtra las filas de la tabla solo en la columna "DNI"
         $('table tbody tr').filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(buscarTexto) > -1);
+            const dni = $(this).find('td:nth-child(3)').text(); // Cambia 3 por el índice de la columna "DNI"
+            // Compara si el DNI comienza con el texto buscado
+            $(this).toggle(dni.startsWith(buscarTexto));
         });
     });
 });

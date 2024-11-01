@@ -265,11 +265,14 @@ const eliminarEmpresa = (idEmpresa) => {
 //Buscador
 
 $(document).ready(function() {
-  $('#btnBuscar').on('click', function() {
-      const buscarTexto = $('#inputBuscar').val().toLowerCase();
-      
+  $('#inputBuscar').on('keyup', function() {
+      const buscarTexto = $(this).val().toLowerCase(); // Obtiene el texto a buscar en minúsculas
+
+      // Filtra las filas de la tabla solo en la columna "Nombre"
       $('table tbody tr').filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(buscarTexto) > -1);
+          const dni = $(this).find('td:nth-child(1)').text().toLowerCase(); // Cambia 3 por el índice de la columna "Nombre"
+          // Compara si el nombre de la empresa comienza con el texto buscado
+          $(this).toggle(dni.startsWith(buscarTexto));
       });
   });
 });
