@@ -25,7 +25,7 @@
         <ul class="nav-links">
             <li><a href="../index.html">Nosotros</a></li>
             <li><a href="../index.html">Contacto</a></li>
-            <li><a href="../index.html">INICIO</a></li>
+            <li><a href="../index.html">Inicio</a></li>
         </ul>
         </nav>
 
