@@ -12,8 +12,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Clínica El Salvador | Inicio de Sesión</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <header >
+
+        <h1 ><a href="../index.html">Clinica el salvador</a></h1>
+
+        <nav>
+        <ul class="nav-links">
+            <li><a href="../index.html">Nosotros</a></li>
+            <li><a href="../index.html">Contacto</a></li>
+            <li><a href="../index.html">INICIO</a></li>
+        </ul>
+        </nav>
+
+        
+    </header>
 
     <main>
         <div class="container">
@@ -47,7 +64,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./index.js"></script>
     <footer>
-
+        <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
     </footer>
 </body>
 </html>
