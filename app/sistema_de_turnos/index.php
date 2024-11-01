@@ -19,7 +19,7 @@
     </header>
 
     <main>
-              
+
     <section name="menu" class="secMenu" id="secMenu" >
             
             <div class="contenedorMenu">
@@ -95,6 +95,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./index.js"></script>  
+    <footer>
+        <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
+    </footer>
 
 </body>
 </html>
