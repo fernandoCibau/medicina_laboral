@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['id']) && (isset($_POST['razon_social']) || isset($_POST['cuit']) || isset($_POST['domicilio']) || isset($_POST['telefono']) || isset($_POST['email']))) {
+if (isset($_POST['id']) && (isset($_POST['razon_social']) || isset($_POST['cuit']) || isset($_POST['domicilio']) || isset($_POST['email']))) {
     try {
         include "../../conexion.php";
 
@@ -7,7 +7,6 @@ if (isset($_POST['id']) && (isset($_POST['razon_social']) || isset($_POST['cuit'
         $razon_social = $_POST['razon_social'] ?? null;
         $cuit = $_POST['cuit'] ?? null;
         $domicilio = $_POST['domicilio'] ?? null;
-        $telefono = $_POST['telefono'];
         $email = $_POST['email'] ?? null;
 
         // Verificar si la empresa con el id existe
@@ -31,7 +30,7 @@ if (isset($_POST['id']) && (isset($_POST['razon_social']) || isset($_POST['cuit'
             if ($cuit) {
                 $campos[] = "cuit = ?";
                 $valores[] = $cuit;
-                $tipos .= "i";
+                $tipos .= "s";
             }
 
             if ($domicilio) {
