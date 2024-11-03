@@ -75,21 +75,23 @@ main {
 }
 
 
+/*--------SECCION MENU------------*/
+
 
 .secMenu {
     background-color: #539bfc;
+    height: 100%;
     color: white;
     width: 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
     font-size: larger;
+
 }
 
 
 .icon-cont {
     width: 100%;
-    height: 100%;
+    height: 14.28%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -116,7 +118,7 @@ main {
 
 .secMenu .contenedorMenu {
     width: 100%;
-    height: 50%;
+    height: 75%;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -127,6 +129,7 @@ main {
 
 
 .secMenu .contenedorMenu a {
+
     text-decoration: none;
     font-size: larger;
     text-align: center;
@@ -145,6 +148,7 @@ main {
     color: white;
     font-size: small;
 }
+
 
 .seccion-tabla {
     width: 100%;
@@ -207,31 +211,46 @@ td {
 }
 
 .buscador {
-    margin: 1em 0; /* Espaciado superior e inferior */
-    display: flex;  /* Usar flexbox para alinear el input y el botón */
-    justify-content: center; /* Centrar en el contenedor */
+    margin: 1em 0;
+    /* Espaciado superior e inferior */
+    display: flex;
+    /* Usar flexbox para alinear el input y el botón */
+    justify-content: center;
+    /* Centrar en el contenedor */
 }
 
 .buscador input[type="text"] {
     padding: 10px;
-    border: 1px solid #ccc; /* Borde gris claro */
-    border-radius: 4px; /* Bordes redondeados */
-    width: 300px; /* Ancho del input */
-    margin-right: 10px; /* Espaciado entre input y botón */
+    border: 1px solid #ccc;
+    /* Borde gris claro */
+    border-radius: 4px;
+    /* Bordes redondeados */
+    width: 300px;
+    /* Ancho del input */
+    margin-right: 10px;
+    /* Espaciado entre input y botón */
 }
 
 .buscador button {
-    padding: 10px 20px; /* Espaciado interno del botón */
-    background-color: #539bfc; /* Color de fondo del botón */
-    color: white; /* Color del texto */
-    border: none; /* Sin borde */
-    border-radius: 4px; /* Bordes redondeados */
-    cursor: pointer; /* Cambiar cursor al pasar el ratón */
+    padding: 10px 20px;
+    /* Espaciado interno del botón */
+    background-color: #539bfc;
+    /* Color de fondo del botón */
+    color: white;
+    /* Color del texto */
+    border: none;
+    /* Sin borde */
+    border-radius: 4px;
+    /* Bordes redondeados */
+    cursor: pointer;
+    /* Cambiar cursor al pasar el ratón */
 }
 
 .buscador button:hover {
-    background-color: #007bff; /* Color de fondo al pasar el ratón */
-    transition: background-color 0.3s; /* Transición suave del color */
+    background-color: #007bff;
+    /* Color de fondo al pasar el ratón */
+    transition: background-color 0.3s;
+    /* Transición suave del color */
 }
 
 
