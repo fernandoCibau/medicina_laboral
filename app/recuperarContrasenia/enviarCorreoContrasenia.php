@@ -9,7 +9,7 @@ if(isset($_POST["correo"])){
         $para = $_POST["correo"];
         $de = "From: 12345@gmail.com";
         $asunto = "Prueba PHP";
-        $mensaje = "http://localhost/Medicinal_laboral/recuperarContrasenia/actualizacionContrasenia.html";
+        $mensaje = "http://localhost/Medicinal_laboral/app/recuperarContrasenia/actualizacionContrasenia.html";
 
 
         $sql = "SELECT * FROM usuarios WHERE email = '$para'"; 
