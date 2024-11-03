@@ -212,6 +212,10 @@ const cargarTablaTurnos = (idDelDia) =>{
                 
                 $("tbody").empty();
             
+                if( datos.datos.length == 0 ){
+                    $('tbody').text('No se encontraron turnos en la fecha seleccionada.');
+                }
+
                 datos.datos.forEach( fila => {
                     const tr = $("<tr>");
                     
@@ -244,10 +248,11 @@ const cargarTablaTurnos = (idDelDia) =>{
                 
                 
             }catch (error) {
+                const datos = JSON.parse(resultado);
                 alert(datos.mensaje);
-                console.log(resultado);
-                console.error("Error al cargar los datos:", error);
-                alert("Error al cargar los datos. Consulta la consola para más detalles.");
+                // console.log(resultado);
+                // console.error("Error al cargar los datos:", error);
+                // alert("Error al cargar los datos. Consulta la consola para más detalles.");
             }
         }
     })
@@ -281,7 +286,14 @@ const guardarNuevoTurno = ( formData ) => {
 
                 console.log(datos)
 
-                datos.operacion  ? alertExitoso(datos.mensaje) :  alertMensaje(datos.mensaje);
+                datos.operacion  ?     Swal.fire({
+                    // position: "top-end",
+                    icon: "success",
+                    title: datos.mensaje,
+                    showConfirmButton: false,
+                    timer: 1500
+                }) 
+                :  Swal.fire(datos.mensaje);
                 matrizMes();
                 
             }catch (error) {
@@ -304,16 +316,16 @@ const eliminarTurno = ( fecha, hora ) =>{
 
             try {
                 const datos = JSON.parse(resultado);
-                console.log(datos);
+                // console.log(datos);
 
-                alertExitoso(datos.mensaje)
+                Swal.fire(datos.mensaje)
                 cargarTablaTurnos(fecha);
                 matrizMes();
                 
             }catch (error) {
-                console.log(resultado);
+                alert("Error al eliminar el turno.");
+                // console.log(resultado);
                 console.error("Error al eliminar el turno:", error);
-                alert("Error al eliminar el turno. Consulta la consola para más detalles.");
             }
         }
     });
@@ -404,7 +416,7 @@ const cargarSelectEmpleados = ( idEmpresa ) =>{
 
 //Cargar el select medicos del modal turnos
 const cargarSelectMedicos = () =>{
-    $('#selectMedicos').append($('<option value="" selected>Selecciona un medico</option>') );
+    $('#selectMedicos').empty().append($('<option value="" selected>Selecciona un medico</option>') );
 
     $.ajax({
         url : "cargarSelectMedicos.php",
@@ -446,19 +458,19 @@ const validarInputTurnos = ( ) =>{
 //    FUNCIONES SWEETALERT
 // -----------------------------------------------
 
-const alertExitoso = (mensaje) =>{
-    Swal.fire({
-        // position: "top-end",
-        icon: "success",
-        title: mensaje,
-        showConfirmButton: false,
-        timer: 1500
-    });
-}
+// const alertExitoso = (mensaje) =>{
+//     Swal.fire({
+//         // position: "top-end",
+//         icon: "success",
+//         title: mensaje,
+//         showConfirmButton: false,
+//         timer: 1500
+//     });
+// }
 
-const alertMensaje = (mensaje) =>{
-    Swal.fire(mensaje);
-}
+// const alertMensaje = (mensaje) =>{
+//     Swal.fire(mensaje);
+// }
 
 const alertInformar = (mensaje) => {
     Swal.fire(mensaje, "", "info");
