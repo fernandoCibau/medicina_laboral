@@ -45,7 +45,7 @@
         <section class="seccion-tabla">
             <div class="buscador">
                     <input type="text" id="inputBuscar" placeholder="Buscar empresa..." />
-                    <button id="btnBuscar">Buscar</button>
+                    <button id="agregarEmpresas">Agregar empresa</button>
             </div>
 
             <table>
