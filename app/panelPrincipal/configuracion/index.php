@@ -31,14 +31,14 @@
 
     <section name="menu" class="secMenu" id="secMenu" >
             
-            <div class="contenedorMenu">
+    <div class="contenedorMenu">
                 <div class="icon-cont"><a href="../index.php"><img src="../../icon/home.png" alt="" class="saturate"><p class="pe">Inicio</p></a></div>
                 <div class="icon-cont"><a href="../../sistema_de_turnos"><img src="../../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
-                <div class="icon-cont"> <a href=""><img src="../../icon/paciente_blanco.png" alt=""><p class="pe">Pacientes</p ></a></div>
+                <div class="icon-cont"> <a href="../empleados/index.php"><img src="../../icon/paciente_blanco.png" alt=""><p class="pe">Pacientes</p ></a></div>
                 <div class="icon-cont"> <a href="../empresas/index.php"><img src="../../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
-                <div class="icon-cont"> <a href="../empresas/index.php"><img src="../../icon/personal_medico.png" alt=""><p class="pe">Pers. Medico</p></a></div>
-                <div class="icon-cont"> <a href="../empresas/index.php"><img src="../../icon/historiasClinicasBlanco.png" alt=""><p class="pe">Hist clinicas</p></a></div>
-                <div class="icon-cont"> <a href="../empresas/index.php"><img src="../../icon/config.jpg" alt=""><p class="pe">Configuracion</p></a></div>
+                <div class="icon-cont"> <a href="../doctores/index.php"><img src="../../icon/personal_medico.png" alt=""><p class="pe">Pers. Medico</p></a></div>
+                <div class="icon-cont"> <a href="../historiasClinicas/index.php"><img src="../../icon/historiasClinicasBlanco.png" alt=""><p class="pe">Hist clinicas</p></a></div>
+                <div class="icon-cont"> <a href="../configuracion/index.php"><img src="../../icon/config.jpg" alt=""><p class="pe">Configuracion</p></a></div>
             </div>
             
         </section>
