@@ -22,12 +22,13 @@
             
             <div class="contenedorMenu">
                 <div class="icon-cont"><a href="../index.php"><img src="../icon/home.png" alt="" class="saturate"><p class="pe">Inicio</p></a></div>
-                <div class="icon-cont"><a href="../../sistema_de_turnos"><img src="../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
-                <div class="icon-cont"> <a href=""><img src="../icon/paciente_blanco.png" alt=""><p class="pe">Pacientes</p ></a></div>
-                <div class="icon-cont"> <a href="../empresas/index.php"><img src="../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
-                <div class="icon-cont"> <a href="../empresas/index.php"><img src="../icon/personal_medico.png" alt=""><p class="pe">Pers. Medico</p></a></div>
-                <div class="icon-cont"> <a href="../empresas/index.php"><img src="../icon/historiasClinicasBlanco.png" alt=""><p class="pe">Hist clinicas</p></a></div>
-                <div class="icon-cont"> <a href="../empresas/index.php"><img src="../icon/config.jpg" alt=""><p class="pe">Configuracion</p></a></div>
+                <div class="icon-cont"><a href="../sistema_de_turnos/index.php"><img src="../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
+                <div class="icon-cont"> <a href=""><img src="../icon/tabla.png" alt=""><p class="pe">CIE-10</p ></a></div>
+                <div class="icon-cont"> <a href="../panelPrincipal/empleados/index.php"><img src="../icon/paciente_blanco.png" alt=""><p class="pe">Pacientes</p ></a></div>
+                <div class="icon-cont"> <a href="../panelPrincipal/empresas/index.php"><img src="../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
+                <div class="icon-cont"> <a href="../panelPrincipal/doctores/index.php"><img src="../icon/personal_medico.png" alt=""><p class="pe">Pers. Medico</p></a></div>
+                <div class="icon-cont"> <a href="../panelPrincipal/historiasClinicas/index.php"><img src="../icon/historiasClinicasBlanco.png" alt=""><p class="pe">Hist clinicas</p></a></div>
+                <div class="icon-cont"> <a href="../panelPrincipal/configuracion/index.php"><img src="../icon/config.jpg" alt=""><p class="pe">Configuracion</p></a></div>
             </div>
             
         </section>
