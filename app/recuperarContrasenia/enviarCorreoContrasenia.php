@@ -7,7 +7,7 @@ if(isset($_POST["correo"])){
     if(!empty($_POST["correo"]))
     {
         $para = $_POST["correo"];
-        $de = "From: nachomelga123@gmail.com";
+        $de = "From: 12345@gmail.com";
         $asunto = "Prueba PHP";
         $mensaje = "http://localhost/Medicinal_laboral/recuperarContrasenia/actualizacionContrasenia.html";
 

@@ -5,7 +5,6 @@
 $(document).ready( ()=>{
     eliminarAutomatico();
     setFechaActual();
-    // setHorasDelDia();
     matrizMes();
 });
 
@@ -23,7 +22,6 @@ const consultaCantidadDeTurnos = (anioYMes, cantidadDeDias) =>{
 
         success: (resultado, estado) => {
             const listaDeTurnos = JSON.parse(resultado);
-            // console.log(listaDeTurnos);
 
             ////Agrega la cantidad de turnos en la fecha calendario
             for (let i = 0; i < listaDeTurnos.length; i++) {
@@ -52,6 +50,7 @@ const setFechaActual = () => {
 };
 
 //Carga el SELECT con todos los horarios
+
 // const setHorasDelDia = ( listaDeTurnos ) =>{
 
 //     $("#horas-del-dia").append( $(`<option value=''>-- : -- : --</option>`) );
@@ -72,6 +71,8 @@ const setFechaActual = () => {
 // }
 
 
+//Carga los turnos en el select de nuevo turno y bloquea los ya asignados
+
 const buscarHorariosTurnos  = ( fecha ) =>{
     $.ajax({
         url : "buscarHorarios.php",
@@ -85,44 +86,44 @@ const buscarHorariosTurnos  = ( fecha ) =>{
                 // console.log(datos.datos);
                 $("#horas-del-dia").empty();
 
-// Agregar opción inicial
-$("#horas-del-dia").append($(`<option value=''>-- : -- : --</option>`));
+    // Agregar opción inicial
+    $("#horas-del-dia").append($(`<option value=''>-- : -- : --</option>`));
 
-for (let i = 0; i < 24; i++) {
-    // Solo dos iteraciones para 0 y 30 minutos
-    for (let j = 0; j <= 1; j++) {
-        const minutos = j * 30; // 0 o 30 minutos
-        const hora = `${i < 10 ? '0' : ''}${i}:${minutos < 10 ? '0' : ''}${minutos}:00`; // Formato correcto de hora
+    for (let i = 0; i < 24; i++) {
+        // Solo dos iteraciones para 0 y 30 minutos
+        for (let j = 0; j <= 1; j++) {
+            const minutos = j * 30; // 0 o 30 minutos
+            const hora = `${i < 10 ? '0' : ''}${i}:${minutos < 10 ? '0' : ''}${minutos}:00`; // Formato correcto de hora
 
-        let isDisabled = false;
+            let isDisabled = false;
 
-        // Verificar si la hora está en los turnos
-        datos.datos.forEach(turno => {
-            if (hora === turno['hora']) {
-                isDisabled = true; // Marcar como deshabilitada si coincide
+            // Verificar si la hora está en los turnos
+            datos.datos.forEach(turno => {
+                if (hora === turno['hora']) {
+                    isDisabled = true; // Marcar como deshabilitada si coincide
+                }
+            });
+
+            // Agregar la opción
+            if (isDisabled) {
+                $("#horas-del-dia").append(
+                    $(`<option value="${hora}" class="disabled-option" disabled>${hora}</option>`)
+                );
+            } else {
+                $("#horas-del-dia").append(
+                    $(`<option value="${hora}">${hora}</option>`)
+                );
             }
-        });
-
-        // Agregar la opción
-        if (isDisabled) {
-            $("#horas-del-dia").append(
-                $(`<option value="${hora}" class="disabled-option" disabled>${hora}</option>`)
-            );
-        } else {
-            $("#horas-del-dia").append(
-                $(`<option value="${hora}">${hora}</option>`)
-            );
         }
     }
-}
 
                 
-            }catch (error) {
-                console.log(resultado);
-                console.error("Error al cargar select empleados del modal:", error);
-                alert("Error al cargar datos en el select empleados. Consulta la consola para más detalles.");
-            }
-        }})
+        }catch (error) {
+            console.log(resultado);
+            console.error("Error al cargar select empleados del modal:", error);
+            alert("Error al cargar datos en el select empleados. Consulta la consola para más detalles.");
+        }
+    }})
 }
 
 //Carga la matriz del mes con todos los dias del mes
@@ -168,7 +169,6 @@ const matrizMes =   () =>{
         div.append(p);
 
         div.on("click",  function() {
-            // alert(`id : ${id}` ); // Muestra el id del div clickeado
             cargarTablaTurnos(id);
             modalOnOff();
             $("#contenedor-fom").attr('class', 'contenedor-fom off')
@@ -197,6 +197,7 @@ const matrizMes =   () =>{
 
 //Carga los turnos en la tabla del modal
 const cargarTablaTurnos = (idDelDia) =>{
+
     $.ajax({
         url: "cargarTurno.php",
         method: "get",
@@ -211,13 +212,15 @@ const cargarTablaTurnos = (idDelDia) =>{
                 
                 $("tbody").empty();
             
+                if( datos.datos.length == 0 ){
+                    $('tbody').text('No se encontraron turnos en la fecha seleccionada.');
+                }
+
                 datos.datos.forEach( fila => {
                     const tr = $("<tr>");
                     
                     for (const key in fila) {
-                        const td = $("<td>");
-                        td.text( fila[ key ]);
-                        tr.append(td);
+                        tr.append( $("<td>").text( fila[ key ]) );
                     }
 
                     const botonEliminar = $("<img src='icon/bote-de-basura.png' class='btn-eliminar id='btn-eliminar'>").click( ()=>{
@@ -226,8 +229,8 @@ const cargarTablaTurnos = (idDelDia) =>{
                             showDenyButton: true,
                             confirmButtonText: "Eliminar",
                             denyButtonText: `No eliminar`
+
                         }).then((result) => {
-                            /* Read more about isConfirmed, isDenied below */
                             if (result.isConfirmed) {
                                 const fecha = fila['fecha']; 
                                 const hora   =  fila['hora']; 
@@ -245,10 +248,11 @@ const cargarTablaTurnos = (idDelDia) =>{
                 
                 
             }catch (error) {
+                const datos = JSON.parse(resultado);
                 alert(datos.mensaje);
-                console.log(resultado);
-                console.error("Error al cargar los datos:", error);
-                alert("Error al cargar los datos. Consulta la consola para más detalles.");
+                // console.log(resultado);
+                // console.error("Error al cargar los datos:", error);
+                // alert("Error al cargar los datos. Consulta la consola para más detalles.");
             }
         }
     })
@@ -282,7 +286,14 @@ const guardarNuevoTurno = ( formData ) => {
 
                 console.log(datos)
 
-                datos.operacion  ? alertExitoso(datos.mensaje) :  alertMensaje(datos.mensaje);
+                datos.operacion  ?     Swal.fire({
+                    // position: "top-end",
+                    icon: "success",
+                    title: datos.mensaje,
+                    showConfirmButton: false,
+                    timer: 1500
+                }) 
+                :  Swal.fire(datos.mensaje);
                 matrizMes();
                 
             }catch (error) {
@@ -305,16 +316,16 @@ const eliminarTurno = ( fecha, hora ) =>{
 
             try {
                 const datos = JSON.parse(resultado);
-                console.log(datos);
+                // console.log(datos);
 
-                alertExitoso(datos.mensaje)
+                Swal.fire(datos.mensaje)
                 cargarTablaTurnos(fecha);
                 matrizMes();
                 
             }catch (error) {
-                console.log(resultado);
+                alert("Error al eliminar el turno.");
+                // console.log(resultado);
                 console.error("Error al eliminar el turno:", error);
-                alert("Error al eliminar el turno. Consulta la consola para más detalles.");
             }
         }
     });
@@ -375,7 +386,6 @@ const cargarSelectEmpresa = () =>{
 //Cargar el select empleados del modal turnos
 const cargarSelectEmpleados = ( idEmpresa ) =>{
     if ($('#selectEmpresas').val() === "") {
-        // $('#selectEmpleados').prop('disabled', true);
         $('#selectEmpleados').prop('disabled', true).append($('<option value="" selected>Selecciona un empleado</option>') );
     }else{
         $('#selectEmpleados').empty().prop('disabled', false).append($('<option value="" selected>Selecciona un empleado</option>') );
@@ -404,13 +414,43 @@ const cargarSelectEmpleados = ( idEmpresa ) =>{
     }
 }
 
+//Cargar el select medicos del modal turnos
+const cargarSelectMedicos = () =>{
+    $('#selectMedicos').empty().append($('<option value="" selected>Selecciona un medico</option>') );
+
+    $.ajax({
+        url : "cargarSelectMedicos.php",
+        method : "get",
+        data : {medicos : 'medicos' },
+        
+        success:( resultado, estado )=>{
+
+            try {
+                const datos = JSON.parse(resultado);
+                console.log(datos.datos);
+                
+                datos.datos.forEach( fila => {
+                    $('#selectMedicos').append( $( `<option value="${fila['id']}"> ${fila['nombre']} </option>`) );
+                });
+                
+            }catch (error) {
+                console.log(resultado);
+                console.error("Error al cargar select medicos del modal:", error);
+                alert("Error al cargar datos en el select medicos. Consulta la consola para más detalles.");
+            }
+        }
+    })
+}
+
+//Valida los input del modal nuevo turno para desbloquear boton
 const validarInputTurnos = ( ) =>{
 
-    if($('#selectEmpresas').val() == "" || $('#fecha').val() === "" || $('#selectEmpleados').val()  == "" || $('#horas-del-dia').val() == ""){
-        $('#btnAgregarTurno').prop('disabled', true)
-        
+    if($('#selectEmpresas').val() == "" || $('#fecha').val() === "" || $('#selectEmpleados').val()  == "" || $('#horas-del-dia').val() == "" || $('#selectMedicos').val() == ""){
+        $('#btnAgregarTurno').prop('disabled', true);
+        $('#btnAgregarTurno').attr('class', 'btn-color-bloqueado');
     }else{
-        $('#btnAgregarTurno').prop('disabled', false)
+        $('#btnAgregarTurno').prop('disabled', false);
+        $('#btnAgregarTurno').attr('class', 'btnAgregarTurno');
     }
 }
 
@@ -418,19 +458,19 @@ const validarInputTurnos = ( ) =>{
 //    FUNCIONES SWEETALERT
 // -----------------------------------------------
 
-const alertExitoso = (mensaje) =>{
-    Swal.fire({
-        // position: "top-end",
-        icon: "success",
-        title: mensaje,
-        showConfirmButton: false,
-        timer: 1500
-    });
-}
+// const alertExitoso = (mensaje) =>{
+//     Swal.fire({
+//         // position: "top-end",
+//         icon: "success",
+//         title: mensaje,
+//         showConfirmButton: false,
+//         timer: 1500
+//     });
+// }
 
-const alertMensaje = (mensaje) =>{
-    Swal.fire(mensaje);
-}
+// const alertMensaje = (mensaje) =>{
+//     Swal.fire(mensaje);
+// }
 
 const alertInformar = (mensaje) => {
     Swal.fire(mensaje, "", "info");
@@ -445,11 +485,12 @@ $("#btn-buscar").click( ()=>{
     matrizMes();
 });
 
-//Boton para abrir modal
+//Boton para abrir modal nuevo turno
 $("#btn-nuevo-turno").click(() => {
     modalOnOff ();
     $("#contenedor-tabla").attr('class', 'contenedor-tabla off');
     cargarSelectEmpresa();
+    cargarSelectMedicos();
     validarInputTurnos();
 });
 
@@ -468,23 +509,34 @@ $("#form-nuevo-turno").submit( e =>{
     
     let formData = new FormData(form);
     
-    console.log( formData.get("nombre"));
-    console.log( formData.get("horas-del-dia"));
+    // console.log( formData.get("nombre"));
+    // console.log( formData.get("horas-del-dia"));
     
     guardarNuevoTurno( formData );
 });
 
+//Select empresas del modal nuevo turno
 $('#selectEmpresas').on( 'input', () =>{
     cargarSelectEmpleados( $('#selectEmpresas').val());
 });
+
+//Select fecha del modal nuevo turno
+$('#fecha').on( 'input', () =>{
+    buscarHorariosTurnos( $("#fecha").val() );
+})
 
 $('#form-nuevo-turno').on( 'input', ()=>{
     validarInputTurnos();
 }) 
 
-$('#fecha').on( 'input', () =>{
-    buscarHorariosTurnos( $("#fecha").val() );
-})
+
+
+//Cierra la sesion de usuario
+$("#btmCerrarSesion").click( ()=>{
+    if(confirm("¿Desea cerrar la sesión?")){
+        window.location.href = "../cerrarSesion.php";
+    }
+});
 
 
 

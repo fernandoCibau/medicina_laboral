@@ -31,7 +31,7 @@
     
     <main>
         
-    <section name="menu" class="secMenu" id="secMenu" >
+        <section name="menu" class="secMenu" id="secMenu" >
             
             <div class="contenedorMenu">
                 <div class="icon-cont"><a href="../index.php"><img src="../../icon/home.png" alt="" class="saturate"><p class="pe">Inicio</p></a></div>
@@ -46,10 +46,12 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Nombre</th>
+                        <th>Especialidad</th>
                         <th>Matricula</th>
                         <th>DNI</th>
                         <th>Apellido</th>
-                        <th>Nombre</th>
+                        <th>Email</th>
                         <th>Editar</th>
                         <th>Eliminar</th> 
                     </tr>
@@ -65,18 +67,19 @@
                 <button id="btn-modal-X">X</button>
             </div>
             <div id="contenedorDatos" class="contendor-datos">
-                
-                </div>
-            </div>
             
-        </main>
-    </body>
+            </div>
+        </div>
         
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="./index.js"></script>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./index.js"></script>
         
     <footer>
-        
+        <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
     </footer>
+</body>
+</html>
             
