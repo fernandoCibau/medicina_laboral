@@ -5,7 +5,7 @@ if (isset($_POST['fecha']) ) {
     $fecha= $_POST['fecha']; 
     $hora = $_POST['horas-del-dia'];
     $horaSplit = explode(":", $hora);
-    // $nombre = $_POST['nombre'];
+    $idMedico = $_POST['selectMedicos'];
     $empleado_id = $_POST['selectEmpleados'];
 
     $sql = "SELECT * FROM turnos WHERE fecha='$fecha' AND hora='$hora'";
@@ -16,7 +16,7 @@ if (isset($_POST['fecha']) ) {
         echo json_encode( ['mensaje' => 'El turno ya exite', 'operacion' => FALSE]);
         
     }else{
-        $sql = "INSERT INTO turnos ( empleado_id, fecha, hora) VALUES ('$empleado_id', '$fecha', '$hora')";
+        $sql = "INSERT INTO turnos ( empleado_id, fecha, medico, hora) VALUES ('$empleado_id', '$fecha', $idMedico, '$hora')";
         $resultado = mysqli_query($conexion, $sql);
         
         if ($resultado) {

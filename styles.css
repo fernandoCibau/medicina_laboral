@@ -39,7 +39,6 @@
   }
   
   header nav {
-    /* background-color: navy; */
     width: 25em;
     padding: 20px;
     display: flex;
@@ -98,22 +97,22 @@
     height: 12em;
     position: absolute;
     top: 40%;
-    left: 40%;
+    left: 36%;
     text-align: center;
 
     opacity: 0; /* Comienza invisible */
-    animation: fadeInUp 1s ease-in-out forwards; /* Aplicar animación a la cabecera */
-    animation-delay: 0.5s; /* Retraso para que se vea más fluido */
+    animation: fadeInUp 1s ease-in-out forwards; 
+    animation-delay: 0.5s; 
   }
 
   @keyframes fadeInUp {
     0% {
         opacity: 0;
-        transform: translateY(20px); /* Desplazamiento hacia abajo */
+        transform: translateY(20px); 
     }
     100% {
         opacity: 1;
-        transform: translateY(0); /* Regresa a su posición original */
+        transform: translateY(0); 
     }
 }
 
@@ -163,7 +162,7 @@
   main .about-section p{
     margin: 1% 20%;
     font-size: 1.3em;
-
+    width: 60%;
   }
   
   .services-section {

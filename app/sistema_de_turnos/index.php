@@ -1,3 +1,11 @@
+<?php
+ session_start();
+    if( !isset($_SESSION['idUsuario']) ){
+        header( "location: ../index.php");
+        exit;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,7 +22,7 @@
     <header>
         <h1>Calendario De Turnos</h1>
         <div class="contenedorBtnHeader">
-            <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>
+            <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonCerrarSesion">Cerrar Sesion</button>
         </div>
     </header>
 
@@ -49,24 +57,38 @@
             
             <div class="contenedor-fom" id="contenedor-fom">
                 <h2>Agenda de Turnos</h2>
-                <form action="" method="post"   id="form-nuevo-turno">
+                <form action="" method="post" class="form-nuevo-turno"  id="form-nuevo-turno">
 
-                    <label for="selectEmpresas" require>Empresas</label>
-                    <select name="selectEmpresas" id="selectEmpresas"></select>
-
-                    <label for="selectEmpleados">Empleados</label>
-                    <select name="selectEmpleados" id="selectEmpleados" ></select>
-
-                    <label for="fecha">Fecha</label>
-                    <input  type="date" name="fecha" id="fecha" />
-
-                    <label for="horas-del-dia">Horario</label>
-                    <select name="horas-del-dia" id="horas-del-dia" >
-                        <option value="">-- : -- : --</option>
-                    </select>
-
-
-                    <input type="submit" name="agregarTurno" id="btnAgregarTurno" value="Agenda turno">
+                    <div class="contenedor-input">
+                        <label for="selectEmpresas" require>Empresas</label>
+                        <select name="selectEmpresas" id="selectEmpresas"></select>
+                    </div>
+                    
+                    <div class="contenedor-input">
+                        <label for="selectEmpleados">Empleados</label>
+                        <select name="selectEmpleados" id="selectEmpleados" ></select>
+                    </div>
+                    
+                    <div class="contenedor-input">
+                        <label for="selectMedicos">Medicos</label>
+                        <select name="selectMedicos" id="selectMedicos" ></select>
+                    </div>
+                    
+                    <div class="contenedor-input">
+                        <label for="fecha">Fecha</label>
+                        <input  type="date" name="fecha" id="fecha" />
+                    </div>
+                    
+                    <div class="contenedor-input">
+                        <label for="horas-del-dia">Horario</label>
+                        <select name="horas-del-dia" id="horas-del-dia" >
+                            <option value="">-- : -- : --</option>
+                        </select>
+                    </div>
+                    
+                    <div class="contenedor-btn">
+                        <input type="submit" name="agregarTurno" class="btnAgregarTurno" id="btnAgregarTurno" value="Agenda turno">
+                    </div>                
                 </form>
             </div>
 

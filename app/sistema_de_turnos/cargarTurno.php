@@ -4,11 +4,16 @@ if( isset($_GET['idDelDia'])){
     include 'conexion.php';
 
     $fecha = $_GET['idDelDia'];
-    $sql = "SELECT * FROM turnos WHERE fecha='$fecha'";
+
+    $sql = "SELECT E.nombre AS empleado, T.fecha, M.nombre AS medico, T.hora 
+                FROM turnos T 
+                JOIN empleados E ON T.empleado_id = E.id 
+                JOIN medicos M ON T.medico = M.id 
+                WHERE T.fecha='$fecha' ";
+
 
     $resultado = mysqli_query($conexion, $sql);
 
-    
     if($resultado){
         $datos = array();
         while ($fila = mysqli_fetch_assoc($resultado) ) {
