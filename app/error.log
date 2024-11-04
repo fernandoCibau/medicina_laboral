@@ -34,3 +34,5 @@
 <b>Warning</b>:  include(): Failed opening '../error_config.php' for inclusion (include_path='C:\xampp\php\PEAR') in <b>C:\xampp\htdocs\MEDICINA_LABORAL\app\autenticacion.php</b> on line <b>7</b><br />
 
 {"mensaje":"Bienvenido prueba","operacion":true}
+[04-Nov-2024 20:37:01 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\MEDICINA_LABORAL\app\autenticacion.php en la línea 22: Table 'el_salvador.usuarios' doesn't exist
+[04-Nov-2024 20:37:03 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\MEDICINA_LABORAL\app\autenticacion.php en la línea 22: Table 'el_salvador.usuarios' doesn't exist
