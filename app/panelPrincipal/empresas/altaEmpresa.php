@@ -5,7 +5,7 @@ if (isset($_POST['razon_social']) && isset($_POST['cuit']) && isset($_POST['emai
 
         $razon_social = $_POST['razon_social'];
         $cuit = $_POST['cuit'];
-        $domicilio = isset($_POST['domicilio']);
+        $domicilio = $_POST['domicilio'];
         $email = $_POST['email'];
 
         // Preparar la consulta para verificar si la razon_social ya existe

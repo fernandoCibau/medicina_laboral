@@ -57,7 +57,6 @@ const cargarTabla = () => {
                 for (let key in fila) {
                     if (key !== 'id' && key !== 'fecha_nacimiento' && key !== 'fecha_ingreso' && key !== 'domicilio' && key !== 'observaciones') {
                         const td = $("<td>").text(fila[key]);
-                        console.log("Se cargó el campo: " + key + " con valor: " + fila[key]);
                         tr.append(td);
                     }
                 }
@@ -361,6 +360,164 @@ $(document).ready(function() {
         });
     });
 });
+
+
+//Funcion de agregar empleado
+
+const botonAgregar = $("#agregarEmpleado").on("click", () => {
+    $("#contenedorDatos").empty();
+
+    // Crear los inputs con los valores de la fila seleccionada
+    $("#contenedorDatos").append(`
+        <label for="empresa">Empresa</label>
+        <input type="text" id="empresa" name="empresa" required>
+        <div id="resultados"></div>
+        
+        <label for="inputLegajo">Legajo</label>
+        <input type="text" id="inputLegajo">
+
+        <label for="inputDNI">DNI</label>
+        <input type="text" id="inputDNI" required>
+        
+        <label for="inputApellido">Apellido</label>
+        <input type="text" id="inputApellido" required>
+        
+        <label for="inputNombre">Nombre</label>
+        <input type="text" id="inputNombre" required>
+        
+        <label for="inputDomicilio">Domicilio</label>
+        <input type="text" id="inputDomicilio">
+                                                
+        <label for="inputFechaNac">Fecha Nac:</label>
+        <input type="date" id="inputFechaNac" required>
+                                                
+        <label for="inputFechaIng">Fecha Ing:</label>
+        <input type="date" id="inputFechaIng">
+                                                
+        <label for="inputCategoria">Categoria</label>
+        <input type="text" id="inputCategoria">
+                                                
+        <label for="inputSeccion">Seccion</label>
+        <input type="text" id="inputSeccion">
+                                                
+        <label for="inputObservaciones">Observaciones</label>
+        <input type="text" id="inputObservaciones">
+        
+        <div id="modalButtons">
+            <button id="agregarBtn" class="btn btn-primary">Agregar Empleado</button>
+            <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
+        </div>
+    `);
+
+    $("#tituloModal").text("Agregar Empleado");
+    modalOnOff();
+
+    // Evento del botón Guardar Cambios
+    $("#agregarBtn").on("click", () => {
+        const datosActualizados = {
+            legajo: $("#inputLegajo").val(),
+            dni: $("#inputDNI").val(),
+            apellido: $("#inputApellido").val(),
+            nombre: $("#inputNombre").val(),
+            domicilio: $("#inputDomicilio").val(),
+            fecha_nac: $("#inputFechaNac").val(),
+            fecha_ing: $("#inputFechaIng").val(),
+            observaciones: $("#inputObservaciones").val(),
+            id_categoria: null, // Asigna null directamente
+            id_seccion: null    // Asigna null directamente
+        };
+    
+        // Obtener el ID de la empresa
+        $.ajax({
+            url: "retornaClaveEmpresa.php",
+            method: "POST",
+            data: { empresa: $("#empresa").val() }
+        }).done(response => {
+            const resultado = JSON.parse(response);
+            if (resultado.operacion) {
+                datosActualizados.id_empresa = resultado.id_empresa;
+    
+                // Realizar la solicitud final para dar de alta al empleado
+                return $.ajax({
+                    url: "altaEmpleado.php",
+                    method: "POST",
+                    data: datosActualizados
+                });
+            } else {
+                throw new Error(resultado.mensaje || "No se pudo obtener la clave de la empresa.");
+            }
+        }).done(response => {
+            const resultado = JSON.parse(response);
+            if (resultado.operacion) {
+                console.log("El empleado se cargó con éxito.");
+                Swal.fire({
+                    title: "Empleado Agregado.",
+                    text: "El empleado fue agregado con éxito.",
+                    icon: "success",
+                }).then(() => {
+                    modalOnOff(); // Cerrar modal
+                    cargarTabla(); // Recargar la tabla con los datos actualizados
+                });
+            } else {
+                Swal.fire("Error", resultado.mensaje, "error");
+            }
+        }).fail((xhr, status, error) => {
+            Swal.fire("Error", "Ocurrió un problema durante el proceso.", "error");
+            console.error("Error en la solicitud AJAX:", error);
+        });
+    });
+
+    // Evento del botón Cancelar
+    $("#cancelarBtn").on("click", () => {
+        modalOnOff(); // Cerrar el modal sin guardar
+    });
+});
+
+/* TRAE LA LISTA DE EMPRESAS A MEDIDA QUE ESCRIBO */
+
+$(document).ready(function () {
+    $("#empresa").on("keyup", function () {
+      let nombreEmpresa = $(this).val();
+  
+      if (nombreEmpresa.length > 0) {
+        $.ajax({
+          url: "buscar_empresa.php",
+          type: "POST",
+          data: { buscar_empresa: nombreEmpresa },
+          success: function (data) {
+            $("#resultados").html(data);
+            if (data.trim() !== "") {
+              $("#resultados").addClass("visible");
+            } else {
+              $("#resultados").removeClass("visible");
+            }
+            $("#resultados li").on("click", function () {
+              $("#empresa").val($(this).text());
+              $("#resultados").html("");
+              $("#resultados").removeClass("visible");
+            });
+          },
+        });
+      } else {
+        $("#resultados").html("");
+        $("#resultados").removeClass("visible");
+      }
+    });
+  
+    /*  OCULTA LA LISTA DE EMPRESAS CUANDO HAGO CLICK FUERA */
+  
+    $(document).on("click", function (e) {
+      if (
+        !$(e.target).closest("#empresa").length &&
+        !$(e.target).closest("#resultados").length
+      ) {
+        $("#resultados").html("");
+        $("#resultados").removeClass("visible");
+      }
+    });
+  });
+
+
 
 
 //------------------------------------------------------------------

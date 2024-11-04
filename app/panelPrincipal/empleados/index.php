@@ -43,7 +43,7 @@
             <!-- Input de búsqueda -->
             <div class="buscador">
                 <input type="text" id="inputBuscar" placeholder="Buscar DNI..." />
-                <button id="btnBuscar">Buscar</button>
+                <button id="agregarEmpleado">Agregar Empleado</button>
             </div>
             
             <table>
@@ -71,8 +71,10 @@
                 <h2 class="titulo-empleados" id="tituloModal"></h2>
                 <button id="btn-modal-X">X</button>
             </div>
-            <div id="contenedorDatos" class="contendor-datos"></div>
-        </div>
+            <div id="contenedorDatos" class="contendor-datos">
+                
+                </div>
+            </div>
         
     </main>
     
