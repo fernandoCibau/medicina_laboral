@@ -175,20 +175,22 @@ main .about-section p {
 }
 
 .services-section h3 {
-  padding: 5% 0 2% 0;
+  padding: 2% 0 2% 0;
   text-align: center;
   font-size: 1.5em;
   font-weight: 600;
 }
-.service-item {
+
+/*.service-item {
   margin: 20px 0;
-}
+}*/
 
 /* ****************************************** */
 /*               FORM CONTACTO               */
 /* ****************************************** */
 form {
   max-width: 600px; /* Ancho máximo del formulario */
+  height: 80%;
   margin: 0 auto; /* Centra el formulario en la página */
   padding: 20px; /* Espacio interno */
   border: 1px solid #ccc; /* Borde del formulario */
