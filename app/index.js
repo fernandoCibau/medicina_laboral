@@ -1,3 +1,5 @@
+import { errores } from './funcion.js';
+
 //-----------------------------------------------------------------
 //                      FORM
 //-----------------------------------------------------------------
@@ -11,7 +13,7 @@ $("#formSesion").submit((e) => {
 //-----------------------------------------------------------------
 //                      FUNCIONES
 //-----------------------------------------------------------------
-let ajaxAutenticacion = (formData) => {
+const ajaxAutenticacion = (formData) => {
   $.ajax({
     url: "autenticacion.php",
     method: "post",
@@ -23,25 +25,38 @@ let ajaxAutenticacion = (formData) => {
       try {
         let datos = JSON.parse(resultado);
 
-        console.log(datos);
-
         if (datos.operacion) {
           location.href = "./panelPrincipal";
         } else {
           alert(datos.mensaje);
         }
-      } catch (error) {
-        console.log(resultado);
-        console.error("Error en la autenticacion de los datos:", error);
-        alert(
-          "Error en la autenticacion de datos. Consulta la consola para más detalles."
-        );
+      } catch (e) {
+        alert(  "Error en la autenticacion de los datos." );
+        errores( e.message +  " | " + resultado)
       }
     },
   });
 };
 
-/*
-$('#btnRecuperarContrasenia').click( () =>{
-    alert("FALTA  HACER")
-})*/
+// const errores = ( error ) => {
+//   $.ajax({
+//     url: "erroresJs.php",
+//     method: "post",
+//     data: {error: error},
+
+//     success: (resultado, estado) => {
+//       try {
+//         let datos = JSON.parse(resultado);
+
+//         console.log(estado);
+
+//       } catch (error) {
+//         console.log(resultado);
+//         console.error("Error en la autenticacion de los datos:", error);
+//         alert(
+//           "Error en la autenticacion de datos. Consulta la consola para más detalles."
+//         );
+//       }
+//     },
+//   });
+// };

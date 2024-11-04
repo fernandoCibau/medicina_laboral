@@ -1,4 +1,4 @@
-
+import { errores } from '../../funcion.js';
 // -----------------------------------------------
 //                      INICIO
 // -----------------------------------------------
@@ -8,144 +8,135 @@ $(document).ready( ()=>{
 
 
 //------------------------------------------------------------------
-//                  FORMULARIO
+//                  FORMULARIO y FUNCION MODIFICAR
 //------------------------------------------------------------------
 
-$("#formAlta").submit( e=>{
+$("#formModificar").submit( e=>{
     e.preventDefault();
-    let form = $("#formAlta");
+    let form = $("#formModificar");
     let formData = new FormData(form[0]);
-    ajaxUsuarioAlta(formData);
 
+    $.ajax({
+        url: "modificarMedico.php",
+        method: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+    
+        success: (resultado) => {
+            try {
+                const datos = JSON.parse(resultado);
+                console.log(datos);
+    
+                if (datos.operacion) {
+
+                    Swal.fire({
+                        title: "Médico modificado",
+                        text: "Los cambios fueron guardados con éxito.",
+                        icon: "success"
+                    }).then(() => {
+                        modalOnOff();  
+                        cargarTabla(); 
+                    });
+                } else {
+                    Swal.fire("Error", datos.mensaje, "error");
+                }
+    
+            } catch (e) {
+                alert('Ocurrió un error al procesar la respuesta del servidor.');
+                errores(e.message + " | " + resultado);
+            }
+        },
+        error: (jqXHR, textStatus, errorThrown) => {
+            alert('Ocurrió un error en la solicitud. Intenta de nuevo más tarde.');
+            errores("Error en la solicitud AJAX:", textStatus, errorThrown);
+        }
+    });
+    
 });
+
+const modificarMedico = (fila) => {
+    modalOnOff();
+    $("#formModificar").empty(); // Descomentar para limpiar el contenedor
+
+    const form = $("#formModificar");
+
+    for (const key in fila) {
+        if (key === 'id') {
+            // form.append($(`<label for="${key}">${key}</label>`));
+            form.append($(`<input type="hidden" name="${key}" value="${fila[key]}" >`));
+        } else {
+            form.append($(`<label for="${key}">${key}</label>`));
+            form.append($(`<input type="text" name="${key}" value="${fila[key]}">`));
+        }
+    }
+
+    form.append(`
+        <div id="modalButtons">
+            <input type="submit" class="btn-primary" value="Modificar">
+            <input type="button" id="cancelarBtn" class="btn-secondary" value="Cancelar">
+        </div>
+    `);
+
+    $("#contenedorDatos").append(form);
+};
 
 //------------------------------------------------------------------
 //                  FUNCIONES
 //------------------------------------------------------------------
 
-const cargarTabla = () => {
+
+    const cargarTabla = () => {
     $.ajax({
         url: "cargarTabla.php",
         method: "get",
         data: { todos: "todos" },
         
         success: (resultado, estado) => {
-            let datos = JSON.parse(resultado);
-            console.log(datos);
-
-            // Vaciar el contenido de la tabla antes de agregar nuevas filas
-            $("tbody").empty();
-
-            const datosMap = datos.datos.map(item => ({
-                matricula: item.matricula,
-                dni: item.dni,
-                apellido: item.apellido,
-                nombre: item.nombre,
-                id: item.id
-            }));
-            
-            datosMap.forEach(fila => {
-                const tr = $("<tr>");
+            try {
+                const datos = JSON.parse(resultado);
+                console.log(datos);
                 
-                // Crear una celda para cada campo excepto el ID
-                for (let key in fila) {
-                    if (key !== 'id') {
-                        const td = $("<td>").text(fila[key]);
-                        tr.append(td);
-                    }
-                }
-                /*
-                // Botón Ver Empleados
-                const botonVer = $("<img src='../../icon/ojo.png'>").on('click', () => {
-                    empleadosDeEmpresa(fila['id']);
-                });
-                tr.append($("<td>").append(botonVer));
-                */
-                // Botón Modificar Empresa
-                const botonModificar = $("<img src='../../icon/editar.png'>").on('click', () => {
-                    $("#contenedorDatos").empty();
+                const datosMap = datos.datos.map(item => ({
+                    nombre: item.nombre,
+                    especialidad : item.especialidad,
+                    matricula: item.matricula,
+                    dni: item.dni,
+                    apellido: item.apellido,
+                    email :  item.email,
+                    id: item.id
+                }));
+                
+                $("tbody").empty();
+
+                datosMap.forEach(fila => {
+                    const tr = $("<tr>");
                     
-                    // Crear los inputs con los valores de la fila seleccionada
-                    $("#contenedorDatos").append(`
-                        <input type="text" id="inputId" value="${fila['id']}" readonly hidden>
-                        
-                        <label for="inputRazonSocial">Matricula</label>
-                        <input type="text" id="inputMatricula" value="${fila['matricula']}">
-                        
-                        <label for="inputDNI">DNI</label>
-                        <input type="text" id="inputDNI" value="${fila['dni']}">
-                        
-                        <label for="inputApellido">Apellido</label>
-                        <input type="text" id="inputApellido" value="${fila['apellido']}">
-                        
-                        <label for="inputNombre">Nombre</label>
-                        <input type="text" id="inputNombre" value="${fila['nombre']}">
+                    for (let key in fila) {
+                        if (key !== 'id') {
+                            tr.append( $("<td>").text( fila[key] ) );
+                        }
+                    }
 
-                        <div id="modalButtons">
-                            <button id="guardarCambiosBtn" class="btn btn-primary">Modificar</button>
-                            <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
-                        </div>
-                    `);
+                    //Boton Modificar
+                    tr.append(  $('<td>').append($("<img src='../../icon/editar.png'>").on( 'click', ()=>{
+                        modificarMedico( fila );
+                    } ) ) );
 
-                    $("#tituloModal").text("Modificar Doctor");
-                    modalOnOff();
-
-                    // Evento del botón Guardar Cambios
-                    $("#guardarCambiosBtn").on("click", () => {
-                        const datosActualizados = {
-                            id: $("#inputId").val(),
-                            matricula: $("#inputMatricula").val(),
-                            dni: $("#inputDNI").val(),
-                            apellido: $("#inputApellido").val(),
-                            nombre: $("#inputNombre").val()
-                        };
-
-                        $.ajax({
-                            url: "modificacionDoctor.php",
-                            method: "POST",
-                            data: datosActualizados,
-                            success: (response) => {
-                                const resultado = JSON.parse(response);
-                                if (resultado.operacion) {
-                                    Swal.fire({
-                                        title: "Medico modificado",
-                                        text: "Los cambios fueron guardados con éxito.",
-                                        icon: "success"
-                                    }).then(() => {
-                                        modalOnOff();  // Cerrar modal
-                                        cargarTabla(); // Recargar la tabla con los datos actualizados
-                                    });
-                                } else {
-                                    Swal.fire("Error", resultado.mensaje, "error");
-                                }
-                            },
-                            error: (xhr, status, error) => {
-                                console.error("Error en la solicitud AJAX:", error);
-                                Swal.fire("Error", "Ocurrió un problema al guardar los cambios.", "error");
-                            }
-                        });
-                    });
-
-                    // Evento del botón Cancelar
-                    $("#cancelarBtn").on("click", () => {
-                        modalOnOff(); // Cerrar el modal sin guardar
-                    });
-                });
-                tr.append($("<td>").append(botonModificar));
-
-                // Botón Eliminar Medico
-                const botonEliminar = $("<img src='../../icon/borrar.png'>").on('click', () => {
-                    Swal.fire({
-                        title: "¿Está seguro de eliminar?",
-                        text: "Está a punto de eliminar un medico.",
-                        icon: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "Confirmar, Eliminar al medico!"
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            eliminarDoctor(fila['id'])
+                    //Boton Eliminat
+                    
+                    tr.append( $('<td>').append( $("<img src='../../icon/borrar.png'>").on( 'click', ()=>{
+                        Swal.fire({
+                            title: "¿Está seguro de eliminar?",
+                            text: "Está a punto de eliminar un medico.",
+                            icon: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#3085d6",
+                            cancelButtonColor: "#d33",
+                            confirmButtonText: "Confirmar, Eliminar al medico!"
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                eliminarDoctor(fila['id'])
                                 .then(() => {
                                     Swal.fire({
                                         title: "Se eliminó correctamente!",
@@ -161,13 +152,50 @@ const cargarTabla = () => {
                                         text: "Ocurrió un error al eliminar la empresa"
                                     });
                                 });
-                        }
-                    });
-                });
-                tr.append($("<td>").append(botonEliminar));
+                            }
+                        });
+                    }) ))
 
-                $("tbody").append(tr);
-            });
+                    $("tbody").append(tr);
+                })
+            
+            
+            } catch (e) {
+                alert('Ocurrio un error.');
+                errores( e.message +  " | " + resultado)
+            }
+
+            //                 $("#tituloModal").text("Modificar Doctor");
+            //                 modalOnOff();
+                            
+            //                 // Evento del botón Guardar Cambios
+            //                 $("#guardarCambiosBtn").on("click", () => {
+            //                     const datosActualizados = {
+            //                         id: $("#inputId").val(),
+            //                         matricula: $("#inputMatricula").val(),
+            //                         dni: $("#inputDNI").val(),
+            //                         apellido: $("#inputApellido").val(),
+            //                         nombre: $("#inputNombre").val()
+            //                     };
+                        
+            //                    
+            //         });
+
+            //         // Evento del botón Cancelar
+            //         $("#cancelarBtn").on("click", () => {
+            //             modalOnOff(); // Cerrar el modal sin guardar
+            //         });
+            //     });
+            //     tr.append($("<td>").append(botonModificar));
+
+            //     // Botón Eliminar Medico
+            //     const botonEliminar = $("<img src='../../icon/borrar.png'>").on('click', () => {
+                    
+            //     });
+            //     tr.append($("<td>").append(botonEliminar));
+
+            //     $("tbody").append(tr);
+            // });
         }
     });
 };
@@ -189,7 +217,6 @@ const modalOnOff = () =>{
         $("header").attr("class", "bloqueado");
     }
 };
-
 
 
 

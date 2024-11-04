@@ -29,7 +29,7 @@
                     $hashContrasenia = password_hash( trim($_POST['contrasenia']), PASSWORD_DEFAULT);
                     
                     $sql = "INSERT INTO usuarios(empresa_id, nombre_usuario, contrasenia, email, tipo_usuario)
-                            VALUES (             '$empresa', '$nombre', '$hashContrasenia', '$email', '$admin' )";
+                            VALUES (             '1', '$nombre', '$hashContrasenia', '$email', '$admin' )";
                 
                     $resultado = mysqli_query( $conexion, $sql );
                         

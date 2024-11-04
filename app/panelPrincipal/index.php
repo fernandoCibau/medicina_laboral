@@ -22,7 +22,7 @@
         <h1>CLINICA EL SALVADOR</h1>
         <div class="contenedorBtnHeader">
             <!-- <img src="../icon/boton-de-encendido.png" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido"> -->
-            <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>
+            <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonCerrarSesion">Cerrar Sesion</button>
         </div>
     </header>
 
@@ -78,30 +78,15 @@
                 </div>
 
             </div>
-
-            <!-- <div class="contenedorAccesosDos">
-                
-                <div class="perfil">
-                    
-                    <h3>Perfil</h3>
-
-                    <div class="perfilDatos">
-                        <p>Nombre De Empresa</p>
-                        <p>admin@gmail.com</p>
-                        <input type="button" class="btnEditarPerfil" id="btnEditarPerfil" value="Editar Perfil" >
-                    </div>
-                </div>
-
-            </div> -->
-
         </section>
 
     </main>
 
+    <script type="module" src="index.js"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./index.js"></script>
     <footer>
-    
+        <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
     </footer>
 
 </body>

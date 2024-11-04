@@ -61,7 +61,7 @@ $("#buscarPorDescripcion").on("input", () => {
   } else {
     obtenerDatos()
       .then((datosMap) => {
-        // Toma solo los primeros 20 registros
+        // Toma solo los primeros 17 registros
         const primeros17Registros = datosMap.slice(0, 17);
 
         // Limpia la tabla antes de agregar nuevas filas
@@ -148,7 +148,7 @@ $(document).ready(() => {
 
   obtenerDatos()
     .then((datosMap) => {
-      // Toma solo los primeros 17 registros
+      // Toma solo los primeros 15 registros
       const primeros17Registros = datosMap.slice(0, 17);
 
       // Limpia la tabla antes de agregar nuevas filas

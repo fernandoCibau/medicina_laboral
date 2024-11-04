@@ -1,3 +1,10 @@
+<?php
+session_start();
+    if( !isset($_SESSION['idUsuario']) ){
+        header( "location: ../index.php");
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,94 +17,118 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+        
     <header>
         <h1>Calendario De Turnos</h1>
         <div class="contenedorBtnHeader">
-            <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>
+            <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonCerrarSesion">Cerrar Sesion</button>
         </div>
     </header>
-
+    
     <main>
-
-    <section name="menu" class="secMenu" id="secMenu" >
+        
+        <section name="menu" class="secMenu" id="secMenu" >
             
-            <div class="contenedorMenu">
+        <div class="contenedorMenu">
                 <div class="icon-cont"><a href="../index.php"><img src="../icon/home.png" alt="" class="saturate"><p class="pe">Inicio</p></a></div>
-                <div class="icon-cont"><a href="../../sistema_de_turnos"><img src="../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
-                <div class="icon-cont"> <a href=""><img src="../icon/paciente_blanco.png" alt=""><p class="pe">Pacientes</p ></a></div>
-                <div class="icon-cont"> <a href="../empresas/index.php"><img src="../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
+                <div class="icon-cont"><a href="../sistema_de_turnos"><img src="../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
+                <div class="icon-cont"> <a href="../cie_10/index.php"><img src="../icon/tabla.png" alt=""><p class="pe">CIE-10</p ></a></div>
+                <div class="icon-cont"> <a href="../panelPrincipal/empleados/index.php"><img src="../icon/paciente_blanco.png" alt=""><p class="pe">Pacientes</p ></a></div>
+                <div class="icon-cont"> <a href="../panelPrincipal/empresas/index.php"><img src="../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
+                <div class="icon-cont"> <a href="../panelPrincipal/doctores/index.php"><img src="../icon/personal_medico.png" alt=""><p class="pe">Pers. Medico</p></a></div>
+                <div class="icon-cont"> <a href="../panelPrincipal/historiasClinicas/index.php"><img src="../icon/historiasClinicasBlanco.png" alt=""><p class="pe">Hist clinicas</p></a></div>
+                <div class="icon-cont"> <a href="../panelPrincipal/configuracion/index.php"><img src="../icon/config.jpg" alt=""><p class="pe">Configuracion</p></a></div>
             </div>
             
         </section>
+        
+        <?php if( isset($_SESSION['admin']) && $_SESSION['admin']  == 1 ) { ?>
 
-        <section class="seccion-mes" id="seccion-mes">
-            
-            <div class="contenedor-encabezado">
-                <h2>Mes</h2>
-                <input type="month" id="mesInput" />
-                <input type="button" value="Buscar" id="btn-buscar">
-                <input type="button" value="Nuevo Turno" id="btn-nuevo-turno">
-            </div>
-            <div id="mes" class="mes"></div>
-        </section>
+            <section class="seccion-mes" id="seccion-mes">
+                
+                <div class="contenedor-encabezado">
+                    <h2>Mes</h2>
+                    <input type="month" id="mesInput" />
+                    <input type="button" value="Buscar" id="btn-buscar">
+                    <input type="button" value="Nuevo Turno" id="btn-nuevo-turno">
+                </div>
+                <div id="mes" class="mes"></div>
+            </section>
 
-        <section class="seccion-modal" id="seccion-modal">
-            <div class="contenedor-encabezado-modal">
-                <button type="button" class="btn-cerrar" id="btn-cerrar" >X</button>
-            </div>
-            
-            <div class="contenedor-fom" id="contenedor-fom">
-                <h2>Agenda de Turnos</h2>
-                <form action="" method="post"   id="form-nuevo-turno">
+            <section class="seccion-modal" id="seccion-modal">
+                <div class="contenedor-encabezado-modal">
+                    <button type="button" class="btn-cerrar" id="btn-cerrar" >X</button>
+                </div>
+                
+                <div class="contenedor-fom" id="contenedor-fom">
+                    <h2>Agenda de Turnos</h2>
+                    <form action="" method="post" class="form-nuevo-turno"  id="form-nuevo-turno">
 
-                    <label for="selectEmpresas" require>Empresas</label>
-                    <select name="selectEmpresas" id="selectEmpresas"></select>
+                        <div class="contenedor-input">
+                            <label for="selectEmpresas" require>Empresas</label>
+                            <select name="selectEmpresas" id="selectEmpresas"></select>
+                        </div>
+                        
+                        <div class="contenedor-input">
+                            <label for="selectEmpleados">Empleados</label>
+                            <select name="selectEmpleados" id="selectEmpleados" ></select>
+                        </div>
+                        
+                        <div class="contenedor-input">
+                            <label for="selectMedicos">Medicos</label>
+                            <select name="selectMedicos" id="selectMedicos" ></select>
+                        </div>
+                        
+                        <div class="contenedor-input">
+                            <label for="fecha">Fecha</label>
+                            <input  type="date" name="fecha" id="fecha" />
+                        </div>
+                        
+                        <div class="contenedor-input">
+                            <label for="horas-del-dia">Horario</label>
+                            <select name="horas-del-dia" id="horas-del-dia" >
+                                <option value="">-- : -- : --</option>
+                            </select>
+                        </div>
+                        
+                        <div class="contenedor-btn">
+                            <input type="submit" name="agregarTurno" class="btnAgregarTurno" id="btnAgregarTurno" value="Agenda turno">
+                        </div>                
+                    </form>
+                </div>
 
-                    <label for="selectEmpleados">Empleados</label>
-                    <select name="selectEmpleados" id="selectEmpleados" ></select>
+                <div class="contenedor-tabla" id="contenedor-tabla">
+                    <h2>Lista de Turnos</h2>
+                    <div class="contenedor-tabla-2">
+                        <table id='modalTablaTurnos'>
+                            <thead>
+                                <tr>
+                                    <th>Empleado</th>
+                                    <th>Fecha</th>
+                                    <th>Doctor</th>
+                                    <th>Hora</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
 
-                    <label for="fecha">Fecha</label>
-                    <input  type="date" name="fecha" id="fecha" />
-
-                    <label for="horas-del-dia">Horario</label>
-                    <select name="horas-del-dia" id="horas-del-dia" >
-                        <option value="">-- : -- : --</option>
-                    </select>
-
-
-                    <input type="submit" name="agregarTurno" id="btnAgregarTurno" value="Agenda turno">
-                </form>
-            </div>
-
-            <div class="contenedor-tabla" id="contenedor-tabla">
-                <h2>Lista de Turnos</h2>
-                <table id='modalTablaTurnos'>
-                    <thead>
-                        <tr>
-                            <th>Empleado_id</th>
-                            <th>Fecha</th>
-                            <th>Doctor</th>
-                            <th>Hora</th>
-                            <th>Eliminar</th>
-                            <!-- <th>Hora</th>
-                            <th>Eliminar</th> -->
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-
-        </section>
+        <?php } ?>
 
     </main>
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="./index.js"></script>  
+    <?php if( isset($_SESSION['admin']) && $_SESSION['admin']  == 1 ) { ?>
+        <script src="./index.js"></script>
+    <?php } else { ?>
+        <script src="./index2.js"></script>
+    <?php }?>
     <footer>
         <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
     </footer>
-
 </body>
 </html>

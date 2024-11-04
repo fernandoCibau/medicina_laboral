@@ -11,6 +11,7 @@ html,
 body {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 header {
@@ -29,13 +30,7 @@ h1 {
     margin: 0;
     display: block;
     font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
     font-weight: bold;
-    unicode-bidi: isolate;
-
 }
 
 .logout-button {
@@ -78,59 +73,21 @@ main {
 /*               SECCION MENU                    */
 /* ------------------------------------------------ */
 
-/*
-.secMenu {
-    background-color: #539bfc;
-    color: white;
-    width: 5%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: larger;
-}
-
-.secMenu .contenedorMenu {
-    width: 100%;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-}
-
-.secMenu .contenedorMenu a {
-    text-decoration: none;
-    font-size: larger;
-    text-align: center;
-    margin-top: 2em;
-}
-
-.secMenu .contenedorMenu a img {
-    width: 35px;
-}
-
-.secMenu .contenedorMenu a p {
-    color: white;
-    font-size: small;
-}
-*/
-
-
 
 
 .secMenu {
     background-color: #539bfc;
+    height: 100vh;
     color: white;
     width: 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     font-size: larger;
+
 }
 
 
 .icon-cont {
     width: 100%;
-    height: 100%;
+    height: 12.5%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -157,7 +114,7 @@ main {
 
 .secMenu .contenedorMenu {
     width: 100%;
-    height: 50%;
+    height: 69%;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -168,6 +125,7 @@ main {
 
 
 .secMenu .contenedorMenu a {
+
     text-decoration: none;
     font-size: larger;
     text-align: center;
@@ -187,18 +145,19 @@ main {
     font-size: small;
 }
 
+
 /* ------------------------------------------------ */
 /*               SECCION MES                    */
 /* ------------------------------------------------ */
 
 .seccion-mes {
-    width: 95%;
+    width: 93%;
     height: 100%;
     margin: auto;
 }
 
 .seccion-mes .mes {
-    width: 95%;
+    width: 100%;
     height: 90%;
     display: flex;
     flex-wrap: wrap;
@@ -206,14 +165,37 @@ main {
 }
 
 .seccion-mes .contenedor-encabezado {
+    width: 100%;
+    height: 5%;
     display: flex;
     justify-content: space-evenly;
+}
+
+.seccion-mes .contenedor-encabezado h2 {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.seccion-mes .contenedor-encabezado input[ type='button'],
+input[ type='month'] {
+    background-color: #539bfc;
+    color: white;
+    border: none;
+    padding: 0px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.seccion-mes .contenedor-encabezado input[ type='button']:hover,
+input[ type='month']:hover {
+    background-color: #007bff;
+    transition: 1s;
 }
 
 .seccion-mes .contenedor-nombre-dias {
     width: calc(100% / 7);
     background: linear-gradient(to bottom, #d1d1d1, #ffffff);
-    /* Gris claro a blanco */
     border: solid wheat 0.01em;
     height: 5%;
 }
@@ -222,18 +204,14 @@ main {
     width: calc(100% / 7);
     height: calc(100% / 5);
     border: solid 1px #f0f0f0;
-    /* Borde gris claro */
     background-color: #e0e0e0;
-    /* Gris claro de fondo */
     cursor: pointer;
 }
 
 .seccion-mes .contenedor-dias:hover {
     background-color: #c0c0c0;
-    /* Gris claro */
     transition: 0.4s;
 }
-
 
 .contenedor-numero-turnos {
     width: 100%;
@@ -242,7 +220,6 @@ main {
     justify-content: center;
     align-items: center;
 }
-
 
 .contenedor-numero-turnos p {
     color: #4a4a4a;
@@ -253,7 +230,7 @@ main {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.disabled-option{
+.disabled-option {
     color: red;
 }
 
@@ -269,6 +246,7 @@ main {
     background: white;
     display: none;
     border-radius: 8px;
+    overflow: hidden;
 }
 
 .contenedor-encabezado-modal {
@@ -280,6 +258,16 @@ main {
     width: 5%;
     position: absolute;
     right: 2%;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.contenedor-encabezado-modal .btn-cerrar:hover {
+    background-color: #d03f2f;
 }
 
 .on {
@@ -298,10 +286,15 @@ main {
     pointer-events: all;
 }
 
+/* ----------------------------------------- */
+/*          TABLA MODAL                 */
+/* ----------------------------------------- */
+
 .contenedor-tabla {
     width: 100%;
+    height: 100%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -309,67 +302,61 @@ main {
 
 h2 {
     text-align: center;
-    color: #333;
+    color: #007bff;
+    font-size: 1.5em;
+    font-weight: bold;
+    height: 10%;
 }
 
+.contenedor-tabla-2 {
+    width: 100%;
+    height: 90%;
+    overflow: auto;
+}
 table {
     width: 100%;
+    height: 100%;
     border-collapse: collapse;
-    /* Colapsar bordes */
-    margin-top: 20px;
-    /* Espacio superior */
     margin: auto;
 }
 
 thead {
     background-color: #007bff;
-    /* Color de fondo del encabezado */
+    width: 90%;
+    height: 10%;
     color: white;
-    /* Color del texto del encabezado */
-    width: 100%;
-    display: block;
+}
+
+tbody {
+    width: 90%;
+    height: 90%;
 }
 
 th,
 td {
     width: calc(100% / 5);
-    padding: 12px 15px;
+    padding: 1em 1em;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-tbody {
-    display: block;
-    /* Convertir tbody en bloque */
-    height: 35em;
-    /* Altura máxima */
+tr{
+    display: table;
+    /* height: 1em;  */
     width: 100%;
-    overflow-y: auto;
-    /* Scroll vertical */
-    overflow-x: hidden;
-    /* Ocultar scroll horizontal */
 }
 
-tr {
-    display: table;
-    /* Asegura que las filas se comporten como tabla */
-    width: 100%;
-    /* Ancho total del tbody */
-}
 
 tbody tr:hover {
     background-color: #f1f1f1;
-    /* Color de fondo al pasar el mouse */
 }
 
 tbody tr:nth-child(even) {
     background-color: #f9f9f9;
-    /* Color de fondo para filas pares */
 }
 
 tbody tr:last-child {
     border-bottom: 2px solid #007bff;
-    /* Borde inferior para la última fila */
 }
 
 .btn-eliminar {
@@ -377,8 +364,85 @@ tbody tr:last-child {
     cursor: pointer;
 }
 
-footer {
+/* ----------------------------------- */
+/*           FORM MODAL         */
+/* ----------------------------------- */
+.contenedor-fom {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     width: 100%;
+    height: 100%;
+}
+
+.form-nuevo-turno {
+    display: flex;
+    flex-wrap: wrap;
+    height: 90%;
+}
+
+.contenedor-input {
+    width: calc(100% / 2);
+}
+
+.contenedor-btn {
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin: 15px 0 5px;
+    color: #555;
+}
+
+input[type="date"],
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 1em;
+}
+
+label,
+input[type="date"],
+select {
+    width: 80%;
+}
+
+.btnAgregarTurno {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 12em;
+    transition-duration: 2s;
+}
+
+.btnAgregarTurno:hover {
+    background-color: #2980b9;
+}
+
+.btn-color-bloqueado {
+    background-color: #d03f2f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 12em;
+    transition-duration: 1.5s;
+}
+
+
+/* ----------------------------------- */
+/*              FOOTER               */
+/* ----------------------------------- */
+footer {
+    margin-left: 5%;
+    width: 95%;
     height: 10%;
     background-color: #539bfc;
     color: #fff;
