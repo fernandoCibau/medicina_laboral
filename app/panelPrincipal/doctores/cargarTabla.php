@@ -1,12 +1,11 @@
 <?php
-
 if(isset($_GET['todos']) ){
-
+    include '../../error_config.php';
     try {
 
         include '../../conexion.php';
         
-        $sql = "SELECT * FROM doctores";
+        $sql = "SELECT * FROM medicos";
         
         $resultado = mysqli_query($conexion, $sql);
         
@@ -27,7 +26,8 @@ if(isset($_GET['todos']) ){
         }
 
     } catch (Exception $e) {
-        echo json_encode( [ 'mensaje' => 'Error, ' .  $e->getMessage() . "cargarTabla.php" . " : LINEA  : " . __LINE__  ] );
+        error_log("Error en " . $e->getFile() . " en la línea " . $e->getLine() . ": " . $e->getMessage());
+        echo json_encode(['mensaje' => 'Ocurrió un error.']);
     }
 }
 ?>

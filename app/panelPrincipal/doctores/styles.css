@@ -13,7 +13,6 @@ body {
     height: 100%;
 }
 
-
 header {
     display: flex;
     justify-content: space-between;
@@ -28,18 +27,12 @@ header {
 h1 {
     color: #007bff;
     margin: 0;
-    display: block;
     font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    display: block;
     font-weight: bold;
-    unicode-bidi: isolate;
-
 }
 
-.logout-button {
+.btmCerrarSesion {
     background-color: #539bfc;
     color: white;
     border: none;
@@ -48,22 +41,7 @@ h1 {
     cursor: pointer;
 }
 
-.contenedorBtnHeader {
-    width: 10%;
-    position: absolute;
-    right: 0%;
-}
-
-.contenedorBtnHeader .btmCerrarSesion {
-    background-color: #539bfc;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.contenedorBtnHeader .btmCerrarSesion:hover {
+.btmCerrarSesion:hover {
     background-color: #007bff;
     transition: 1s;
 }
@@ -71,35 +49,31 @@ h1 {
 main {
     display: flex;
     width: 100%;
-    height: 92%;
+    height: 82%;
 }
 
+/*------------SECCION MENU------------------- */
 
 .secMenu {
     background-color: #539bfc;
+    height: 100%;
     color: white;
     width: 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     font-size: larger;
 }
 
-
 .icon-cont {
     width: 100%;
-    height: 100%;
+    height: 12.5%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
 }
 
 .icon-cont:hover {
     background-color: white;
     transition: all 0.3s ease-in-out;
-
 }
 
 .icon-cont:hover .pe {
@@ -107,15 +81,13 @@ main {
     transition: all 0.3s ease-in-out;
 }
 
-
-
 .icon-cont:hover a img {
     filter: invert(71%) sepia(43%) saturate(6386%) hue-rotate(192deg) brightness(100%) contrast(98%);
 }
 
 .secMenu .contenedorMenu {
     width: 100%;
-    height: 50%;
+    height: 75%;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -123,21 +95,15 @@ main {
     margin-top: 30px;
 }
 
-
-
 .secMenu .contenedorMenu a {
+
     text-decoration: none;
     font-size: larger;
     text-align: center;
-    /* margin-top: 2em;*/
 }
-
-
-
 
 .secMenu .contenedorMenu a img {
     width: 35px;
-
 }
 
 .secMenu .contenedorMenu a p {
@@ -145,104 +111,125 @@ main {
     font-size: small;
 }
 
-
-
-.seccion-tabla {
+/* .seccion-tabla {
     width: 100%;
     height: 100%;
+} */
+
+.contenedor-encabezado-tabla{
+    width: 100%;
+    height: 4%;
+    display: flex;
+    justify-content: space-evenly;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-
-table {
+.seccion-tabla table {
     width: 98%;
-    height: 100%;
+    height: 96%;
     border-collapse: collapse;
     border-radius: 8px;
-    /* Bordes redondeados */
-    overflow: hidden;
-    /* Para ocultar los bordes redondeados */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    /* Sombra para profundidad */
     margin: auto;
     display: block;
     overflow: auto;
-
 }
 
-tbody {
-    width: 100em;
-    height: 100%;
+.seccion-tabla table thead{
+    height: 10%;
+    color: white;
+    width: 100%;
 }
 
-th,
-td {
+.seccion-tabla table tbody {
+    width: 80%;
+    height: 90%;
+}
+
+th, td {
     border: 1px solid #dddddd;
     text-align: left;
-    padding: 0.9em;
+    padding: 1%;
     transition: background-color 0.3s;
-    /* Transición suave en el hover */
 }
 
 th {
     background-color: #f2f2f2;
     color: #333;
-    /* Color de texto más oscuro */
     font-weight: bold;
 }
 
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-    /* Color alternativo para filas pares */
+tbody tr:hover {
+    background-color: #f1f1f1;
 }
 
-tr:hover {
-    background-color: #f1f1f1;
-    /* Color de fondo al pasar el ratón sobre la fila */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
 td {
-    width: 2%;
+    width: calc( 100% / 8 );
+    height: 5%;
     color: #555;
-    /* Color de texto más suave para las celdas */
     text-align: center;
 }
 
-@media (max-width: 600px) {
-    table {
-        font-size: 14px;
-        /* Ajuste de tamaño de fuente en pantallas pequeñas */
-    }
-}
-
 table tbody tr td img {
-    width: 2em;
+    width: 20%;
     cursor: pointer;
 }
+
+/* @media (max-width: 600px) {
+    table {
+        font-size: 14px;
+    }
+} */
+
 
 
 /* ---------------------------------------------------------- */
 /*                        MODAL                                  */
 /* ---------------------------------------------------------- */
+
 .contenedor-modal {
-    width: 40%;
-    height: 40%;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    height: 70%;
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    top: 10%;
+    left: 10%;
+    /* background: white; */
+    background-color: #007bff;
+    display: none;
+    border-radius: 8px;
 }
 
 .encabezado-modal {
     width: 100%;
+    height: 6%;
+}
+
+h2{
+    color: white;
+    font-size: 1.5em;
+    display: block;
+    font-weight: bold;
 }
 
 .encabezado-modal button {
-    width: 4%;
+    width: 5%;
     position: absolute;
-    right: 1%;
-    top: 3%;
+    right: 2%;
+    top:0%;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.contenedor-encabezado-modal .btn-cerrar:hover{
+    background-color: #d03f2f;
 }
 
 .on {
@@ -264,22 +251,16 @@ table tbody tr td img {
 
 .contendor-datos {
     width: 100%;
-    height: 100%;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    height: 94%;
+    margin: 0 auto;
+    padding: 20px;
+    /* background: white; */
+    background-color: #0f1215;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.contenedor-item {
-    padding: 1em;
-}
-
-
-.tabla-empleados {
+/* .tabla-empleados {
     margin: 2% 0 0 0;
     display: block;
     overflow: auto;
@@ -292,5 +273,18 @@ table tbody tr td img {
     font-size: 2em;
     font-weight: bold;
     unicode-bidi: isolate;
+} */
 
+
+/* ------------------------------------------- */
+/*              FOOTER                         */
+/* ------------------------------------------- */
+footer {
+    width: 100%;
+    height: 10%;
+    background-color: #539bfc;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
 }
+

@@ -25,11 +25,9 @@
         <ul class="nav-links">
             <li><a href="../index.html">Nosotros</a></li>
             <li><a href="../index.html">Contacto</a></li>
-            <li><a href="../index.html">INICIO</a></li>
+            <li><a href="../index.html">Inicio</a></li>
         </ul>
         </nav>
-
-        
     </header>
 
     <main>
@@ -61,6 +59,8 @@
         </div>
     </main>
 
+    <!-- script para poder usar el modulo ES6 para poder importar funciones -->
+    <script type="module" src="index.js"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./index.js"></script>
     <footer>
