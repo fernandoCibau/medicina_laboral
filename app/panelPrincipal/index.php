@@ -36,12 +36,11 @@
                         <div class="accesos" id="accesoAltaUsuario">
                             <div><img src="../icon/nuevo_user_grande.png" alt="nuevo usuario"></div>
                             <h3>Nuevo usuario</h3>
-                            <!-- <img src="../icon/formulario.png" alt="tabla"> -->
                         </div>
                 <?php } ?>
 
                 
-                <div class="accesos" id="accesoAltaTurnos">
+                <div class="accesos" id="accesoAltaTurnos"> 
                     <div><img src="../icon/turnos_blanco_grande.png" alt="cita-medica"></div>
                     <h3>Turnos</h3>
                 </div>
@@ -64,7 +63,6 @@
                 <div class="accesos" id="accesoPersMedico">
                     <div><img src="../icon/personal_medico.png" alt="personal medico"></div>
                     <h3>Pers. Medico</h3>
-                    <!-- <img src="../icon/tabla.png" alt="tabla"> -->
                 </div>
 
                 <div class="accesos" id="accesoHistClinic">

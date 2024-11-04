@@ -1,5 +1,6 @@
 [03-Nov-2024 19:41:14 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\Medicina_laboral\app\sistema_de_turnos\cargarTurno.php en la línea 17: Table 'el_salvador.medicos' doesn't exist
 [03-Nov-2024 19:41:16 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\Medicina_laboral\app\sistema_de_turnos\cargarTurno.php en la línea 17: Table 'el_salvador.medicos' doesn't exist
+<<<<<<< HEAD
 [04-Nov-2024 11:32:34 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\sistema_de_turnos\cargarTurno.php en la línea 17: Table 'el_salvador.medicos' doesn't exist
 [04-Nov-2024 11:32:38 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\sistema_de_turnos\cargarSelectMedicos.php en la línea 11: Table 'el_salvador.medicos' doesn't exist
 [04-Nov-2024 11:32:38 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\sistema_de_turnos\cargarSelectEmpresa.php en la línea 11: Table 'el_salvador.empresasclientes' doesn't exist
@@ -8,3 +9,5 @@
 [04-Nov-2024 16:25:00 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\sistema_de_turnos\cargarTurno.php en la línea 17: Unknown column 'T.medico' in 'on clause'
 [04-Nov-2024 16:27:12 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\sistema_de_turnos\cargarSelectEmpresa.php en la línea 11: Table 'el_salvador.empresasclientes' doesn't exist
 [04-Nov-2024 17:38:00 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\sistema_de_turnos\cargarSelectEmpresa.php en la línea 11: Table 'el_salvador.empresasclientes' doesn't exist
+=======
+>>>>>>> b5c0c6b063975845eb50276c399983c326a33fe1

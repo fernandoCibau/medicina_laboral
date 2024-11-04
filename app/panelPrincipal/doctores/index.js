@@ -66,8 +66,12 @@ const modificarMedico = (fila) => {
             // form.append($(`<label for="${key}">${key}</label>`));
             form.append($(`<input type="hidden" name="${key}" value="${fila[key]}" >`));
         } else {
-            form.append($(`<label for="${key}">${key}</label>`));
-            form.append($(`<input type="text" name="${key}" value="${fila[key]}">`));
+            form.append($(`
+                <div class="contenedor-input ">
+                    <label for="${key}">${key}</label>
+                    <input type="text" name="${key}" value="${fila[key]}">
+                </div>
+            `));
         }
     }
 

@@ -68,21 +68,18 @@ main {
     overflow: auto;
 }
 
-<<<<<<< HEAD
 main .seccionAccesosDirectos {
     display: flex;
     width: 90%;
-=======
+}
+
 .secMenu {
     background-color: #539bfc;
     height: 100%;
     color: white;
     width: 5%;
-
     font-size: larger;
-
 }
-
 
 .icon-cont {
     width: 100%;
@@ -147,7 +144,6 @@ main .seccionAccesosDirectos {
 .seccionAccesosDirectos {
     display: flex;
     width: 85%;
->>>>>>> 3d126c858e6174502423c31605f488bf37974822
     height: 100%;
     margin: auto;
 }
