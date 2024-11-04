@@ -426,9 +426,6 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
         modalOnOff(); // Cerrar el modal sin guardar
     });
 
-
-
-
 //Cargar el select empresa del modal turnos
 const cargarSelectEmpresa = () =>{
     $.ajax({
