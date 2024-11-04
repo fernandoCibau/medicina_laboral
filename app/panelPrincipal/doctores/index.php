@@ -24,7 +24,6 @@
     <header>
         <h1>DOCTORES</h1>
         <div class="contenedorBtnHeader">
-            <!-- <img src="../icon/boton-de-encendido.png" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido"> -->
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>
         </div>
     </header>
@@ -43,6 +42,14 @@
         </section>
         
         <section class="seccion-tabla">
+            <div class="contenedor-encabezado-tabla">
+                <label for="buscarPorNombre">Buscar Por Nombre</label>
+                <input type="text" name="buscarPorNombre" id="buscarPorNombre"  placeholder="Nombre del medico">
+                <label for="buscarPorEspecialidad">Buscar Por Especialidad</label>
+                <input type="text" name="buscarPorNombre" id="buscarPorEspecialidad"  placeholder="Especialidad del medico">
+                <!-- <input type="button" value="Nuevo Turno" id="btn-nuevo-turno"> -->
+            </div>
+
             <table>
                 <thead>
                     <tr>
@@ -63,16 +70,18 @@
         
         <div class="contenedor-modal off" id="contenedorModal">
             <div class="encabezado-modal">
-                <h2 class="titulo-empleados" id="tituloModal"></h2>
+                <h2 class="titulo-empleados" id="tituloModal">Formilario Modificar</h2>
                 <button id="btn-modal-X">X</button>
             </div>
             <div id="contenedorDatos" class="contendor-datos">
-            
+                <form action=""method="post" id="formModificar"></form>
             </div>
         </div>
-        
+
     </main>
 
+    <!-- script para poder usar el modulo ES6 para poder importar funciones -->
+    <script type="module" src="index.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./index.js"></script>

@@ -49,30 +49,7 @@ const setFechaActual = () => {
             $('#mesInput').val(`${año}-${mes}`);
 };
 
-//Carga el SELECT con todos los horarios
-
-// const setHorasDelDia = ( listaDeTurnos ) =>{
-
-//     $("#horas-del-dia").append( $(`<option value=''>-- : -- : --</option>`) );
-
-//     for (let i = 0; i < 24; i++) {
-//         for (let j = 0; j < 6; j++) {  
-
-//             const hora = `  ${i < 10 ? 0 : ' ' }${ i }:${ j }0:00 `;
-//             listaDeTurnos.forEach( turno => {
-//                 console.log(turno['hora'])
-//                 if( hora = turno[ 'hora' ] ) {
-//                     // $(`<option value="${hora}" class="disabled-option" disabled>${hora}</option>`)
-//                     $("#horas-del-dia").append( $(`<option value="${ hora }" class="disabled-option" disabled >  ${hora} </option>`) );
-//                 }
-//             });            
-//         }
-//     }
-// }
-
-
 //Carga los turnos en el select de nuevo turno y bloquea los ya asignados
-
 const buscarHorariosTurnos  = ( fecha ) =>{
     $.ajax({
         url : "buscarHorarios.php",
@@ -497,7 +474,6 @@ $("#btn-nuevo-turno").click(() => {
 //Boton para cerrar modal
 $("#btn-cerrar").click( ()=>{
     modalOnOff ();
-    // vaciarFormModal();
     $("#contenedor-tabla").attr('class', 'contenedor-tabla on')
     $("#contenedor-fom").attr('class', 'contenedor-fom on')
 });

@@ -30,12 +30,7 @@ h1 {
     margin: 0;
     display: block;
     font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
     font-weight: bold;
-    unicode-bidi: isolate;
 }
 
 .logout-button {
@@ -143,13 +138,13 @@ main {
 /* ------------------------------------------------ */
 
 .seccion-mes {
-    width: 95%;
+    width: 93%;
     height: 100%;
     margin: auto;
 }
 
 .seccion-mes .mes {
-    width: 95%;
+    width: 100%;
     height: 90%;
     display: flex;
     flex-wrap: wrap;
@@ -157,6 +152,8 @@ main {
 }
 
 .seccion-mes .contenedor-encabezado {
+    width: 100%;
+    height: 5%;
     display: flex;
     justify-content: space-evenly;
 }
@@ -170,9 +167,10 @@ main {
     background-color: #539bfc;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 0px 15px;
     border-radius: 4px;
     cursor: pointer;
+    text-align: center;
 }
 
 .seccion-mes .contenedor-encabezado input[ type='button']:hover ,input[ type='month']:hover{
@@ -233,6 +231,7 @@ main {
     background: white;
     display: none;
     border-radius: 8px;
+    overflow: hidden;
 }
 
 .contenedor-encabezado-modal {
@@ -278,8 +277,9 @@ main {
 
 .contenedor-tabla {
     width: 100%;
+    height: 100%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -287,67 +287,61 @@ main {
 
 h2 {
     text-align: center;
-    color: #333;
+    color: #007bff;
+    font-size: 1.5em;
+    font-weight: bold;
+    height: 10%;
 }
 
+.contenedor-tabla-2 {
+    width: 100%;
+    height: 90%;
+    overflow: auto;
+}
 table {
     width: 100%;
+    height: 100%;
     border-collapse: collapse;
-    /* Colapsar bordes */
-    margin-top: 20px;
-    /* Espacio superior */
     margin: auto;
 }
 
 thead {
     background-color: #007bff;
-    /* Color de fondo del encabezado */
+    width: 90%;
+    height: 10%;
     color: white;
-    /* Color del texto del encabezado */
-    width: 100%;
-    display: block;
+}
+
+tbody {
+    width: 90%;
+    height: 90%;
 }
 
 th,
 td {
     width: calc(100% / 5);
-    padding: 12px 15px;
+    padding: 1em 1em;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-tbody {
-    display: block;
-    /* Convertir tbody en bloque */
-    height: 35em;
-    /* Altura máxima */
+tr{
+    display: table;
+    /* height: 1em;  */
     width: 100%;
-    overflow-y: auto;
-    /* Scroll vertical */
-    overflow-x: hidden;
-    /* Ocultar scroll horizontal */
 }
 
-tr {
-    display: table;
-    /* Asegura que las filas se comporten como tabla */
-    width: 100%;
-    /* Ancho total del tbody */
-}
 
 tbody tr:hover {
     background-color: #f1f1f1;
-    /* Color de fondo al pasar el mouse */
 }
 
 tbody tr:nth-child(even) {
     background-color: #f9f9f9;
-    /* Color de fondo para filas pares */
 }
 
 tbody tr:last-child {
     border-bottom: 2px solid #007bff;
-    /* Borde inferior para la última fila */
 }
 
 .btn-eliminar {

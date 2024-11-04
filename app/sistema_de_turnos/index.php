@@ -95,18 +95,20 @@ session_start();
 
                 <div class="contenedor-tabla" id="contenedor-tabla">
                     <h2>Lista de Turnos</h2>
-                    <table id='modalTablaTurnos'>
-                        <thead>
-                            <tr>
-                                <th>Empleado</th>
-                                <th>Fecha</th>
-                                <th>Doctor</th>
-                                <th>Hora</th>
-                                <th>Eliminar</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                    <div class="contenedor-tabla-2">
+                        <table id='modalTablaTurnos'>
+                            <thead>
+                                <tr>
+                                    <th>Empleado</th>
+                                    <th>Fecha</th>
+                                    <th>Doctor</th>
+                                    <th>Hora</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
