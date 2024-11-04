@@ -6,7 +6,7 @@ if(isset($_GET['empresas'])){
         
         include('../conexion.php');
         
-        $sql = "SELECT  * FROM empresasClientes";
+        $sql = "SELECT  * FROM empresas";
         
         $resultado = mysqli_query($conexion, $sql );
         
