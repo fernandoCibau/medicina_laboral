@@ -342,6 +342,11 @@ table tbody tr td img {
 
 }
 
+.conteiner-empresa {
+    position: relative;
+    width: 100%;
+}
+
 #resultados {
     position: absolute;
     top: 45%;

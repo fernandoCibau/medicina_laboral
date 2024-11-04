@@ -78,7 +78,45 @@
                 <button id="btn-modal-X">X</button>
             </div>
             <div id="contenedorDatos" class="contendor-datos">
-                
+            <div class="contenedor-input">
+                <label for="selectEmpresas" require>Empresas</label>
+                <select name="selectEmpresas" id="selectEmpresas"></select>
+            </div>
+            
+            <label for="inputLegajo">Legajo</label>
+            <input type="text" id="altaLegajo">
+
+            <label for="inputDNI">DNI</label>
+            <input type="text" id="altaDNI" required>
+            
+            <label for="inputApellido">Apellido</label>
+            <input type="text" id="altaApellido" required>
+            
+            <label for="inputNombre">Nombre</label>
+            <input type="text" id="altaNombre" required>
+            
+            <label for="inputDomicilio">Domicilio</label>
+            <input type="text" id="altaDomicilio">
+                                                    
+            <label for="inputFechaNac">Fecha Nac:</label>
+            <input type="date" id="altaFechaNac" required>
+                                                    
+            <label for="inputFechaIng">Fecha Ing:</label>
+            <input type="date" id="altaFechaIng">
+                                                    
+            <label for="inputCategoria">Categoria</label>
+            <input type="text" id="altaCategoria">
+                                                    
+            <label for="inputSeccion">Seccion</label>
+            <input type="text" id="altaSeccion">
+                                                    
+            <label for="inputObservaciones">Observaciones</label>
+            <input type="text" id="altaObservaciones">
+            
+            <div id="modalButtons">
+                <button id="agregarBtn" class="btn btn-primary">Agregar Empleado</button>
+                <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
+            </div>
                 </div>
             </div>
         

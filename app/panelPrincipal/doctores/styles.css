@@ -32,7 +32,22 @@ h1 {
     font-weight: bold;
 }
 
-.btmCerrarSesion {
+.logout-button {
+    background-color: #539bfc;
+    color: white;
+    border: none;
+    padding: 10px, 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contenedorBtnHeader {
+    width: 10%;
+    position: absolute;
+    right: 0%;
+}
+
+.contenedorBtnHeader .btmCerrarSesion {
     background-color: #539bfc;
     color: white;
     border: none;
@@ -41,7 +56,7 @@ h1 {
     cursor: pointer;
 }
 
-.btmCerrarSesion:hover {
+.contenedorBtnHeader .btmCerrarSesion:hover {
     background-color: #007bff;
     transition: 1s;
 }
@@ -50,238 +65,139 @@ main {
     display: flex;
     width: 100%;
     height: 82%;
+    overflow: auto;
 }
 
-<<<<<<< HEAD
-=======
-/*------------SECCION MENU------------------- */
->>>>>>> 3d126c858e6174502423c31605f488bf37974822
-.secMenu {
-    background-color: #539bfc;
-    height: 100%;
-    color: white;
-    width: 5%;
-
-    font-size: larger;
-
-}
-
-.icon-cont {
-    width: 100%;
-    height: 12.5%;
+main .seccionAccesosDirectos {
     display: flex;
-    flex-direction: column;
+    width: 90%;
+    height: 100%;
+    margin: auto;
+}
+
+main .seccionAccesosDirectos .contenedorAccesos {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contenedorAccesos h2 {
+    position: absolute;
+}
+
+.accesos {
+    width: 12em;
+    height: 16em;
+    background-color: #f9f9f9;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 1em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    margin: 1%;
+    margin: auto;
+}
+
+.accesos div {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    width: 8em;
+    height: 8em;
+    background-color: #539bfc;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.accesos:hover {
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.seccionAccesosDirectos .contenedorAccesos .accesos h3 {
+    position: absolute;
+    bottom: 10%;
+}
+
+.seccionAccesosDirectos .contenedorAccesos .accesos img {
+    width: 50%;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.icon-cont:hover {
-    background-color: white;
-    transition: all 0.3s ease-in-out;
-}
-
-.icon-cont:hover .pe {
-    color: #007bff;
-    transition: all 0.3s ease-in-out;
-}
-
-.icon-cont:hover a img {
-    filter: invert(71%) sepia(43%) saturate(6386%) hue-rotate(192deg) brightness(100%) contrast(98%);
-}
-
-.secMenu .contenedorMenu {
-    width: 100%;
-    height: 75%;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 30px;
-}
-
-.secMenu .contenedorMenu a {
-
-    text-decoration: none;
-    font-size: larger;
-    text-align: center;
-}
-
-.secMenu .contenedorMenu a img {
-    width: 35px;
-}
-
-.secMenu .contenedorMenu a p {
-    color: white;
-    font-size: small;
-}
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 3d126c858e6174502423c31605f488bf37974822
-.seccion-tabla {
-    width: 100%;
-    height: 100%;
-}
-
-.contenedor-encabezado-tabla{
-    width: 100%;
-    height: 4%;
-    display: flex;
-    justify-content: space-evenly;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.seccion-tabla table {
-    width: 98%;
-    height: 96%;
-    border-collapse: collapse;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+.seccionAccesosDirectos .contenedorAccesosDos {
+    width: 40%;
+    position: relative;
     margin: auto;
-    display: block;
-    overflow: auto;
 }
 
-.seccion-tabla table thead{
-    height: 10%;
-    color: white;
-    width: 100%;
+.seccionAccesosDirectos .contenedorAccesosDos .perfil {
+    width: 90%;
+    height: 15em;
+    box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.5);
+    border-radius: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: auto;
 }
 
-.seccion-tabla table tbody {
-    width: 80%;
-    height: 90%;
+.seccionAccesosDirectos .contenedorAccesosDos .perfil:hover {
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-th, td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 1%;
-    transition: background-color 0.3s;
-}
-
-th {
-    background-color: #f2f2f2;
-    color: #333;
-    font-weight: bold;
-}
-
-tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-td {
-    width: calc( 100% / 8 );
-    height: 5%;
-    color: #555;
-    text-align: center;
-}
-
-table tbody tr td img {
-    width: 20%;
-    cursor: pointer;
-}
-
-/* @media (max-width: 600px) {
-    table {
-        font-size: 14px;
-    }
-} */
-
-
-
-/* ---------------------------------------------------------- */
-/*                        MODAL                                  */
-/* ---------------------------------------------------------- */
-
-.contenedor-modal {
-    width: 80%;
-    height: 80%;
+.seccionAccesosDirectos .contenedorAccesosDos .perfil h3 {
     position: absolute;
     top: 10%;
-    left: 10%;
-    background: white;
-    display: none;
-    border-radius: 8px;
 }
 
-.encabezado-modal {
+.seccionAccesosDirectos .contenedorAccesosDos .contenedorFoto {
+    width: 8em;
+    margin: auto;
+}
+
+.seccionAccesosDirectos .contenedorAccesosDos .contenedorFoto img {
     width: 100%;
 }
 
-.encabezado-modal button {
-    width: 5%;
-    position: absolute;
-    right: 2%;
-    top:0%;
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
+.seccionAccesosDirectos .contenedorAccesosDos .perfilDatos {
+    width: 10em;
+    margin: auto;
+}
+
+.seccionAccesosDirectos .contenedorAccesosDos .perfilDatos p {
+    margin: 0 0 0.5em 0;
+    font-size: larger;
+}
+
+.seccionAccesosDirectos .contenedorAccesosDos .perfilDatos .btnEditarPerfil {
     cursor: pointer;
-}
-
-.contenedor-encabezado-modal .btn-cerrar:hover{
-    background-color: #d03f2f;
-}
-
-.on {
-    display: block;
-}
-
-.off {
-    display: none;
-}
-
-.bloqueado {
-    pointer-events: none;
-}
-
-.desbloqueado {
-    pointer-events: all;
-
-}
-
-.contendor-datos {
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* .tabla-empleados {
-    margin: 2% 0 0 0;
-    display: block;
-    overflow: auto;
-}
-
-.titulo-empleados {
-    color: #007bff;
-    margin: 0;
-    display: block;
-    font-size: 2em;
+    transition: 1s;
+    padding: 0.5em;
     font-weight: bold;
-    unicode-bidi: isolate;
-} */
+}
+
+.seccionAccesosDirectos .contenedorAccesosDos .perfilDatos .btnEditarPerfil:hover {
+    background-color: rgba(0, 128, 0, 0.5);
+    transition: 1s;
+}
+
+/* --------------------------------------------- */
+/*              FOOTER                           */
+/* --------------------------------------------- */
 
 
-/* ------------------------------------------- */
-/*              FOOTER                         */
-/* ------------------------------------------- */
 footer {
     width: 100%;
     height: 10%;
-    background-color: #539bfc;
+    background-color: #007bff;
     color: #fff;
     padding: 20px;
     text-align: center;
 }
-

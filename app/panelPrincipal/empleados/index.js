@@ -73,9 +73,10 @@ const cargarTabla = () => {
                     
                     // Crear los inputs con los valores de la fila seleccionada
                     $("#contenedorDatos").append(`
-                        <input type="text" id="inputId" value="${fila['id']}" readonly hidden>
+                        <input type="text" id="inputId" value="${fila['id']}" hidden>
 
                         <label for="inputIdEmpresa">Empresa</label>
+                        <input type= "number" id="idEmpresa" value = "${fila['id_empresa']}" hidden>
                         <input type="text" id="inputIdEmpresa" value="${fila['empresa_nombre']}" readonly>
                         
                         <label for="inputLegajo">Legajo</label>
@@ -100,10 +101,12 @@ const cargarTabla = () => {
                         <input type="date" id="inputFechaIng" value="${fila['fecha_ingreso']}">
                                                 
                         <label for="inputCategoria">Categoria</label>
-                        <input type="text" id="inputCategoria" value="${fila['categoria_nombre']}">
+                        <input type= "number" id="idCategoria" value = "${fila['id_categoria']}" hidden>
+                        <input type="text" id="inputCategoria" value="${fila['categoria_nombre']}" readonly>
                                                 
                         <label for="inputSeccion">Seccion</label>
-                        <input type="text" id="inputSeccion" value="${fila['seccion_nombre']}">
+                        <input type= "number" id="idSeccion" value = "${fila['id_seccion']}" hidden>
+                        <input type="text" id="inputSeccion" value="${fila['seccion_nombre']}" readonly>
                                                 
                         <label for="inputObservaciones">Observaciones</label>
                         <input type="text" id="inputObservaciones" value="${fila['observaciones']}">
@@ -128,10 +131,10 @@ const cargarTabla = () => {
                             domicilio: $("#inputDomicilio").val(),
                             fecha_nacimiento: $("#inputFechaNac").val(),
                             fecha_ingreso: $("#inputFechaIng").val(),
-                            id_categoria: $("#inputCategoria").val(),
-                            id_seccion: $("#inputSeccion").val(),
+                            id_categoria: $("#id_categoria").val(),
+                            id_seccion: $("#id_seccion").val(),
                             observaciones: $("#inputObservaciones").val(),
-                            id_empresa: $("#inputIdEmpresa").val()
+                            id_empresa: $("#idEmpresa").val()
                         };
 
                         $.ajax({
@@ -162,6 +165,7 @@ const cargarTabla = () => {
 
                     // Evento del botón Cancelar
                     $("#cancelarBtn").on("click", () => {
+                        $("#contenedorDatos").empty();
                         modalOnOff(); // Cerrar el modal sin guardar
                     });
                 });
@@ -303,47 +307,6 @@ const eliminarEmpleado = (idEmpleado) => {
     });
 };
 
-/* TRAE LA LISTA DE CATEGORIAS A MEDIDA QUE ESCRIBO */
-
-$(document).ready(function() {
-    $('#inputCategoria').on('keyup', function() {
-        let nombreCategoria = $(this).val();
-  
-        if (nombreCategoria.length > 0) {
-            $.ajax({
-                url: 'buscar_categoria.php',
-                type: 'POST',
-                data: { buscar_categoria: nombreCategoria },
-                success: function(data) {
-                    $('#resultados').html(data);
-                    if (data.trim() !== "") {
-                        $('#resultados').addClass('visible');
-                    } else {
-                        $('#resultados').removeClass('visible');
-                    }
-                    $('#resultados li').on('click', function() {
-                        $('#categoria').val($(this).text());
-                        $('#resultados').html('');
-                        $('#resultados').removeClass('visible');
-                    });
-                }
-            });
-        } else {
-            $('#resultados').html('');
-            $('#resultados').removeClass('visible');
-        }
-    });
-  
-  
-   /*  OCULTA LA LISTA DE EMPRESAS CUANDO HAGO CLICK FUERA */
-  
-    $(document).on('click', function(e) {
-      if (!$(e.target).closest('#categoria').length && !$(e.target).closest('#resultados').length) {
-          $('#resultados').html('');
-          $('#resultados').removeClass('visible');
-      }
-  });
-  });
 
 
 //Buscador
@@ -362,55 +325,59 @@ $(document).ready(function() {
 });
 
 
+
+
+
+
 //Funcion de agregar empleado
 
 const botonAgregar = $("#agregarEmpleado").on("click", () => {
-    $("#contenedorDatos").empty();
-
-    // Crear los inputs con los valores de la fila seleccionada
-    $("#contenedorDatos").append(`
-        <label for="empresa">Empresa</label>
-        <input type="text" id="empresa" name="empresa" required>
-        <div id="resultados"></div>
-        
-        <label for="inputLegajo">Legajo</label>
-        <input type="text" id="inputLegajo">
-
-        <label for="inputDNI">DNI</label>
-        <input type="text" id="inputDNI" required>
-        
-        <label for="inputApellido">Apellido</label>
-        <input type="text" id="inputApellido" required>
-        
-        <label for="inputNombre">Nombre</label>
-        <input type="text" id="inputNombre" required>
-        
-        <label for="inputDomicilio">Domicilio</label>
-        <input type="text" id="inputDomicilio">
-                                                
-        <label for="inputFechaNac">Fecha Nac:</label>
-        <input type="date" id="inputFechaNac" required>
-                                                
-        <label for="inputFechaIng">Fecha Ing:</label>
-        <input type="date" id="inputFechaIng">
-                                                
-        <label for="inputCategoria">Categoria</label>
-        <input type="text" id="inputCategoria">
-                                                
-        <label for="inputSeccion">Seccion</label>
-        <input type="text" id="inputSeccion">
-                                                
-        <label for="inputObservaciones">Observaciones</label>
-        <input type="text" id="inputObservaciones">
-        
-        <div id="modalButtons">
-            <button id="agregarBtn" class="btn btn-primary">Agregar Empleado</button>
-            <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
-        </div>
-    `);
 
     $("#tituloModal").text("Agregar Empleado");
     modalOnOff();
+    $("#contenedorDatos").empty();
+    $("#contenedorDatos").append(`
+            <div class="contenedor-input">
+                <label for="selectEmpresas" require>Empresas</label>
+                <select name="selectEmpresas" id="selectEmpresas"></select>
+            </div>
+            
+            <label for="inputLegajo">Legajo</label>
+            <input type="text" id="altaLegajo">
+
+            <label for="inputDNI">DNI</label>
+            <input type="text" id="altaDNI" required>
+            
+            <label for="inputApellido">Apellido</label>
+            <input type="text" id="altaApellido" required>
+            
+            <label for="inputNombre">Nombre</label>
+            <input type="text" id="altaNombre" required>
+            
+            <label for="inputDomicilio">Domicilio</label>
+            <input type="text" id="altaDomicilio">
+                                                    
+            <label for="inputFechaNac">Fecha Nac:</label>
+            <input type="date" id="altaFechaNac" required>
+                                                    
+            <label for="inputFechaIng">Fecha Ing:</label>
+            <input type="date" id="altaFechaIng">
+                                                    
+            <label for="inputCategoria">Categoria</label>
+            <input type="text" id="altaCategoria">
+                                                    
+            <label for="inputSeccion">Seccion</label>
+            <input type="text" id="altaSeccion">
+                                                    
+            <label for="inputObservaciones">Observaciones</label>
+            <input type="text" id="altaObservaciones">
+            
+            <div id="modalButtons">
+                <button id="agregarBtn" class="btn btn-primary">Agregar Empleado</button>
+                <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
+            </div>
+        
+        `);
 
     // Evento del botón Guardar Cambios
     $("#agregarBtn").on("click", () => {
@@ -427,26 +394,13 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
             id_seccion: null    // Asigna null directamente
         };
     
-        // Obtener el ID de la empresa
-        $.ajax({
-            url: "retornaClaveEmpresa.php",
-            method: "POST",
-            data: { empresa: $("#empresa").val() }
-        }).done(response => {
-            const resultado = JSON.parse(response);
-            if (resultado.operacion) {
-                datosActualizados.id_empresa = resultado.id_empresa;
-    
                 // Realizar la solicitud final para dar de alta al empleado
                 return $.ajax({
                     url: "altaEmpleado.php",
                     method: "POST",
                     data: datosActualizados
                 });
-            } else {
-                throw new Error(resultado.mensaje || "No se pudo obtener la clave de la empresa.");
-            }
-        }).done(response => {
+            }).done(response => {
             const resultado = JSON.parse(response);
             if (resultado.operacion) {
                 console.log("El empleado se cargó con éxito.");
@@ -473,49 +427,37 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
     });
 });
 
-/* TRAE LA LISTA DE EMPRESAS A MEDIDA QUE ESCRIBO */
 
-$(document).ready(function () {
-    $("#empresa").on("keyup", function () {
-      let nombreEmpresa = $(this).val();
-  
-      if (nombreEmpresa.length > 0) {
-        $.ajax({
-          url: "buscar_empresa.php",
-          type: "POST",
-          data: { buscar_empresa: nombreEmpresa },
-          success: function (data) {
-            $("#resultados").html(data);
-            if (data.trim() !== "") {
-              $("#resultados").addClass("visible");
-            } else {
-              $("#resultados").removeClass("visible");
+
+//Cargar el select empresa del modal turnos
+const cargarSelectEmpresa = () =>{
+    $.ajax({
+        url : "cargarSelectEmpresa.php",
+        method : "get",
+        data : {empresas:'empresas'},
+
+        success:( resultado, estado )=>{
+
+            try {
+                const datos = JSON.parse(resultado);
+                console.log(datos.datos);
+                
+                $('#selectEmpresas').empty().append( $('<option value="" selected>Selecciona una empresa</option>'));
+
+                $('#selectEmpleados').prop('disabled', true).append($('<option value="" selected>Selecciona un empleado</option>') );
+                
+                datos.datos.forEach( fila => {            
+                    $('#selectEmpresas').append( $( `<option value="${fila['id']}">${fila['razon_social']}</option>`) );
+                });
+
+            }catch (error) {
+                console.log(resultado);
+                console.error("Error al cargar select empresas del modal:", error);
+                alert("Error al cargar datos en el select empresas. Consulta la consola para más detalles.");
             }
-            $("#resultados li").on("click", function () {
-              $("#empresa").val($(this).text());
-              $("#resultados").html("");
-              $("#resultados").removeClass("visible");
-            });
-          },
-        });
-      } else {
-        $("#resultados").html("");
-        $("#resultados").removeClass("visible");
-      }
-    });
-  
-    /*  OCULTA LA LISTA DE EMPRESAS CUANDO HAGO CLICK FUERA */
-  
-    $(document).on("click", function (e) {
-      if (
-        !$(e.target).closest("#empresa").length &&
-        !$(e.target).closest("#resultados").length
-      ) {
-        $("#resultados").html("");
-        $("#resultados").removeClass("visible");
-      }
-    });
-  });
+        }
+    })
+}
 
 
 

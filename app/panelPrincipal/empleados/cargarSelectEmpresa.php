@@ -4,7 +4,7 @@ if(isset($_GET['empresas'])){
     
     try{
         
-        include('../conexion.php');
+        include "../../conexion.php";
         
         $sql = "SELECT  * FROM empresas";
         
