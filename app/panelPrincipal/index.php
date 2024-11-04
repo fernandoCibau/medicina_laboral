@@ -21,6 +21,7 @@
     <header>
         <h1>CLINICA EL SALVADOR</h1>
         <div class="contenedorBtnHeader">
+            <!-- <img src="../icon/boton-de-encendido.png" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido"> -->
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonCerrarSesion">Cerrar Sesion</button>
         </div>
     </header>
@@ -75,7 +76,7 @@
                 </div>
 
             </div>
-        </section> 
+        </section>
 
     </main>
 

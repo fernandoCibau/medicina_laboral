@@ -2,6 +2,7 @@
 if (isset($_POST['id']) && (isset($_POST['legajo']) || isset($_POST['dni']) || isset($_POST['apellido']) || isset($_POST['nombre']) || isset($_POST['domicilio']) || isset($_POST['fecha_nacimiento']) || isset($_POST['fecha_ingreso']) || isset($_POST['id_categoria']) || isset($_POST['id_seccion']) || isset($_POST['observaciones']) || isset($_POST['id_empresa']))) {
     try {
         include "../../conexion.php";
+        include "error_config.php";
 
         $id = $_POST['id'];
         $legajo = isset($_POST['legajo']) ? $_POST['legajo'] : null;
@@ -14,7 +15,7 @@ if (isset($_POST['id']) && (isset($_POST['legajo']) || isset($_POST['dni']) || i
         $id_categoria = isset($_POST['id_categoria']) ? $_POST['id_categoria'] : null;
         $id_seccion = isset($_POST['id_seccion']) ? $_POST['id_seccion'] : null;
         $observaciones = isset($_POST['observaciones']) ? $_POST['observaciones'] : null;
-        $id_empresa = isset($_POST['id_empresa']) ? $_POST['id_empresa'] : null;
+
 
         // Verificar si el empleado con el id existe
         $stmt = $conexion->prepare("SELECT * FROM empleados WHERE id = ?");

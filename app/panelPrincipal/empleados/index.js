@@ -57,7 +57,6 @@ const cargarTabla = () => {
                 for (let key in fila) {
                     if (key !== 'id' && key !== 'fecha_nacimiento' && key !== 'fecha_ingreso' && key !== 'domicilio' && key !== 'observaciones') {
                         const td = $("<td>").text(fila[key]);
-                        console.log("Se cargó el campo: " + key + " con valor: " + fila[key]);
                         tr.append(td);
                     }
                 }
@@ -74,9 +73,10 @@ const cargarTabla = () => {
                     
                     // Crear los inputs con los valores de la fila seleccionada
                     $("#contenedorDatos").append(`
-                        <input type="text" id="inputId" value="${fila['id']}" readonly hidden>
+                        <input type="text" id="inputId" value="${fila['id']}" hidden>
 
                         <label for="inputIdEmpresa">Empresa</label>
+                        <input type= "number" id="idEmpresa" value = "${fila['id_empresa']}" hidden>
                         <input type="text" id="inputIdEmpresa" value="${fila['empresa_nombre']}" readonly>
                         
                         <label for="inputLegajo">Legajo</label>
@@ -101,10 +101,12 @@ const cargarTabla = () => {
                         <input type="date" id="inputFechaIng" value="${fila['fecha_ingreso']}">
                                                 
                         <label for="inputCategoria">Categoria</label>
-                        <input type="text" id="inputCategoria" value="${fila['categoria_nombre']}">
+                        <input type= "number" id="idCategoria" value = "${fila['id_categoria']}" hidden>
+                        <input type="text" id="inputCategoria" value="${fila['categoria_nombre']}" readonly>
                                                 
                         <label for="inputSeccion">Seccion</label>
-                        <input type="text" id="inputSeccion" value="${fila['seccion_nombre']}">
+                        <input type= "number" id="idSeccion" value = "${fila['id_seccion']}" hidden>
+                        <input type="text" id="inputSeccion" value="${fila['seccion_nombre']}" readonly>
                                                 
                         <label for="inputObservaciones">Observaciones</label>
                         <input type="text" id="inputObservaciones" value="${fila['observaciones']}">
@@ -129,10 +131,10 @@ const cargarTabla = () => {
                             domicilio: $("#inputDomicilio").val(),
                             fecha_nacimiento: $("#inputFechaNac").val(),
                             fecha_ingreso: $("#inputFechaIng").val(),
-                            id_categoria: $("#inputCategoria").val(),
-                            id_seccion: $("#inputSeccion").val(),
+                            id_categoria: $("#id_categoria").val(),
+                            id_seccion: $("#id_seccion").val(),
                             observaciones: $("#inputObservaciones").val(),
-                            id_empresa: $("#inputIdEmpresa").val()
+                            id_empresa: $("#idEmpresa").val()
                         };
 
                         $.ajax({
@@ -163,6 +165,7 @@ const cargarTabla = () => {
 
                     // Evento del botón Cancelar
                     $("#cancelarBtn").on("click", () => {
+                        $("#contenedorDatos").empty();
                         modalOnOff(); // Cerrar el modal sin guardar
                     });
                 });
@@ -304,47 +307,6 @@ const eliminarEmpleado = (idEmpleado) => {
     });
 };
 
-/* TRAE LA LISTA DE CATEGORIAS A MEDIDA QUE ESCRIBO */
-
-$(document).ready(function() {
-    $('#inputCategoria').on('keyup', function() {
-        let nombreCategoria = $(this).val();
-  
-        if (nombreCategoria.length > 0) {
-            $.ajax({
-                url: 'buscar_categoria.php',
-                type: 'POST',
-                data: { buscar_categoria: nombreCategoria },
-                success: function(data) {
-                    $('#resultados').html(data);
-                    if (data.trim() !== "") {
-                        $('#resultados').addClass('visible');
-                    } else {
-                        $('#resultados').removeClass('visible');
-                    }
-                    $('#resultados li').on('click', function() {
-                        $('#categoria').val($(this).text());
-                        $('#resultados').html('');
-                        $('#resultados').removeClass('visible');
-                    });
-                }
-            });
-        } else {
-            $('#resultados').html('');
-            $('#resultados').removeClass('visible');
-        }
-    });
-  
-  
-   /*  OCULTA LA LISTA DE EMPRESAS CUANDO HAGO CLICK FUERA */
-  
-    $(document).on('click', function(e) {
-      if (!$(e.target).closest('#categoria').length && !$(e.target).closest('#resultados').length) {
-          $('#resultados').html('');
-          $('#resultados').removeClass('visible');
-      }
-  });
-  });
 
 
 //Buscador
@@ -361,6 +323,143 @@ $(document).ready(function() {
         });
     });
 });
+
+
+
+
+
+
+//Funcion de agregar empleado
+
+const botonAgregar = $("#agregarEmpleado").on("click", () => {
+
+    $("#tituloModal").text("Agregar Empleado");
+    modalOnOff();
+    $("#contenedorDatos").empty();
+    $("#contenedorDatos").append(`
+            <div class="contenedor-input">
+                <label for="selectEmpresas" require>Empresas</label>
+                <select name="selectEmpresas" id="selectEmpresas"></select>
+            </div>
+            
+            <label for="altaLegajo">Legajo</label>
+            <input type="text" id="altaLegajo">
+
+            <label for="altaDNI">DNI</label>
+            <input type="text" id="altaDNI" required>
+            
+            <label for="altaApellido">Apellido</label>
+            <input type="text" id="altaApellido" required>
+            
+            <label for="altaNombre">Nombre</label>
+            <input type="text" id="altaNombre" required>
+            
+            <label for="altaDomicilio">Domicilio</label>
+            <input type="text" id="altaDomicilio">
+                                                    
+            <label for="altaFechaNac">Fecha Nac:</label>
+            <input type="date" id="altaFechaNac" required>
+                                                    
+            <label for="altaFechaIng">Fecha Ing:</label>
+            <input type="date" id="altaFechaIng">
+                                                    
+            <label for="altaCategoria">Categoria</label>
+            <input type="text" id="altaCategoria">
+                                                    
+            <label for="altaSeccion">Seccion</label>
+            <input type="text" id="altaSeccion">
+                                                    
+            <label for="altaObservaciones">Observaciones</label>
+            <input type="text" id="altaObservaciones">
+            
+            <div id="modalButtons">
+                <button id="agregarBtn" class="btn btn-primary">Agregar Empleado</button>
+                <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
+            </div>
+        
+        `);
+
+    // Evento del botón Guardar Cambios
+    $("#agregarBtn").on("click", () => {
+        const datosActualizados = {
+            legajo: $("#inputLegajo").val(),
+            dni: $("#inputDNI").val(),
+            apellido: $("#inputApellido").val(),
+            nombre: $("#inputNombre").val(),
+            domicilio: $("#inputDomicilio").val(),
+            fecha_nac: $("#inputFechaNac").val(),
+            fecha_ing: $("#inputFechaIng").val(),
+            observaciones: $("#inputObservaciones").val(),
+            id_categoria: null, // Asigna null directamente
+            id_seccion: null    // Asigna null directamente
+        };
+    
+                // Realizar la solicitud final para dar de alta al empleado
+                return $.ajax({
+                    url: "altaEmpleado.php",
+                    method: "POST",
+                    data: datosActualizados
+                });
+            }).done(response => {
+            const resultado = JSON.parse(response);
+            if (resultado.operacion) {
+                console.log("El empleado se cargó con éxito.");
+                Swal.fire({
+                    title: "Empleado Agregado.",
+                    text: "El empleado fue agregado con éxito.",
+                    icon: "success",
+                }).then(() => {
+                    modalOnOff(); // Cerrar modal
+                    cargarTabla(); // Recargar la tabla con los datos actualizados
+                });
+            } else {
+                Swal.fire("Error", resultado.mensaje, "error");
+            }
+        }).fail((xhr, status, error) => {
+            Swal.fire("Error", "Ocurrió un problema durante el proceso.", "error");
+            console.error("Error en la solicitud AJAX:", error);
+        });
+    });
+
+    // Evento del botón Cancelar
+    $("#cancelarBtn").on("click", () => {
+        modalOnOff(); // Cerrar el modal sin guardar
+    });
+
+
+
+
+//Cargar el select empresa del modal turnos
+const cargarSelectEmpresa = () =>{
+    $.ajax({
+        url : "cargarSelectEmpresa.php",
+        method : "get",
+        data : {empresas:'empresas'},
+
+        success:( resultado, estado )=>{
+
+            try {
+                const datos = JSON.parse(resultado);
+                console.log(datos.datos);
+                
+                $('#selectEmpresas').empty().append( $('<option value="" selected>Selecciona una empresa</option>'));
+
+                $('#selectEmpleados').prop('disabled', true).append($('<option value="" selected>Selecciona un empleado</option>') );
+                
+                datos.datos.forEach( fila => {            
+                    $('#selectEmpresas').append( $( `<option value="${fila['id']}">${fila['razon_social']}</option>`) );
+                });
+
+            }catch (error) {
+                console.log(resultado);
+                console.error("Error al cargar select empresas del modal:", error);
+                alert("Error al cargar datos en el select empresas. Consulta la consola para más detalles.");
+            }
+        }
+    })
+}
+
+
 
 
 //------------------------------------------------------------------
