@@ -342,34 +342,34 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
                 <select name="selectEmpresas" id="selectEmpresas"></select>
             </div>
             
-            <label for="inputLegajo">Legajo</label>
+            <label for="altaLegajo">Legajo</label>
             <input type="text" id="altaLegajo">
 
-            <label for="inputDNI">DNI</label>
+            <label for="altaDNI">DNI</label>
             <input type="text" id="altaDNI" required>
             
-            <label for="inputApellido">Apellido</label>
+            <label for="altaApellido">Apellido</label>
             <input type="text" id="altaApellido" required>
             
-            <label for="inputNombre">Nombre</label>
+            <label for="altaNombre">Nombre</label>
             <input type="text" id="altaNombre" required>
             
-            <label for="inputDomicilio">Domicilio</label>
+            <label for="altaDomicilio">Domicilio</label>
             <input type="text" id="altaDomicilio">
                                                     
-            <label for="inputFechaNac">Fecha Nac:</label>
+            <label for="altaFechaNac">Fecha Nac:</label>
             <input type="date" id="altaFechaNac" required>
                                                     
-            <label for="inputFechaIng">Fecha Ing:</label>
+            <label for="altaFechaIng">Fecha Ing:</label>
             <input type="date" id="altaFechaIng">
                                                     
-            <label for="inputCategoria">Categoria</label>
+            <label for="altaCategoria">Categoria</label>
             <input type="text" id="altaCategoria">
                                                     
-            <label for="inputSeccion">Seccion</label>
+            <label for="altaSeccion">Seccion</label>
             <input type="text" id="altaSeccion">
                                                     
-            <label for="inputObservaciones">Observaciones</label>
+            <label for="altaObservaciones">Observaciones</label>
             <input type="text" id="altaObservaciones">
             
             <div id="modalButtons">
@@ -425,7 +425,7 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
     $("#cancelarBtn").on("click", () => {
         modalOnOff(); // Cerrar el modal sin guardar
     });
-});
+
 
 
 
