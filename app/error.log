@@ -34,3 +34,7 @@
 <b>Warning</b>:  include(): Failed opening '../error_config.php' for inclusion (include_path='C:\xampp\php\PEAR') in <b>C:\xampp\htdocs\MEDICINA_LABORAL\app\autenticacion.php</b> on line <b>7</b><br />
 
 {"mensaje":"Bienvenido prueba","operacion":true}
+[04-Nov-2024 19:23:39 America/Argentina/Buenos_Aires] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\Laboratorio4\medicina_laboral\app\autenticacion.php on line 28
+[04-Nov-2024 19:23:39 America/Argentina/Buenos_Aires] PHP Deprecated:  password_verify(): Passing null to parameter #2 ($hash) of type string is deprecated in C:\xampp\htdocs\Laboratorio4\medicina_laboral\app\autenticacion.php on line 28
+[04-Nov-2024 19:23:43 America/Argentina/Buenos_Aires] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\Laboratorio4\medicina_laboral\app\autenticacion.php on line 28
+[04-Nov-2024 19:23:43 America/Argentina/Buenos_Aires] PHP Deprecated:  password_verify(): Passing null to parameter #2 ($hash) of type string is deprecated in C:\xampp\htdocs\Laboratorio4\medicina_laboral\app\autenticacion.php on line 28

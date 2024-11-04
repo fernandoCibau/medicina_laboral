@@ -1,2 +1,6 @@
 [03-Nov-2024 19:41:14 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\Medicina_laboral\app\sistema_de_turnos\cargarTurno.php en la línea 17: Table 'el_salvador.medicos' doesn't exist
 [03-Nov-2024 19:41:16 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\Medicina_laboral\app\sistema_de_turnos\cargarTurno.php en la línea 17: Table 'el_salvador.medicos' doesn't exist
+[04-Nov-2024 20:18:23 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\Laboratorio4\medicina_laboral\app\sistema_de_turnos\cargarSelectEmpresa.php en la línea 11: Table 'el_salvador.empresasclientes' doesn't exist
+[04-Nov-2024 20:18:30 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\Laboratorio4\medicina_laboral\app\sistema_de_turnos\cargarSelectEmpresa.php en la línea 11: Table 'el_salvador.empresasclientes' doesn't exist
+[04-Nov-2024 20:18:43 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\Laboratorio4\medicina_laboral\app\sistema_de_turnos\cargarSelectEmpresa.php en la línea 11: Table 'el_salvador.empresasclientes' doesn't exist
+[04-Nov-2024 20:22:44 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\Laboratorio4\medicina_laboral\app\sistema_de_turnos\cargarSelectEmpresa.php en la línea 11: Table 'el_salvador.empresasclientes' doesn't exist
