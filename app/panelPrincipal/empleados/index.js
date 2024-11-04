@@ -329,135 +329,215 @@ $(document).ready(function() {
 
 
 
-//Funcion de agregar empleado
-
+// Función de agregar empleado
 const botonAgregar = $("#agregarEmpleado").on("click", () => {
-
     $("#tituloModal").text("Agregar Empleado");
     modalOnOff();
     $("#contenedorDatos").empty();
     $("#contenedorDatos").append(`
-            <div class="contenedor-input">
-                <label for="selectEmpresas" require>Empresas</label>
-                <select name="selectEmpresas" id="selectEmpresas"></select>
-            </div>
-            
-            <label for="altaLegajo">Legajo</label>
-            <input type="text" id="altaLegajo">
-
-            <label for="altaDNI">DNI</label>
-            <input type="text" id="altaDNI" required>
-            
-            <label for="altaApellido">Apellido</label>
-            <input type="text" id="altaApellido" required>
-            
-            <label for="altaNombre">Nombre</label>
-            <input type="text" id="altaNombre" required>
-            
-            <label for="altaDomicilio">Domicilio</label>
-            <input type="text" id="altaDomicilio">
-                                                    
-            <label for="altaFechaNac">Fecha Nac:</label>
-            <input type="date" id="altaFechaNac" required>
-                                                    
-            <label for="altaFechaIng">Fecha Ing:</label>
-            <input type="date" id="altaFechaIng">
-                                                    
-            <label for="altaCategoria">Categoria</label>
-            <input type="text" id="altaCategoria">
-                                                    
-            <label for="altaSeccion">Seccion</label>
-            <input type="text" id="altaSeccion">
-                                                    
-            <label for="altaObservaciones">Observaciones</label>
-            <input type="text" id="altaObservaciones">
-            
-            <div id="modalButtons">
-                <button id="agregarBtn" class="btn btn-primary">Agregar Empleado</button>
-                <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
-            </div>
+        <div class="contenedor-input">
+            <label for="selectEmpresas" require>Empresas</label>
+            <select name="selectEmpresas" id="selectEmpresas"></select>
+        </div>
         
-        `);
+        <label for="altaLegajo">Legajo</label>
+        <input type="text" id="altaLegajo">
 
-    // Evento del botón Guardar Cambios
-    $("#agregarBtn").on("click", () => {
-        const datosActualizados = {
-            legajo: $("#inputLegajo").val(),
-            dni: $("#inputDNI").val(),
-            apellido: $("#inputApellido").val(),
-            nombre: $("#inputNombre").val(),
-            domicilio: $("#inputDomicilio").val(),
-            fecha_nac: $("#inputFechaNac").val(),
-            fecha_ing: $("#inputFechaIng").val(),
-            observaciones: $("#inputObservaciones").val(),
-            id_categoria: null, // Asigna null directamente
-            id_seccion: null    // Asigna null directamente
-        };
+        <label for="altaDNI">DNI</label>
+        <input type="text" id="altaDNI" required>
+        
+        <label for="altaApellido">Apellido</label>
+        <input type="text" id="altaApellido" required>
+        
+        <label for="altaNombre">Nombre</label>
+        <input type="text" id="altaNombre" required>
+        
+        <label for="altaDomicilio">Domicilio</label>
+        <input type="text" id="altaDomicilio">
+                                                
+        <label for="altaFechaNac">Fecha Nac:</label>
+        <input type="date" id="altaFechaNac" required>
+                                                
+        <label for="altaFechaIng">Fecha Ing:</label>
+        <input type="date" id="altaFechaIng">
+          
+        <div class="contenedor-input">
+            <label for="selectCategoria">Categoria</label>
+            <select name="selectCategoria" id="selectCategoria"></select>
+        </div>
+           
+        <div class="contenedor-input">
+            <label for="selectSeccion">Seccion</label>
+            <select name="selectSeccion" id="selectSeccion"></select>
+        </div>
+                                                
+        <label for="altaObservaciones">Observaciones</label>
+        <input type="text" id="altaObservaciones">
+        
+        <div id="modalButtons">
+            <button id="agregarBtn" class="btn btn-primary">Agregar Empleado</button>
+            <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
+        </div>
+    `);
     
-                // Realizar la solicitud final para dar de alta al empleado
-                return $.ajax({
-                    url: "altaEmpleado.php",
-                    method: "POST",
-                    data: datosActualizados
-                });
-            }).done(response => {
+    cargarSelectEmpresa();
+    cargarSelectCategoria();
+    cargarSelectSeccion();
+
+    // Agregar eventos con eliminación previa para evitar duplicados
+    $("#agregarBtn").off("click").on("click", () => {
+        const datosActualizados = {
+            legajo: $("#altaLegajo").val(),
+            dni: $("#altaDNI").val(),
+            apellido: $("#altaApellido").val(),
+            nombre: $("#altaNombre").val(),
+            domicilio: $("#altaDomicilio").val(),
+            fecha_nac: $("#altaFechaNac").val(),
+            fecha_ing: $("#altaFechaIng").val(),
+            observaciones: $("#altaObservaciones").val(),
+            id_categoria: null,
+            id_seccion: null,
+            id_empresa: $("#selectEmpresas").val() // Obtener empresa seleccionada
+        };
+
+        $.ajax({
+            url: "altaEmpleado.php",
+            method: "POST",
+            data: datosActualizados
+        })
+        .done(response => {
             const resultado = JSON.parse(response);
             if (resultado.operacion) {
-                console.log("El empleado se cargó con éxito.");
                 Swal.fire({
-                    title: "Empleado Agregado.",
+                    title: "Empleado Agregado",
                     text: "El empleado fue agregado con éxito.",
-                    icon: "success",
+                    icon: "success"
                 }).then(() => {
-                    modalOnOff(); // Cerrar modal
+                    modalOnOff();
                     cargarTabla(); // Recargar la tabla con los datos actualizados
                 });
             } else {
                 Swal.fire("Error", resultado.mensaje, "error");
             }
-        }).fail((xhr, status, error) => {
+        })
+        .fail((xhr, status, error) => {
             Swal.fire("Error", "Ocurrió un problema durante el proceso.", "error");
             console.error("Error en la solicitud AJAX:", error);
         });
     });
 
-    // Evento del botón Cancelar
-    $("#cancelarBtn").on("click", () => {
-        modalOnOff(); // Cerrar el modal sin guardar
+    $("#cancelarBtn").off("click").on("click", () => {
+        modalOnOff();
     });
+});
 
-
-
-
-//Cargar el select empresa del modal turnos
-const cargarSelectEmpresa = () =>{
+// Cargar el select empresa del modal
+const cargarSelectEmpresa = () => {
     $.ajax({
-        url : "cargarSelectEmpresa.php",
-        method : "get",
-        data : {empresas:'empresas'},
-
-        success:( resultado, estado )=>{
-
+        url: "cargarSelectEmpresa.php",
+        method: "GET",
+        data: { empresas: 'empresas' },
+        success: (resultado, estado) => {
+            console.log("Respuesta del servidor:", resultado); // Ver la respuesta del servidor
+            
             try {
                 const datos = JSON.parse(resultado);
-                console.log(datos.datos);
+                console.log(datos.datos); // Asegúrate de que esto se vea bien
                 
-                $('#selectEmpresas').empty().append( $('<option value="" selected>Selecciona una empresa</option>'));
-
-                $('#selectEmpleados').prop('disabled', true).append($('<option value="" selected>Selecciona un empleado</option>') );
+                $('#selectEmpresas').empty().append($('<option value="" selected>Selecciona una empresa</option>'));
                 
-                datos.datos.forEach( fila => {            
-                    $('#selectEmpresas').append( $( `<option value="${fila['id']}">${fila['razon_social']}</option>`) );
-                });
+                // Verifica que 'datos.datos' sea un array
+                if (Array.isArray(datos.datos)) {
+                    datos.datos.forEach(fila => {            
+                        $('#selectEmpresas').append($(`<option value="${fila['id']}">${fila['razon_social']}</option>`));
+                    });
+                } else {
+                    console.error("El formato de los datos es incorrecto.");
+                }
 
-            }catch (error) {
-                console.log(resultado);
+            } catch (error) {
                 console.error("Error al cargar select empresas del modal:", error);
                 alert("Error al cargar datos en el select empresas. Consulta la consola para más detalles.");
             }
+        },
+        error: (xhr, status, error) => {
+            console.error("Error en la solicitud AJAX:", error);
+            alert("No se pudo conectar con el servidor.");
         }
-    })
-}
+    });
+};
+
+// Cargar el select CATEGORIA del modal
+const cargarSelectCategoria = () => {
+    $.ajax({
+        url: "cargarSelectCategoria.php",
+        method: "GET",
+        data: { categorias: 'categorias' },
+        success: (resultado, estado) => {
+            console.log("Respuesta del servidor:", resultado); // Ver la respuesta del servidor
+            
+            try {
+                const datos = JSON.parse(resultado);
+                console.log(datos.datos); // Asegúrate de que esto se vea bien
+                
+                $('#selectCategoria').empty().append($('<option value="" selected>Selecciona una categoria</option>'));
+                
+                // Verifica que 'datos.datos' sea un array
+                if (Array.isArray(datos.datos)) {
+                    datos.datos.forEach(fila => {            
+                        $('#selectCategoria').append($(`<option value="${fila['id']}">${fila['nombre']}</option>`));
+                    });
+                } else {
+                    console.error("El formato de los datos es incorrecto.");
+                }
+
+            } catch (error) {
+                console.error("Error al cargar select empresas del modal:", error);
+                alert("Error al cargar datos en el select empresas. Consulta la consola para más detalles.");
+            }
+        },
+        error: (xhr, status, error) => {
+            console.error("Error en la solicitud AJAX:", error);
+            alert("No se pudo conectar con el servidor.");
+        }
+    });
+};
+
+// Cargar el select SECCION del modal
+const cargarSelectSeccion = () => {
+    $.ajax({
+        url: "cargarSelectSeccion.php",
+        method: "GET",
+        data: { seccion: 'seccion' },
+        success: (resultado, estado) => {
+            console.log("Respuesta del servidor:", resultado); // Ver la respuesta del servidor
+            
+            try {
+                const datos = JSON.parse(resultado);
+                console.log(datos.datos); // Asegúrate de que esto se vea bien
+                
+                $('#selectSeccion').empty().append($('<option value="" selected>Selecciona una seccion</option>'));
+                
+                // Verifica que 'datos.datos' sea un array
+                if (Array.isArray(datos.datos)) {
+                    datos.datos.forEach(fila => {            
+                        $('#selectSeccion').append($(`<option value="${fila['id']}">${fila['nombre']}</option>`));
+                    });
+                } else {
+                    console.error("El formato de los datos es incorrecto.");
+                }
+
+            } catch (error) {
+                console.error("Error al cargar select seccion del modal:", error);
+                alert("Error al cargar datos en el select seccion. Consulta la consola para más detalles.");
+            }
+        },
+        error: (xhr, status, error) => {
+            console.error("Error en la solicitud AJAX:", error);
+            alert("No se pudo conectar con el servidor.");
+        }
+    });
+};
 
 
 

@@ -1,14 +1,14 @@
 <?php
 include 'error_config.php';
 
-if(isset($_GET['empresas'])){
+if(isset($_GET['seccion'])){
     
     
     try{
         
         include('../../conexion.php');
         
-        $sql = "SELECT  * FROM empresas";
+        $sql = "SELECT  * FROM seccion";
         
         $resultado = mysqli_query($conexion, $sql );
         
