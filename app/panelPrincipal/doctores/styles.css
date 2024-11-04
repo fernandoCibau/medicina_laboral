@@ -254,27 +254,41 @@ h2{
     height: 94%;
     margin: 0 auto;
     padding: 20px;
-    /* background: white; */
-    background-color: #0f1215;
+    background: white;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* .tabla-empleados {
-    margin: 2% 0 0 0;
-    display: block;
-    overflow: auto;
+#formModificar{
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+}
+/* .contenedor-fom { */
+    /* background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); */
+    /* width: 100%; */
+    /* height: 100%;
+    width: calc(100% / 2); */
+/* } */
+
+.contenedor-input {
+    width: calc(100% / 2);
 }
 
-.titulo-empleados {
-    color: #007bff;
-    margin: 0;
-    display: block;
-    font-size: 2em;
-    font-weight: bold;
-    unicode-bidi: isolate;
-} */
-
+.btn-primary, .btn-secondary{
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 12em;
+    transition-duration: 2s;
+}
 
 /* ------------------------------------------- */
 /*              FOOTER                         */

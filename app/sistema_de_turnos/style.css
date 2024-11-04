@@ -122,8 +122,6 @@ main {
     margin-top: 30px;
 }
 
-
-
 .secMenu .contenedorMenu a {
 
     text-decoration: none;
@@ -132,12 +130,8 @@ main {
     /* margin-top: 2em;*/
 }
 
-
-
-
 .secMenu .contenedorMenu a img {
     width: 35px;
-
 }
 
 .secMenu .contenedorMenu a p {
