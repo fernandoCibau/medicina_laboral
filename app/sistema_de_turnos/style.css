@@ -73,28 +73,32 @@ main {
 /*               SECCION MENU                    */
 /* ------------------------------------------------ */
 
+
+
 .secMenu {
     background-color: #539bfc;
+    height: 100vh;
     color: white;
     width: 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     font-size: larger;
+
 }
+
 
 .icon-cont {
     width: 100%;
-    height: 100%;
+    height: 12.5%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
 }
 
 .icon-cont:hover {
     background-color: white;
     transition: all 0.3s ease-in-out;
+
 }
 
 .icon-cont:hover .pe {
@@ -102,13 +106,15 @@ main {
     transition: all 0.3s ease-in-out;
 }
 
+
+
 .icon-cont:hover a img {
     filter: invert(71%) sepia(43%) saturate(6386%) hue-rotate(192deg) brightness(100%) contrast(98%);
 }
 
 .secMenu .contenedorMenu {
     width: 100%;
-    height: 50%;
+    height: 69%;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -116,12 +122,18 @@ main {
     margin-top: 30px;
 }
 
+
+
 .secMenu .contenedorMenu a {
+
     text-decoration: none;
     font-size: larger;
     text-align: center;
     /* margin-top: 2em;*/
 }
+
+
+
 
 .secMenu .contenedorMenu a img {
     width: 35px;
@@ -132,6 +144,7 @@ main {
     color: white;
     font-size: small;
 }
+
 
 /* ------------------------------------------------ */
 /*               SECCION MES                    */
@@ -158,12 +171,13 @@ main {
     justify-content: space-evenly;
 }
 
-.seccion-mes .contenedor-encabezado h2{
+.seccion-mes .contenedor-encabezado h2 {
     color: #007bff;
     font-weight: bold;
 }
 
-.seccion-mes .contenedor-encabezado input[ type='button'] ,input[ type='month']{
+.seccion-mes .contenedor-encabezado input[ type='button'],
+input[ type='month'] {
     background-color: #539bfc;
     color: white;
     border: none;
@@ -173,7 +187,8 @@ main {
     text-align: center;
 }
 
-.seccion-mes .contenedor-encabezado input[ type='button']:hover ,input[ type='month']:hover{
+.seccion-mes .contenedor-encabezado input[ type='button']:hover,
+input[ type='month']:hover {
     background-color: #007bff;
     transition: 1s;
 }
@@ -215,7 +230,7 @@ main {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.disabled-option{
+.disabled-option {
     color: red;
 }
 
@@ -251,7 +266,7 @@ main {
     cursor: pointer;
 }
 
-.contenedor-encabezado-modal .btn-cerrar:hover{
+.contenedor-encabezado-modal .btn-cerrar:hover {
     background-color: #d03f2f;
 }
 
@@ -361,17 +376,17 @@ tbody tr:last-child {
     height: 100%;
 }
 
-.form-nuevo-turno{
+.form-nuevo-turno {
     display: flex;
     flex-wrap: wrap;
     height: 90%;
 }
 
-.contenedor-input{
-    width: calc( 100% / 2 );
+.contenedor-input {
+    width: calc(100% / 2);
 }
 
-.contenedor-btn{
+.contenedor-btn {
     width: 100%;
 }
 
@@ -381,14 +396,17 @@ label {
     color: #555;
 }
 
-input[type="date"], select {
+input[type="date"],
+select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: 1em;
 }
 
-label, input[type="date"], select{
+label,
+input[type="date"],
+select {
     width: 80%;
 }
 
@@ -402,12 +420,12 @@ label, input[type="date"], select{
     width: 12em;
     transition-duration: 2s;
 }
-    
+
 .btnAgregarTurno:hover {
     background-color: #2980b9;
-} 
+}
 
-.btn-color-bloqueado{
+.btn-color-bloqueado {
     background-color: #d03f2f;
     color: white;
     border: none;
@@ -423,11 +441,11 @@ label, input[type="date"], select{
 /*              FOOTER               */
 /* ----------------------------------- */
 footer {
-    width: 100%;
+    margin-left: 5%;
+    width: 95%;
     height: 10%;
     background-color: #539bfc;
     color: #fff;
     padding: 20px;
     text-align: center;
 }
-

@@ -2,14 +2,14 @@
 
 include '../conexion.php';
 
-if(isset($_POST["correo"])){
+if(isset($_POST["email"])){
     
-    if(!empty($_POST["correo"]))
+    if(!empty($_POST["email"]) && !empty($_POST["name"]) && !empty($_POST["name"]) && !empty($_POST["phone"]) && !empty($_POST["subject"]) && !empty($_POST["message"]) )
     {
-        $para = $_POST["correo"];
+        $para = $_POST["email"];
         $de = "From: 12345@gmail.com";
         $asunto = "Prueba PHP";
-        $mensaje = "http://localhost/Medicinal_laboral/recuperarContrasenia/actualizacionContrasenia.html";
+        $mensaje = "http://localhost/Medicina_laboral/app/recuperarContrasenia/actualizacionContrasenia.html";
 
 
         $sql = "SELECT * FROM usuarios WHERE email = '$para'"; 

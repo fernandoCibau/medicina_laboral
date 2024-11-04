@@ -69,18 +69,18 @@ main {
 
 .secMenu {
     background-color: #539bfc;
+    height: 100%;
     color: white;
     width: 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
     font-size: larger;
+
 }
 
 
 .icon-cont {
     width: 100%;
-    height: 100%;
+    height: 12.5%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,7 +107,7 @@ main {
 
 .secMenu .contenedorMenu {
     width: 100%;
-    height: 50%;
+    height: 75%;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -118,6 +118,7 @@ main {
 
 
 .secMenu .contenedorMenu a {
+
     text-decoration: none;
     font-size: larger;
     text-align: center;
