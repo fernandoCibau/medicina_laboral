@@ -61,12 +61,54 @@ const cargarTabla = () => {
                     }
                 }
                 
-                // Botón Ver Empleados
-                const botonVer = $("<img src='../../icon/ojo.png'>").on('click', () => {
-                    empleadosDeEmpresa(fila['id']);
+                // Botón Agregar Consulta
+                const botonAgregar = $("<img src='../../icon/agregar.png'>").on('click', () => {
+                    $("#contenedorDatos").empty();
+
+                    $("#contenedorDatos").append(`
+                        <input type="text" id="inputId" value="${fila['id']}" hidden>
+
+                        <label for="inputFechaConsulta">Fecha</label>
+                        <input type="date" id="inputFechaConsulta">
+                        
+                        <label for="inputMedicoCertificado">Medico que firma el certificado</label>
+                        <input type="text" id="inputMedicoCertificado">
+                        
+                        <label for="inputCie10">Diagnostico</label>
+                        <input type="text" id="inputCie10">
+                        
+                        <label for="inputSolicitudCertificado">Ingrese la indicacion de reposo del certificado</label>
+                        <input type="text" id="inputSolicitudCertificado">
+                        
+                        <label for="inputFechaInicio">Fecha de inicio de ausentismo justificado</label>
+                        <input type="date" id="inputFechaInicio">
+                        
+                        <label for="inputFechaFin">Fecha de fin de ausentismo justificado</label>
+                        <input type="text" id="inputFechaFin">
+                                                
+                        <label for="inputObservaciones">Observaciones</label>
+                        <input type="text" id="inputObservaciones">
+                        
+                        <div id="modalButtons">
+                            <button id="guardarCambiosBtn" class="btn btn-primary">Modificar</button>
+                            <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
+                        </div>
+                    `);
+
+                    $("#tituloModal").text("Agregar consulta");
+                    modalOnOff();
+                    
                 });
-                tr.append($("<td>").append(botonVer));
+                tr.append($("<td>").append(botonAgregar));
             
+
+
+
+
+
+
+
+
                 // Botón Modificar Empleado
                 const botonModificar = $("<img src='../../icon/editar.png'>").on('click', () => {
                     $("#contenedorDatos").empty();
