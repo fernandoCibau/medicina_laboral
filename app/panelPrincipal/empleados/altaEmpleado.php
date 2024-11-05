@@ -1,16 +1,11 @@
 <?php
-header('Content-Type: application/json');
 
-if (isset($_POST['id_empresa'], $_POST['legajo'], $_POST['dni'], $_POST['apellido'], $_POST['nombre'], $_POST['fecha_nacimiento'])) {
+if (isset ($_POST['id_empresa']) &&  isset($_POST['dni']) && isset($_POST['apellido']) && isset($_POST['nombre']) && isset ($_POST['fecha_nacimiento'])) {
     try {
         include "../../conexion.php";
 
-        // Mostrar datos recibidos para depuración
-        var_dump($_POST);  // Para verificar que se reciben los datos correctamente
-
         // Asignación de variables
-        $id_empresa = $_POST['id_empresa'];
-        $legajo = $_POST['legajo'];
+        $legajo = $_POST['legajo'] ?? null;
         $dni = $_POST['dni'];
         $apellido = $_POST['apellido'];
         $nombre = $_POST['nombre'];
@@ -20,9 +15,10 @@ if (isset($_POST['id_empresa'], $_POST['legajo'], $_POST['dni'], $_POST['apellid
         $id_categoria = $_POST['id_categoria'] ?? null;
         $id_seccion = $_POST['id_seccion'] ?? null;
         $observaciones = $_POST['observaciones'] ?? null;
+        $id_empresa = $_POST['id_empresa'];
 
         // Verificar si el empleado ya existe por DNI
-        $stmt = $conexion->prepare("SELECT 1 FROM empleados WHERE dni = ?");
+        $stmt = $conexion->prepare("SELECT * FROM empleados WHERE dni = ?");
         $stmt->bind_param("i", $dni);
         $stmt->execute();
         $resultado = $stmt->get_result();

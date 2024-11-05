@@ -88,7 +88,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="index.js"></script>
     
-    <footer></footer>
+    <footer>
+        <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
+    </footer>
 </body>
 </html>
 

@@ -395,8 +395,8 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
             fecha_nac: $("#altaFechaNac").val(),
             fecha_ing: $("#altaFechaIng").val(),
             observaciones: $("#altaObservaciones").val(),
-            id_categoria: null,
-            id_seccion: null,
+            id_categoria: $("#selectCategoria").val(),
+            id_seccion: $("#selectSeccion").val(),
             id_empresa: $("#selectEmpresas").val() // Obtener empresa seleccionada
         };
 
@@ -442,7 +442,7 @@ const cargarSelectEmpresa = () => {
             
             try {
                 const datos = JSON.parse(resultado);
-                console.log(datos.datos); // Asegúrate de que esto se vea bien
+                //console.log(datos.datos); // Asegúrate de que esto se vea bien
                 
                 $('#selectEmpresas').empty().append($('<option value="" selected>Selecciona una empresa</option>'));
                 
@@ -478,7 +478,7 @@ const cargarSelectCategoria = () => {
             
             try {
                 const datos = JSON.parse(resultado);
-                console.log(datos.datos); // Asegúrate de que esto se vea bien
+                //console.log(datos.datos); // Asegúrate de que esto se vea bien
                 
                 $('#selectCategoria').empty().append($('<option value="" selected>Selecciona una categoria</option>'));
                 
@@ -514,7 +514,7 @@ const cargarSelectSeccion = () => {
             
             try {
                 const datos = JSON.parse(resultado);
-                console.log(datos.datos); // Asegúrate de que esto se vea bien
+                //console.log(datos.datos); // Asegúrate de que esto se vea bien
                 
                 $('#selectSeccion').empty().append($('<option value="" selected>Selecciona una seccion</option>'));
                 
