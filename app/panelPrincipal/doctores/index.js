@@ -69,7 +69,7 @@ const modificarMedico = (fila) => {
             form.append($(`
                 <div class="contenedor-input ">
                     <label for="${key}">${key}</label>
-                    <input type="text" name="${key}" value="${fila[key]}">
+                    <input type="text" name="${key}" value="${fila[key]}" required">
                 </div>
             `));
         }
@@ -225,4 +225,8 @@ $("#btmCerrarSesion").click( ()=>{
 
 $("#btn-modal-X").click( () => {
     modalOnOff();
+})
+
+$("#btnNuevoDoctor").click( () =>{
+    alert("FALTA HACER")
 })

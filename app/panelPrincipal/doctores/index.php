@@ -51,7 +51,7 @@
                 <input type="text" name="buscarPorNombre" id="buscarPorNombre"  placeholder="Nombre del medico">
                 <label for="buscarPorEspecialidad">Buscar Por Especialidad</label>
                 <input type="text" name="buscarPorNombre" id="buscarPorEspecialidad"  placeholder="Especialidad del medico">
-                <!-- <input type="button" value="Nuevo Turno" id="btn-nuevo-turno"> -->
+                <input type="button" value="Nuevo Doctor" id="btnNuevoDoctor">
             </div>
 
             <table>
@@ -74,8 +74,8 @@
         
         <div class="contenedor-modal off" id="contenedorModal">
             <div class="encabezado-modal">
-                <h2 class="titulo-empleados" id="tituloModal">Formilario Modificar</h2>
-                <button id="btn-modal-X">X</button>
+                <h2 class="titulo-empleados" id="tituloModal">Formulario Modificar</h2>
+                <button id="btn-modal-cerrar" class="btn-cerrar">X</button>
             </div>
             <div id="contenedorDatos" class="contendor-datos">
                 <form action=""method="post" id="formModificar"></form>
