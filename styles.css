@@ -17,7 +17,7 @@ body {
 }
 
 header {
-  background-color: #007bff;
+  background-color: #539bfc;
   color: #fff;
   height: 10%;
   display: flex;
@@ -132,7 +132,7 @@ main .header-content p {
 }
 
 main .header-content .cta-button {
-  background-color: #539bfc;
+  background-color: #3eae58;
   color: white;
   padding: 10px 20px;
   text-decoration: none;
@@ -145,7 +145,7 @@ main .header-content .cta-button {
 }
 
 main .header-content .cta-button:hover {
-  background-color: #007bff;
+  background-color: #218838;
 }
 
 main .about-section {
@@ -224,7 +224,7 @@ textarea {
 
 button {
   padding: 10px 15px; /* Espacio interno del botón */
-  background-color: #007bff; /* Color de fondo del botón */
+  background-color: #3eae58; /* Color de fondo del botón */
   color: #fff; /* Color del texto */
   border: none; /* Sin borde */
   border-radius: 4px; /* Bordes redondeados */
@@ -233,7 +233,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3; /* Color de fondo al pasar el cursor */
+  background-color: #218838; /* Color de fondo al pasar el cursor */
 }
 
 input[type="checkbox"] {
@@ -243,7 +243,7 @@ input[type="checkbox"] {
 footer {
   width: 100%;
   height: 10%;
-  background-color: #007bff;
+  background-color: #539bfc;
   color: #fff;
   padding: 20px;
   text-align: center;

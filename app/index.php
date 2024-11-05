@@ -19,7 +19,7 @@
 <body>
     <header >
 
-        <h1 ><a href="../index.html">Clinica el salvador</a></h1>
+        <h1 ><a href="../index.html">CLINICA EL SALVADOR</a></h1>
 
         <nav>
         <ul class="nav-links">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="right-panel">
                     <h3>Ingreso</h3>
-
+                    <br>
                     <form method="post" class="formSesion" id="formSesion">
                         <div class="input-group">
                         <label for="email">Usuario</label>
