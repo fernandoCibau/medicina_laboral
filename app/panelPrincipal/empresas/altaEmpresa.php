@@ -9,7 +9,7 @@ if (isset($_POST['razon_social']) && isset($_POST['cuit']) && isset($_POST['emai
         $email = $_POST['email'];
 
         // Preparar la consulta para verificar si la razon_social ya existe
-        $stmt = $conexion->prepare("SELECT * FROM empresas WHERE cuit = ?");
+        $stmt = $conexion->prepare("SELECT 1 FROM empresas WHERE cuit = ?");
         $stmt->bind_param("s", $cuit);
         $stmt->execute();
         $resultado = $stmt->get_result();
