@@ -87,6 +87,6 @@
         <script src="./index.js"></script>
         
     <footer>
-        
+        <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
     </footer>
             
