@@ -7,7 +7,7 @@ export const errores = ( error ) => {
         data: {error: error},
 
         success: (resultado, estado) => {
-            let datos = JSON.parse(resultado);
+            // let datos = JSON.parse(resultado);
             console.log(estado);
         },
     });

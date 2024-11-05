@@ -63,44 +63,40 @@ const buscarHorariosTurnos  = ( fecha ) =>{
                 // console.log(datos.datos);
                 $("#horas-del-dia").empty();
 
-    // Agregar opción inicial
-    $("#horas-del-dia").append($(`<option value=''>-- : -- : --</option>`));
+                $("#horas-del-dia").append($(`<option value=''>-- : -- : --</option>`));
 
-    for (let i = 0; i < 24; i++) {
-        // Solo dos iteraciones para 0 y 30 minutos
-        for (let j = 0; j <= 1; j++) {
-            const minutos = j * 30; // 0 o 30 minutos
-            const hora = `${i < 10 ? '0' : ''}${i}:${minutos < 10 ? '0' : ''}${minutos}:00`; // Formato correcto de hora
+                for (let i = 0; i < 24; i++) {
+                // Solo dos iteraciones para 0 y 30 minutos
+                for (let j = 0; j <= 1; j++) {
+                const minutos = j * 30; // 0 o 30 minutos
+                const hora = `${i < 10 ? '0' : ''}${i}:${minutos < 10 ? '0' : ''}${minutos}:00`; // Formato correcto de hora
 
-            let isDisabled = false;
+                let isDisabled = false;
 
-            // Verificar si la hora está en los turnos
-            datos.datos.forEach(turno => {
-                if (hora === turno['hora']) {
-                    isDisabled = true; // Marcar como deshabilitada si coincide
-                }
-            });
+                // Verificar si la hora está en los turnos
+                datos.datos.forEach(turno => {
+                    if (hora === turno['hora']) {
+                        isDisabled = true; // Marcar como deshabilitada si coincide
+                    }
+                });
 
-            // Agregar la opción
-            if (isDisabled) {
-                $("#horas-del-dia").append(
-                    $(`<option value="${hora}" class="disabled-option" disabled>${hora}</option>`)
-                );
-            } else {
-                $("#horas-del-dia").append(
-                    $(`<option value="${hora}">${hora}</option>`)
-                );
+                // Agregar la opción
+                if (isDisabled) {
+                    $("#horas-del-dia").append(
+                        $(`<option value="${hora}" class="disabled-option" disabled>${hora}</option>`)
+                    );
+                } else {
+                    $("#horas-del-dia").append(
+                        $(`<option value="${hora}">${hora}</option>`)
+                    );
+                }}}
+            }catch (error) {
+                console.log(resultado);
+                console.error("Error al cargar select empleados del modal:", error);
+                alert("Error al cargar datos en el select empleados. Consulta la consola para más detalles.");
             }
         }
-    }
-
-                
-        }catch (error) {
-            console.log(resultado);
-            console.error("Error al cargar select empleados del modal:", error);
-            alert("Error al cargar datos en el select empleados. Consulta la consola para más detalles.");
-        }
-    }})
+    })
 }
 
 //Carga la matriz del mes con todos los dias del mes
@@ -434,20 +430,6 @@ const validarInputTurnos = ( ) =>{
 // -----------------------------------------------
 //    FUNCIONES SWEETALERT
 // -----------------------------------------------
-
-// const alertExitoso = (mensaje) =>{
-//     Swal.fire({
-//         // position: "top-end",
-//         icon: "success",
-//         title: mensaje,
-//         showConfirmButton: false,
-//         timer: 1500
-//     });
-// }
-
-// const alertMensaje = (mensaje) =>{
-//     Swal.fire(mensaje);
-// }
 
 const alertInformar = (mensaje) => {
     Swal.fire(mensaje, "", "info");

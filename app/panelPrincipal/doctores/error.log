@@ -1,11 +1,33 @@
-[03-Nov-2024 11:11:26 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\cargarTabla.php en la línea 10: Table 'el_salvador.edicos' doesn't exist
-[03-Nov-2024 11:13:48 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\cargarTabla.php en la línea 10: Table 'el_salvador.edicos' doesn't exist
-[03-Nov-2024 13:32:26 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\modificarMedico.php en la línea 28: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '( nombre, especialidad, matricula, dni, apellido, email )
-            VALUES...' at line 2
-[03-Nov-2024 13:36:52 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\modificarMedico.php en la línea 28: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Pediátrica, matricula=OP-678901, dni=67890123, apellido=Fernández, email=jo...' at line 3
-<<<<<<< HEAD
-[04-Nov-2024 11:30:34 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\doctores\cargarTabla.php en la línea 10: Table 'el_salvador.medicos' doesn't exist
-[04-Nov-2024 11:30:49 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\doctores\cargarTabla.php en la línea 10: Table 'el_salvador.medicos' doesn't exist
-[04-Nov-2024 11:31:06 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\doctores\cargarTabla.php en la línea 10: Table 'el_salvador.medicos' doesn't exist
-=======
->>>>>>> b5c0c6b063975845eb50276c399983c326a33fe1
+[04-Nov-2024 22:44:29 America/Argentina/Buenos_Aires] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php on line 5
+[04-Nov-2024 22:56:52 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key " idDoctor" in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php on line 3
+[04-Nov-2024 23:04:16 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key " idDoctor" in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php on line 3
+[04-Nov-2024 23:05:51 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "idDoctor" in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php on line 3
+[04-Nov-2024 23:09:34 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Call to undefined function msqli_num_rows() in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php on line 16
+[04-Nov-2024 23:23:23 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Call to undefined function msqli_num_rows() in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php on line 16
+[04-Nov-2024 23:23:54 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Call to undefined function msqli_num_rows() in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php on line 16
+[04-Nov-2024 23:23:59 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Call to undefined function msqli_num_rows() in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php on line 16
+[04-Nov-2024 23:29:12 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Call to undefined function msqli_num_rows() in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php on line 16
+[04-Nov-2024 23:32:48 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Call to undefined function msqli_num_rows() in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php:14
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php on line 14
+[04-Nov-2024 23:33:34 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught TypeError: mysqli_free_result(): Argument #1 ($result) must be of type mysqli_result, bool given in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php:34
+Stack trace:
+#0 C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php(34): mysqli_free_result(true)
+#1 {main}
+  thrown in C:\xampp\htdocs\MEDICINA_LABORAL\app\panelPrincipal\doctores\medicoBaja.php on line 34

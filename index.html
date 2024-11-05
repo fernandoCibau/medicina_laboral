@@ -52,7 +52,7 @@
         <h3>Contacto</h3>
 
         <div class="service-item">
-          <form id="formContacto" method="post">
+          <form action="/enviar" method="post">
             <label for="name">Nombre Completo:</label>
             <input type="text" id="name" name="name" required />
 
@@ -68,14 +68,11 @@
             <label for="message">Mensaje:</label>
             <textarea id="message" name="message" rows="4" required></textarea>
 
-            <button type="submit" id="enviarCorreo">Enviar</button>
+            <button type="submit">Enviar</button>
           </form>
         </div>
       </section>
     </main>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="./index.js"></script>
 
     <footer>
       <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
