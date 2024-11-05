@@ -47,8 +47,7 @@
         
         <section class="seccion-tabla">
             <div class="buscador">
-                    <input type="text" id="inputBuscar" placeholder="Buscar empresa..." />
-                    <button id="btnBuscar">Buscar</button>
+                    <input type="text" id="inputBuscar" placeholder="Buscar por empresa..." />
             </div>
             <table>
                 <thead>

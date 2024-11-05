@@ -427,7 +427,35 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
     cargarSelectSeccion();
 
     // Agregar eventos con eliminación previa para evitar duplicados
-    $("#agregarBtn").off("click").on("click", () => {
+    $("#agregarBtn").on("click", () => {
+        /* VERIFICACION DE LOS DATOS DEL FORM
+        // Asignación de valores del formulario a variables
+        const legajo = $("#altaLegajo").val();
+        const dni = $("#altaDNI").val();
+        const apellido = $("#altaApellido").val();
+        const nombre = $("#altaNombre").val();
+        const domicilio = $("#altaDomicilio").val();
+        const fecha_nac = $("#altaFechaNac").val();
+        const fecha_ing = $("#altaFechaIng").val();
+        const observaciones = $("#altaObservaciones").val();
+        const id_categoria = $("#selectCategoria").val();
+        const id_seccion = $("#selectSeccion").val();
+        const id_empresa = $("#selectEmpresas").val();
+
+        // Mostrar en consola cada variable para verificar los valores
+        console.log("legajo:", legajo);
+        console.log("dni:", dni);
+        console.log("apellido:", apellido);
+        console.log("nombre:", nombre);
+        console.log("domicilio:", domicilio);
+        console.log("fecha_nac:", fecha_nac);
+        console.log("fecha_ing:", fecha_ing);
+        console.log("observaciones:", observaciones);
+        console.log("id_categoria:", id_categoria);
+        console.log("id_seccion:", id_seccion);
+        console.log("id_empresa:", id_empresa);
+        */
+
         const datosActualizados = {
             legajo: $("#altaLegajo").val(),
             dni: $("#altaDNI").val(),
@@ -439,35 +467,38 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
             observaciones: $("#altaObservaciones").val(),
             id_categoria: $("#selectCategoria").val(),
             id_seccion: $("#selectSeccion").val(),
-            id_empresa: $("#selectEmpresas").val() // Obtener empresa seleccionada
+            id_empresa: $("#selectEmpresas").val()
         };
 
         $.ajax({
             url: "altaEmpleado.php",
             method: "POST",
-            data: datosActualizados
-        })
-        .done(response => {
-            const resultado = JSON.parse(response);
-            if (resultado.operacion) {
-                Swal.fire({
-                    title: "Empleado Agregado",
-                    text: "El empleado fue agregado con éxito.",
-                    icon: "success"
-                }).then(() => {
-                    modalOnOff();
-                    cargarTabla(); // Recargar la tabla con los datos actualizados
-                });
-            } else {
-                Swal.fire("Error", resultado.mensaje, "error");
-            }
-        })
-        .fail((xhr, status, error) => {
-            Swal.fire("Error", "Ocurrió un problema durante el proceso.", "error");
-            console.error("Error en la solicitud AJAX:", error);
+            data: datosActualizados,
+            success: (response) => {
+                const resultado = JSON.parse(response);
+                if(resultado.operacion) {
+                    Swal.fire({
+                        title: "Empleado agregado.",
+                        text: "El empleado se registro con exito.",
+                        icon: "success",
+                    }).then(() => {
+                        modalOnOff();
+                        cargarTabla();
+                    });
+                } else {
+                    Swal.fire("Error", resultado.mensaje, "error");
+                }
+            },
+            error: (xhr, status, error) => {
+                console.error("Error en la solicitud AJAX:", error);
+                Swal.fire(
+                    "Error",
+                    "Ocurrio un problema al guardar el registro.",
+                    "error"
+                );
+            },
         });
     });
-
     $("#cancelarBtn").off("click").on("click", () => {
         modalOnOff();
     });
