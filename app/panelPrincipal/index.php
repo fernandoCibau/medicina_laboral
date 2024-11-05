@@ -32,7 +32,7 @@
             <div class="contenedorAccesos">
 
                 <!-- Solo administador -->
-                <?php   if (isset($_SESSION['admin'])) {  ?>
+                <?php   if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {  ?>
                         <div class="accesos" id="accesoAltaUsuario">
                             <div><img src="../icon/nuevo_user_grande.png" alt="nuevo usuario"></div>
                             <h3>Nuevo usuario</h3>

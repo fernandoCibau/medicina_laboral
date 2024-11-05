@@ -17,15 +17,14 @@ body {
 }
 
 header {
-  background-color: #539bfc;
-  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   height: 10%;
-  display: flex;
   align-items: center;
-  text-align: center;
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
+  background-color: #539bfc;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
