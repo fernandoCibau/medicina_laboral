@@ -6,3 +6,9 @@ Stack trace:
 [05-Nov-2024 18:07:11 America/Argentina/Buenos_Aires] PHP Warning:  Undefined variable $id_empresa in C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\modificacionEmpleado.php on line 92
 [06-Nov-2024 11:11:13 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\altaEmpleado.php en la linea 32: Column count doesn't match value count at row 1
 [06-Nov-2024 12:13:44 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\altaEmpleado.php en la linea 32: Column count doesn't match value count at row 1
+[06-Nov-2024 13:59:17 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php en la linea 32: Column count doesn't match value count at row 1
+[06-Nov-2024 13:59:20 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php en la linea 32: Column count doesn't match value count at row 1
+[06-Nov-2024 14:00:00 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php en la linea 32: Column count doesn't match value count at row 1
+[06-Nov-2024 14:01:54 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php en la linea 32: Column count doesn't match value count at row 1
+[06-Nov-2024 14:02:36 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php en la linea 32: Column count doesn't match value count at row 1
+[06-Nov-2024 14:07:24 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php en la linea 32: Column count doesn't match value count at row 1
