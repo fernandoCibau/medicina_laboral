@@ -47,21 +47,27 @@
         
         <section class="seccion-tabla">
             <div class="contenedor-encabezado-tabla">
-                <label for="buscarPorNombre">Buscar Por Nombre</label>
-                <input type="text" name="buscarPorNombre" id="buscarPorNombre"  placeholder="Nombre del medico">
-                <label for="buscarPorEspecialidad">Buscar Por Especialidad</label>
-                <input type="text" name="buscarPorNombre" id="buscarPorEspecialidad"  placeholder="Especialidad del medico">
-                <input type="button" value="Nuevo Doctor" id="btnNuevoDoctor">
+                <div class="encabezado-tabla-inputs" >
+                    <label for="buscarPorNombre">Buscar Por Nombre</label>
+                    <input type="text" name="buscarPorNombre" id="buscarPorNombre"  placeholder="Nombre del medico">
+                </div>
+                <div class="encabezado-tabla-inputs" >
+                    <label for="buscarPorEspecialidad">Buscar Por Especialidad</label>
+                    <input type="text" name="buscarPorNombre" id="buscarPorEspecialidad"  placeholder="Especialidad del medico">
+                </div>
+                <div class="encabezado-tabla-inputs" >
+                    <input type="button" value="Nuevo Doctor" id="btnNuevoDoctor">
+                </div>
             </div>
 
             <table>
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th>Apellido</th>
                         <th>Especialidad</th>
                         <th>Matricula</th>
                         <th>DNI</th>
-                        <th>Apellido</th>
                         <th>Email</th>
                         <th>Editar</th>
                         <th>Eliminar</th> 
@@ -74,18 +80,19 @@
         
         <div class="contenedor-modal off" id="contenedorModal">
             <div class="encabezado-modal">
-                <h2 class="titulo-empleados" id="tituloModal">Formulario Modificar</h2>
-                <button id="btn-modal-cerrar" class="btn-cerrar">X</button>
+                <h2 class="titulo-empleados" id="tituloModal"></h2>
+                <button id="btn-modal-X" class="btn-cerrar-X">X</button>
             </div>
             <div id="contenedorDatos" class="contendor-datos">
-                <form action=""method="post" id="formModificar"></form>
+                <!-- <form action=""method="post" id="formModificar"></form> -->
             </div>
+            
         </div>
 
     </main>
 
     <!-- script para poder usar el modulo ES6 para poder importar funciones -->
-    <script type="module" src="index.js"></script> 
+    <!-- <script type="module" src="index.js"></script>  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./index.js"></script>

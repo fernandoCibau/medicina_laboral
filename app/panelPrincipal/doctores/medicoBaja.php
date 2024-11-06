@@ -1,5 +1,4 @@
 <?php
-include '../../error_config.php';
 if (isset($_POST[ 'idDoctor' ])) {
     
     try {
@@ -29,8 +28,8 @@ if (isset($_POST[ 'idDoctor' ])) {
 
         mysqli_close($conexion);
     } catch (Exception $e) {
-        error_log("Error en " . $e->getFile() . " en la línea " . $e->getLine() . ": " . $e->getMessage());
-        echo json_encode(['mensaje' => 'Ocurrió un error.']);
+        $error = "Error en " . $e->getFile() . " en la línea " . $e->getLine() . ": " . $e->getMessage();
+        echo json_encode(['mensaje' => 'Ocurrió un error', 'error'=> $error ]);
     }
 
 } else {
