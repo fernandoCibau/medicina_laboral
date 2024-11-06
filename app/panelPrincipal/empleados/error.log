@@ -1,0 +1,6 @@
+[05-Nov-2024 17:02:01 America/Argentina/Buenos_Aires] PHP Warning:  Undefined variable $conexion in C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\altaEmpleado.php on line 79
+[05-Nov-2024 17:02:01 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\altaEmpleado.php:79
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\altaEmpleado.php on line 79
+[05-Nov-2024 18:07:11 America/Argentina/Buenos_Aires] PHP Warning:  Undefined variable $id_empresa in C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\modificacionEmpleado.php on line 92
