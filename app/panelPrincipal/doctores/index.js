@@ -139,16 +139,21 @@ const formAltaAjax = () => {
 //------------------------------------------------------------------
 
 const cargarTabla = () => {
+    // spinner( false );
     $.ajax({
         url: "cargarTabla.php",
         method: "get",
         data: { todos: "todos" },
         
         success: (resultado, estado) => {
+            // spinner( false );
             try {
                 const datos = JSON.parse(resultado);
-                // console.log(datos);
-                
+
+                // if( datos.operacion ){
+                //     spinner( true );
+                // }
+            
                 const datosMap = datos.datos.map(item => ({
                     nombre: item.nombre,
                     apellido: item.apellido,
@@ -455,4 +460,32 @@ const modalOnOff = () =>{
 
 const erroresSoloLocalHost = ( error ) =>{
     window.isDevelopment = true ? console.log( error )  : "";
+}
+
+const spinner = ( respuesta ) =>{
+    
+    const spinnerModal = $("<div class='spinner-modal' id='spinerModal'>")
+    if(respuesta){
+
+        spinnerModal.append(`
+            <div class="container">
+                <div id="spinner" class="spinner">
+                <div class="ecg-line">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    </div>
+                    </div>
+            </div>
+        `)
+
+    $('main').append(spinnerModal);
+} else{
+    $('spinerModal').attr('class', 'spinner-off');
+        alert('¡Carga completada!');
+
+}
+
 }
