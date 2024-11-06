@@ -6,11 +6,16 @@ $(document).ready( ()=>{
     eliminarAutomatico();
     setFechaActual();
     matrizMes();
+    window.isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 });
 
 // -----------------------------------------------
 //                 FUNCIONES
 // -----------------------------------------------
+
+const erroresSoloLocalHost = ( error ) =>{
+    window.isDevelopment = true ? console.log( error )  : "";
+}
 
 ////Consulta la cantidad de turnos en la BD
 const consultaCantidadDeTurnos = (anioYMes, cantidadDeDias) =>{
@@ -90,11 +95,16 @@ const buscarHorariosTurnos  = ( fecha ) =>{
                         $(`<option value="${hora}">${hora}</option>`)
                     );
                 }}}
-            }catch (error) {
-                console.log(resultado);
-                console.error("Error al cargar select empleados del modal:", error);
-                alert("Error al cargar datos en el select empleados. Consulta la consola para más detalles.");
+            }catch (e) {
+                alert('Ocurrió un error al procesar la respuesta del servidor.');
+                const error = e.message +  " | " + resultado;
+                erroresSoloLocalHost( error );
             }
+        },
+        error: (jqXHR, textStatus, errorThrown) => {
+            alert('Ocurrió un error en la solicitud. Intenta de nuevo más tarde.');
+            const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
+            erroresSoloLocalHost( error )
         }
     })
 }

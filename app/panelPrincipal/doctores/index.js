@@ -462,6 +462,8 @@ const erroresSoloLocalHost = ( error ) =>{
     window.isDevelopment = true ? console.log( error )  : "";
 }
 
+
+//FALTA TERMINAR XXXXXXXX
 const spinner = ( respuesta ) =>{
     
     const spinnerModal = $("<div class='spinner-modal' id='spinerModal'>")
