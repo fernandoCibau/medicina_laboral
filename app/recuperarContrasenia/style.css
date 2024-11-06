@@ -1,3 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    scroll-behavior: smooth;
+}
+
 body,
 html {
     margin: 0;
@@ -100,7 +110,7 @@ h2 {
     background-color: #539bfc;
     color: white;
     padding: 20px;
-    width: 160px;
+    width: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -108,7 +118,7 @@ h2 {
 
 .right-panel {
     padding: 20px;
-    width: 260px;
+    width: 300px;
 }
 
 h3 {

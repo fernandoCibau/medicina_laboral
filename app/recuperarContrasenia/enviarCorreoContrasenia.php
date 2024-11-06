@@ -9,7 +9,7 @@ if(isset($_POST["correo"])){
         $para = $_POST["correo"];
         $de = "From: nachomelga123@gmail.com";
         $asunto = "Prueba PHP";
-        $mensaje = "http://localhost/Medicinal_laboral/recuperarContrasenia/actualizacionContrasenia.html";
+        $mensaje = "http://localhost/Medicina_laboral/app/recuperarContrasenia/actualizacionContrasenia.html";
 
 
         $sql = "SELECT * FROM usuarios WHERE email = '$para'"; 
@@ -21,7 +21,7 @@ if(isset($_POST["correo"])){
             $enviarMail = mail($para,$asunto,$mensaje,$de);
 
             if($enviarMail){
-                echo json_encode( [ 'mensaje' => 'Se envio el correo de recuperacion exitosamente', 'operacion' => true ]); 
+                echo json_encode( [ 'mensaje' => 'Se envio el correo de recuperacion', 'operacion' => true ]); 
                 
            }
 

@@ -34,7 +34,7 @@
                     <form   method="post" id="formContraseña">
                         <input required type="email" name="correo">
                         
-                        <p id="mensaje" class="hidde" >-</p>
+                        <spam id="mensaje" class="hidde" >-</spam>
                         
                         <div class="loader hidde"></div>
                         <button id="enviarBTN">Enviar</button>

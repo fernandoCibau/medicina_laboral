@@ -57,20 +57,20 @@ let envioDeCorreo = (formData) => {
     processData: false,
     success: (resultado, estado) => {
       let datos = JSON.parse(resultado);
-      alert(datos.mensaje);
+
       try {
         if (datos.operacion) {
-          $("#").text(datos.mensaje);
-          $("p").removeClass("hidde");
-          $("p").removeClass("show-error");
+          $("#mensaje").text(datos.mensaje);
+          $("spam").removeClass("hidde");
+          $("spam").removeClass("show-error");
           $(".loader").addClass("hidde");
-          $("p").addClass("show");
+          $("spam").addClass("show");
         } else {
-          $("p").text(datos.mensaje);
-          $("p").removeClass("hidde");
-          $("p").removeClass("show");
+          $("spam").text(datos.mensaje);
+          $("spam").removeClass("hidde");
+          $("spam").removeClass("show");
           $(".loader").addClass("hidde");
-          $("p").addClass("show-error");
+          $("spam").addClass("show-error");
         }
       } catch (error) {
         alert(error);
