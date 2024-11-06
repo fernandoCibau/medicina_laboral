@@ -5,19 +5,87 @@ html {
     font-family: "Roboto", system-ui;
     font-weight: 400;
     font-style: normal;
-    background-color: #f0f0f0;
+    height: 100%;
+
 }
 
-.container {
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 10%;
+    align-items: center;
+    background-color: #539bfc;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+
+header h1 {
+    margin: 0 0 0 3%;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+header h1 a {
+    text-decoration: none;
+    color: #fff;
+}
+
+header nav {
+    /* background-color: navy; */
+    width: 25em;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    right: 0%;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.3em;
+    transition: color 0.3s ease;
+    scroll-behavior: smooth;
+    /* Habilita el desplazamiento suave */
+}
+
+
+
+main {
+    width: 100%;
+    height: 80%;
+}
+
+main .container {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 200px;
+    justify-content: center;
 }
 
 .logo h1 {
+    font-weight: 400;
     color: #007bff;
     margin-bottom: 50px;
+}
+
+h2 {
+    font-weight: 400;
 }
 
 .login-box {
@@ -32,8 +100,7 @@ html {
     background-color: #539bfc;
     color: white;
     padding: 20px;
-    width: 200px;
-    height: 275.719px;
+    width: 160px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,11 +108,12 @@ html {
 
 .right-panel {
     padding: 20px;
-    width: 300px;
+    width: 260px;
 }
 
 h3 {
     margin-top: 0;
+    font-weight: 400;
 }
 
 .input-group {
@@ -53,27 +121,26 @@ h3 {
 }
 
 input {
-    width: 278px;
+    width: calc(100% - 22px);
     padding: 10px;
-    margin-top: 26px;
+    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
 button {
-    background-color: #539bfc;
+    background-color: #3eae58;
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
-
 button:hover {
-    background-color: #007bff;
+    background-color: #218838;
 }
 
 #mensaje {
@@ -124,4 +191,15 @@ h3 {
     100% {
         transform: rotate(360deg);
     }
+}
+
+footer {
+    width: 100%;
+    height: 10%;
+    margin-top: auto;
+    background-color: #539bfc;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
 }

@@ -62,7 +62,8 @@ header nav {
   text-decoration: none;
   font-size: 1.3em;
   transition: color 0.3s ease;
-  scroll-behavior: smooth; /* Habilita el desplazamiento suave */
+  scroll-behavior: smooth;
+  /* Habilita el desplazamiento suave */
 }
 
 main {
@@ -77,6 +78,7 @@ main .container {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 }
 
 .logo h1 {
@@ -109,6 +111,7 @@ main .container {
 
 h3 {
   margin-top: 0;
+
 }
 
 .input-group {
