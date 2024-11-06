@@ -69,35 +69,70 @@ const cargarTabla = () => {
                         <input type="text" id="inputId" value="${fila['id']}" hidden>
 
                         <label for="inputFechaConsulta">Fecha</label>
-                        <input type="date" id="inputFechaConsulta">
+                        <input type="date" id="inputFechaConsulta" required>
                         
                         <label for="inputMedicoCertificado">Medico que firma el certificado</label>
-                        <input type="text" id="inputMedicoCertificado">
+                        <input type="text" id="inputMedicoCertificado" required>
                         
                         <label for="inputCie10">Diagnostico</label>
-                        <input type="text" id="inputCie10">
+                        <input type="text" id="inputCie10" required>
                         
                         <label for="inputSolicitudCertificado">Ingrese la indicacion de reposo del certificado</label>
-                        <input type="text" id="inputSolicitudCertificado">
+                        <input type="text" id="inputSolicitudCertificado" required>
                         
                         <label for="inputFechaInicio">Fecha de inicio de ausentismo justificado</label>
-                        <input type="date" id="inputFechaInicio">
+                        <input type="date" id="inputFechaInicio" required>
                         
                         <label for="inputFechaFin">Fecha de fin de ausentismo justificado</label>
-                        <input type="text" id="inputFechaFin">
+                        <input type="date" id="inputFechaFin" required>
                                                 
                         <label for="inputObservaciones">Observaciones</label>
-                        <input type="text" id="inputObservaciones">
+                        <input type="text" id="inputObservaciones" required>
                         
                         <div id="modalButtons">
-                            <button id="guardarCambiosBtn" class="btn btn-primary">Modificar</button>
+                            <button id="guardarConsulta" class="btn btn-primary">Agregar consulta</button>
                             <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
                         </div>
                     `);
 
                     $("#tituloModal").text("Agregar consulta");
                     modalOnOff();
-                    
+                    $("#guardarConsulta").on("click", () => {
+                        const datosConsulta = {
+                            //AGREGAR DATOS PARA ARMAR EL NUEVO REGISTRO DE CONSULTA
+                            id_empleado: $("#inputId").val(),
+                            fecha: $("#inputFechaConsulta").val(),
+                            medico_certificado: $("#inputMedicoCertificado").val(),
+                            diagnostico_cie10: $("#inputCie10").val(),
+                            solicitud_ausentismo: $("#inputSolicitudCertificado").val(),
+                            fecha_inicio_ausentismo: $("#inputFechaInicio").val(),
+                            fecha_fin_ausentismo: $("#inputFechaFin").val(),
+                            observaciones: $("#inputObservaciones").val()
+                        };
+                        $.ajax({
+                            url: "agregarConsulta.php",
+                            method: "POST",
+                            data: datosConsulta,
+                            success: (response) => {
+                                const resultado = JSON.parse(response);
+                                if (resultado.operacion) {
+                                    Swal.fire({
+                                        title: "Consulta agregada",
+                                        text: "La consulta fue guardada con éxito.",
+                                        icon: "success"
+                                    }).then(() => {
+                                        modalOnOff();  // Cerrar modal
+                                    });
+                                } else {
+                                    Swal.fire("Error", resultado.mensaje, "error");
+                                }
+                            },
+                            error: (xhr, status, error) => {
+                                console.error("Error en la solicitud AJAX:", error);
+                                Swal.fire("Error", "Ocurrió un problema al guardar la consulta.", "error");
+                            }
+                        });
+                    })
                 });
                 tr.append($("<td>").append(botonAgregar));
             
@@ -428,33 +463,6 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
 
     // Agregar eventos con eliminación previa para evitar duplicados
     $("#agregarBtn").on("click", () => {
-        /* VERIFICACION DE LOS DATOS DEL FORM
-        // Asignación de valores del formulario a variables
-        const legajo = $("#altaLegajo").val();
-        const dni = $("#altaDNI").val();
-        const apellido = $("#altaApellido").val();
-        const nombre = $("#altaNombre").val();
-        const domicilio = $("#altaDomicilio").val();
-        const fecha_nac = $("#altaFechaNac").val();
-        const fecha_ing = $("#altaFechaIng").val();
-        const observaciones = $("#altaObservaciones").val();
-        const id_categoria = $("#selectCategoria").val();
-        const id_seccion = $("#selectSeccion").val();
-        const id_empresa = $("#selectEmpresas").val();
-
-        // Mostrar en consola cada variable para verificar los valores
-        console.log("legajo:", legajo);
-        console.log("dni:", dni);
-        console.log("apellido:", apellido);
-        console.log("nombre:", nombre);
-        console.log("domicilio:", domicilio);
-        console.log("fecha_nac:", fecha_nac);
-        console.log("fecha_ing:", fecha_ing);
-        console.log("observaciones:", observaciones);
-        console.log("id_categoria:", id_categoria);
-        console.log("id_seccion:", id_seccion);
-        console.log("id_empresa:", id_empresa);
-        */
 
         const datosActualizados = {
             legajo: $("#altaLegajo").val(),
@@ -469,7 +477,7 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
             id_seccion: $("#selectSeccion").val(),
             id_empresa: $("#selectEmpresas").val()
         };
-
+        console.log(datosActualizados);
         $.ajax({
             url: "altaEmpleado.php",
             method: "POST",

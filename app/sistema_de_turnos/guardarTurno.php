@@ -36,7 +36,4 @@ if (isset($_POST['fecha']) ) {
 } else {
     echo json_encode(['mensaje' => 'Error al convertir la fecha.']);
 }
-
-
-
 ?>

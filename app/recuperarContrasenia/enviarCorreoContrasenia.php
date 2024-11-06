@@ -2,12 +2,12 @@
 
 include '../conexion.php';
 
-if(isset($_POST["email"])){
+if(isset($_POST["correo"])){
     
-    if(!empty($_POST["email"]) && !empty($_POST["name"]) && !empty($_POST["name"]) && !empty($_POST["phone"]) && !empty($_POST["subject"]) && !empty($_POST["message"]) )
+    if(!empty($_POST["correo"]))
     {
-        $para = $_POST["email"];
-        $de = "From: 12345@gmail.com";
+        $para = $_POST["correo"];
+        $de = "From: nachomelga123@gmail.com";
         $asunto = "Prueba PHP";
         $mensaje = "http://localhost/Medicina_laboral/app/recuperarContrasenia/actualizacionContrasenia.html";
 
@@ -21,7 +21,7 @@ if(isset($_POST["email"])){
             $enviarMail = mail($para,$asunto,$mensaje,$de);
 
             if($enviarMail){
-                echo json_encode( [ 'mensaje' => 'Se envio el correo de recuperacion exitosamente', 'operacion' => true ]); 
+                echo json_encode( [ 'mensaje' => 'Se envio el correo de recuperacion', 'operacion' => true ]); 
                 
            }
 
