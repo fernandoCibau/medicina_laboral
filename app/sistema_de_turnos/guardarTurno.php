@@ -1,6 +1,5 @@
 <?php
-include '../error_config.php';
-if (isset($_POST['fecha']) ) {
+if (isset($_POST['fecha']) && isset($_POST['horas-del-dia']) ) {
     try{    
         include '../conexion.php';
         
@@ -30,8 +29,8 @@ if (isset($_POST['fecha']) ) {
         
         mysqli_close($conexion);
     } catch (Exception $e) {
-        error_log("Error en " . $e->getFile() . " en la línea " . $e->getLine() . ": " . $e->getMessage());
-        echo json_encode(['mensaje' => 'Ocurrió un error.']);
+        $error = "Error en " . $e->getFile() . " en la línea " . $e->getLine() . ": " . $e->getMessage();
+        echo json_encode(['mensaje' => 'Ocurrió un error', 'error'=> $error ]);
     }
 } else {
     echo json_encode(['mensaje' => 'Error al convertir la fecha.']);

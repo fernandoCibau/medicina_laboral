@@ -20,12 +20,12 @@ if (isset($_POST['id']) && (isset($_POST['matricula']) || isset($_POST['dni']) |
 
             $sql = "UPDATE medicos 
             SET 
-                nombre = '$nombre', 
-                especialidad = '$especialidad', 
-                matricula = '$matricula', 
-                dni = '$dni', 
-                apellido = '$apellido', 
-                email = '$email' 
+                nombre          = '$nombre', 
+                especialidad  = '$especialidad', 
+                matricula        = '$matricula', 
+                dni                  = '$dni', 
+                apellido          = '$apellido', 
+                email              = '$email' 
             WHERE id = '$id'";
 
             $resultado = mysqli_query($conexion, $sql); 
@@ -42,10 +42,10 @@ if (isset($_POST['id']) && (isset($_POST['matricula']) || isset($_POST['dni']) |
         }
 
     } catch (Exception $e) {
-        error_log("Error en " . $e->getFile() . " en la línea " . $e->getLine() . ": " . $e->getMessage());
-        echo json_encode(['mensaje' => 'Ocurrió un error.']);
+        $error = "Error en " . $e->getFile() . " en la línea " . $e->getLine() . ": " . $e->getMessage();
+        echo json_encode(['mensaje' => 'Ocurrió un error', 'error'=> $error ]);
     }
 } else {
-    echo json_encode(['mensaje' => 'No se recibieron datos suficientes desde el formulario']);
+    echo json_encode(['mensaje' => 'No se recibieron datos suficientes desde el formulario' 'operacion' => FALSE ]);
 }
 ?>

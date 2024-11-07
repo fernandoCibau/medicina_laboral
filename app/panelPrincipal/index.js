@@ -4,7 +4,7 @@ $("#accesoAltaUsuario").click(() => {
 });
 
 //Cierra la sesion de usuario
-$("#btmCerrarSesion").click(() => {
+$("#btmCerrarSesion").one("click", () => {
   if (confirm("¿Desea cerrar la sesión?")) {
     window.location.href = "../cerrarSesion.php";
   }

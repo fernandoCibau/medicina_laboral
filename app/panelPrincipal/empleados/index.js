@@ -73,26 +73,40 @@ const cargarTabla = () => {
             $("#contenedorDatos").append(`
                         <input type="text" id="inputId" value="${fila["id"]}" hidden>
 
-                        <label for="inputFechaConsulta">Fecha</label>
-                        <input type="date" id="inputFechaConsulta" required>
-                        
-                        <label for="inputMedicoCertificado">Medico que firma el certificado</label>
-                        <input type="text" id="inputMedicoCertificado" required>
-                        
-                        <label for="inputCie10">Diagnostico</label>
-                        <input type="text" id="inputCie10" required>
-                        
-                        <label for="inputSolicitudCertificado">Ingrese la indicacion de reposo del certificado</label>
-                        <input type="text" id="inputSolicitudCertificado" required>
-                        
-                        <label for="inputFechaInicio">Fecha de inicio de ausentismo justificado</label>
-                        <input type="date" id="inputFechaInicio" required>
-                        
-                        <label for="inputFechaFin">Fecha de fin de ausentismo justificado</label>
-                        <input type="date" id="inputFechaFin" required>
-                                                
-                        <label for="inputObservaciones">Observaciones</label>
-                        <input type="text" id="inputObservaciones" required>
+                        <div class="contenedor-input">
+                            <label for="inputFechaConsulta">Fecha</label>
+                            <input type="date" id="inputFechaConsulta" required>
+                        </div>
+                            
+                        <div class="contenedor-input">
+                            <label for="inputMedicoCertificado">Medico que firma el certificado</label>
+                            <input type="text" id="inputMedicoCertificado" required>
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputCie10">Diagnostico</label>
+                            <input type="text" id="inputCie10" required>
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputSolicitudCertificado">Ingrese la indicacion de reposo del certificado</label>
+                            <input type="text" id="inputSolicitudCertificado" required>
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputFechaInicio">Fecha de inicio de ausentismo justificado</label>
+                            <input type="date" id="inputFechaInicio" required>
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputFechaFin">Fecha de fin de ausentismo justificado</label>
+                            <input type="date" id="inputFechaFin" required>
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputObservaciones">Observaciones</label>
+                            <input type="text" id="inputObservaciones" required>
+                        </div>
                         
                         <div id="modalButtons">
                             <button id="guardarConsulta" class="btn btn-primary">Agregar consulta</button>
@@ -102,6 +116,9 @@ const cargarTabla = () => {
 
             $("#tituloModal").text("Agregar consulta");
             modalOnOff();
+            $("#cancelarBtn").on("click", () => {
+              modalOnOff(); // Cerrar el modal sin guardar
+            });
             $("#guardarConsulta").on("click", () => {
               const datosConsulta = {
                 //AGREGAR DATOS PARA ARMAR EL NUEVO REGISTRO DE CONSULTA
@@ -155,43 +172,63 @@ const cargarTabla = () => {
             // Crear los inputs con los valores de la fila seleccionada
             $("#contenedorDatos").append(`
                         <input type="text" id="inputId" value="${fila["id"]}" hidden>
+                        <div class="contenedor-input">
+                            <label for="inputIdEmpresa">Empresa</label>
+                            <input type= "number" id="idEmpresa" value = "${fila["id_empresa"]}" hidden>
+                            <input type="text" id="inputIdEmpresa" value="${fila["empresa_nombre"]}" readonly>
+                        </div>
 
-                        <label for="inputIdEmpresa">Empresa</label>
-                        <input type= "number" id="idEmpresa" value = "${fila["id_empresa"]}" hidden>
-                        <input type="text" id="inputIdEmpresa" value="${fila["empresa_nombre"]}" readonly>
-                        
-                        <label for="inputLegajo">Legajo</label>
-                        <input type="text" id="inputLegajo" value="${fila["legajo"]}">
-                        
-                        <label for="inputDNI">DNI</label>
-                        <input type="text" id="inputDNI" value="${fila["dni"]}">
-                        
-                        <label for="inputApellido">Apellido</label>
-                        <input type="text" id="inputApellido" value="${fila["apellido"]}">
-                        
-                        <label for="inputNombre">Nombre</label>
-                        <input type="text" id="inputNombre" value="${fila["nombre"]}">
-                        
-                        <label for="inputDomicilio">Domicilio</label>
-                        <input type="text" id="inputDomicilio" value="${fila["domicilio"]}">
-                                                
-                        <label for="inputFechaNac">Fecha Nac:</label>
-                        <input type="date" id="inputFechaNac" value="${fila["fecha_nacimiento"]}">
-                                                
-                        <label for="inputFechaIng">Fecha Ing:</label>
-                        <input type="date" id="inputFechaIng" value="${fila["fecha_ingreso"]}">
-                                                
-                        <label for="inputCategoria">Categoria</label>
-                        <input type= "number" id="idCategoria" value = "${fila["id_categoria"]}" hidden>
-                        <input type="text" id="inputCategoria" value="${fila["categoria_nombre"]}" readonly>
-                                                
-                        <label for="inputSeccion">Seccion</label>
-                        <input type= "number" id="idSeccion" value = "${fila["id_seccion"]}" hidden>
-                        <input type="text" id="inputSeccion" value="${fila["seccion_nombre"]}" readonly>
-                                                
-                        <label for="inputObservaciones">Observaciones</label>
-                        <input type="text" id="inputObservaciones" value="${fila["observaciones"]}">
-                        
+                        <div class="contenedor-input">
+                            <label for="inputLegajo">Legajo</label>
+                            <input type="text" id="inputLegajo" value="${fila["legajo"]}">
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputDNI">DNI</label>
+                            <input type="text" id="inputDNI" value="${fila["dni"]}">
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputApellido">Apellido</label>
+                            <input type="text" id="inputApellido" value="${fila["apellido"]}">
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputNombre">Nombre</label>
+                            <input type="text" id="inputNombre" value="${fila["nombre"]}">
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputDomicilio">Domicilio</label>
+                            <input type="text" id="inputDomicilio" value="${fila["domicilio"]}">
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputFechaNac">Fecha Nac:</label>
+                            <input type="date" id="inputFechaNac" value="${fila["fecha_nacimiento"]}">
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputFechaIng">Fecha Ing:</label>
+                            <input type="date" id="inputFechaIng" value="${fila["fecha_ingreso"]}">
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputCategoria">Categoria</label>
+                            <input type= "number" id="idCategoria" value = "${fila["id_categoria"]}" hidden>
+                            <input type="text" id="inputCategoria" value="${fila["categoria_nombre"]}" readonly>
+                        </div>                            
+                        <div class="contenedor-input">
+                            <label for="inputSeccion">Seccion</label>
+                            <input type= "number" id="idSeccion" value = "${fila["id_seccion"]}" hidden>
+                            <input type="text" id="inputSeccion" value="${fila["seccion_nombre"]}" readonly>
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputObservaciones">Observaciones</label>
+                            <input type="text" id="inputObservaciones" value="${fila["observaciones"]}">
+                        </div>
+
                         <div id="modalButtons">
                             <button id="guardarCambiosBtn" class="btn btn-primary">Modificar</button>
                             <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
@@ -301,16 +338,13 @@ const cargarTabla = () => {
 
 //Abre y cierra el modal
 const modalOnOff = () => {
+  const mainContent = document.querySelector("main");
   if ($("#contenedorModal").hasClass("on")) {
     $("#contenedorModal").attr("class", "contenedor-modal off");
-    $("table").attr("class", "desbloqueado");
-    $("#secMenu").attr("class", "secMenu desbloqueado");
-    $("header").attr("class", "desbloqueado");
+    mainContent.classList.remove("blur-background");
   } else {
     $("#contenedorModal").attr("class", "contenedor-modal on");
-    $("table").attr("class", "bloqueado");
-    $("#secMenu").attr("class", "secMenu bloqueado");
-    $("header").attr("class", "bloqueado");
+    mainContent.classList.add("blur-background");
   }
 };
 
@@ -407,28 +441,42 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
             <label for="selectEmpresas" require>Empresas</label>
             <select name="selectEmpresas" id="selectEmpresas"></select>
         </div>
-        
-        <label for="altaLegajo">Legajo</label>
-        <input type="text" id="altaLegajo">
 
-        <label for="altaDNI">DNI</label>
-        <input type="text" id="altaDNI" required>
-        
-        <label for="altaApellido">Apellido</label>
-        <input type="text" id="altaApellido" required>
-        
-        <label for="altaNombre">Nombre</label>
-        <input type="text" id="altaNombre" required>
-        
-        <label for="altaDomicilio">Domicilio</label>
-        <input type="text" id="altaDomicilio">
-                                                
-        <label for="altaFechaNac">Fecha Nac:</label>
-        <input type="date" id="altaFechaNac" required>
-                                                
-        <label for="altaFechaIng">Fecha Ing:</label>
-        <input type="date" id="altaFechaIng">
-          
+        <div class="contenedor-input">
+            <label for="altaLegajo">Legajo</label>
+            <input type="text" id="altaLegajo">
+        </div>
+
+        <div class="contenedor-input">
+            <label for="altaDNI">DNI</label>
+            <input type="text" id="altaDNI" required>
+        </div>
+
+        <div class="contenedor-input">
+            <label for="altaApellido">Apellido</label>
+            <input type="text" id="altaApellido" required>
+        </div>
+
+        <div class="contenedor-input">
+            <label for="altaNombre">Nombre</label>
+            <input type="text" id="altaNombre" required>
+        </div>
+
+        <div class="contenedor-input">
+            <label for="altaDomicilio">Domicilio</label>
+            <input type="text" id="altaDomicilio">
+        </div>
+
+        <div class="contenedor-input">
+            <label for="altaFechaNac">Fecha Nac:</label>
+            <input type="date" id="altaFechaNac" required>
+        </div>
+
+        <div class="contenedor-input">
+            <label for="altaFechaIng">Fecha Ing:</label>
+            <input type="date" id="altaFechaIng">
+        </div>
+
         <div class="contenedor-input">
             <label for="selectCategoria">Categoria</label>
             <select name="selectCategoria" id="selectCategoria"></select>
@@ -438,10 +486,12 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
             <label for="selectSeccion">Seccion</label>
             <select name="selectSeccion" id="selectSeccion"></select>
         </div>
-                                                
-        <label for="altaObservaciones">Observaciones</label>
-        <input type="text" id="altaObservaciones">
-        
+                  
+        <div class="contenedor-input">
+            <label for="altaObservaciones">Observaciones</label>
+            <input type="text" id="altaObservaciones">
+        </div>
+
         <div id="modalButtons">
             <button id="agregarBtn" class="btn btn-primary">Agregar Empleado</button>
             <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
@@ -474,7 +524,6 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
       data: datosActualizados,
       success: (response) => {
         const resultado = JSON.parse(response);
-        alert(resultado);
         if (resultado.operacion) {
           Swal.fire({
             title: "Empleado agregado.",
@@ -639,9 +688,9 @@ const cargarSelectSeccion = () => {
 //------------------------------------------------------------------
 //                  BOTONES
 //------------------------------------------------------------------
-$("#btmCerrarSesion").click(() => {
-  if (confirm("¿Confirmar?")) {
-    location.href = "../../cerrarSesion.php";
+$("#btmCerrarSesion").one("click", () => {
+  if (confirm("¿Desea cerrar la sesión?")) {
+    window.location.href = "../../cerrarSesion.php";
   }
 });
 
