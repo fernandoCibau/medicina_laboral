@@ -152,7 +152,11 @@ const cargarTabla = () => {
 
           $("#tituloModal").text("Informe Medico");
           modalOnOff();
+          $("#cancelarBtn").on("click", () => {
+            modalOnOff(); // Cerrar el modal sin guardar
+          });
         });
+        
 
         // Añadir el botón a la fila de la tabla
         tr.append($("<td>").append(botonVer));

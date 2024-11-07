@@ -116,6 +116,9 @@ const cargarTabla = () => {
 
             $("#tituloModal").text("Agregar consulta");
             modalOnOff();
+            $("#cancelarBtn").on("click", () => {
+              modalOnOff(); // Cerrar el modal sin guardar
+            });
             $("#guardarConsulta").on("click", () => {
               const datosConsulta = {
                 //AGREGAR DATOS PARA ARMAR EL NUEVO REGISTRO DE CONSULTA
