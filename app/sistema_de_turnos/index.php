@@ -19,7 +19,7 @@ session_start();
 <body>
         
     <header>
-        <h1>Calendario De Turnos</h1>
+        <h1>CALENDARIO DE TURNOS</h1>
         <div class="contenedorBtnHeader">
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonCerrarSesion">Cerrar Sesion</button>
         </div>

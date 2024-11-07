@@ -59,6 +59,7 @@ h1 {
 
 .contenedorBtnHeader .btmCerrarSesion:hover {
   background-color: #d15d5b;
+  color: white;
   transition: 1s;
 }
 

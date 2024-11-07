@@ -75,9 +75,9 @@ $(document).ready(function () {
 //                  BOTONES
 //------------------------------------------------------------------
 
-$("#btmCerrarSesion").click(() => {
-  if (confirm("¿Confirmar?")) {
-    location.href = "../../cerrarSesion.php";
+$("#btmCerrarSesion").one("click", () => {
+  if (confirm("¿Desea cerrar la sesión?")) {
+    window.location.href = "../../cerrarSesion.php";
   }
 });
 
