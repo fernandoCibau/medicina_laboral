@@ -185,16 +185,13 @@ const cargarTabla = () => {
 
 //Abre y cierra el modal
 const modalOnOff = () => {
+  const mainContent = document.querySelector("main");
   if ($("#contenedorModal").hasClass("on")) {
     $("#contenedorModal").attr("class", "contenedor-modal off");
-    $("table").attr("class", "desbloqueado");
-    $("#secMenu").attr("class", "secMenu desbloqueado");
-    $("header").attr("class", "desbloqueado");
+    mainContent.classList.remove("blur-background");
   } else {
     $("#contenedorModal").attr("class", "contenedor-modal on");
-    $("table").attr("class", "bloqueado");
-    $("#secMenu").attr("class", "secMenu bloqueado");
-    $("header").attr("class", "bloqueado");
+    mainContent.classList.add("blur-background");
   }
 };
 
@@ -247,7 +244,7 @@ const empleadosDeEmpresa = (idEmpresa) => {
 
 const eliminarEmpresa = (idEmpresa) => {
   return $.ajax({
-    url: "bajaEmpresa.php", // Asegúrate de ajustar la ruta correctamente
+    url: "bajaEmpresa.php",
     type: "POST",
     data: { id: idEmpresa },
     dataType: "json",
@@ -268,29 +265,26 @@ const eliminarEmpresa = (idEmpresa) => {
 
 //Buscador
 
-$(document).ready(function() {
-  $('#inputBuscar').on('keyup', function() {
-      const buscarTexto = $(this).val().toLowerCase(); // Obtiene el texto a buscar en minúsculas
+$(document).ready(function () {
+  $("#inputBuscar").on("keyup", function () {
+    const buscarTexto = $(this).val().toLowerCase(); // Obtiene el texto a buscar en minúsculas
 
-      // Filtra las filas de la tabla solo en la columna "Nombre"
-      $('table tbody tr').filter(function() {
-          const dni = $(this).find('td:nth-child(1)').text().toLowerCase(); // Cambia 3 por el índice de la columna "Nombre"
-          // Compara si el nombre de la empresa comienza con el texto buscado
-          $(this).toggle(dni.startsWith(buscarTexto));
-      });
+    // Filtra las filas de la tabla solo en la columna "Nombre"
+    $("table tbody tr").filter(function () {
+      const dni = $(this).find("td:nth-child(1)").text().toLowerCase(); // Cambia 3 por el índice de la columna "Nombre"
+      // Compara si el nombre de la empresa comienza con el texto buscado
+      $(this).toggle(dni.startsWith(buscarTexto));
+    });
   });
 });
 
-
 //Funcion de agregar empresa
 
-const botonAgregar = $("#agregarEmpresas").on(
-  "click",
-  () => {
-    $("#contenedorDatos").empty();
+const botonAgregar = $("#agregarEmpresas").on("click", () => {
+  $("#contenedorDatos").empty();
 
-    // Crear los inputs con los valores de la fila seleccionada
-    $("#contenedorDatos").append(`
+  // Crear los inputs con los valores de la fila seleccionada
+  $("#contenedorDatos").append(`
                 <div class="contenedor-input">  
                   <label for="inputRazonSocial">Razón Social</label>
                   <input type="text" id="inputRazonSocial">
@@ -313,57 +307,53 @@ const botonAgregar = $("#agregarEmpresas").on(
                 </div>
             `);
 
-    $("#tituloModal").text("Agregar Empresa");
-    modalOnOff();
+  $("#tituloModal").text("Agregar Empresa");
+  modalOnOff();
 
-    // Evento del botón Guardar Cambios
-    $("#agregarBtn").on("click", () => {
-      const datosActualizados = {
-        razon_social: $("#inputRazonSocial").val(),
-        cuit: $("#inputCuit").val(),
-        domicilio: $("#inputDomicilio").val(),
-        email: $("#inputEmail").val(),
-      };
+  // Evento del botón Guardar Cambios
+  $("#agregarBtn").on("click", () => {
+    const datosActualizados = {
+      razon_social: $("#inputRazonSocial").val(),
+      cuit: $("#inputCuit").val(),
+      domicilio: $("#inputDomicilio").val(),
+      email: $("#inputEmail").val(),
+    };
 
-      $.ajax({
-        url: "altaEmpresa.php",
-        method: "POST",
-        data: datosActualizados,
-        success: (response) => {
-          const resultado = JSON.parse(response);
-          if (resultado.operacion) {
-            Swal.fire({
-              title: "Empresa Agregada.",
-              text: "Los empresa fue agregada con éxito.",
-              icon: "success",
-            }).then(() => {
-              modalOnOff(); // Cerrar modal
-              cargarTabla(); // Recargar la tabla con los datos actualizados
-            });
-          } else {
-            Swal.fire("Error", resultado.mensaje, "error");
-          }
-        },
-        error: (xhr, status, error) => {
-          console.error("Error en la solicitud AJAX:", error);
-          Swal.fire(
-            "Error",
-            "Ocurrió un problema al guardar los cambios.",
-            "error"
-          );
-        },
-      });
+    $.ajax({
+      url: "altaEmpresa.php",
+      method: "POST",
+      data: datosActualizados,
+      success: (response) => {
+        const resultado = JSON.parse(response);
+        if (resultado.operacion) {
+          Swal.fire({
+            title: "Empresa Agregada.",
+            text: "Los empresa fue agregada con éxito.",
+            icon: "success",
+          }).then(() => {
+            modalOnOff(); // Cerrar modal
+            cargarTabla(); // Recargar la tabla con los datos actualizados
+          });
+        } else {
+          Swal.fire("Error", resultado.mensaje, "error");
+        }
+      },
+      error: (xhr, status, error) => {
+        console.error("Error en la solicitud AJAX:", error);
+        Swal.fire(
+          "Error",
+          "Ocurrió un problema al guardar los cambios.",
+          "error"
+        );
+      },
     });
+  });
 
-    // Evento del botón Cancelar
-    $("#cancelarBtn").on("click", () => {
-      modalOnOff(); // Cerrar el modal sin guardar
-    });
-  }
-);
-
-
-
+  // Evento del botón Cancelar
+  $("#cancelarBtn").on("click", () => {
+    modalOnOff(); // Cerrar el modal sin guardar
+  });
+});
 
 //------------------------------------------------------------------
 //                  BOTONES
