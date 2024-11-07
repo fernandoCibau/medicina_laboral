@@ -68,18 +68,22 @@ const cargarTabla = () => {
             $("#contenedorDatos").append(`
                         <input type="text" id="inputId" value="${fila["id"]}" readonly hidden>
                         
-                        <label for="inputRazonSocial">Razón Social</label>
-                        <input type="text" id="inputRazonSocial" value="${fila["razon_social"]}">
-                        
-                        <label for="inputCuit">CUIT</label>
-                        <input type="text" id="inputCuit" value="${fila["cuit"]}">
-                        
-                        <label for="inputDomicilio">Domicilio</label>
-                        <input type="text" id="inputDomicilio" value="${fila["domicilio"]}">
-                        
-                        <label for="inputEmail">Email</label>
-                        <input type="text" id="inputEmail" value="${fila["email"]}">
-
+                        <div class="contenedor-input"> 
+                          <label for="inputRazonSocial">Razón Social</label>
+                          <input type="text" id="inputRazonSocial" value="${fila["razon_social"]}">
+                        </div>
+                        <div class="contenedor-input">   
+                          <label for="inputCuit">CUIT</label>
+                          <input type="text" id="inputCuit" value="${fila["cuit"]}">
+                        </div>
+                        <div class="contenedor-input"> 
+                          <label for="inputDomicilio">Domicilio</label>
+                          <input type="text" id="inputDomicilio" value="${fila["domicilio"]}">
+                        </div>
+                        <div class="contenedor-input"> 
+                          <label for="inputEmail">Email</label>
+                          <input type="text" id="inputEmail" value="${fila["email"]}">
+                        </div>
                         <div id="modalButtons">
                             <button id="guardarCambiosBtn" class="btn btn-primary">Modificar</button>
                             <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
@@ -287,19 +291,22 @@ const botonAgregar = $("#agregarEmpresas").on(
 
     // Crear los inputs con los valores de la fila seleccionada
     $("#contenedorDatos").append(`
-                
-                <label for="inputRazonSocial">Razón Social</label>
-                <input type="text" id="inputRazonSocial">
-                
-                <label for="inputCuit">CUIT</label>
-                <input type="text" id="inputCuit" maxlength="13" placeholder="xx-xxxxxxxx-x">
-                
-                <label for="inputDomicilio">Domicilio</label>
-                <input type="text" id="inputDomicilio">
-                
-                <label for="inputEmail">Email</label>
-                <input type="text" id="inputEmail">
-
+                <div class="contenedor-input">  
+                  <label for="inputRazonSocial">Razón Social</label>
+                  <input type="text" id="inputRazonSocial">
+                </div>
+                <div class="contenedor-input">
+                  <label for="inputCuit">CUIT</label>
+                  <input type="text" id="inputCuit" maxlength="13" placeholder="xx-xxxxxxxx-x">
+                </div>  
+                <div class="contenedor-input">
+                  <label for="inputDomicilio">Domicilio</label>
+                  <input type="text" id="inputDomicilio">
+                </div>
+                <div class="contenedor-input">
+                  <label for="inputEmail">Email</label>
+                  <input type="text" id="inputEmail">
+                </div>
                 <div id="modalButtons">
                     <button id="agregarBtn" class="btn btn-primary">Agregar</button>
                     <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>

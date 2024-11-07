@@ -7,3 +7,4 @@ Stack trace:
 [06-Nov-2024 11:11:13 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\altaEmpleado.php en la linea 32: Column count doesn't match value count at row 1
 [06-Nov-2024 12:13:44 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\altaEmpleado.php en la linea 32: Column count doesn't match value count at row 1
 [06-Nov-2024 13:25:28 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\altaEmpleado.php en la linea 33: Column count doesn't match value count at row 1
+[07-Nov-2024 10:54:12 America/Argentina/Buenos_Aires] PHP Warning:  Undefined variable $id_empresa in C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\modificacionEmpleado.php on line 92

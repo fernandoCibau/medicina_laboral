@@ -78,32 +78,50 @@ const cargarTabla = () => {
                     $("#contenedorDatos").append(`
                         <input type="text" id="inputId" value="${fila['id']}" readonly hidden>
                         
-                        <label for="inputRazonSocial">Empresa</label>
-                        <input type="text" id="inputRazonSocial" value="${fila['empresa_razon_social']}" readonly>
+                        <div class="contenedor-input">
+                            <label for="inputRazonSocial">Empresa</label>
+                            <input type="text" id="inputRazonSocial" value="${fila['empresa_razon_social']}" readonly>
+                        </div>
+                        
+                        <div class="contenedor-input">
+                            <label for="inputEmpleadoNombre">Empleado</label>
+                            <input type="text" id="inputEmpleadoNombre" value="${fila['empleado_nombre']} ${fila['empleado_apellido']}" readonly>
+                        </div>
 
-                        <label for="inputEmpleadoNombre">Empleado</label>
-                        <input type="text" id="inputEmpleadoNombre" value="${fila['empleado_nombre']} ${fila['empleado_apellido']}" readonly>
+                        <div class="contenedor-input">
+                            <label for="inputMedicoCertificado">Certificado Médico</label>
+                            <input type="text" id="inputMedicoCertificado" value="${fila['medico_certificado']}" readonly>
+                        </div>
 
-                        <label for="inputMedicoCertificado">Certificado Médico</label>
-                        <input type="text" id="inputMedicoCertificado" value="${fila['medico_certificado']}" readonly>
-                        
-                        <label for="inputFechaConsulta">Fecha de la Consulta</label>
-                        <input type="text" id="inputFechaConsulta" value="${fila['fecha']}" readonly>
-                        
-                        <label for="inputDiagnostico">Diagnóstico</label>
-                        <input type="text" id="inputDiagnostico" value="${fila['diagnostico_cie10']}" readonly>
-                        
-                        <label for="inputSolicitudAusentismo">Solicitud de Ausentismo</label>
-                        <input type="text" id="inputSolicitudAusentismo" value="${fila['solicitud_ausentismo']}" readonly>
-                        
-                        <label for="inputFechaInicioAusentismo">Fecha Inicio Ausentismo</label>
-                        <input type="text" id="inputFechaInicioAusentismo" value="${fila['fecha_inicio_ausentismo']}" readonly>
-                        
-                        <label for="inputFechaFinAusentismo">Fecha Fin Ausentismo</label>
-                        <input type="text" id="inputFechaFinAusentismo" value="${fila['fecha_fin_ausentismo']}" readonly>
-                        
-                        <label for="inputObservaciones">Observaciones</label>
-                        <input type="text" id="inputObservaciones" value="${fila['observaciones'] || ''}" readonly>
+                        <div class="contenedor-input">
+                            <label for="inputFechaConsulta">Fecha de la Consulta</label>
+                            <input type="text" id="inputFechaConsulta" value="${fila['fecha']}" readonly>
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputDiagnostico">Diagnóstico</label>
+                            <input type="text" id="inputDiagnostico" value="${fila['diagnostico_cie10']}" readonly>
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputSolicitudAusentismo">Solicitud de Ausentismo</label>
+                            <input type="text" id="inputSolicitudAusentismo" value="${fila['solicitud_ausentismo']}" readonly>
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputFechaInicioAusentismo">Fecha Inicio Ausentismo</label>
+                            <input type="text" id="inputFechaInicioAusentismo" value="${fila['fecha_inicio_ausentismo']}" readonly>
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputFechaFinAusentismo">Fecha Fin Ausentismo</label>
+                            <input type="text" id="inputFechaFinAusentismo" value="${fila['fecha_fin_ausentismo']}" readonly>
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="inputObservaciones">Observaciones</label>
+                            <input type="text" id="inputObservaciones" value="${fila['observaciones'] || ''}" readonly>
+                        </div>
                         
                         <div id="modalButtons">
                             <button id="enviarInforme" class="btn btn-primary">Enviar Informe</button>
