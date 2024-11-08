@@ -273,8 +273,9 @@ const cargarForm = () =>{
     validarInputTurnos();
 }
 
-
-//Cierra la sesion de usuario
+//-----------------------------------------------
+//      Cierra la sesion de usuario
+//-----------------------------------------------
 $("#btmCerrarSesion").click(() => {
     // if (confirm("¿Desea cerrar la sesión?")) {
     //   window.location.href = "../cerrarSesion.php";

@@ -42,15 +42,6 @@ header .contenedorNombreHeader h2{
     right: 20%;
 }
 
-/* .logout-button {
-  background-color: white;
-  color: #539bfc;
-  border: none;
-  padding: 10px, 20px;
-  border-radius: 4px;
-  cursor: pointer;
-} */
-
 .contenedorBtnHeader {
   width: 10%;
   position: absolute;
