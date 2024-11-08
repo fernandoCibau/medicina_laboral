@@ -28,7 +28,6 @@ if(isset($_GET['idEmpresa']) ){
                             INNER JOIN seccion SEC  ON EMPL.id_seccion = SEC.id
                         WHERE EMPR.id = '$idEmpresa'
                         ORDER BY EMPL.id_empresa  ASC";
-
         }else{
 
             $sql = "SELECT 
