@@ -30,6 +30,12 @@ h1 {
   color: #fff;
 }
 
+header .contenedorNombreHeader h2{
+  font-size: large;
+  color: white;
+  font-weight: bold;
+}
+
 .logout-button {
   background-color: #ffffff;
   color: #539bfc;
@@ -41,8 +47,8 @@ h1 {
 
 .contenedorBtnHeader {
   width: 10%;
-  position: absolute;
-  right: 0%;
+  /* position: absolute;
+  right: 0%; */
 }
 
 .contenedorBtnHeader .btmCerrarSesion {

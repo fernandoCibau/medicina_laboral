@@ -20,8 +20,10 @@ session_start();
     
     <header>
         <h1>CLINICA EL SALVADOR</h1>
+        <div class="contenedorNombreHeader">
+            <h2>Empresa :  <?php echo $_SESSION['razon_social']   ?></h2>
+        </div>
         <div class="contenedorBtnHeader">
-            <!-- <img src="../icon/boton-de-encendido.png" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido"> -->
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonCerrarSesion">Cerrar Sesion</button>
         </div>
     </header>
@@ -45,35 +47,45 @@ session_start();
                     <h3>Turnos</h3>
                 </div>
                 
-                <div class="accesos" id="accesoCIE-10">
-                    <div><img src="../icon/tabla.png" alt="CIE-10"></div>
-                    <h3>CIE-10</h3>
-                </div>
+                <?php   if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {  ?>
+                    <div class="accesos" id="accesoCIE-10">
+                        <div><img src="../icon/tabla.png" alt="CIE-10"></div>
+                        <h3>CIE-10</h3>
+                    </div>
+                <?php } ?>
                 
+
                 <div class="accesos" id="accesoPacientes">
                     <div><img src="../icon/paciente_grande.png" alt="pacientes"></div>
                     <h3>Pacientes</h3>
                 </div>
+
                 
-                <div class="accesos" id="accesoEmpresas">
-                    <div><img src="../icon/empresa_blanco_grande.png" alt="empresas"></div>
-                    <h3>Empresas</h3>
-                </div>
+                <?php   if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {  ?>
+                    <div class="accesos" id="accesoEmpresas">
+                        <div><img src="../icon/empresa_blanco_grande.png" alt="empresas"></div>
+                        <h3>Empresas</h3>
+                    </div>
+                <?php } ?>
                 
-                <div class="accesos" id="accesoPersMedico">
-                    <div><img src="../icon/personal_medico.png" alt="personal medico"></div>
-                    <h3>Pers. Medico</h3>
-                </div>
+                <?php   if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {  ?>
+                    <div class="accesos" id="accesoPersMedico">
+                        <div><img src="../icon/personal_medico.png" alt="personal medico"></div>
+                        <h3>Pers. Medico</h3>
+                    </div>
+                <?php } ?>
 
                 <div class="accesos" id="accesoHistClinic">
                     <div><img src="../icon/historiasClinicasBlanco.png" alt="historia clinica"></div>
                     <h3>Historias Clinicas</h3>
                 </div>
 
-                <div class="accesos" id="accesoConfiguracion">
-                    <div><img src="../icon/config.jpg" alt="configuracion"></div>
-                    <h3>Configuracion</h3>
-                </div>
+                <?php   if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {  ?>
+                    <div class="accesos" id="accesoConfiguracion">
+                        <div><img src="../icon/config.jpg" alt="configuracion"></div>
+                        <h3>Configuracion</h3>
+                    </div>
+                <?php } ?>
 
             </div>
         </section>
@@ -81,6 +93,7 @@ session_start();
     </main>
 
     <script type="module" src="index.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./index.js"></script>
     <footer>

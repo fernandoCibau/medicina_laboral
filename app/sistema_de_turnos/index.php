@@ -20,6 +20,9 @@ session_start();
         
     <header>
         <h1>Calendario De Turnos</h1>
+        <div class="contenedorNombreHeader">
+            <h2>Empresa :  <?php echo $_SESSION['razon_social']   ?></h2>
+        </div>
         <div class="contenedorBtnHeader">
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonCerrarSesion">Cerrar Sesion</button>
         </div>
@@ -42,31 +45,40 @@ session_start();
             
         </section>
         
-        <?php if( isset($_SESSION['admin']) && $_SESSION['admin']  == 1 ) { ?>
-
-            <section class="seccion-mes" id="seccion-mes">
-                
-                <div class="contenedor-encabezado">
-                    <h2>Mes</h2>
+        
+        <section class="seccion-mes" id="seccion-mes">
+            
+            <div class="contenedor-encabezado">
+                <h2>Mes</h2>
+                <?php if( isset($_SESSION['admin']) && $_SESSION['admin']  == 1 ) { ?>
                     <input type="month" id="mesInput" />
                     <input type="button" value="Buscar" id="btn-buscar">
                     <input type="button" value="Nuevo Turno" id="btn-nuevo-turno">
-                </div>
+                <?php  } else { ?>
+                    <input type="button" value="Ver Turnos" id="btnVerTurnos" data-id-empresa=<?php echo $_SESSION['idEmpresa']?>>
+                <?php } ?>
+            </div>
+            <?php if( isset($_SESSION['admin']) && $_SESSION['admin']  == 1 ) { ?>
                 <div id="mes" class="mes"></div>
-            </section>
-
-            <section class="seccion-modal" id="seccion-modal">
-                <div class="contenedor-encabezado-modal">
-                    <button type="button" class="btn-cerrar" id="btn-cerrar" >X</button>
-                </div>
-                
+            <?php } ?>
+        </section>
+        
+        <?php if( isset($_SESSION['admin']) && $_SESSION['admin']  == 1 ) { ?>
+                <section class="seccion-modal" id="seccion-modal">
+                    <div class="contenedor-encabezado-modal">
+                        <button type="button" class="btn-cerrar" id="btn-cerrar" >X</button>
+                    </div>
+            <?php  } else { ?>
+                <section class="seccion-modal on " id="seccion-modal">
+            <?php } ?>
+            
                 <div class="contenedor-fom" id="contenedor-fom">
-                    <h2>Agenda de Turnos</h2>
-                    <form action="" method="post" class="form-nuevo-turno"  id="form-nuevo-turno">
-
+                <h2>Agenda de Turnos</h2>
+                <form action="" method="post" class="form-nuevo-turno"  id="form-nuevo-turno">
+                    
                         <div class="contenedor-input">
                             <label for="selectEmpresas" require>Empresas</label>
-                            <select name="selectEmpresas" id="selectEmpresas"></select>
+                            <select name="selectEmpresas" id="selectEmpresas" data-id-empresa=<?php echo $_SESSION['idEmpresa']?>></select>
                         </div>
                         
                         <div class="contenedor-input">
@@ -96,6 +108,7 @@ session_start();
                         </div>                
                     </form>
                 </div>
+                
 
                 <div class="contenedor-tabla" id="contenedor-tabla">
                     <h2>Lista de Turnos</h2>
@@ -114,19 +127,17 @@ session_start();
                         </table>
                     </div>
                 </div>
+
             </section>
-
-        <?php } ?>
-
     </main>
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <?php if( isset($_SESSION['admin']) && $_SESSION['admin']  == 1 ) { ?>
         <script src="./index.js"></script>
-    <?php } else { ?>
-        <script src="./index2.js"></script>
-    <?php }?>
+    <?php  } else { ?>
+        <script src="./indexUs.js"></script>
+    <?php } ?>
     <footer>
         <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
     </footer>

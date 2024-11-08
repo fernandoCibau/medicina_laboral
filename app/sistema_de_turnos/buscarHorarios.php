@@ -1,5 +1,4 @@
 <?php
-include '../error_config.php';
 if(isset($_GET['fecha'])){
 
     try{
@@ -25,7 +24,6 @@ if(isset($_GET['fecha'])){
         mysqli_close($conexion);
 
     } catch (Exception $e) {
-        // echo json_encode( [ 'mensaje' => 'Error, ' .  $e->getMessage() . "buscarHorarios.php" . " : LINEA  : " . __LINE__  ] );
         error_log("Error en " . $e->getFile() . " en la línea " . $e->getLine() . ": " . $e->getMessage());
         echo json_encode(['mensaje' => 'Ocurrió un error.']);
     }
