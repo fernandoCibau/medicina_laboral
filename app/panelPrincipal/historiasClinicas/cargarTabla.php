@@ -24,7 +24,9 @@ if(isset($_GET['todos']) ){
                 JOIN 
                     empleados e ON cm.id_empleado = e.id
                 JOIN 
-                    empresas emp ON e.id_empresa = emp.id;";
+                    empresas emp ON e.id_empresa = emp.id
+                ORDER BY
+                    cm.id DESC;";
         
         $resultado = mysqli_query($conexion, $sql);
         

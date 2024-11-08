@@ -68,18 +68,22 @@ const cargarTabla = () => {
             $("#contenedorDatos").append(`
                         <input type="text" id="inputId" value="${fila["id"]}" readonly hidden>
                         
-                        <label for="inputRazonSocial">Razón Social</label>
-                        <input type="text" id="inputRazonSocial" value="${fila["razon_social"]}">
-                        
-                        <label for="inputCuit">CUIT</label>
-                        <input type="text" id="inputCuit" value="${fila["cuit"]}">
-                        
-                        <label for="inputDomicilio">Domicilio</label>
-                        <input type="text" id="inputDomicilio" value="${fila["domicilio"]}">
-                        
-                        <label for="inputEmail">Email</label>
-                        <input type="text" id="inputEmail" value="${fila["email"]}">
-
+                        <div class="contenedor-input"> 
+                          <label for="inputRazonSocial">Razón Social</label>
+                          <input type="text" id="inputRazonSocial" value="${fila["razon_social"]}">
+                        </div>
+                        <div class="contenedor-input">   
+                          <label for="inputCuit">CUIT</label>
+                          <input type="text" id="inputCuit" value="${fila["cuit"]}">
+                        </div>
+                        <div class="contenedor-input"> 
+                          <label for="inputDomicilio">Domicilio</label>
+                          <input type="text" id="inputDomicilio" value="${fila["domicilio"]}">
+                        </div>
+                        <div class="contenedor-input"> 
+                          <label for="inputEmail">Email</label>
+                          <input type="text" id="inputEmail" value="${fila["email"]}">
+                        </div>
                         <div id="modalButtons">
                             <button id="guardarCambiosBtn" class="btn btn-primary">Modificar</button>
                             <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
@@ -181,16 +185,13 @@ const cargarTabla = () => {
 
 //Abre y cierra el modal
 const modalOnOff = () => {
+  const mainContent = document.querySelector("main");
   if ($("#contenedorModal").hasClass("on")) {
     $("#contenedorModal").attr("class", "contenedor-modal off");
-    $("table").attr("class", "desbloqueado");
-    $("#secMenu").attr("class", "secMenu desbloqueado");
-    $("header").attr("class", "desbloqueado");
+    mainContent.classList.remove("blur-background");
   } else {
     $("#contenedorModal").attr("class", "contenedor-modal on");
-    $("table").attr("class", "bloqueado");
-    $("#secMenu").attr("class", "secMenu bloqueado");
-    $("header").attr("class", "bloqueado");
+    mainContent.classList.add("blur-background");
   }
 };
 
@@ -243,7 +244,7 @@ const empleadosDeEmpresa = (idEmpresa) => {
 
 const eliminarEmpresa = (idEmpresa) => {
   return $.ajax({
-    url: "bajaEmpresa.php", // Asegúrate de ajustar la ruta correctamente
+    url: "bajaEmpresa.php",
     type: "POST",
     data: { id: idEmpresa },
     dataType: "json",
@@ -264,106 +265,102 @@ const eliminarEmpresa = (idEmpresa) => {
 
 //Buscador
 
-$(document).ready(function() {
-  $('#inputBuscar').on('keyup', function() {
-      const buscarTexto = $(this).val().toLowerCase(); // Obtiene el texto a buscar en minúsculas
+$(document).ready(function () {
+  $("#inputBuscar").on("keyup", function () {
+    const buscarTexto = $(this).val().toLowerCase(); // Obtiene el texto a buscar en minúsculas
 
-      // Filtra las filas de la tabla solo en la columna "Nombre"
-      $('table tbody tr').filter(function() {
-          const dni = $(this).find('td:nth-child(1)').text().toLowerCase(); // Cambia 3 por el índice de la columna "Nombre"
-          // Compara si el nombre de la empresa comienza con el texto buscado
-          $(this).toggle(dni.startsWith(buscarTexto));
-      });
+    // Filtra las filas de la tabla solo en la columna "Nombre"
+    $("table tbody tr").filter(function () {
+      const dni = $(this).find("td:nth-child(1)").text().toLowerCase(); // Cambia 3 por el índice de la columna "Nombre"
+      // Compara si el nombre de la empresa comienza con el texto buscado
+      $(this).toggle(dni.startsWith(buscarTexto));
+    });
   });
 });
 
-
 //Funcion de agregar empresa
 
-const botonAgregar = $("#agregarEmpresas").on(
-  "click",
-  () => {
-    $("#contenedorDatos").empty();
+const botonAgregar = $("#agregarEmpresas").on("click", () => {
+  $("#contenedorDatos").empty();
 
-    // Crear los inputs con los valores de la fila seleccionada
-    $("#contenedorDatos").append(`
-                
-                <label for="inputRazonSocial">Razón Social</label>
-                <input type="text" id="inputRazonSocial">
-                
-                <label for="inputCuit">CUIT</label>
-                <input type="text" id="inputCuit" maxlength="13" placeholder="xx-xxxxxxxx-x">
-                
-                <label for="inputDomicilio">Domicilio</label>
-                <input type="text" id="inputDomicilio">
-                
-                <label for="inputEmail">Email</label>
-                <input type="text" id="inputEmail">
-
+  // Crear los inputs con los valores de la fila seleccionada
+  $("#contenedorDatos").append(`
+                <div class="contenedor-input">  
+                  <label for="inputRazonSocial">Razón Social</label>
+                  <input type="text" id="inputRazonSocial">
+                </div>
+                <div class="contenedor-input">
+                  <label for="inputCuit">CUIT</label>
+                  <input type="text" id="inputCuit" maxlength="13" placeholder="xx-xxxxxxxx-x">
+                </div>  
+                <div class="contenedor-input">
+                  <label for="inputDomicilio">Domicilio</label>
+                  <input type="text" id="inputDomicilio">
+                </div>
+                <div class="contenedor-input">
+                  <label for="inputEmail">Email</label>
+                  <input type="text" id="inputEmail">
+                </div>
                 <div id="modalButtons">
                     <button id="agregarBtn" class="btn btn-primary">Agregar</button>
                     <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
                 </div>
             `);
 
-    $("#tituloModal").text("Agregar Empresa");
-    modalOnOff();
+  $("#tituloModal").text("Agregar Empresa");
+  modalOnOff();
 
-    // Evento del botón Guardar Cambios
-    $("#agregarBtn").on("click", () => {
-      const datosActualizados = {
-        razon_social: $("#inputRazonSocial").val(),
-        cuit: $("#inputCuit").val(),
-        domicilio: $("#inputDomicilio").val(),
-        email: $("#inputEmail").val(),
-      };
+  // Evento del botón Guardar Cambios
+  $("#agregarBtn").on("click", () => {
+    const datosActualizados = {
+      razon_social: $("#inputRazonSocial").val(),
+      cuit: $("#inputCuit").val(),
+      domicilio: $("#inputDomicilio").val(),
+      email: $("#inputEmail").val(),
+    };
 
-      $.ajax({
-        url: "altaEmpresa.php",
-        method: "POST",
-        data: datosActualizados,
-        success: (response) => {
-          const resultado = JSON.parse(response);
-          if (resultado.operacion) {
-            Swal.fire({
-              title: "Empresa Agregada.",
-              text: "Los empresa fue agregada con éxito.",
-              icon: "success",
-            }).then(() => {
-              modalOnOff(); // Cerrar modal
-              cargarTabla(); // Recargar la tabla con los datos actualizados
-            });
-          } else {
-            Swal.fire("Error", resultado.mensaje, "error");
-          }
-        },
-        error: (xhr, status, error) => {
-          console.error("Error en la solicitud AJAX:", error);
-          Swal.fire(
-            "Error",
-            "Ocurrió un problema al guardar los cambios.",
-            "error"
-          );
-        },
-      });
+    $.ajax({
+      url: "altaEmpresa.php",
+      method: "POST",
+      data: datosActualizados,
+      success: (response) => {
+        const resultado = JSON.parse(response);
+        if (resultado.operacion) {
+          Swal.fire({
+            title: "Empresa Agregada.",
+            text: "Los empresa fue agregada con éxito.",
+            icon: "success",
+          }).then(() => {
+            modalOnOff(); // Cerrar modal
+            cargarTabla(); // Recargar la tabla con los datos actualizados
+          });
+        } else {
+          Swal.fire("Error", resultado.mensaje, "error");
+        }
+      },
+      error: (xhr, status, error) => {
+        console.error("Error en la solicitud AJAX:", error);
+        Swal.fire(
+          "Error",
+          "Ocurrió un problema al guardar los cambios.",
+          "error"
+        );
+      },
     });
+  });
 
-    // Evento del botón Cancelar
-    $("#cancelarBtn").on("click", () => {
-      modalOnOff(); // Cerrar el modal sin guardar
-    });
-  }
-);
-
-
-
+  // Evento del botón Cancelar
+  $("#cancelarBtn").on("click", () => {
+    modalOnOff(); // Cerrar el modal sin guardar
+  });
+});
 
 //------------------------------------------------------------------
 //                  BOTONES
 //------------------------------------------------------------------
-$("#btmCerrarSesion").click(() => {
-  if (confirm("¿Confirmar?")) {
-    location.href = "../../cerrarSesion.php";
+$("#btmCerrarSesion").one("click", () => {
+  if (confirm("¿Desea cerrar la sesión?")) {
+    window.location.href = "../../cerrarSesion.php";
   }
 });
 

@@ -4,7 +4,7 @@ if(isset($_GET['todos']) ){
 
         include '../../conexion.php';
         
-        $sql = "SELECT * FROM medicos";
+        $sql = "SELECT * FROM medicos ORDER BY id DESC";
         
         $resultado = mysqli_query($conexion, $sql);
         
