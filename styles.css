@@ -8,6 +8,15 @@
   scroll-behavior: smooth;
 }
 
+:root {
+  --main-color: #afb6b1;
+  --hover-main-color: #ed5f5f;
+  --secondary-color: #ed5f5f;
+  --hover--button-color: #b44e4e;
+  --cancel-error-color: #d15d5b;
+  --padding-size: 10px;
+}
+
 html,
 body {
   width: 100%;
@@ -22,15 +31,16 @@ header {
   width: 100%;
   height: 10%;
   align-items: center;
-  background-color: #539bfc;
+  background-color: var(--main-color);
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
-  margin: 0 0 0 3%;
-  font-size: 2.5em;
-  font-weight: 600;
+header img {
+  max-width: 50%;
+  height: 100%;
+  margin-left: 2vw;
+  filter: contrast(150%) brightness(1.1);
 }
 
 header h1 a {
@@ -131,7 +141,7 @@ main .header-content p {
 }
 
 main .header-content .cta-button {
-  background-color: #3eae58;
+  background-color: var(--secondary-color);
   color: white;
   padding: 10px 20px;
   text-decoration: none;
@@ -144,7 +154,7 @@ main .header-content .cta-button {
 }
 
 main .header-content .cta-button:hover {
-  background-color: #218838;
+  background-color: var(--hover--button-color);
 }
 
 main .about-section {
@@ -223,7 +233,7 @@ textarea {
 
 button {
   padding: 10px 15px; /* Espacio interno del botón */
-  background-color: #3eae58; /* Color de fondo del botón */
+  background-color: var(--secondary-color); /* Color de fondo del botón */
   color: #fff; /* Color del texto */
   border: none; /* Sin borde */
   border-radius: 4px; /* Bordes redondeados */
@@ -232,7 +242,9 @@ button {
 }
 
 button:hover {
-  background-color: #218838; /* Color de fondo al pasar el cursor */
+  background-color: var(
+    --hover--button-color
+  ); /* Color de fondo al pasar el cursor */
 }
 
 input[type="checkbox"] {
@@ -242,7 +254,7 @@ input[type="checkbox"] {
 footer {
   width: 100%;
   height: 10%;
-  background-color: #539bfc;
+  background-color: var(--main-color);
   color: #fff;
   padding: 20px;
   text-align: center;
