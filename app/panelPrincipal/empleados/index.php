@@ -66,8 +66,6 @@
                         <th>DNI</th>
                         <th>Apellido</th>
                         <th>Nombre</th>
-                        <th>Categoria</th>
-                        <th>Seccion</th>
                         <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>
                             <th>Historia Clinica</th>
                             <th>Editar</th>
