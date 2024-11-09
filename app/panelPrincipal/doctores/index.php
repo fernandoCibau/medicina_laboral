@@ -23,9 +23,6 @@
     
     <header>
         <img src="../../icon/ElSalvadorMarca.png" alt="El Salvador">
-        <div class="contenedorNombreHeader">
-            <h2>Empresa :  <?php echo $_SESSION['razon_social']   ?></h2>
-        </div>
         <div class="contenedorBtnHeader">
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>
         </div>
