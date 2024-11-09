@@ -1,8 +1,8 @@
 :root {
-  --main-color: #539bfc;
-  --hover-main-color: #007bff;
-  --secondary-color: #3eae58;
-  --hover--button-color: #218838;
+  --main-color: #afb6b1;
+  --hover-main-color: #ed5f5f;
+  --secondary-color: #ed5f5f;
+  --hover--button-color: #b44e4e;
   --cancel-error-color: #d15d5b;
   --padding-size: 10px;
 }
@@ -33,6 +33,13 @@ header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+header img {
+  max-width: 50%;
+  height: 100%;
+  margin-left: 2vw;
+  filter: contrast(150%) brightness(1.1);
+}
+
 h1 {
   color: #ffffff;
   margin: 0;
@@ -58,7 +65,7 @@ h1 {
 
 .contenedorBtnHeader .btmCerrarSesion {
   background-color: #ffffff;
-  color: #539bfc;
+  color: var(--secondary-color);
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
@@ -68,7 +75,7 @@ h1 {
 .contenedorBtnHeader .btmCerrarSesion:hover {
   background-color: var(--cancel-error-color);
   color: #fff;
-  transition: 1s;
+  transition: 0.5s;
 }
 
 main {
@@ -91,7 +98,7 @@ main {
 
 .icon-cont {
   width: 100%;
-  height: 12.5%;
+  height: 16.6%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,12 +114,6 @@ main {
   color: white;
   transition: all 0.3s ease-in-out;
 }
-
-/*
-.icon-cont:hover a img {
-    filter: invert(71%) sepia(43%) saturate(6386%) hue-rotate(192deg) brightness(100%) contrast(98%);
-}
-*/
 
 .secMenu .contenedorMenu {
   width: 100%;
@@ -152,7 +153,6 @@ main {
   border-collapse: collapse;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin: auto;
 }
 
@@ -207,8 +207,6 @@ tr:hover {
 td {
   width: 2%;
   color: #555;
-  /* Color de texto más suave para las celdas */
-  text-align: center;
 }
 
 .buscador {
@@ -233,7 +231,7 @@ td {
 .buscador button {
   padding: 10px 20px;
   /* Espaciado interno del botón */
-  background-color: var(--main-color);
+  background-color: var(--secondary-color);
   /* Color de fondo del botón */
   color: white;
   /* Color del texto */
@@ -246,7 +244,7 @@ td {
 }
 
 .buscador button:hover {
-  background-color: var(--hover-main-color);
+  background-color: var(--hover--button-color);
   /* Color de fondo al pasar el ratón */
   transition: background-color 0.3s;
   /* Transición suave del color */

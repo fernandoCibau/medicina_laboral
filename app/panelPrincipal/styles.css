@@ -19,18 +19,35 @@ header {
   width: 100%;
   height: 10%;
   align-items: center;
-  background-color: #539bfc;
+  background-color: #afb6b1;
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-h1 {
-  margin: 0 0 0 3%;
-  font-size: 2.5em;
-  color: #fff;
+header img {
+  max-width: 50%;
+  height: 100%;
+  margin-left: 2vw;
+  filter: contrast(150%) brightness(1.1);
 }
 
-header .contenedorNombreHeader h2{
+.contenedorNombreHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header .contenedorNombreHeader h2 {
+  display: flex;
+  align-items: center;
+  font-size: large;
+  color: white;
+  font-weight: bold;
+  font-weight: bold;
+  position: absolute;
+  right: 12%;
+}
+
+header .contenedorNombreHeader h2 {
   font-size: large;
   color: white;
   font-weight: bold;
@@ -53,7 +70,7 @@ header .contenedorNombreHeader h2{
 
 .contenedorBtnHeader .btmCerrarSesion {
   background-color: #ffffff;
-  color: #539bfc;
+  color: #ed5f5f;
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
@@ -71,6 +88,10 @@ main {
   width: 100%;
   height: 80%;
   overflow: auto;
+  background-color: #e8e0e0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 main .seccionAccesosDirectos {
@@ -79,7 +100,7 @@ main .seccionAccesosDirectos {
 }
 
 .secMenu {
-  background-color: #539bfc;
+  background-color: #ed5f5f;
   height: 100%;
   color: white;
   width: 5%;
@@ -177,7 +198,7 @@ main .seccionAccesosDirectos .contenedorAccesos {
   justify-content: center;
   width: 8em;
   height: 8em;
-  background-color: #3eae58;
+  background-color: #d15d5b;
   border-radius: 50%;
   margin-bottom: 20px;
 }
@@ -266,7 +287,7 @@ main .seccionAccesosDirectos .contenedorAccesos {
 footer {
   width: 100%;
   height: 10%;
-  background-color: #539bfc;
+  background-color: #afb6b1;
   color: #fff;
   padding: 20px;
   text-align: center;

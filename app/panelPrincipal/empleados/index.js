@@ -44,8 +44,6 @@ const cargarTabla = (idEmpresa = 0) => {
         domicilio: item.domicilio || "",
         fecha_nacimiento: item.fecha_nacimiento || "",
         fecha_ingreso: item.fecha_ingreso || "",
-        categoria_nombre: item.categoria_nombre || "", // Nombre de la categoría
-        seccion_nombre: item.seccion_nombre || "", // Nombre de la sección
         observaciones: item.observaciones || "",
       }));
 
@@ -215,17 +213,6 @@ const cargarTabla = (idEmpresa = 0) => {
                         </div>
 
                         <div class="contenedor-input">
-                            <label for="inputCategoria">Categoria</label>
-                            <input type= "number" id="idCategoria" value = "${fila["id_categoria"]}" hidden>
-                            <input type="text" id="inputCategoria" value="${fila["categoria_nombre"]}" readonly>
-                        </div>                            
-                        <div class="contenedor-input">
-                            <label for="inputSeccion">Seccion</label>
-                            <input type= "number" id="idSeccion" value = "${fila["id_seccion"]}" hidden>
-                            <input type="text" id="inputSeccion" value="${fila["seccion_nombre"]}" readonly>
-                        </div>
-
-                        <div class="contenedor-input">
                             <label for="inputObservaciones">Observaciones</label>
                             <input type="text" id="inputObservaciones" value="${fila["observaciones"]}">
                         </div>
@@ -250,8 +237,6 @@ const cargarTabla = (idEmpresa = 0) => {
                 domicilio: $("#inputDomicilio").val(),
                 fecha_nacimiento: $("#inputFechaNac").val(),
                 fecha_ingreso: $("#inputFechaIng").val(),
-                id_categoria: $("#id_categoria").val(),
-                id_seccion: $("#id_seccion").val(),
                 observaciones: $("#inputObservaciones").val(),
                 id_empresa: $("#idEmpresa").val(),
               };
@@ -477,16 +462,6 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
             <label for="altaFechaIng">Fecha Ing:</label>
             <input type="date" id="altaFechaIng">
         </div>
-
-        <div class="contenedor-input">
-            <label for="selectCategoria">Categoria</label>
-            <select name="selectCategoria" id="selectCategoria"></select>
-        </div>
-           
-        <div class="contenedor-input">
-            <label for="selectSeccion">Seccion</label>
-            <select name="selectSeccion" id="selectSeccion"></select>
-        </div>
                   
         <div class="contenedor-input">
             <label for="altaObservaciones">Observaciones</label>
@@ -514,8 +489,6 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
       fecha_nac: $("#altaFechaNac").val(),
       fecha_ing: $("#altaFechaIng").val(),
       observaciones: $("#altaObservaciones").val(),
-      id_categoria: $("#selectCategoria").val(),
-      id_seccion: $("#selectSeccion").val(),
       id_empresa: $("#selectEmpresas").val(),
     };
     console.log(datosActualizados);
@@ -600,7 +573,7 @@ const cargarSelectEmpresa = () => {
   });
 };
 
-// Cargar el select CATEGORIA del modal
+/* // Cargar el select CATEGORIA del modal
 const cargarSelectCategoria = () => {
   $.ajax({
     url: "cargarSelectCategoria.php",
@@ -642,8 +615,8 @@ const cargarSelectCategoria = () => {
     },
   });
 };
-
-// Cargar el select SECCION del modal
+ */
+/* // Cargar el select SECCION del modal
 const cargarSelectSeccion = () => {
   $.ajax({
     url: "cargarSelectSeccion.php",
@@ -684,7 +657,7 @@ const cargarSelectSeccion = () => {
       alert("No se pudo conectar con el servidor.");
     },
   });
-};
+}; */
 
 //------------------------------------------------------------------
 //                  BOTONES
@@ -704,43 +677,41 @@ $("#btmCerrarSesion").click(() => {
   // }
 
   Swal.fire({
-      title: "¿Está seguro de salir del sistema?",
-      text: "Está a punto de cerrar sesión.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Confirmar!"
+    title: "¿Está seguro de salir del sistema?",
+    text: "Está a punto de cerrar sesión.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Confirmar!",
   }).then((result) => {
-      if (  result.isConfirmed    ) {
-          cerrarCuentaRegresiva()
-      }
+    if (result.isConfirmed) {
+      cerrarCuentaRegresiva();
+    }
   });
 });
 
-const cerrarCuentaRegresiva = ()=>{
+const cerrarCuentaRegresiva = () => {
   let timerInterval;
   Swal.fire({
-      title: "Saliendo del sistama",
-      html: "El sistema se está cerrando... <b></b> milliseconds.",
-      timer: 2000,
-      timerProgressBar: true,
-      didOpen: () => {
-          Swal.showLoading();
-          const timer = Swal.getPopup().querySelector("b");
-          timerInterval = setInterval(() => {
-              timer.textContent = `${Swal.getTimerLeft()}`;
-          }, 100);
-      },
-      willClose: () => {
-          clearInterval(timerInterval);
-      }
+    title: "Saliendo del sistama",
+    html: "El sistema se está cerrando... <b></b> milliseconds.",
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: () => {
+      Swal.showLoading();
+      const timer = Swal.getPopup().querySelector("b");
+      timerInterval = setInterval(() => {
+        timer.textContent = `${Swal.getTimerLeft()}`;
+      }, 100);
+    },
+    willClose: () => {
+      clearInterval(timerInterval);
+    },
   }).then((result) => {
     /* Read more about handling dismissals below */
-  if (result.dismiss === Swal.DismissReason.timer) {
+    if (result.dismiss === Swal.DismissReason.timer) {
       window.location.href = "../../cerrarSesion.php";
-  }
+    }
   });
-}
-
-
+};
