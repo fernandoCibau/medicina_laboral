@@ -9,7 +9,7 @@ if (isset($_POST['fecha']) && isset($_POST['horas-del-dia']) ) {
         $idMedico = $_POST['selectMedicos'];
         $empleado_id = $_POST['selectEmpleados'];
 
-        if(isset( $_POST['selectEmpleados'] )){
+        if (isset($_POST['idEmpresa']) && $_POST['idEmpresa'] !== '') {
             $empresa_id = $_POST['idEmpresa'];
         }else{
             $empresa_id = $_POST['selectEmpresas'];
