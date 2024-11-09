@@ -25,11 +25,25 @@
                 $sql = "SELECT * FROM usuarios WHERE email= '$email' ";
                 $resultado = mysqli_query($conexion, $sql);
                 $num_filas = mysqli_num_rows($resultado);
+
+                $sql = "SELECT id FROM empresas WHERE razon_social = '$empresa'";
+                $resultado = mysqli_query($conexion, $sql);
+                
+                // Verifica si se obtuvo algún resultado
+                if ($resultado && mysqli_num_rows($resultado) > 0) {
+                    // Extrae el id de la empresa
+                    $fila = mysqli_fetch_assoc($resultado);
+                    $id_empresa = $fila['id'];
+                } else {
+                    // Manejo del caso cuando no se encuentra la empresa
+                    echo json_encode(['mensaje' => 'Error: La empresa no existe en la base de datos', 'operacion' => FALSE]);
+                    exit;
+                }
                    
                     $hashContrasenia = password_hash( trim($_POST['contrasenia']), PASSWORD_DEFAULT);
                     
                     $sql = "INSERT INTO usuarios(empresa_id, nombre_usuario, contrasenia, email, tipo_usuario)
-                            VALUES (             '1', '$nombre', '$hashContrasenia', '$email', '$admin' )";
+                            VALUES ('$id_empresa', '$nombre', '$hashContrasenia', '$email', '$admin' )";
                 
                     $resultado = mysqli_query( $conexion, $sql );
                         
