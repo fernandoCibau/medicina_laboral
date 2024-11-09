@@ -15,13 +15,21 @@ session_start();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <title>Clínica El Salvador - Panel</title>
+    <title>El salvador Salud - Panel Principal</title>
 </head>
     
     <header>
         <img src="../icon/ElSalvadorMarca.png" alt="El Salvador">
         <div class="contenedorNombreHeader">
-            <h2>Empresa :  <?php echo $_SESSION['razon_social']   ?></h2>
+            <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
+                
+                <h2>Bienvenido, <?php echo $_SESSION['nombre']   ?></h2>
+
+            <?php  } else { ?>
+
+                <h2>Bienvenido, <?php echo $_SESSION['razon_social']   ?></h2>
+
+            <?php } ?>
         </div>
         <div class="contenedorBtnHeader">
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonCerrarSesion">Cerrar Sesion</button>
