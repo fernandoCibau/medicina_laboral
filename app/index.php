@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Clínica El Salvador | Inicio de Sesión </title>
+    <title>El Salvador Salud | Inicio de Sesión </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
 <body>
     <header >
 
-        <h1 ><a href="../index.html">CLINICA EL SALVADOR</a></h1>
+    <img src="../app/icon/ElSalvadorMarca.png" alt="El Salvador"/>
 
         <nav>
         <ul class="nav-links">
@@ -37,7 +37,7 @@
             </div>
             <div class="login-box">
                 <div class="left-panel">
-                    <h2>CLINICA EL SALVADOR</h2>
+                <img src="../app/icon/ElSalvadorMarca.png" alt="El Salvador"/>
                 </div>
                 <div class="right-panel">
                     <h3>Ingreso</h3>

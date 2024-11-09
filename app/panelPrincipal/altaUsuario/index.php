@@ -54,10 +54,11 @@
                     <label for="nombre">Nombre de usuario:</label>
                     <input type="text" id="nombre" name="nombre_usuario" required>
                     
-                    <div class= "container-empresa">
-                    <label for="empresa">Empresa</label>
-                    <input type="text" id="empresa" name="empresa" required>
-                    <div id="resultados"></div>
+                    <div class="container-empresa">
+                        <label for="empresa">Empresa</label>
+                        <input type="text" id="empresa" name="empresa" required>
+                        <input type="hidden" id="empresa_id" name="empresa_id"> <!-- Campo oculto para el ID -->
+                        <div id="resultados"></div>
                     </div>
     
                     <label for="email">Email:</label>

@@ -13,7 +13,7 @@ if (isset($_POST['buscar_empresa'])) {
     if ($resultado->num_rows > 0) {
         echo "<ul>";
         while ($empresa = $resultado->fetch_assoc()) {
-            echo "<li>" . htmlspecialchars($empresa['razon_social']) . "</li>";
+            echo "<li value='" . htmlspecialchars($empresa['id']) . "'>" . htmlspecialchars($empresa['razon_social']) . "</li>";
         }
         echo "</ul>";
     } else {

@@ -6,6 +6,9 @@ $("#formAlta").submit((e) => {
   e.preventDefault();
   let form = $("#formAlta");
   let formData = new FormData(form[0]);
+  for (let [key, value] of formData.entries()) {
+    console.log(key + ": " + value);
+  }
   ajaxUsuarioAlta(formData);
 });
 
@@ -26,6 +29,8 @@ let ajaxUsuarioAlta = (formData) => {
     },
   });
 };
+
+
 
 /* TRAE LA LISTA DE EMPRESAS A MEDIDA QUE ESCRIBO */
 
