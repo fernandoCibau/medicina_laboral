@@ -1,5 +1,4 @@
 <?php
-include '../error_config.php';
 if( isset($_GET['idDelDia'])){
     try {
         
@@ -32,8 +31,8 @@ if( isset($_GET['idDelDia'])){
             echo json_encode(['mensaje' => 'Error en la carga de datos : ' . __LINE__ ]);
         }
     } catch (Exception $e) {
-        error_log("Error en " . $e->getFile() . " en la línea " . $e->getLine() . ": " . $e->getMessage());
-        echo json_encode(['mensaje' => 'Ocurrió un error.']);
+        $error = "Error en " . $e->getFile() . " en la línea " . $e->getLine() . ": " . $e->getMessage();
+        echo json_encode(['mensaje' => 'Ocurrió un error', 'error'=> $error ]);
     }
 }else{
     echo json_encode(['mensaje' => 'Error al obtener el  idDelDia : ' . __LINE__ ]);

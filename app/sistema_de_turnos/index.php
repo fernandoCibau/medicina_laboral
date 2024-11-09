@@ -19,7 +19,10 @@ session_start();
 <body>
         
     <header>
-        <h1>CALENDARIO DE TURNOS</h1>
+        <h1>Calendario De Turnos</h1>
+        <div class="contenedorNombreHeader">
+            <h2>Empresa :  <?php echo $_SESSION['razon_social']   ?></h2>
+        </div>
         <div class="contenedorBtnHeader">
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonCerrarSesion">Cerrar Sesion</button>
         </div>
@@ -32,41 +35,55 @@ session_start();
         <div class="contenedorMenu">
                 <div class="icon-cont"><a href="../index.php"><img src="../icon/home.png" alt="" class="saturate"><p class="pe">Inicio</p></a></div>
                 <div class="icon-cont"><a href="../sistema_de_turnos"><img src="../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
-                <div class="icon-cont"> <a href="../cie_10/index.php"><img src="../icon/tabla.png" alt=""><p class="pe">CIE-10</p ></a></div>
+                <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>    
+                    <div class="icon-cont"> <a href="../cie_10/index.php"><img src="../icon/tabla.png" alt=""><p class="pe">CIE-10</p ></a></div>
+                <?php } ?>
                 <div class="icon-cont"> <a href="../panelPrincipal/empleados/index.php"><img src="../icon/paciente_blanco.png" alt=""><p class="pe">Pacientes</p ></a></div>
-                <div class="icon-cont"> <a href="../panelPrincipal/empresas/index.php"><img src="../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
-                <div class="icon-cont"> <a href="../panelPrincipal/doctores/index.php"><img src="../icon/personal_medico.png" alt=""><p class="pe">Pers. Medico</p></a></div>
+                <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>    
+                    <div class="icon-cont"> <a href="../panelPrincipal/empresas/index.php"><img src="../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
+                    <div class="icon-cont"> <a href="../panelPrincipal/doctores/index.php"><img src="../icon/personal_medico.png" alt=""><p class="pe">Pers. Medico</p></a></div>
+                <?php } ?>
                 <div class="icon-cont"> <a href="../panelPrincipal/historiasClinicas/index.php"><img src="../icon/historiasClinicasBlanco.png" alt=""><p class="pe">Hist clinicas</p></a></div>
-                <div class="icon-cont"> <a href="../panelPrincipal/configuracion/index.php"><img src="../icon/config.jpg" alt=""><p class="pe">Configuracion</p></a></div>
+                <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>    
+                    <div class="icon-cont"> <a href="../panelPrincipal/configuracion/index.php"><img src="../icon/config.jpg" alt=""><p class="pe">Configuracion</p></a></div>
+                <?php } ?>    
             </div>
-            
         </section>
         
-        <?php if( isset($_SESSION['admin']) && $_SESSION['admin']  == 1 ) { ?>
-
-            <section class="seccion-mes" id="seccion-mes">
-                
-                <div class="contenedor-encabezado">
-                    <h2>Mes</h2>
+        
+        <section class="seccion-mes" id="seccion-mes">
+            
+            <div class="contenedor-encabezado">
+                <h2>Mes</h2>
+                <?php if( isset($_SESSION['admin']) && $_SESSION['admin']  ) { ?>
                     <input type="month" id="mesInput" />
                     <input type="button" value="Buscar" id="btn-buscar">
                     <input type="button" value="Nuevo Turno" id="btn-nuevo-turno">
-                </div>
+                <?php  } else { ?>
+                    <input type="button" value="Ver Turnos" id="btnVerTurnos" data-id-empresa=<?php echo $_SESSION['idEmpresa']?>>
+                <?php } ?>
+            </div>
+            <?php if( isset($_SESSION['admin']) && $_SESSION['admin']  ) { ?>
                 <div id="mes" class="mes"></div>
-            </section>
-
-            <section class="seccion-modal" id="seccion-modal">
-                <div class="contenedor-encabezado-modal">
-                    <button type="button" class="btn-cerrar" id="btn-cerrar" >X</button>
-                </div>
-                
+            <?php } ?>
+        </section>
+        
+        <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
+                <section class="seccion-modal" id="seccion-modal">
+                    <div class="contenedor-encabezado-modal">
+                        <button type="button" class="btn-cerrar" id="btn-cerrar" >X</button>
+                    </div>
+            <?php  } else { ?>
+                <section class="seccion-modal on " id="seccion-modal">
+            <?php } ?>
+            
                 <div class="contenedor-fom" id="contenedor-fom">
-                    <h2>Agenda de Turnos</h2>
-                    <form action="" method="post" class="form-nuevo-turno"  id="form-nuevo-turno">
-
+                <h2>Agenda de Turnos</h2>
+                <form action="" method="post" class="form-nuevo-turno"  id="form-nuevo-turno">
+                    
                         <div class="contenedor-input">
                             <label for="selectEmpresas" require>Empresas</label>
-                            <select name="selectEmpresas" id="selectEmpresas"></select>
+                            <select name="selectEmpresas" id="selectEmpresas" data-id-empresa=<?php echo $_SESSION['idEmpresa']?>></select>
                         </div>
                         
                         <div class="contenedor-input">
@@ -96,6 +113,7 @@ session_start();
                         </div>                
                     </form>
                 </div>
+                
 
                 <div class="contenedor-tabla" id="contenedor-tabla">
                     <h2>Lista de Turnos</h2>
@@ -114,19 +132,17 @@ session_start();
                         </table>
                     </div>
                 </div>
+
             </section>
-
-        <?php } ?>
-
     </main>
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <?php if( isset($_SESSION['admin']) && $_SESSION['admin']  == 1 ) { ?>
+    <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
         <script src="./index.js"></script>
-    <?php } else { ?>
-        <script src="./index2.js"></script>
-    <?php }?>
+    <?php  } else { ?>
+        <script src="./indexUs.js"></script>
+    <?php } ?>
     <footer>
         <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
     </footer>

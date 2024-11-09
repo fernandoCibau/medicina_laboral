@@ -3,13 +3,6 @@ $("#accesoAltaUsuario").click(() => {
   window.location.href = "./altaUsuario";
 });
 
-//Cierra la sesion de usuario
-$("#btmCerrarSesion").one("click", () => {
-  if (confirm("¿Desea cerrar la sesión?")) {
-    window.location.href = "../cerrarSesion.php";
-  }
-});
-
 //Envia al sistema de turnos
 $("#accesoAltaTurnos").click(() => {
   window.location.href = "../sistema_de_turnos";
@@ -44,3 +37,49 @@ $("#accesoHistClinic").click(() => {
 $("#accesoPersMedico").click(() => {
   window.location.href = "./doctores";
 });
+
+//Cierra la sesion de usuario
+$("#btmCerrarSesion").click(() => {
+  // if (confirm("¿Desea cerrar la sesión?")) {
+  //   window.location.href = "../cerrarSesion.php";
+  // }
+
+  Swal.fire({
+    title: "¿Está seguro de salir del sistema?",
+    text: "Está a punto de cerrar sesión.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Confirmar!"
+    }).then((result) => {
+      if (  result.isConfirmed    ) {
+        cerrarCuentaRegresiva()
+      }
+  });
+});
+
+const cerrarCuentaRegresiva = ()=>{
+  let timerInterval;
+  Swal.fire({
+    title: "Saliendo del sistama",
+    html: "El sistema se está cerrando... <b></b> milliseconds.",
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: () => {
+      Swal.showLoading();
+      const timer = Swal.getPopup().querySelector("b");
+      timerInterval = setInterval(() => {
+        timer.textContent = `${Swal.getTimerLeft()}`;
+      }, 100);
+    },
+    willClose: () => {
+      clearInterval(timerInterval);
+    }
+  }).then((result) => {
+    /* Read more about handling dismissals below */
+    if (result.dismiss === Swal.DismissReason.timer) {
+      window.location.href = "../cerrarSesion.php";
+    }
+  });
+}

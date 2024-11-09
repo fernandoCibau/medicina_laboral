@@ -33,19 +33,26 @@ h1 {
   font-weight: bold;
 }
 
-.logout-button {
-  background-color: white;
-  color: #539bfc;
-  border: none;
-  padding: 10px, 20px;
-  border-radius: 4px;
-  cursor: pointer;
+header .contenedorNombreHeader h2{
+    font-size: large;
+    color: white;
+    font-weight: bold;
+    font-weight: bold;
+    position: absolute;
+    right: 20%;
 }
 
 .contenedorBtnHeader {
   width: 10%;
   position: absolute;
   right: 0%;
+}
+
+.contenedorNombreHeader {
+    width: 10%;
+    width: 20%;
+    position: absolute;
+    right: 20%;
 }
 
 .contenedorBtnHeader .btmCerrarSesion {

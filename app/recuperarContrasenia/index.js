@@ -57,7 +57,7 @@ let envioDeCorreo = (formData) => {
     processData: false,
     success: (resultado, estado) => {
       let datos = JSON.parse(resultado);
-
+      console.log(datos.mensaje);
       try {
         if (datos.operacion) {
           $("#mensaje").text(datos.mensaje);
@@ -73,7 +73,7 @@ let envioDeCorreo = (formData) => {
           $("spam").addClass("show-error");
         }
       } catch (error) {
-        alert(error);
+       console.log(error);
       }
     },
   });

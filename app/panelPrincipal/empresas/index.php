@@ -22,7 +22,7 @@
 <body>
     
     <header>
-        <h1>EMPRESAS</h1>
+        <img src="../../icon/ElSalvadorMarca.png" alt="El Salvador">
         <div class="contenedorBtnHeader">
             <!-- <img src="../icon/boton-de-encendido.png" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido"> -->
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>

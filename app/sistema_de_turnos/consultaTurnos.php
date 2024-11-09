@@ -1,5 +1,4 @@
 <?php
-include '../error_config.php';
 if (isset($_GET['anioYMes']) && isset($_GET['cantidadDeDias'])) {
     try {
         
@@ -26,8 +25,8 @@ if (isset($_GET['anioYMes']) && isset($_GET['cantidadDeDias'])) {
         mysqli_free_result($resultado);
             
     } catch (Exception $e) {
-        error_log("Error en " . $e->getFile() . " en la línea " . $e->getLine() . ": " . $e->getMessage());
-        echo json_encode(['mensaje' => 'Ocurrió un error.']);
+        $error = "Error en " . $e->getFile() . " en la línea " . $e->getLine() . ": " . $e->getMessage();
+        echo json_encode(['mensaje' => 'Ocurrió un error', 'error'=> $error ]);
     }
 }else{
     echo json_encode(['mensaje' => 'Ocurrió un error : '. __LINE__]);

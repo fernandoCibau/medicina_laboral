@@ -1,12 +1,36 @@
 <?php
 
-if(isset($_GET['todos']) ){
+if(isset($_GET['idEmpresa']) ){
 
     try {
 
         include '../../conexion.php';
         
-        $sql = "SELECT 
+        $idEmpresa =$_GET['idEmpresa'];
+
+        if($idEmpresa){
+            $sql = "SELECT 
+                                EMPL.id,
+                                EMPL.legajo,
+                                EMPL.dni,
+                                EMPL.nombre,
+                                EMPL.apellido,
+                                EMPL.domicilio,
+                                EMPL.fecha_nacimiento,
+                                EMPL.fecha_ingreso,
+                                CAT.nombre AS categoria_nombre,
+                                SEC.nombre AS seccion_nombre,
+                                EMPR.razon_social AS empresa_nombre,
+                                EMPL.observaciones
+                        FROM empleados EMPL 
+                            INNER JOIN empresas EMPR ON EMPL.id_empresa = EMPR.id
+                            INNER JOIN categorias CAT   ON EMPL.id_categoria = CAT.id
+                            INNER JOIN seccion SEC  ON EMPL.id_seccion = SEC.id
+                        WHERE EMPR.id = '$idEmpresa'
+                        ORDER BY EMPL.id_empresa  ASC";
+        }else{
+
+            $sql = "SELECT 
                     e.id,
                     e.legajo,
                     e.dni,
@@ -29,11 +53,12 @@ if(isset($_GET['todos']) ){
                     empresas emp ON e.id_empresa = emp.id
                 ORDER BY 
                     e.id DESC";
+        }
         
         $resultado = mysqli_query($conexion, $sql);
         
         if($resultado){
-
+            
             $datos = array();
             while ($fila = mysqli_fetch_assoc($resultado) ) {
                 $datos[] = $fila;

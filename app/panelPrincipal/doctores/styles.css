@@ -32,6 +32,14 @@ h1 {
     font-weight: bold;
 }
 
+header .contenedorNombreHeader h2{
+    font-size: large;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    right: 20%;
+}
+
 .contenedorBtnHeader {
     width: 10%;
     position: absolute;

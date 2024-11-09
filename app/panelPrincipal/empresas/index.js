@@ -358,33 +358,59 @@ const botonAgregar = $("#agregarEmpresas").on("click", () => {
 //------------------------------------------------------------------
 //                  BOTONES
 //------------------------------------------------------------------
+$("#btn-modal-X").click(() => {
+  modalOnOff();
+});
+
 $("#btmCerrarSesion").one("click", () => {
   if (confirm("¿Desea cerrar la sesión?")) {
     window.location.href = "../../cerrarSesion.php";
   }
 });
 
-$("#btn-modal-X").click(() => {
-  modalOnOff();
+$("#btmCerrarSesion").click(() => {
+  // if (confirm("¿Desea cerrar la sesión?")) {
+  //   window.location.href = "../cerrarSesion.php";
+  // }
+
+  Swal.fire({
+      title: "¿Está seguro de salir del sistema?",
+      text: "Está a punto de cerrar sesión.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Confirmar!"
+  }).then((result) => {
+      if (  result.isConfirmed    ) {
+          cerrarCuentaRegresiva()
+      }
+  });
 });
 
-// const contenedorLista = $("<div>").attr('class', 'contendor-lista');
+const cerrarCuentaRegresiva = ()=>{
+  let timerInterval;
+  Swal.fire({
+      title: "Saliendo del sistama",
+      html: "El sistema se está cerrando... <b></b> milliseconds.",
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+          Swal.showLoading();
+          const timer = Swal.getPopup().querySelector("b");
+          timerInterval = setInterval(() => {
+              timer.textContent = `${Swal.getTimerLeft()}`;
+          }, 100);
+      },
+      willClose: () => {
+          clearInterval(timerInterval);
+      }
+  }).then((result) => {
+    /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+      window.location.href = "../../cerrarSesion.php";
+  }
+  });
+}
 
-//                     const divRazon_social = $("<div>").attr('class', 'contenedor-item');
-//                     const divCuit = $('<div>').attr('class', 'contenedor-item');
-//                     const divDomicilio = $('<div>').attr('class', 'contenedor-item');
-//                     const divTelefono = $('<div>').attr('class', 'contenedor-item');
-//                     const divEmail = $('<div>').attr('class', 'contenedor-item');
 
-//                     // Agregar contenido a cada div
-//                     divRazon_social.append($("<span>Razón Social: </span>"), $(`<span>${ fila['razon_social']}</span>`));
-//                     divCuit.append($("<span>CUIT: </span>"), $(`<span>${ fila['cuit']}</span>`));
-//                     divDomicilio.append($("<span>Domicilio: </span>"), $(`<span>${ fila['domicilio']}</span>`));
-//                     divTelefono.append($("<span>Teléfono: </span>"), $(`<span>${ fila['telefono']}</span>`));
-//                     divEmail.append($("<span>Email: </span>"), $(`<span>${ fila['email']}</span>`));
-
-//                     // Agregar todos los divs al contenedor de la lista
-//                     contenedorLista.append(divRazon_social, divCuit, divDomicilio, divTelefono, divEmail);
-
-//                     // Limpiar el contenido anterior y agregar el nuevo
-//                     $("#contenedorDatos").empty().append(contenedorLista);

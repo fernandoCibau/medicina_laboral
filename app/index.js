@@ -1,5 +1,3 @@
-import { errores } from './funcion.js';
-
 //-----------------------------------------------------------------
 //                      FORM
 //-----------------------------------------------------------------
@@ -29,34 +27,23 @@ const ajaxAutenticacion = (formData) => {
           location.href = "./panelPrincipal";
         } else {
           alert(datos.mensaje);
+          erroresSoloLocalHost( datos.error );
         }
       } catch (e) {
-        alert(  "Error en la autenticacion de los datos." );
-        errores( e.message +  " | " + resultado)
+        alert('Ocurrió un error al procesar la respuesta del servidor.');
+        const error = e.message + " | " + resultado;
+        erroresSoloLocalHost( error );
       }
     },
+    error: (jqXHR, textStatus, errorThrown) => {
+        alert('Ocurrió un error en la solicitud. Intenta de nuevo más tarde.');
+        const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
+        erroresSoloLocalHost( error );
+    }
   });
 };
 
-// const errores = ( error ) => {
-//   $.ajax({
-//     url: "erroresJs.php",
-//     method: "post",
-//     data: {error: error},
 
-//     success: (resultado, estado) => {
-//       try {
-//         let datos = JSON.parse(resultado);
-
-//         console.log(estado);
-
-//       } catch (error) {
-//         console.log(resultado);
-//         console.error("Error en la autenticacion de los datos:", error);
-//         alert(
-//           "Error en la autenticacion de datos. Consulta la consola para más detalles."
-//         );
-//       }
-//     },
-//   });
-// };
+const erroresSoloLocalHost = ( error ) =>{
+  window.isDevelopment = true ? console.log( error )  : "";
+}

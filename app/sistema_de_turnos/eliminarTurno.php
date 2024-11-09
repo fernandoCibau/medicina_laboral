@@ -1,5 +1,4 @@
 <?php
-include '../error_config.php';
 if(isset( $_GET['fecha'] ) && isset($_GET['hora']) ){
     try{
         include '../conexion.php';
@@ -20,8 +19,8 @@ if(isset( $_GET['fecha'] ) && isset($_GET['hora']) ){
         mysqli_close($conexion);
 
     } catch (Exception $e) {
-        error_log("Error en " . $e->getFile() . " en la línea " . $e->getLine() . ": " . $e->getMessage());
-        echo json_encode(['mensaje' => 'Ocurrió un error.']);
+        $error = "Error en " . $e->getFile() . " en la línea " . $e->getLine() . ": " . $e->getMessage();
+        echo json_encode(['mensaje' => 'Ocurrió un error', 'error'=> $error ]);
     }
 }else{
     echo json_encode( ['mensaje' => 'Error con los datos fecha y hora, LINEA :  ' . __LINE__] );

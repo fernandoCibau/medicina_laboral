@@ -1,8 +1,8 @@
 :root {
-  --main-color: #539bfc;
-  --hover-main-color: #007bff;
-  --secondary-color: #3eae58;
-  --hover--button-color: #218838;
+  --main-color: #afb6b1;
+  --hover-main-color: #ed5f5f;
+  --secondary-color: #ed5f5f;
+  --hover--button-color: #afb6b1;
   --cancel-error-color: #d15d5b;
   --padding-size: 10px;
 }
@@ -31,6 +31,13 @@ header {
   background-color: var(--main-color);
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header img{
+  max-width: 50%;
+  height: 100%;
+  margin-left: 2vw;
+  filter: contrast(150%) brightness(1.1);
 }
 
 h1 {
