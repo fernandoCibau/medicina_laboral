@@ -12,13 +12,74 @@ $(document).ready( ()=>{
 
 //Boton para abrir modal ver turnos empresa
 $("#btnVerTurnos").click( function() {
-    console.log ($(this).data('id-empresa'));
-    // alert("HASTA  ACÁ LLEGUE");
-});
+    modalOnOff()
+    const idEmpresa = $(this).data('id-empresa');
 
-// -----------------------------------------------------------------------------
-//    BOTON CAGAR SELECT Y FUNCIONES
-// -----------------------------------------------------------------------------
+    $.ajax({
+        url :'cargarTurnosU.php',
+        method : 'get',
+        data : { idEmpresa : idEmpresa },
+        
+        success : ( resultado, estado ) =>{
+            try {
+                const datos = JSON.parse(resultado);
+
+                console.log(datos.datos);
+
+                $("tbody").empty();
+
+                if (datos.datos.length == 0) {
+                    $("tbody").text("No se encontraron turnos en la fecha seleccionada.");
+                }
+        
+                datos.datos.forEach((fila) => {
+                  const tr = $("<tr>");
+        
+                  for (const key in fila) {
+                    tr.append($("<td>").text(fila[key]));
+                  }
+        
+                  const botonEliminar = $(
+                    "<img src='icon/bote-de-basura.png' class='btn-eliminar id='btn-eliminar'>"
+                  ).click(() => {
+                    Swal.fire({
+                      title: "¿Está seguro de que desea eliminar?",
+                      showDenyButton: true,
+                      confirmButtonText: "Eliminar",
+                      denyButtonText: `No eliminar`,
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        const fecha = fila["fecha"];
+                        const hora = fila["hora"];
+                        eliminarTurno(fecha, hora);
+                      } else if (result.isDenied) {
+                        alertInformar("Se ha cancelado la eliminacion");
+                      }
+                    });
+                  });
+        
+                  tr.append($("<td>").append(botonEliminar));
+        
+                            $('tbody').append(tr);
+                        });
+
+
+            } catch (e) {
+                alert('Ocurrió un error al procesar la respuesta del servidor.');
+                const error = e.message + " | " + resultado;
+                erroresSoloLocalHost( error )
+            }
+        },
+        error: (jqXHR, textStatus, errorThrown) => {
+            alert('Ocurrió un error en la solicitud. Intenta de nuevo más tarde.');
+            const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
+            erroresSoloLocalHost( error );
+        }
+    })
+})
+        // -----------------------------------------------------------------------------
+        //    BOTON CAGAR SELECT Y FUNCIONES
+        // -----------------------------------------------------------------------------
 
 //Cargar el select empresa del modal turnos
 const cargarSelectEmpresa = ( idEmpresa ) =>{
@@ -36,7 +97,9 @@ const cargarSelectEmpresa = ( idEmpresa ) =>{
 
                 $('#selectEmpleados').prop('disabled', false).append($('<option value="" selected>Selecciona un empleado</option>') );
                 
-                datos.datos.forEach( fila => {            
+                datos.datos.forEach( fila => {
+                    $('#idEmpresa').remove();            
+                    $('#form-nuevo-turno').append( $(`<input type="hidden" id="idEmpresa" name="idEmpresa" value="${fila['id']}">`) ); 
                     $('#selectEmpresas').append( $( `<option value="${fila['id']}">${fila['razon_social']}</option>`) );
                 });
 
@@ -221,11 +284,13 @@ $("#form-nuevo-turno").submit( e =>{
     const form =  $("#form-nuevo-turno")[0];
     
     let formData = new FormData(form);
+       console.log(formData.get('selectEmpresas'));
     guardarNuevoTurno( formData );
 });
 
 //Guardar el turno en la base de datos
 const guardarNuevoTurno = ( formData ) => {
+
     $.ajax({
 
         url: "guardarTurno.php",
@@ -320,3 +385,22 @@ const cerrarCuentaRegresiva = ()=>{
     }
     });
 }
+
+
+
+
+//----------------------------------------------------------------  
+//                TABLA VER TURNOS USUARIO
+//----------------------------------------------------------------
+
+const modalOnOff = () => {
+    if ($("#seccion-modal-usuario").hasClass("on")) {
+      $("#seccion-modal-usuario").attr("class", "seccion-modal-usuario off");
+    //   $("#seccion-mes").attr("class", "seccion-mes desbloqueado");
+    } else {
+      $("#seccion-modal-usuario").attr("class", "seccion-modal-usuario on");
+    //   $("#seccion-mes").attr("class", "seccion-mes bloqueado");
+}
+  };
+
+

@@ -304,8 +304,6 @@ const guardarNuevoTurno = (formData) => {
       try {
         let datos = JSON.parse(resultado);
 
-        console.log(datos);
-
                 console.log(datos)
 
                 datos.operacion  ?     Swal.fire({
@@ -549,6 +547,10 @@ $('#form-nuevo-turno').on( 'input', ()=>{
     validarInputTurnos();
 }) 
 
+
+//-----------------------------------------------
+//      Cierra la sesion 
+//-----------------------------------------------
 //Cierra la sesion de usuario
 $("#btmCerrarSesion").click(() => {
     // if (confirm("¿Desea cerrar la sesión?")) {
