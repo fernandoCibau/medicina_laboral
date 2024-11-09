@@ -19,9 +19,18 @@ session_start();
 <body>
         
     <header>
-        <h1>Calendario De Turnos</h1>
+    <img src="../icon/ElSalvadorMarca.png" alt="El Salvador">
         <div class="contenedorNombreHeader">
-            <h2>Empresa :  <?php echo $_SESSION['razon_social']   ?></h2>
+        <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
+                
+                <h2>Bienvenido, <?php echo $_SESSION['nombre']   ?></h2>
+
+            <?php  } else { ?>
+
+                <h2>Bienvenido, <?php echo $_SESSION['razon_social']   ?></h2>
+
+            <?php } ?>
+        
         </div>
         <div class="contenedorBtnHeader">
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonCerrarSesion">Cerrar Sesion</button>

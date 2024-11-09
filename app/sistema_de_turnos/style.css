@@ -35,21 +35,19 @@ header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-  color: white;
-  margin: 0;
-  display: block;
-  font-size: 2em;
-  font-weight: bold;
+header img {
+  max-width: 50%;
+  height: 100%;
+  margin-left: 2vw;
+  filter: contrast(150%) brightness(1.1);
 }
+
 
 header .contenedorNombreHeader h2{
     font-size: large;
     color: white;
     font-weight: bold;
     font-weight: bold;
-    position: absolute;
-    right: 20%;
 }
 
 .contenedorBtnHeader {

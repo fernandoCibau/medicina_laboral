@@ -32,9 +32,18 @@ header img {
   filter: contrast(150%) brightness(1.1);
 }
 
+
+header h2{
+  font-size: large;
+  color: white;
+  font-weight: bold;
+  font-weight: bold;
+  margin-left: 50%;
+}
+
 .contenedorBtnHeader {
   width: 10%;
-  position: absolute;
+  /* position: absolute; */
   right: 0%;
 }
 

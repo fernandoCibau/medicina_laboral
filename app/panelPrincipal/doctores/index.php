@@ -23,6 +23,15 @@
     
     <header>
         <img src="../../icon/ElSalvadorMarca.png" alt="El Salvador">
+        <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
+                
+                <h2>Bienvenido, <?php echo $_SESSION['nombre']   ?></h2>
+
+            <?php  } else { ?>
+
+                <h2>Bienvenido, <?php echo $_SESSION['razon_social']   ?></h2>
+
+            <?php } ?>
         <div class="contenedorBtnHeader">
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>
         </div>
