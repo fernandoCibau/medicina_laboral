@@ -18,14 +18,10 @@ if(isset($_GET['idEmpresa']) ){
                                 EMPL.domicilio,
                                 EMPL.fecha_nacimiento,
                                 EMPL.fecha_ingreso,
-                                CAT.nombre AS categoria_nombre,
-                                SEC.nombre AS seccion_nombre,
                                 EMPR.razon_social AS empresa_nombre,
                                 EMPL.observaciones
                         FROM empleados EMPL 
                             INNER JOIN empresas EMPR ON EMPL.id_empresa = EMPR.id
-                            INNER JOIN categorias CAT   ON EMPL.id_categoria = CAT.id
-                            INNER JOIN seccion SEC  ON EMPL.id_seccion = SEC.id
                         WHERE EMPR.id = '$idEmpresa'
                         ORDER BY EMPL.id_empresa  ASC";
         }else{

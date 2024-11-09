@@ -208,8 +208,6 @@ tr:hover {
 td {
   width: 2%;
   color: #555;
-  /* Color de texto más suave para las celdas */
-  text-align: center;
 }
 
 .buscador {
