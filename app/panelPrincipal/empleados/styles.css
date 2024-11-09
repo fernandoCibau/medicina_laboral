@@ -170,7 +170,8 @@ tbody {
 }
 
 tbody::-webkit-scrollbar {
-  display: none; /* Oculta el scroll en navegadores WebKit */
+  display: none;
+  /* Oculta el scroll en navegadores WebKit */
 }
 
 tr {
@@ -403,7 +404,7 @@ h2 {
 
 .btn-primary:hover,
 .btn-secondary:hover {
-  background-color: #2c7a3e;
+  background-color: var(--hover--button-color);
 }
 
 .conteiner-empresa {

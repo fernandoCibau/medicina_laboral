@@ -100,7 +100,7 @@ main {
 
 .icon-cont {
   width: 100%;
-  height: 12.5%;
+  height: 16.6%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -217,11 +217,10 @@ td {
 }
 
 .buscador {
-  /* Espaciado superior e inferior */
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
-  /* Usar flexbox para alinear el input y el botón */
   justify-content: center;
-  /* Centrar en el contenedor */
 }
 
 .buscador input[type="text"] {
@@ -236,27 +235,6 @@ td {
   /* Espaciado entre input y botón */
 }
 
-.buscador button {
-  padding: 10px 20px;
-  /* Espaciado interno del botón */
-  background-color: #539bfc;
-  /* Color de fondo del botón */
-  color: white;
-  /* Color del texto */
-  border: none;
-  /* Sin borde */
-  border-radius: 4px;
-  /* Bordes redondeados */
-  cursor: pointer;
-  /* Cambiar cursor al pasar el ratón */
-}
-
-.buscador button:hover {
-  background-color: #007bff;
-  /* Color de fondo al pasar el ratón */
-  transition: background-color 0.3s;
-  /* Transición suave del color */
-}
 
 @media (max-width: 600px) {
   table {
@@ -277,7 +255,7 @@ table tbody tr td img {
   width: 40%;
   height: 75%;
   background: white;
-  background-color: #007bff;
+  background-color: var(--main-color);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: absolute;
   left: 50%;
@@ -389,7 +367,7 @@ h2 {
 
 .btn-primary,
 .btn-secondary {
-  background-color: #3eae58;
+  background-color: var(--secondary-color);
   color: white;
   border: none;
   border-radius: 5px;
@@ -398,13 +376,11 @@ h2 {
   margin: 1em;
   width: 12em;
   transition-duration: 1s;
-  box-shadow: 0.2em 0.2em 0.2em #333;
 }
 
 .btn-primary:hover,
 .btn-secondary:hover {
-  background-color: #2c7a3e;
-  box-shadow: 0.25em 0.25em 0.25em #333;
+  background-color: var(--hover--button-color);
 }
 
 /* FOOTER */
