@@ -22,7 +22,7 @@ if(isset($_GET['todos']) ){
                 FROM 
                     consultamedica cm
                 JOIN 
-                    empleados e ON cm.id_empleado = e.id
+                    empleados e ON cm.id = e.id
                 JOIN 
                     empresas emp ON e.id_empresa = emp.id
                 ORDER BY

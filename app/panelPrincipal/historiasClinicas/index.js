@@ -156,7 +156,6 @@ const cargarTabla = () => {
             modalOnOff(); // Cerrar el modal sin guardar
           });
         });
-        
 
         // Añadir el botón a la fila de la tabla
         tr.append($("<td>").append(botonVer));
@@ -239,6 +238,33 @@ const eliminarConsulta = (idConsulta) => {
   });
 };
 
+const enviarCorreoInforme = (idCon) => {
+  $.ajax({
+    url: "enviarinforme.php", // Asegúrate de ajustar la ruta correctamente
+    type: "POST",
+    data: { id: idCon },
+    dataType: false,
+    success: function (response) {
+      /*  let datos = JSON.parse(response);
+      let datos2 = JSON.stringify(datos.datos);*/
+
+      console.log(response);
+      /* if (response.operacion) {
+        console.log(response.datos);
+        console.log(response.filas);
+      } else {
+        console.error("Error en el servidor:", response.mensaje);
+        return false;
+      }
+    */
+    },
+    error: function (xhr, status, error) {
+      console.error("Error en la solicitud AJAX:", error);
+      return false;
+    },
+  });
+};
+
 //Buscador
 
 $(document).ready(function () {
@@ -265,6 +291,11 @@ $("#btmCerrarSesion").one("click", () => {
 
 $("#btn-modal-X").click(() => {
   modalOnOff();
+});
+
+$(document).on("click", "#enviarInforme", function () {
+  idE = $("#inputId").val();
+  enviarCorreoInforme(idE);
 });
 
 // const contenedorLista = $("<div>").attr('class', 'contendor-lista');
