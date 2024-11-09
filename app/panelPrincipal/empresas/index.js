@@ -53,10 +53,10 @@ const cargarTabla = () => {
         }
 
         // Botón Ver Empleados
-        const botonVer = $("<img src='../../icon/ojo.png'>").on("click", () => {
+        /*  const botonVer = $("<img src='../../icon/ojo.png'>").on("click", () => {
           empleadosDeEmpresa(fila["id"]);
         });
-        tr.append($("<td>").append(botonVer));
+        tr.append($("<td>").append(botonVer)); */
 
         // Botón Modificar Empresa
         const botonModificar = $("<img src='../../icon/editar.png'>").on(
@@ -374,43 +374,41 @@ $("#btmCerrarSesion").click(() => {
   // }
 
   Swal.fire({
-      title: "¿Está seguro de salir del sistema?",
-      text: "Está a punto de cerrar sesión.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Confirmar!"
+    title: "¿Está seguro de salir del sistema?",
+    text: "Está a punto de cerrar sesión.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Confirmar!",
   }).then((result) => {
-      if (  result.isConfirmed    ) {
-          cerrarCuentaRegresiva()
-      }
+    if (result.isConfirmed) {
+      cerrarCuentaRegresiva();
+    }
   });
 });
 
-const cerrarCuentaRegresiva = ()=>{
+const cerrarCuentaRegresiva = () => {
   let timerInterval;
   Swal.fire({
-      title: "Saliendo del sistama",
-      html: "El sistema se está cerrando... <b></b> milliseconds.",
-      timer: 2000,
-      timerProgressBar: true,
-      didOpen: () => {
-          Swal.showLoading();
-          const timer = Swal.getPopup().querySelector("b");
-          timerInterval = setInterval(() => {
-              timer.textContent = `${Swal.getTimerLeft()}`;
-          }, 100);
-      },
-      willClose: () => {
-          clearInterval(timerInterval);
-      }
+    title: "Saliendo del sistama",
+    html: "El sistema se está cerrando... <b></b> milliseconds.",
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: () => {
+      Swal.showLoading();
+      const timer = Swal.getPopup().querySelector("b");
+      timerInterval = setInterval(() => {
+        timer.textContent = `${Swal.getTimerLeft()}`;
+      }, 100);
+    },
+    willClose: () => {
+      clearInterval(timerInterval);
+    },
   }).then((result) => {
     /* Read more about handling dismissals below */
-  if (result.dismiss === Swal.DismissReason.timer) {
+    if (result.dismiss === Swal.DismissReason.timer) {
       window.location.href = "../../cerrarSesion.php";
-  }
+    }
   });
-}
-
-
+};
