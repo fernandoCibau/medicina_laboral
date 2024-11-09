@@ -201,7 +201,6 @@ main {
   border-collapse: collapse;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin: auto;
 }
 
@@ -212,7 +211,7 @@ main {
 
 .seccion-tabla table tbody {
   width: 100%;
-  max-height: calc(94vh - 200px);
+  max-height: calc(92vh - 200px);
   display: block;
   overflow: auto;
 }
