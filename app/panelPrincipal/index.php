@@ -19,7 +19,7 @@ session_start();
 </head>
     
     <header>
-        <h1>CLINICA EL SALVADOR</h1>
+        <img src="../icon/ElSalvadorMarca.png" alt="El Salvador">
         <div class="contenedorNombreHeader">
             <h2>Empresa :  <?php echo $_SESSION['razon_social']   ?></h2>
         </div>

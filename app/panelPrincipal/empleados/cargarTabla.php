@@ -39,16 +39,10 @@ if(isset($_GET['idEmpresa']) ){
                     e.domicilio,
                     e.fecha_nacimiento,
                     e.fecha_ingreso,
-                    c.nombre AS categoria_nombre,
-                    s.nombre AS seccion_nombre,
                     emp.razon_social AS empresa_nombre,
                     e.observaciones
                 FROM
                     empleados e
-                LEFT JOIN 
-                    categorias c ON e.id_categoria = c.id
-                LEFT JOIN 
-                    seccion s ON e.id_seccion = s.id
                 LEFT JOIN 
                     empresas emp ON e.id_empresa = emp.id
                 ORDER BY 
