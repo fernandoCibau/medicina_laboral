@@ -362,11 +362,11 @@ $("#btn-modal-X").click(() => {
   modalOnOff();
 });
 
-$("#btmCerrarSesion").one("click", () => {
-  if (confirm("¿Desea cerrar la sesión?")) {
-    window.location.href = "../../cerrarSesion.php";
-  }
-});
+// $("#btmCerrarSesion").one("click", () => {
+//   if (confirm("¿Desea cerrar la sesión?")) {
+//     window.location.href = "../../cerrarSesion.php";
+//   }
+// });
 
 $("#btmCerrarSesion").click(() => {
   // if (confirm("¿Desea cerrar la sesión?")) {

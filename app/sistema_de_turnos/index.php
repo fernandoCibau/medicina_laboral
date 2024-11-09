@@ -69,7 +69,7 @@ session_start();
         </section>
         
         <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
-                <section class="seccion-modal" id="seccion-modal">
+            <section class="seccion-modal" id="seccion-modal">
                     <div class="contenedor-encabezado-modal">
                         <button type="button" class="btn-cerrar" id="btn-cerrar" >X</button>
                     </div>
@@ -115,23 +115,29 @@ session_start();
                 </div>
                 
 
-                <div class="contenedor-tabla" id="contenedor-tabla">
-                    <h2>Lista de Turnos</h2>
-                    <div class="contenedor-tabla-2">
-                        <table id='modalTablaTurnos'>
-                            <thead>
-                                <tr>
-                                    <th>Empleado</th>
-                                    <th>Fecha</th>
-                                    <th>Doctor</th>
-                                    <th>Hora</th>
-                                    <th>Eliminar</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
+                <?php if( isset($_SESSION['admin']) && $_SESSION['admin'] == 0  ) { ?>
+                    <section class="seccion-modal-usuario " id="seccion-modal-usuario">
+                <?php } ?>
+ 
+                    <div class="contenedor-tabla" id="contenedor-tabla">
+                        <h2>Lista de Turnos</h2>
+                        <div class="contenedor-tabla-2">
+                            <table id='modalTablaTurnos'>
+                                <thead>
+                                    <tr>
+                                        <th>Empleado</th>
+                                        <th>Fecha</th>
+                                        <th>Doctor</th>
+                                        <th>Hora</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                </section>
+
 
             </section>
     </main>

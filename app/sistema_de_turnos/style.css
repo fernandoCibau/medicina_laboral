@@ -229,7 +229,7 @@ input[type="month"]:hover {
 /* ------------------------------------------------ */
 /*            SECCION-MODAL                 */
 /* ------------------------------------------------ */
-.seccion-modal {
+.seccion-modal , .seccion-modal-usuario {
   width: 80%;
   height: 80%;
   position: absolute;
