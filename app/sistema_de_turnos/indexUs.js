@@ -390,17 +390,17 @@ const cerrarCuentaRegresiva = ()=>{
 
 
 //----------------------------------------------------------------  
-//                TABLA VER TURNOS USUARIO
+//          MODAL VER TURNOS
 //----------------------------------------------------------------
 
 const modalOnOff = () => {
     if ($("#seccion-modal-usuario").hasClass("on")) {
-      $("#seccion-modal-usuario").attr("class", "seccion-modal-usuario off");
+        $("#seccion-modal-usuario").attr("class", "seccion-modal-usuario off");
     //   $("#seccion-mes").attr("class", "seccion-mes desbloqueado");
     } else {
-      $("#seccion-modal-usuario").attr("class", "seccion-modal-usuario on");
+        $("#seccion-modal-usuario").attr("class", "seccion-modal-usuario on");
     //   $("#seccion-mes").attr("class", "seccion-mes bloqueado");
-}
-  };
+    }
+};
 
 

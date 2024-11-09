@@ -7,6 +7,16 @@
   font-style: normal;
 }
 
+:root {
+  --main-color: #afb6b1;
+  --hover-main-color: #ed5f5f;
+  --secondary-color: #ed5f5f;
+  --hover--button-color: #b44e4e;
+  --cancel-error-color: #d15d5b;
+  --padding-size: 10px;
+}
+
+
 html,
 body {
   width: 100%;
@@ -20,7 +30,7 @@ header {
   width: 100%;
   height: 8%;
   align-items: center;
-  background-color: #539bfc;
+  background-color: #afb6b1;
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -57,11 +67,12 @@ header .contenedorNombreHeader h2{
 
 .contenedorBtnHeader .btmCerrarSesion {
   background-color: white;
-  color: #539bfc;
+  color: var(--hover--button-color);
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
+  transition: 1s;
 }
 
 .contenedorBtnHeader .btmCerrarSesion:hover {
@@ -85,8 +96,7 @@ main {
   display: flex;
   flex-flow: column;
   justify-content: space-around;
-  background-color: #3eae58;
-  /*background-color: #eca54e;*/
+  background-color:var(--secondary-color);
   height: 100%;
   color: white;
   width: 5%;
@@ -102,7 +112,7 @@ main {
   justify-content: center;
 }
 
-.icon-cont:hover {
+/* .icon-cont:hover {
   background-color: #218838;
   transition: all 0.3s ease-in-out;
 }
@@ -110,7 +120,7 @@ main {
 .icon-cont:hover .pe {
   color: white;
   transition: all 0.3s ease-in-out;
-}
+} */
 
 .secMenu .contenedorMenu {
   width: 100%;
@@ -164,13 +174,13 @@ main {
 }
 
 .seccion-mes .contenedor-encabezado h2 {
-  color: #539bfc;
+  color: #afb6b1;
   font-weight: bold;
 }
 
 .seccion-mes .contenedor-encabezado input[type="button"],
 input[type="month"] {
-  background-color: #539bfc;
+  background-color: var(--secondary-color);
   color: white;
   border: none;
   padding: 0px 15px;
@@ -181,7 +191,7 @@ input[type="month"] {
 
 .seccion-mes .contenedor-encabezado input[type="button"]:hover,
 input[type="month"]:hover {
-  background-color: #007bff;
+  background-color: var( --hover--button-color);
   transition: 1s;
 }
 
@@ -235,14 +245,15 @@ input[type="month"]:hover {
   position: absolute;
   top: 10%;
   left: 10%;
-  background: white;
+  background: rgb(228, 139, 139);
   display: none;
   border-radius: 8px;
   overflow: hidden;
 }
 
+
 .contenedor-encabezado-modal {
-  width: 100%;
+  width: 10%;
   background-color: #d15d5b;
 }
 
@@ -250,6 +261,7 @@ input[type="month"]:hover {
   width: 5%;
   position: absolute;
   right: 2%;
+  top: 1%;
   background-color: #d15d5b;
   box-shadow: 0.2em 0.2em 0.2em #333;
   color: white;
@@ -257,11 +269,14 @@ input[type="month"]:hover {
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
+  transition-duration: 1s;
 }
 
 .contenedor-encabezado-modal .btn-cerrar:hover {
-  background-color: #d15d5b;
+  background-color: #ac3d3b;
   box-shadow: 0.25em 0.25em 0.25em #333;
+  transition-duration: 1s;
+  font-weight: bold;
 }
 
 .on {
@@ -289,14 +304,16 @@ input[type="month"]:hover {
   height: 100%;
   margin: 0 auto;
   padding: 10px;
-  background: white;
+  background: rgb(255, 255, 255);
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
   text-align: center;
-  color: #539bfc;
+  background-color: #afb6b1;
+  border-radius: 1em 1em 0 0;
+  color: white;
   font-size: 1.5em;
   font-weight: bold;
   height: 10%;
@@ -315,10 +332,11 @@ table {
 }
 
 thead {
-  background-color: #539bfc;
+  background-color: #f2f2f2;
   width: 90%;
   height: 10%;
-  color: white;
+  color: #333;
+  font-weight: bold;
 }
 
 tbody {
@@ -349,7 +367,7 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:last-child {
-  border-bottom: 2px solid #539bfc;
+  border-bottom: 2px solid #afb6b1;
 }
 
 .btn-eliminar {
@@ -368,6 +386,7 @@ tbody tr:last-child {
   width: 100%;
   height: 100%;
 }
+
 
 .form-nuevo-turno {
   display: flex;
@@ -438,7 +457,7 @@ select {
 footer {
   width: 100%;
   height: 8%;
-  background-color: #539bfc;
+  background-color: #afb6b1;
   color: #fff;
   padding: 20px;
   text-align: center;

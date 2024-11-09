@@ -6,10 +6,11 @@ if( isset($_GET['idDelDia'])){
         
         $fecha = $_GET['idDelDia'];
         
-        $sql = "SELECT E.nombre AS empleado, T.fecha, M.nombre AS medico, T.hora 
+        $sql = "SELECT EMPL.nombre AS Empleado, EMPR.razon_social AS Empresa, T.fecha, M.nombre AS Medico, T.hora 
                 FROM turnos T 
-                JOIN empleados E ON T.empleado_id = E.id 
-                JOIN medicos M ON T.medico = M.id 
+                    JOIN empleados EMPL ON T.empleado_id = EMPL.id
+                    JOIN empresas EMPR ON T.empresa_id = EMPR.id
+                    JOIN medicos M ON T.medico = M.id
                 WHERE T.fecha='$fecha' ";
 
 

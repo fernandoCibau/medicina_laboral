@@ -54,7 +54,7 @@ session_start();
         <section class="seccion-mes" id="seccion-mes">
             
             <div class="contenedor-encabezado">
-                <h2>Mes</h2>
+                <!-- <h2>Mes</h2> -->
                 <?php if( isset($_SESSION['admin']) && $_SESSION['admin']  ) { ?>
                     <input type="month" id="mesInput" />
                     <input type="button" value="Buscar" id="btn-buscar">
@@ -116,7 +116,11 @@ session_start();
                 
 
                 <?php if( isset($_SESSION['admin']) && $_SESSION['admin'] == 0  ) { ?>
-                    <section class="seccion-modal-usuario " id="seccion-modal-usuario">
+                    <section class="seccion-modal-usuario" id="seccion-modal-usuario">
+                    
+                    <div class="contenedor-encabezado-modal">
+                        <button type="button" class="btn-cerrar" id="btn-cerrar" >X</button>
+                    </div>
                 <?php } ?>
  
                     <div class="contenedor-tabla" id="contenedor-tabla">
@@ -126,6 +130,7 @@ session_start();
                                 <thead>
                                     <tr>
                                         <th>Empleado</th>
+                                        <th>Empresa</th>
                                         <th>Fecha</th>
                                         <th>Doctor</th>
                                         <th>Hora</th>
