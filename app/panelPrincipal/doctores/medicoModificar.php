@@ -1,5 +1,4 @@
 <?php
-include '../../error_config.php';
 if (isset($_POST['id']) && (isset($_POST['matricula']) || isset($_POST['dni']) || isset($_POST['apellido']) || isset($_POST['nombre'])  || isset($_POST['especialidad'])) ) {
 
     try {
