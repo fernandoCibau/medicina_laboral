@@ -12,7 +12,7 @@
     <header>
         <img src="../icon/ElSalvadorMarca.png" alt="El Salvador">
         <div class="contenedorBtnHeader">
-            <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>
+            <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="btmCerrarSesion">Cerrar Sesion</button>
         </div>
     </header>
     
@@ -59,6 +59,7 @@
         </section>
     </main>
             
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="index.js"></script>
 
