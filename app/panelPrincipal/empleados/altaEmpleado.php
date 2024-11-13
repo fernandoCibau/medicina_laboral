@@ -17,8 +17,6 @@ if (isset($_POST['dni'])) {
         $domicilio = isset($_POST['domicilio']) ? $_POST['domicilio'] : null;
         $fecha_nacimiento = $_POST['fecha_nac'];
         $fecha_ingreso = isset($_POST['fecha_ing']) ? $_POST['fecha_ing'] : null;
-        $id_categoria = $_POST['id_categoria'];
-        $id_seccion = $_POST['id_seccion'];
         $observaciones = isset($_POST['observaciones']) ? $_POST['observaciones'] : null;
         $id_empresa = $_POST['id_empresa'];
 
@@ -28,8 +26,8 @@ if (isset($_POST['dni'])) {
             mysqli_free_result($resultado);
             echo json_encode( ['mensaje' => 'El empleado ya existe', 'operacion' => FALSE]);
         } else {
-            $sql = "INSERT INTO empleados (legajo, dni, nombre, apellido, domicilio, fecha_nacimiento, fecha_ingreso, id_categoria, id_seccion, observaciones, id_empresa) 
-                    VALUES ('$legajo', '$dni', '$nombre', '$apellido', '$domicilio', '$fecha_nacimiento', '$fecha_ingreso', '$id_categoria', '$id_seccion', '$observaciones', '$id_empresa')";
+            $sql = "INSERT INTO empleados (legajo, dni, nombre, apellido, domicilio, fecha_nacimiento, fecha_ingreso, observaciones, id_empresa) 
+                    VALUES ('$legajo', '$dni', '$nombre', '$apellido', '$domicilio', '$fecha_nacimiento', '$fecha_ingreso', '$observaciones', '$id_empresa')";
             $resultado = mysqli_query($conexion, $sql);
             if($resultado) {
                 echo json_encode(['mensaje' => 'Empleado agregado con exito.', 'dni' => $dni , 'operacion'=> TRUE]);
