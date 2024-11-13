@@ -37,7 +37,7 @@
             </div>
             <div class="login-box">
                 <div class="left-panel">
-                <img src="../app/icon/ElSalvadorMarca.png" alt="El Salvador"/>
+                <img src="../app/icon/ElSalvadorIcono.png" alt="El Salvador"/>
                 </div>
                 <div class="right-panel">
                     <h3>Ingreso</h3>

@@ -22,7 +22,7 @@
             </div>
             <div class="login-box">
             <div class="left-panel">
-                <img src="../icon/ElSalvadorMarca.png" alt="El Salvador"/>
+                <img src="../icon/ElSalvadorIcono.png" alt="El Salvador"/>
                 </div>
                 <div class="right-panel">
                     <h3>Ingrese su correo electronico</h3>
