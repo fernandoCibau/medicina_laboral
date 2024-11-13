@@ -46,6 +46,6 @@ if (isset($_POST['id']) && (isset($_POST['matricula']) || isset($_POST['dni']) |
         echo json_encode(['mensaje' => 'Ocurrió un error', 'error'=> $error ]);
     }
 } else {
-    echo json_encode(['mensaje' => 'No se recibieron datos suficientes desde el formulario' 'operacion' => FALSE ]);
+    echo json_encode(['mensaje' => 'No se recibieron datos suficientes desde el formulario', 'operacion' => FALSE ]);
 }
 ?>
