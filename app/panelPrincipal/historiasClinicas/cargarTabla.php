@@ -14,7 +14,7 @@ if(isset($_GET['todos']) ){
                     cm.solicitud_ausentismo,
                     cm.fecha_inicio_ausentismo,
                     cm.fecha_fin_ausentismo,
-                    cm.observaciones,
+                    e.observaciones,
                     e.nombre AS empleado_nombre,
                     e.apellido AS empleado_apellido,
                     e.id_empresa AS empleado_empresa,

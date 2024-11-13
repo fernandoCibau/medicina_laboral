@@ -31,12 +31,12 @@ const cargarTabla = (idEmpresa = 0) => {
                 dni: item.dni || "",
                 apellido: item.apellido || "",
                 nombre: item.nombre || "",
-                domicilio: item.domicilio || "",
-                fecha_nacimiento: item.fecha_nacimiento || "",
-                fecha_ingreso: item.fecha_ingreso || "",
-                categoria_nombre: item.categoria_nombre || "", // Nombre de la categoría
-                seccion_nombre: item.seccion_nombre || "", // Nombre de la sección
-                observaciones: item.observaciones || "",
+                // domicilio: item.domicilio || "",
+                // fecha_nacimiento: item.fecha_nacimiento || "",
+                // fecha_ingreso: item.fecha_ingreso || "",
+                // categoria_nombre: item.categoria_nombre || "", // Nombre de la categoría
+                // seccion_nombre: item.seccion_nombre || "", // Nombre de la sección
+                // observaciones: item.observaciones || "",
             }));
 
             datosMap.forEach((fila) => {

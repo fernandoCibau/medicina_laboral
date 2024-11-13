@@ -64,7 +64,9 @@
                         <th>Fecha de Inicio</th>
                         <th>Fecha Finalizacion</th>
                         <th>Ver</th>
+                        <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>
                         <th>Eliminar</th>
+                        <?php } ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -87,8 +89,11 @@
         
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="./index.js"></script>
-        
+        <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
+            <script src="./index.js"></script>
+        <?php  } else { ?>
+            <script src="./indexUs.js"></script>
+        <?php  } ?>
     <footer>
         <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
     </footer>

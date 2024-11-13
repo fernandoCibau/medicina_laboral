@@ -386,7 +386,9 @@ const cerrarCuentaRegresiva = ()=>{
     });
 }
 
-
+$('#btn-cerrar').click( ()=>{
+    modalOnOff();
+})
 
 
 //----------------------------------------------------------------  
