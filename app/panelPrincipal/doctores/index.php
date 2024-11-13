@@ -88,7 +88,7 @@
         <div class="contenedor-modal off" id="contenedorModal">
             <div class="encabezado-modal">
                 <h2 class="titulo-empleados" id="tituloModal"></h2>
-                <button id="btn-modal-X" class="btn-cerrar-X">X</button>
+                <div id="btn-modal-X">X</div>
             </div>
             <div id="contenedorDatos" class="contendor-datos">
                 <!-- <form action=""method="post" id="formModificar"></form> -->
