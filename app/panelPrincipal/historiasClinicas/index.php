@@ -74,6 +74,7 @@
             </table>
         </section>
         
+<<<<<<< HEAD
         <div class="contenedor-modal off" id="contenedorModal">
             <div class="encabezado-modal">
                 <h2 class="titulo-empleados" id="tituloModal"></h2>
@@ -94,6 +95,26 @@
         <?php  } else { ?>
             <script src="./indexUs.js"></script>
         <?php  } ?>
+=======
+    </main>
+</body>
+
+<div class="contenedor-modal off" id="contenedorModal">
+    <div class="encabezado-modal">
+        <h2 class="titulo-empleados" id="tituloModal"></h2>
+        <div id="btn-modal-X">X</div>
+    </div>
+    <div id="contenedorDatos" class="contendor-datos">
+        
+        </div>
+    </div>
+</div> 
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="./index.js"></script>
+
+>>>>>>> 0182c9aecd19325c44e5d9edd38512e817fffc51
     <footer>
         <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
     </footer>

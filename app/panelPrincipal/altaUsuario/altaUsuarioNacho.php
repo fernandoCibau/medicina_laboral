@@ -48,7 +48,7 @@
                     $resultado = mysqli_query( $conexion, $sql );
                         
                     if($resultado){
-                        echo json_encode( ['mensaje' => 'SE REGISTO CON EXITO A ' . $nombre , 'operacion' => TRUE ] );
+                        echo json_encode( ['mensaje' => 'SE REGISTRO CON EXITO A ' . $nombre , 'operacion' => TRUE ] );
                     }else{
                         echo json_encode( ['mensaje' => 'Error, no se pudo registrar, LINEA : ' .  __LINE__, 'operacion' => TRUE ] );
                     }

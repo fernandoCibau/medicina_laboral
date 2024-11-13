@@ -84,22 +84,19 @@
                 </tbody>
             </table>
         </section>
-        
-        <div class="contenedor-modal off" id="contenedorModal">
+
+    </main>
+
+    <div class="contenedor-modal off" id="contenedorModal">
             <div class="encabezado-modal">
                 <h2 class="titulo-empleados" id="tituloModal"></h2>
-                <button id="btn-modal-X" class="btn-cerrar-X">X</button>
+                <div id="btn-modal-X">X</div>
             </div>
             <div id="contenedorDatos" class="contendor-datos">
-                <!-- <form action=""method="post" id="formModificar"></form> -->
             </div>
             
         </div>
 
-    </main>
-
-    <!-- script para poder usar el modulo ES6 para poder importar funciones -->
-    <!-- <script type="module" src="index.js"></script>  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./index.js"></script>

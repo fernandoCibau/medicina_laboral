@@ -118,11 +118,11 @@ tbody::-webkit-scrollbar {
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
-  color: #ed5f5f;
+  color: black;
 }
 
 .encabezado-tabla-inputs label {
-  color: #ed5f5f;
+  color: black;
   display: block;
   font-weight: bold;
   font-size: 1em;

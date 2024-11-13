@@ -82,7 +82,9 @@
 
                     <div id="cont-boton">
                     <button  id="asd" name="registrar">Registrar</button>
+                    <spam id="mensaje" class="hidde" >El usuario se creo correctamente</spam>
                     </div>
+                    
                     
                 </form>
 

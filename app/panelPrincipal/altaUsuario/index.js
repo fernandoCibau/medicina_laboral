@@ -26,11 +26,27 @@ let ajaxUsuarioAlta = (formData) => {
 
     success: (resultado, estado) => {
       console.log(resultado);
+      let datos = JSON.parse(resultado);
+      try {
+        if (datos.operacion) {
+          $("#mensaje").text(datos.mensaje);
+          $("spam").removeClass("hidde");
+          $("spam").removeClass("show-error");
+          $(".loader").addClass("hidde");
+          $("spam").addClass("show");
+        } else {
+          $("spam").text(datos.mensaje);
+          $("spam").removeClass("hidde");
+          $("spam").removeClass("show");
+          $(".loader").addClass("hidde");
+          $("spam").addClass("show-error");
+        }
+      } catch (error) {
+        console.log(error);
+      }
     },
   });
 };
-
-
 
 /* TRAE LA LISTA DE EMPRESAS A MEDIDA QUE ESCRIBO */
 

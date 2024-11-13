@@ -14,3 +14,4 @@ Stack trace:
 [09-Nov-2024 14:29:20 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\cargarSelectSeccion.php en la línea 13: Table 'el_salvador.seccion' doesn't exist
 [09-Nov-2024 14:29:20 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\cargarSelectCategoria.php en la línea 13: Table 'el_salvador.categorias' doesn't exist
 [09-Nov-2024 14:29:20 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\cargarSelectSeccion.php en la línea 13: Table 'el_salvador.seccion' doesn't exist
+[12-Nov-2024 22:47:28 America/Argentina/Buenos_Aires] PHP Warning:  Undefined variable $id_empresa in C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\modificacionEmpleado.php on line 78

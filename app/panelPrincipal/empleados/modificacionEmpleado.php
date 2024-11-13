@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['id']) && (isset($_POST['legajo']) || isset($_POST['dni']) || isset($_POST['apellido']) || isset($_POST['nombre']) || isset($_POST['domicilio']) || isset($_POST['fecha_nacimiento']) || isset($_POST['fecha_ingreso']) || isset($_POST['id_categoria']) || isset($_POST['id_seccion']) || isset($_POST['observaciones']) || isset($_POST['id_empresa']))) {
+if (isset($_POST['id']) && (isset($_POST['legajo']) || isset($_POST['dni']) || isset($_POST['apellido']) || isset($_POST['nombre']) || isset($_POST['domicilio']) || isset($_POST['fecha_nacimiento']) || isset($_POST['fecha_ingreso']) || isset($_POST['observaciones']) || isset($_POST['id_empresa']))) {
     try {
         include "../../conexion.php";
         include "error_config.php";
@@ -12,8 +12,6 @@ if (isset($_POST['id']) && (isset($_POST['legajo']) || isset($_POST['dni']) || i
         $domicilio = isset($_POST['domicilio']) ? $_POST['domicilio'] : null;
         $fecha_nacimiento = isset($_POST['fecha_nacimiento']) ? $_POST['fecha_nacimiento'] : null;
         $fecha_ingreso = isset($_POST['fecha_ingreso']) ? $_POST['fecha_ingreso'] : null;
-        $id_categoria = isset($_POST['id_categoria']) ? $_POST['id_categoria'] : null;
-        $id_seccion = isset($_POST['id_seccion']) ? $_POST['id_seccion'] : null;
         $observaciones = isset($_POST['observaciones']) ? $_POST['observaciones'] : null;
 
 
@@ -69,18 +67,6 @@ if (isset($_POST['id']) && (isset($_POST['legajo']) || isset($_POST['dni']) || i
                 $campos[] = "fecha_ingreso = ?";
                 $valores[] = $fecha_ingreso;
                 $tipos .= "s";
-            }
-
-            if ($id_categoria) {
-                $campos[] = "id_categoria = ?";
-                $valores[] = $id_categoria;
-                $tipos .= "i";
-            }
-
-            if ($id_seccion) {
-                $campos[] = "id_seccion = ?";
-                $valores[] = $id_seccion;
-                $tipos .= "i";
             }
 
             if ($observaciones) {
