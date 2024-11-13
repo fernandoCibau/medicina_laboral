@@ -109,6 +109,10 @@ main .container {
   background-color: #fff;
 }
 
+.login-box img {
+  filter: contrast(150%) brightness(1.1);
+}
+
 .left-panel {
   background-color: var(--main-color);
   color: white;
