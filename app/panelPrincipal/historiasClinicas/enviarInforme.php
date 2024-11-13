@@ -4,6 +4,7 @@
 
    // Supongamos que tienes la conexión en la variable $conexion
 $idCon = $_POST['id'];
+
 $sql = "SELECT 
             cm.id AS consulta_id,
             cm.fecha,
@@ -16,6 +17,7 @@ $sql = "SELECT
             e.nombre AS empleado_nombre,
             e.apellido AS empleado_apellido,
             e.id_empresa AS empleado_empresa,
+            e.id AS empleado_id,
             emp.razon_social AS empresa_razon_social,
             emp.email AS email
         FROM 
@@ -25,7 +27,7 @@ $sql = "SELECT
         JOIN 
             empresas emp ON e.id_empresa = emp.id
         WHERE 
-            e.id = $idCon";
+            cm.id = $idCon";
 
             
 
@@ -42,6 +44,7 @@ if (mysqli_num_rows($resultado) > 0) {
     // Llenar el array de respuesta con los datos
     $response = array(
         "consulta_id" => $fila['consulta_id'],
+        "empleado_id" => $fila['empleado_id'],
         "fecha" => $fila['fecha'],
         "medico_certificado" => $fila['medico_certificado'],
         "diagnostico_cie10" => $fila['diagnostico_cie10'],
@@ -49,30 +52,35 @@ if (mysqli_num_rows($resultado) > 0) {
         "fecha_inicio_ausentismo" => $fila['fecha_inicio_ausentismo'],
         "fecha_fin_ausentismo" => $fila['fecha_fin_ausentismo'],
         "observaciones" => $fila['observaciones'],
-        "empleado_nombre" => $fila['empleado_nombre'],
-        "empleado_apellido" => $fila['empleado_apellido'],
-        "empleado_empresa" => $fila['empleado_empresa'],
-        "empresa_razon_social" => $fila['empresa_razon_social'],
-        "email" => $fila['email']
+        "empleado_nombre" => isset($fila['empleado_nombre']) ? $fila['empleado_nombre'] : null,
+        "empleado_apellido" => isset($fila['empleado_apellido']) ? $fila['empleado_apellido'] : null,
+        "empleado_empresa" => isset($fila['empleado_empresa']) ? $fila['empleado_empresa'] : null,
+        "empresa_razon_social" => isset($fila['empresa_razon_social']) ? $fila['empresa_razon_social'] : null,
+        "email" => isset($fila['email']) ? $fila['email'] : null
+    
     );
 } else {
     // Si no se encuentra ningún registro, devolver un mensaje de error
     $response = array("error" => "No se encontró ningún registro para el ID especificado.");
 }
 
-/* $para = $response["email"];
+ $para = $response["email"];
 $de = "From: nachomelga123@gmail.com";
 $asunto = "Prueba de informe";
-$mensaje = "fdasdsadsa";  */
+$mensaje = "fdasdsadsa";  
 
-//echo $para;
 
+
+$enviarMail = mail($para,$asunto,$mensaje,$de);
 
 // Configurar el encabezado para indicar que la respuesta es JSON
 //header('Content-Type: application/json');
 
 // Enviar la respuesta como JSON
-echo $response['empleado_nombre'];
+if($enviarMail){
+    
+}
+echo $response['email'];
 
 // Liberar resultados
 mysqli_free_result($resultado);

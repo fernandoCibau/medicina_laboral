@@ -211,6 +211,8 @@ select {
 #cont-boton {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .form-contenedor button {
@@ -254,6 +256,33 @@ select {
 #resultados li:hover {
   background-color: #f0f0f0;
 }
+
+
+#mensaje {
+  margin-top: 5px;
+  font-size: small;
+  margin: auto;
+  padding-top: 15px;
+}
+
+.show {
+  visibility: visible;
+  color: #00b928;
+}
+
+.show-error {
+  color: #b10000;
+
+}
+
+.hidde {
+  visibility: hidden;
+}
+
+.remove {
+  display: none;
+}
+
 
 footer {
   width: 100%;

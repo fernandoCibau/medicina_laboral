@@ -14,25 +14,4 @@ Stack trace:
 [09-Nov-2024 14:29:20 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\cargarSelectSeccion.php en la línea 13: Table 'el_salvador.seccion' doesn't exist
 [09-Nov-2024 14:29:20 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\cargarSelectCategoria.php en la línea 13: Table 'el_salvador.categorias' doesn't exist
 [09-Nov-2024 14:29:20 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\cargarSelectSeccion.php en la línea 13: Table 'el_salvador.seccion' doesn't exist
-<<<<<<< HEAD
-[12-Nov-2024 22:45:43 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "id_categoria" in C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php on line 20
-[12-Nov-2024 22:45:43 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "id_seccion" in C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php on line 21
-[12-Nov-2024 22:45:43 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php en la linea 33: Unknown column 'id_categoria' in 'field list'
-[12-Nov-2024 22:46:51 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "id_categoria" in C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php on line 20
-[12-Nov-2024 22:46:51 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "id_seccion" in C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php on line 21
-[12-Nov-2024 22:46:51 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php en la linea 33: Unknown column 'id_categoria' in 'field list'
-[12-Nov-2024 22:47:19 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "id_categoria" in C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php on line 20
-[12-Nov-2024 22:47:19 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "id_seccion" in C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php on line 21
-[12-Nov-2024 22:47:19 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php en la linea 33: Unknown column 'id_categoria' in 'field list'
-[12-Nov-2024 22:48:28 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "id_categoria" in C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php on line 20
-[12-Nov-2024 22:48:28 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "id_seccion" in C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php on line 21
-[12-Nov-2024 22:48:28 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php en la linea 33: Unknown column 'id_categoria' in 'field list'
-[12-Nov-2024 22:48:47 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "id_categoria" in C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php on line 20
-[12-Nov-2024 22:48:47 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "id_seccion" in C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php on line 21
-[12-Nov-2024 22:48:47 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php en la linea 33: Unknown column 'id_categoria' in 'field list'
-[12-Nov-2024 22:49:26 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "id_categoria" in C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php on line 20
-[12-Nov-2024 22:49:26 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "id_seccion" in C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php on line 21
-[12-Nov-2024 22:49:26 America/Argentina/Buenos_Aires] Error en C:\xampp\htdocs\medicina_laboral\app\panelPrincipal\empleados\altaEmpleado.php en la linea 33: Unknown column 'id_categoria' in 'field list'
-=======
 [12-Nov-2024 22:47:28 America/Argentina/Buenos_Aires] PHP Warning:  Undefined variable $id_empresa in C:\xampp\htdocs\proyecto_El_Salvador\app\panelPrincipal\empleados\modificacionEmpleado.php on line 78
->>>>>>> 3ae56c944879cb1b4accf3addd28632c049dd102
