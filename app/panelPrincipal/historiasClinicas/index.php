@@ -73,8 +73,10 @@
                 </tbody>
             </table>
         </section>
-        
-        <div class="contenedor-modal off" id="contenedorModal">
+        </main>
+    </body>
+
+    <div class="contenedor-modal off" id="contenedorModal">
             <div class="encabezado-modal">
                 <h2 class="titulo-empleados" id="tituloModal"></h2>
                 <div id="btn-modal-X">X</div>
@@ -83,9 +85,7 @@
                 
                 </div>
             </div>
-            
-        </main>
-    </body>
+        </div> 
         
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
