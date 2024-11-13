@@ -43,11 +43,21 @@ header img {
 }
 
 
+.contenedorNombreHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 header .contenedorNombreHeader h2 {
+  display: flex;
+  align-items: center;
   font-size: large;
   color: white;
   font-weight: bold;
   font-weight: bold;
+  position: absolute;
+  right: 0%;
 }
 
 .contenedorBtnHeader {
@@ -65,7 +75,7 @@ header .contenedorNombreHeader h2 {
 
 .contenedorBtnHeader .btmCerrarSesion {
   background-color: white;
-  color: var(--hover--button-color);
+  color: var(--secondary-color);
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
