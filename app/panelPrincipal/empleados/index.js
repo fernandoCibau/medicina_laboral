@@ -475,8 +475,8 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
     `);
 
   cargarSelectEmpresa();
-  cargarSelectCategoria();
-  cargarSelectSeccion();
+  //  cargarSelectCategoria();
+  //cargarSelectSeccion();
 
   // Agregar eventos con eliminación previa para evitar duplicados
   $("#agregarBtn").on("click", () => {
