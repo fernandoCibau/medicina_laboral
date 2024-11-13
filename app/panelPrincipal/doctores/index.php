@@ -84,8 +84,10 @@
                 </tbody>
             </table>
         </section>
-        
-        <div class="contenedor-modal off" id="contenedorModal">
+
+    </main>
+
+    <div class="contenedor-modal off" id="contenedorModal">
             <div class="encabezado-modal">
                 <h2 class="titulo-empleados" id="tituloModal"></h2>
                 <div id="btn-modal-X">X</div>
@@ -95,8 +97,6 @@
             </div>
             
         </div>
-
-    </main>
 
     <!-- script para poder usar el modulo ES6 para poder importar funciones -->
     <!-- <script type="module" src="index.js"></script>  -->

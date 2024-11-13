@@ -72,23 +72,24 @@
             </table>
         </section>
         
-        <div class="contenedor-modal off" id="contenedorModal">
-            <div class="encabezado-modal">
-                <h2 class="titulo-empleados" id="tituloModal"></h2>
-                <div id="btn-modal-X">X</div>
-            </div>
-            <div id="contenedorDatos" class="contendor-datos">
-                
-                </div>
-            </div>
-            
-        </main>
-    </body>
+    </main>
+</body>
+
+<div class="contenedor-modal off" id="contenedorModal">
+    <div class="encabezado-modal">
+        <h2 class="titulo-empleados" id="tituloModal"></h2>
+        <div id="btn-modal-X">X</div>
+    </div>
+    <div id="contenedorDatos" class="contendor-datos">
         
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="./index.js"></script>
-        
+        </div>
+    </div>
+</div> 
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="./index.js"></script>
+
     <footer>
         <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
     </footer>

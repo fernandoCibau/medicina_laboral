@@ -384,6 +384,11 @@ h2 {
   background-color: #b44e4e;
 }
 
+.blur-background {
+  filter: blur(1px);
+  pointer-events: none;
+}
+
 /* ------------------------------------------- */
 /*              FOOTER                         */
 /* ------------------------------------------- */

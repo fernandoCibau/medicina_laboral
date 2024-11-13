@@ -265,7 +265,6 @@ table tbody tr td img {
   border-radius: 8px;
 }
 
-
 .encabezado-modal div {
   display: flex;
   justify-content: center;
@@ -402,6 +401,11 @@ h2 {
 .btn-primary:hover,
 .btn-secondary:hover {
   background-color: var(--hover--button-color);
+}
+
+.blur-background {
+  filter: blur(1px);
+  pointer-events: none;
 }
 
 /* FOOTER */

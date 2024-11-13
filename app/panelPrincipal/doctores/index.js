@@ -356,45 +356,44 @@ $("#btmCerrarSesion").click(() => {
   // }
 
   Swal.fire({
-      title: "¿Está seguro de salir del sistema?",
-      text: "Está a punto de cerrar sesión.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Confirmar!"
+    title: "¿Está seguro de salir del sistema?",
+    text: "Está a punto de cerrar sesión.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Confirmar!",
   }).then((result) => {
-      if (  result.isConfirmed    ) {
-          cerrarCuentaRegresiva()
-      }
+    if (result.isConfirmed) {
+      cerrarCuentaRegresiva();
+    }
   });
 });
 
-const cerrarCuentaRegresiva = ()=>{
+const cerrarCuentaRegresiva = () => {
   let timerInterval;
   Swal.fire({
-      title: "Saliendo del sistama",
-      html: "El sistema se está cerrando... <b></b> milliseconds.",
-      timer: 2000,
-      timerProgressBar: true,
-      didOpen: () => {
-          Swal.showLoading();
-          const timer = Swal.getPopup().querySelector("b");
-          timerInterval = setInterval(() => {
-              timer.textContent = `${Swal.getTimerLeft()}`;
-          }, 100);
-      },
-      willClose: () => {
-          clearInterval(timerInterval);
-      }
+    title: "Saliendo del sistama",
+    html: "El sistema se está cerrando... <b></b> milliseconds.",
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: () => {
+      Swal.showLoading();
+      const timer = Swal.getPopup().querySelector("b");
+      timerInterval = setInterval(() => {
+        timer.textContent = `${Swal.getTimerLeft()}`;
+      }, 100);
+    },
+    willClose: () => {
+      clearInterval(timerInterval);
+    },
   }).then((result) => {
     /* Read more about handling dismissals below */
-  if (result.dismiss === Swal.DismissReason.timer) {
+    if (result.dismiss === Swal.DismissReason.timer) {
       window.location.href = "../../cerrarSesion.php";
-  }
+    }
   });
-}
-
+};
 
 $("#btn-modal-X").click(() => {
   modalOnOff();
@@ -499,16 +498,13 @@ const buscarMedico = (buscarPor, caracteres) => {
 
 //Abre y cierra el modal
 const modalOnOff = () => {
+  const mainContent = document.querySelector("main");
   if ($("#contenedorModal").hasClass("on")) {
     $("#contenedorModal").attr("class", "contenedor-modal off");
-    $("table").attr("class", "desbloqueado");
-    $("#secMenu").attr("class", "secMenu desbloqueado");
-    $("header").attr("class", "desbloqueado");
+    mainContent.classList.remove("blur-background");
   } else {
     $("#contenedorModal").attr("class", "contenedor-modal on");
-    $("table").attr("class", "bloqueado");
-    $("#secMenu").attr("class", "secMenu bloqueado");
-    $("header").attr("class", "bloqueado");
+    mainContent.classList.add("blur-background");
   }
 };
 

@@ -204,16 +204,13 @@ const cargarTabla = () => {
 
 //Abre y cierra el modal
 const modalOnOff = () => {
+  const mainContent = document.querySelector("main");
   if ($("#contenedorModal").hasClass("on")) {
     $("#contenedorModal").attr("class", "contenedor-modal off");
-    $("table").attr("class", "desbloqueado");
-    $("#secMenu").attr("class", "secMenu desbloqueado");
-    $("header").attr("class", "desbloqueado");
+    mainContent.classList.remove("blur-background");
   } else {
     $("#contenedorModal").attr("class", "contenedor-modal on");
-    $("table").attr("class", "bloqueado");
-    $("#secMenu").attr("class", "secMenu bloqueado");
-    $("header").attr("class", "bloqueado");
+    mainContent.classList.add("blur-background");
   }
 };
 
