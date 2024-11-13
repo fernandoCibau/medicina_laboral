@@ -245,8 +245,8 @@ const enviarCorreoInforme = (idCon) => {
     data: { id: idCon },
     dataType: false,
     success: function (response) {
-      /*  let datos = JSON.parse(response);
-      let datos2 = JSON.stringify(datos.datos);*/
+      // let datos = JSON.parse(response);
+      //let datos2 = JSON.stringify(datos.datos);
 
       console.log(response);
       /* if (response.operacion) {

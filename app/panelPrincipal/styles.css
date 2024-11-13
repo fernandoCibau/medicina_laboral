@@ -23,6 +23,7 @@ header {
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 header img {
   max-width: 50%;
   height: 100%;
@@ -127,8 +128,7 @@ main .seccionAccesosDirectos {
 }
 
 .icon-cont:hover a img {
-  filter: invert(71%) sepia(43%) saturate(6386%) hue-rotate(192deg)
-    brightness(100%) contrast(98%);
+  filter: invert(71%) sepia(43%) saturate(6386%) hue-rotate(192deg) brightness(100%) contrast(98%);
 }
 
 .secMenu .contenedorMenu {
@@ -272,10 +272,7 @@ main .seccionAccesosDirectos .contenedorAccesos {
   font-weight: bold;
 }
 
-.seccionAccesosDirectos
-  .contenedorAccesosDos
-  .perfilDatos
-  .btnEditarPerfil:hover {
+.seccionAccesosDirectos .contenedorAccesosDos .perfilDatos .btnEditarPerfil:hover {
   background-color: rgba(0, 128, 0, 0.5);
   transition: 1s;
 }

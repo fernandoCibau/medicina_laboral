@@ -43,11 +43,11 @@ header img {
 }
 
 
-header .contenedorNombreHeader h2{
-    font-size: large;
-    color: white;
-    font-weight: bold;
-    font-weight: bold;
+header .contenedorNombreHeader h2 {
+  font-size: large;
+  color: white;
+  font-weight: bold;
+  font-weight: bold;
 }
 
 .contenedorBtnHeader {
@@ -57,10 +57,10 @@ header .contenedorNombreHeader h2{
 }
 
 .contenedorNombreHeader {
-    width: 10%;
-    width: 20%;
-    position: absolute;
-    right: 20%;
+  width: 10%;
+  width: 20%;
+  position: absolute;
+  right: 20%;
 }
 
 .contenedorBtnHeader .btmCerrarSesion {
@@ -94,7 +94,7 @@ main {
   display: flex;
   flex-flow: column;
   justify-content: space-around;
-  background-color:var(--secondary-color);
+  background-color: var(--secondary-color);
   height: 100%;
   color: white;
   width: 5%;
@@ -103,22 +103,18 @@ main {
 
 .icon-cont {
   width: 100%;
-  height: 12.5%;
+  height: 16.6%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-/* .icon-cont:hover {
-  background-color: #218838;
+
+.icon-cont:hover {
+  background-color: var(--hover--button-color);
   transition: all 0.3s ease-in-out;
 }
-
-.icon-cont:hover .pe {
-  color: white;
-  transition: all 0.3s ease-in-out;
-} */
 
 .secMenu .contenedorMenu {
   width: 100%;
@@ -189,7 +185,7 @@ input[type="month"] {
 
 .seccion-mes .contenedor-encabezado input[type="button"]:hover,
 input[type="month"]:hover {
-  background-color: var( --hover--button-color);
+  background-color: var(--hover--button-color);
   transition: 1s;
 }
 
@@ -237,7 +233,8 @@ input[type="month"]:hover {
 /* ------------------------------------------------ */
 /*            SECCION-MODAL                 */
 /* ------------------------------------------------ */
-.seccion-modal , .seccion-modal-usuario {
+.seccion-modal,
+.seccion-modal-usuario {
   width: 80%;
   height: 80%;
   position: absolute;
@@ -322,6 +319,7 @@ h2 {
   height: 90%;
   overflow: auto;
 }
+
 table {
   width: 100%;
   height: 100%;

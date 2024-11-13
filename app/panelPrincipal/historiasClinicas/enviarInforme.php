@@ -60,17 +60,19 @@ if (mysqli_num_rows($resultado) > 0) {
     $response = array("error" => "No se encontró ningún registro para el ID especificado.");
 }
 
-$para = $response["email"];
+/* $para = $response["email"];
 $de = "From: nachomelga123@gmail.com";
 $asunto = "Prueba de informe";
-$mensaje = "fdasdsadsa";
+$mensaje = "fdasdsadsa";  */
+
+//echo $para;
 
 
 // Configurar el encabezado para indicar que la respuesta es JSON
-header('Content-Type: application/json');
+//header('Content-Type: application/json');
 
 // Enviar la respuesta como JSON
-echo json_encode($response);
+echo $response['empleado_nombre'];
 
 // Liberar resultados
 mysqli_free_result($resultado);

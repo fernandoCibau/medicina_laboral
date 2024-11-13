@@ -43,7 +43,6 @@ session_start();
             
         <div class="contenedorMenu">
                 <div class="icon-cont"><a href="../index.php"><img src="../icon/home.png" alt="" class="saturate"><p class="pe">Inicio</p></a></div>
-                <div class="icon-cont"><a href="../sistema_de_turnos"><img src="../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
                 <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>    
                     <div class="icon-cont"> <a href="../cie_10/index.php"><img src="../icon/tabla.png" alt=""><p class="pe">CIE-10</p ></a></div>
                 <?php } ?>
@@ -53,9 +52,7 @@ session_start();
                     <div class="icon-cont"> <a href="../panelPrincipal/doctores/index.php"><img src="../icon/personal_medico.png" alt=""><p class="pe">Pers. Medico</p></a></div>
                 <?php } ?>
                 <div class="icon-cont"> <a href="../panelPrincipal/historiasClinicas/index.php"><img src="../icon/historiasClinicasBlanco.png" alt=""><p class="pe">Hist clinicas</p></a></div>
-                <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>    
-                    <div class="icon-cont"> <a href="../panelPrincipal/configuracion/index.php"><img src="../icon/config.jpg" alt=""><p class="pe">Configuracion</p></a></div>
-                <?php } ?>    
+                  
             </div>
         </section>
         
