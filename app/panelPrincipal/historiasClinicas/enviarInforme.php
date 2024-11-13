@@ -78,9 +78,10 @@ $enviarMail = mail($para,$asunto,$mensaje,$de);
 
 // Enviar la respuesta como JSON
 if($enviarMail){
-    
+    echo json_encode( ['mensaje' => 'Se envio el informe correctamente' , 'operacion' => TRUE ] );
+}else{
+    echo json_encode( ['mensaje' => 'Error al enviar el informe' , 'operacion' => FALSE ] );
 }
-echo $response['email'];
 
 // Liberar resultados
 mysqli_free_result($resultado);
