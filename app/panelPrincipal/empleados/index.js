@@ -112,6 +112,8 @@ const cargarTabla = (idEmpresa = 0) => {
                             <button id="cancelarBtn" class="btn btn-secondary">Cancelar</button>
                         </div>
                     `);
+            const today = new Date().toISOString().split('T')[0];
+            $("#inputFechaConsulta").val(today);
 
             $("#tituloModal").text("Agregar consulta");
             modalOnOff();
@@ -285,8 +287,8 @@ const cargarTabla = (idEmpresa = 0) => {
           "click",
           () => {
             Swal.fire({
-              title: "¿Está seguro de eliminar?",
-              text: "Está a punto de eliminar un empleado",
+              title: "¿Está seguro de eliminar a este empleado?",
+              text: "Se eliminaran todos sus turnos y consultas.",
               icon: "warning",
               showCancelButton: true,
               confirmButtonColor: "#3085d6",
@@ -298,7 +300,7 @@ const cargarTabla = (idEmpresa = 0) => {
                   .then(() => {
                     Swal.fire({
                       title: "Se eliminó correctamente!",
-                      text: "La empresa fue eliminada.",
+                      text: "El empleado fue eliminado.",
                       icon: "success",
                     });
                     cargarTabla(); // Recargar la tabla con los datos actualizados
@@ -475,8 +477,6 @@ const botonAgregar = $("#agregarEmpleado").on("click", () => {
     `);
 
   cargarSelectEmpresa();
-  cargarSelectCategoria();
-  cargarSelectSeccion();
 
   // Agregar eventos con eliminación previa para evitar duplicados
   $("#agregarBtn").on("click", () => {
