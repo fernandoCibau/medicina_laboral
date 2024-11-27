@@ -19,7 +19,9 @@
 <body>
     
     <header>
-        <img src="../../icon/ElSalvadorMarca.png" alt="El Salvador">
+    <a href="../../panelPrincipal/index.php"
+        ><img src="../../icon/ElSalvadorMarca.png" alt="El Salvador"
+    /></a>
         <div class="contenedorNombreHeader">
             <h2>Bienvenido, <?php echo $_SESSION['razon_social']   ?></h2>
         </div>

@@ -19,7 +19,11 @@ session_start();
 </head>
     
     <header>
-        <img src="../icon/ElSalvadorMarca.png" alt="El Salvador">
+        
+    <a href="index.php"
+        ><img src="../icon/ElSalvadorMarca.png" alt="El Salvador"
+    /></a>
+
         <div class="contenedorNombreHeader">
             <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
                 
