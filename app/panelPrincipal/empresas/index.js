@@ -313,10 +313,10 @@ const botonAgregar = $("#agregarEmpresas").on("click", () => {
   // Evento del botón Guardar Cambios
   $("#agregarBtn").on("click", () => {
     if (
-      $("#inputRazonSocial").val() !== "" ||
-      $("#inputCuit").val() !== "" ||
-      $("#inputDomicilio").val() !== "" ||
-      $("#inputEmail").val() !== ""
+      $("#inputRazonSocial").val().trim() !== "" ||
+      $("#inputCuit").val().trim() !== "" ||
+      $("#inputDomicilio").val().trim() !== "" ||
+      $("#inputEmail").val().trim() !== ""
     ) {
       const datosActualizados = {
         razon_social: $("#inputRazonSocial").val(),
