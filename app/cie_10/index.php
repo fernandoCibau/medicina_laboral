@@ -18,7 +18,9 @@ session_start();
 <body>
 
     <header>
-        <img src="../icon/ElSalvadorMarca.png" alt="El Salvador">
+        <a href="../panelPrincipal/index.php"
+        ><img src="../icon/ElSalvadorMarca.png" alt="El Salvador"
+        /></a>
         <div class="contenedorBtnHeader">
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="btmCerrarSesion">Cerrar Sesion</button>
         </div>

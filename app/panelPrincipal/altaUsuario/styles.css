@@ -25,7 +25,7 @@ header {
 }
 
 header img {
-  max-width: 50%;
+  max-width: 40%;
   height: 100%;
   margin-left: 2vw;
   filter: contrast(150%) brightness(1.1);
@@ -257,7 +257,6 @@ select {
   background-color: #f0f0f0;
 }
 
-
 #mensaje {
   margin-top: 5px;
   font-size: small;
@@ -272,7 +271,6 @@ select {
 
 .show-error {
   color: #b10000;
-
 }
 
 .hidde {
@@ -282,7 +280,6 @@ select {
 .remove {
   display: none;
 }
-
 
 footer {
   width: 100%;

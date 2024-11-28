@@ -19,7 +19,9 @@
 <body>
     <header >
 
-    <img src="../app/icon/ElSalvadorMarca.png" alt="El Salvador"/>
+    <a href="../index.html"
+        ><img src="../app/icon/ElSalvadorMarca.png" alt="El Salvador"
+    /></a>
 
         <nav>
         <ul class="nav-links">
