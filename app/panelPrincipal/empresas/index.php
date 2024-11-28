@@ -78,9 +78,8 @@
             </div>
             <div id="contenedorDatos" class="contendor-datos">
                 
-                </div>
             </div>
-        </div> 
+        </div>
 
 
         <footer>
