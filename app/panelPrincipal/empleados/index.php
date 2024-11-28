@@ -53,8 +53,10 @@
             <!-- Input de búsqueda -->
             <div class="buscador">
                 <input type="text" id="inputBuscar" placeholder="Buscar DNI..." />
-                <button id="agregarEmpleado" data-id-empresa=<?php echo $_SESSION['idEmpresa']?> >Agregar Paciente</button>
-            </div>
+                <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>
+                    <button id="agregarEmpleado" data-id-empresa=<?php echo $_SESSION['idEmpresa']?> >Agregar Paciente</button>
+                    <?php }?>
+                </div>
             
             <table>
                 <thead>
@@ -99,6 +101,7 @@
     <?php } ?>
 
     <footer>
+        <input type="text" id="idEmpresa" data-id-empresa=<?php echo $_SESSION['idEmpresa']?> hidden readonly>
         <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
     </footer>
 </body>

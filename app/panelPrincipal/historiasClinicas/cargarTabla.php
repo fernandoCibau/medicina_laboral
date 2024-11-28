@@ -1,32 +1,62 @@
 <?php
 
-if(isset($_GET['todos']) ){
+if(isset($_GET['idEmpresa']) ){
 
     try {
 
         include '../../conexion.php';
+
+        $idEmpresa =$_GET['idEmpresa'];
+
+
+        if($idEmpresa){
+            $sql = "SELECT 
+                        cm.id AS consulta_id,
+                        cm.fecha,
+                        cm.medico_certificado,
+                        cm.diagnostico_cie10,
+                        cm.solicitud_ausentismo,
+                        cm.fecha_inicio_ausentismo,
+                        cm.fecha_fin_ausentismo,
+                        e.observaciones,
+                        e.nombre AS empleado_nombre,
+                        e.apellido AS empleado_apellido,
+                        e.id_empresa AS empleado_empresa,
+                        emp.razon_social AS empresa_razon_social
+                    FROM 
+                        consultamedica cm
+                    JOIN 
+                        empleados e ON cm.id_empleado = e.id
+                    JOIN 
+                        empresas emp ON e.id_empresa = emp.id
+                    WHERE
+                        emp.id = $idEmpresa
+                    ORDER BY
+                        cm.id DESC;";
+        }else{
+            $sql = "SELECT 
+                        cm.id AS consulta_id,
+                        cm.fecha,
+                        cm.medico_certificado,
+                        cm.diagnostico_cie10,
+                        cm.solicitud_ausentismo,
+                        cm.fecha_inicio_ausentismo,
+                        cm.fecha_fin_ausentismo,
+                        e.observaciones,
+                        e.nombre AS empleado_nombre,
+                        e.apellido AS empleado_apellido,
+                        e.id_empresa AS empleado_empresa,
+                        emp.razon_social AS empresa_razon_social
+                    FROM 
+                        consultamedica cm
+                    JOIN 
+                        empleados e ON cm.id_empleado = e.id
+                    JOIN 
+                        empresas emp ON e.id_empresa = emp.id
+                    ORDER BY
+                        cm.id DESC;";
+        }      
         
-        $sql = "SELECT 
-                    cm.id AS consulta_id,
-                    cm.fecha,
-                    cm.medico_certificado,
-                    cm.diagnostico_cie10,
-                    cm.solicitud_ausentismo,
-                    cm.fecha_inicio_ausentismo,
-                    cm.fecha_fin_ausentismo,
-                    e.observaciones,
-                    e.nombre AS empleado_nombre,
-                    e.apellido AS empleado_apellido,
-                    e.id_empresa AS empleado_empresa,
-                    emp.razon_social AS empresa_razon_social
-                FROM 
-                    consultamedica cm
-                JOIN 
-                    empleados e ON cm.id_empleado = e.id
-                JOIN 
-                    empresas emp ON e.id_empresa = emp.id
-                ORDER BY
-                    cm.id DESC;";
         
         $resultado = mysqli_query($conexion, $sql);
         

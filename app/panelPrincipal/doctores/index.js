@@ -129,6 +129,9 @@ const formAltaAjax = () => {
       } catch (e) {
         modalOnOff();
         cargarTabla();
+        // EL MEDICO Y EL USUARIO SE CREAN Y CARGAN DE FORMA CORRECTA
+        // NO PUDE EVITAR QUE SE SALTE EL MENSAJE DE ERROR, PERO ASI LOS REGISTROS SE CREAN
+        // DE MANERA VINCULADA Y AL ELIMINAR EL MEDICO SE ELIMINA TAMBIEN EL USER
         //alert("Ocurrió un error al procesar la respuesta del servidor.");
         const error = e.message + " | " + resultado;
         erroresSoloLocalHost(error);
