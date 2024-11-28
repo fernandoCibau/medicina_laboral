@@ -6,7 +6,7 @@ if (isset($_POST['fecha']) && isset($_POST['horas-del-dia']) ) {
         $fecha= $_POST['fecha']; 
         $hora = $_POST['horas-del-dia'];
         $horaSplit = explode(":", $hora);
-        $idMedico = $_POST['selectMedicos'];
+        // $idMedico = $_POST['selectMedicos'];
         $empleado_id = $_POST['selectEmpleados'];
 
         if (isset($_POST['idEmpresa']) && $_POST['idEmpresa'] !== '') {
@@ -23,7 +23,7 @@ if (isset($_POST['fecha']) && isset($_POST['horas-del-dia']) ) {
             echo json_encode( ['mensaje' => 'El turno ya exite', 'operacion' => FALSE]);
             
         }else{
-            $sql = "INSERT INTO turnos ( empresa_id, empleado_id, fecha, medico, hora) VALUES ('$empresa_id', '$empleado_id', '$fecha', $idMedico, '$hora')";
+            $sql = "INSERT INTO turnos ( empresa_id, empleado_id, fecha,  hora) VALUES ('$empresa_id', '$empleado_id', '$fecha', '$hora')";
             $resultado = mysqli_query($conexion, $sql);
             
             if ($resultado) {
@@ -39,6 +39,6 @@ if (isset($_POST['fecha']) && isset($_POST['horas-del-dia']) ) {
         echo json_encode(['mensaje' => 'Ocurrió un error', 'error'=> $error ]);
     }
 } else {
-    echo json_encode(['mensaje' => 'Error al convertir la fecha.']);
+    echo json_encode(['mensaje' => 'Error al convertir la fecha. | guardarTurnos.php | LINEA :' . __LINE__ ]);
 }
 ?>

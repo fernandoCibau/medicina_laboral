@@ -1,3 +1,4 @@
+
 // ---------------------------------------------------------------
 //                      NO ADMIN
 // ---------------------------------------------------------------
@@ -6,13 +7,15 @@ $(document).ready( ()=>{
     cargarForm();
 });
 
+
+
 // ---------------------------------------------------------------
 //    BOTON VER TURNOS Y FUNCIONES
 // ---------------------------------------------------------------
 
 //Boton para abrir modal ver turnos empresa
 $("#btnVerTurnos").click( function() {
-    modalOnOff()
+    modalOnOff();
     const idEmpresa = $(this).data('id-empresa');
 
     $.ajax({
@@ -21,10 +24,11 @@ $("#btnVerTurnos").click( function() {
         data : { idEmpresa : idEmpresa },
         
         success : ( resultado, estado ) =>{
+
             try {
                 const datos = JSON.parse(resultado);
 
-                console.log(datos.datos);
+                // console.log(datos.datos);
 
                 $("tbody").empty();
 
@@ -33,35 +37,39 @@ $("#btnVerTurnos").click( function() {
                 }
         
                 datos.datos.forEach((fila) => {
-                  const tr = $("<tr>");
+                    const tr = $("<tr>");
+                    
+                    for (const key in fila) {
+                        
+                        if (key === "Medico") continue;
+
+                        tr.append($("<td>").text(fila[key]));
+                        
+                    }
         
-                  for (const key in fila) {
-                    tr.append($("<td>").text(fila[key]));
-                  }
-        
-                  const botonEliminar = $(
-                    "<img src='icon/bote-de-basura.png' class='btn-eliminar id='btn-eliminar'>"
-                  ).click(() => {
-                    Swal.fire({
-                      title: "¿Está seguro de que desea eliminar?",
-                      showDenyButton: true,
-                      confirmButtonText: "Eliminar",
-                      denyButtonText: `No eliminar`,
-                    }).then((result) => {
-                      if (result.isConfirmed) {
-                        const fecha = fila["fecha"];
-                        const hora = fila["hora"];
-                        eliminarTurno(fecha, hora);
-                      } else if (result.isDenied) {
-                        alertInformar("Se ha cancelado la eliminacion");
-                      }
-                    });
-                  });
-        
-                  tr.append($("<td>").append(botonEliminar));
-        
-                            $('tbody').append(tr);
+                    const botonEliminar = $(
+                        "<img src='icon/bote-de-basura.png' class='btn-eliminar id='btn-eliminar'>"
+                    ).click(() => {
+                        Swal.fire({
+                            title: "¿Está seguro de que desea eliminar?",
+                            showDenyButton: true,
+                            confirmButtonText: "Eliminar",
+                            denyButtonText: `No eliminar`,
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            const fecha = fila["fecha"];
+                            const hora = fila["hora"];
+                            eliminarTurno(fecha, hora);
+                        } else if (result.isDenied) {
+                            alertInformar("Se ha cancelado la eliminacion");
+                        }
                         });
+                    });
+            
+                    tr.append($("<td>").append(botonEliminar));
+            
+                    $('tbody').append(tr);
+                });
 
 
             } catch (e) {
@@ -128,7 +136,6 @@ const cargarSelectEmpleados = ( idEmpresa ) =>{
         try {
             const datos = JSON.parse(resultado);
             
-            erroresSoloLocalHost(datos)
             datos.datos.forEach( fila => {
                 $('#selectEmpleados').append( $( `<option value="${fila['id']}">${fila['nombre']} ${fila['apellido']}</option>`) );
             });
@@ -147,32 +154,39 @@ const cargarSelectEmpleados = ( idEmpresa ) =>{
 }
 
 //Cargar el select medicos del modal turnos
-const cargarSelectMedicos = () =>{
-    $('#selectMedicos').empty().append($('<option value="" selected>Selecciona un medico</option>') );
+// const cargarSelectMedicos = () =>{
+//     $('#selectMedicos').empty().append($('<option value="" selected>Selecciona un medico</option>') );
 
-    $.ajax({
-        url : "cargarSelectMedicos.php",
-        method : "get",
-        data : {medicos : 'medicos' },
+//     $.ajax({
+//         url : "cargarSelectMedicos.php",
+//         method : "get",
+//         data : {medicos : 'medicos' },
         
-        success:( resultado, estado )=>{
+//         success:( resultado, estado )=>{
 
-            try {
-                const datos = JSON.parse(resultado);
-                erroresSoloLocalHost(datos.datos);
+//             try {
+//                 const datos = JSON.parse(resultado);
+//                 erroresSoloLocalHost(datos.datos);
                 
-                datos.datos.forEach( fila => {
-                    $('#selectMedicos').append( $( `<option value="${fila['id']}"> ${fila['nombre']} </option>`) );
-                });
+//                 datos.datos.forEach( fila => {
+//                     $('#selectMedicos').append( $( `<option value="${fila['id']}"> ${fila['nombre']} </option>`) );
+//                 });
                 
-            }catch (error) {
-                console.log(resultado);
-                console.error("Error al cargar select medicos del modal:", error);
-                alert("Error al cargar datos en el select medicos. Consulta la consola para más detalles.");
-            }
-        }
-    })
-}
+//             } catch (e) {
+//                 alert('Ocurrió un error al procesar la respuesta del servidor.');
+//                 const error = e.message + " | " + resultado;
+//                 erroresSoloLocalHost( error )
+//             }
+//         },
+//         error: (jqXHR, textStatus, errorThrown) => {
+//             alert('Ocurrió un error en la solicitud. Intenta de nuevo más tarde.');
+//             const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
+//             erroresSoloLocalHost( error );
+//     }})
+    
+// }
+
+
 //----------------------------------------------------------------  
 //                     OTRAS FUNCIONES
 //----------------------------------------------------------------
@@ -193,7 +207,7 @@ $('#seccion-modal').on( 'click', ()=>{
 //Valida los input del modal nuevo turno para desbloquear boton
 const validarInputTurnos = ( ) =>{
     $('#selectEmpresas').prop('disabled', true);
-    if($('#selectEmpresas').val() == "" || $('#fecha').val() === "" || $('#selectEmpleados').val()  == "" || $('#horas-del-dia').val() == "" || $('#selectMedicos').val() == ""){
+    if($('#selectEmpresas').val() == "" || $('#fecha').val() === "" || $('#selectEmpleados').val()  == "" || $('#horas-del-dia').val() == "" ){
         $('#btnAgregarTurno').prop('disabled', true);
         $('#btnAgregarTurno').attr('class', 'btn-color-bloqueado');
     }else{
@@ -203,10 +217,11 @@ const validarInputTurnos = ( ) =>{
 }
 
 const vaciarInputTurnos = () =>{
-    // $('#selectEmpresas').val();
-    $('#fecha').val(); 
     $('#selectEmpleados').val('');
-    $('#horas-del-dia').val('');$('#selectMedicos').val('');
+    $('#fecha').val('dd/mm/aaaa'); 
+    $('#horas-del-dia').val('');
+    $('#horas-del-dia').prop('disabled', true);
+    // $('#selectMedicos').val('');
 }
 
 
@@ -215,6 +230,11 @@ const vaciarInputTurnos = () =>{
 //----------------------------------------------------------------
 //Select fecha del modal nuevo turno
 $('#fecha').on( 'input', () =>{
+    if( $('#fecha').val() === '' ){
+        $('#horas-del-dia').prop('disabled', true);
+    }else{
+        $('#horas-del-dia').prop('disabled', false);
+    }
     buscarHorariosTurnos( $("#fecha").val() );
 })
 
@@ -273,8 +293,6 @@ const buscarHorariosTurnos  = ( fecha ) =>{
     })
 }
 
-
-
 //----------------------------------------------------------------  
 //        FORM GUARDAR TUNOS Y FUNCION
 //----------------------------------------------------------------
@@ -282,9 +300,9 @@ const buscarHorariosTurnos  = ( fecha ) =>{
 $("#form-nuevo-turno").submit( e =>{
     e.preventDefault();
     const form =  $("#form-nuevo-turno")[0];
-    
     let formData = new FormData(form);
-       console.log(formData.get('selectEmpresas'));
+    // console.log(formData.get('selectEmpresas'));
+    vaciarInputTurnos();
     guardarNuevoTurno( formData );
 });
 
@@ -304,8 +322,6 @@ const guardarNuevoTurno = ( formData ) => {
             try{
                 let datos = JSON.parse( resultado);
 
-                erroresSoloLocalHost(datos);
-
                 datos.operacion  ?     Swal.fire({
                     // position: "top-end",
                     icon: "success",
@@ -315,7 +331,7 @@ const guardarNuevoTurno = ( formData ) => {
                 }) 
                 :  
                 Swal.fire(datos.mensaje);
-                cargarForm();
+                // cargarForm();
                 
             } catch (e) {
                 alert('Ocurrió un error al procesar la respuesta del servidor.');
@@ -334,7 +350,8 @@ const guardarNuevoTurno = ( formData ) => {
 const cargarForm = () =>{
     cargarSelectEmpresa( $("#selectEmpresas").data('id-empresa') );  
     cargarSelectEmpleados( $("#selectEmpresas").data('id-empresa') );  
-    cargarSelectMedicos();
+    $('#horas-del-dia').prop('disabled', true);
+    // cargarSelectMedicos();
     validarInputTurnos();
 }
 
@@ -342,50 +359,13 @@ const cargarForm = () =>{
 //      Cierra la sesion de usuario
 //-----------------------------------------------
 $("#btmCerrarSesion").click(() => {
-    // if (confirm("¿Desea cerrar la sesión?")) {
-    //   window.location.href = "../cerrarSesion.php";
-    // }
-
-    Swal.fire({
-        title: "¿Está seguro de salir del sistema?",
-        text: "Está a punto de cerrar sesión.",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar!"
-    }).then((result) => {
-        if (  result.isConfirmed    ) {
-            cerrarCuentaRegresiva()
-        }
-    });
+    alertaCerrarSistema()
 });
 
-const cerrarCuentaRegresiva = ()=>{
-    let timerInterval;
-    Swal.fire({
-        title: "Saliendo del sistama",
-        html: "El sistema se está cerrando... <b></b> milliseconds.",
-        timer: 2000,
-        timerProgressBar: true,
-        didOpen: () => {
-            Swal.showLoading();
-            const timer = Swal.getPopup().querySelector("b");
-            timerInterval = setInterval(() => {
-                timer.textContent = `${Swal.getTimerLeft()}`;
-            }, 100);
-        },
-        willClose: () => {
-            clearInterval(timerInterval);
-        }
-    }).then((result) => {
-      /* Read more about handling dismissals below */
-    if (result.dismiss === Swal.DismissReason.timer) {
-        window.location.href = "../cerrarSesion.php";
-    }
-    });
-}
 
+//-----------------------------------------------
+//      BOTON X DEL MODAL
+//-----------------------------------------------
 $('#btn-cerrar').click( ()=>{
     modalOnOff();
 })
@@ -398,11 +378,65 @@ $('#btn-cerrar').click( ()=>{
 const modalOnOff = () => {
     if ($("#seccion-modal-usuario").hasClass("on")) {
         $("#seccion-modal-usuario").attr("class", "seccion-modal-usuario off");
-    //   $("#seccion-mes").attr("class", "seccion-mes desbloqueado");
     } else {
         $("#seccion-modal-usuario").attr("class", "seccion-modal-usuario on");
-    //   $("#seccion-mes").attr("class", "seccion-mes bloqueado");
     }
 };
 
 
+
+
+
+//Eliminar turno
+const eliminarTurno = (fecha, hora) => {
+    $.ajax({
+    url: "eliminarTurno.php",
+    method: "get",
+    data: { fecha: fecha, hora: hora },
+
+    success: (resultado, estado) => {
+            try {
+                const datos = JSON.parse(resultado);
+                Swal.fire(datos.mensaje)
+                modalOnOff();
+            } catch (e) {
+                alert('Ocurrió un error al procesar la respuesta del servidor.');
+                const error = e.message + " | " + resultado;
+                erroresSoloLocalHost( error )
+            }
+        },
+        error: (jqXHR, textStatus, errorThrown) => {
+        alert('Ocurrió un error en la solicitud. Intenta de nuevo más tarde.');
+        const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
+        // erroresSoloLocalHost( error );
+        }
+    });
+};
+
+
+// const alertaBorrar = () =>{
+
+//     const modal = 
+//     `
+//         <div id="alertModal" class="modal-overlay">
+//             <div class="modal-container">
+//                 <!-- Logo -->
+//                 <div class="modal-logo">
+//                     <img src="app/sistema_de_turnos/icon/bote-de-basura.png" alt="Logo">
+
+//                 </div>
+//                 <!-- Título y mensaje -->
+//                 <div class="modal-title">¿Está seguro de que desea eliminar?</div>
+//                 <div class="modal-message">¿Estás a punto de eliminar  un turno, continuar con esta acción?</div>
+//                 <!-- Botones -->
+//                 <div class="modal-buttons">
+//                     <button class="modal-button" onclick="acceptAction()">Aceptar</button>
+//                     <button class="modal-button cancel" onclick="cancelAction()">Cancelar</button>
+//                 </div>
+//             </div>
+//         </div>
+//     `
+
+//     $('main').append(modal);
+
+// }
