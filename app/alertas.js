@@ -1,12 +1,9 @@
-//----------------------------------------------------------------  
+//----------------------------------------------------------------
 //          MODAL ALERTA CERRAR SESION
 //----------------------------------------------------------------
 
-
-const alertaCerrarSistema = () =>{
-
-    const modal = 
-    `
+const alertaCerrarSistema = () => {
+  const modal = `
         <div id="alertModal" class="modal-overlay">
             <div class="modal-container">
                 <!-- Logo -->
@@ -15,8 +12,8 @@ const alertaCerrarSistema = () =>{
 
                 </div>
                 <!-- Título y mensaje -->
-                <div class="modal-title">¡Desea cerrar la sesión!</div>
-                <div class="modal-message">¿Estás seguro de que deseas continuar con esta acción?</div>
+                <div class="modal-title">Cerrar sesión</div>
+                <div class="modal-message">¿Estás seguro de que deseas continuar?</div>
                 <!-- Botones -->
                 <div class="modal-buttons">
                     <button class="modal-button" onclick="aceptarCerrar()">Aceptar</button>
@@ -24,40 +21,35 @@ const alertaCerrarSistema = () =>{
                 </div>
             </div>
         </div>
-    `
+    `;
 
-    $('main').append(modal);
+  $("main").append(modal);
+};
 
-}
-
-const  aceptarCerrar = () =>{
-    despedida();
-}
+const aceptarCerrar = () => {
+  despedida();
+};
 
 const cancelarAccion = () => {
-    $("#alertModal").remove();
-}
+  $("#alertModal").remove();
+};
 
-const despedida = () =>{
+const despedida = () => {
+  $("#alertModal").remove();
 
-    $("#alertModal").remove();
-
-    const modal = 
-    `
+  const modal = `
         <div class="mensaje-despedida" id="mensajeDespedida">
             <h2>¡Hasta luego! ¡Esperamos verte pronto!</h2>
         </div>
-    `
-    $('main').append(modal);
+    `;
+  $("main").append(modal);
 
-    setTimeout(function() {
-        $("#mensajeDespedida").remove();
-        window.location.href = "../cerrarSesion.php";
-    }, 3000);
+  setTimeout(function () {
+    $("#mensajeDespedida").remove();
+    window.location.href = "../cerrarSesion.php";
+  }, 3000);
+};
 
-}
-
-
-//----------------------------------------------------------------  
-//          
+//----------------------------------------------------------------
+//
 //----------------------------------------------------------------
