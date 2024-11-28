@@ -35,7 +35,7 @@ header {
 }
 
 header img {
-  max-width: 50%;
+  max-width: 40%;
   height: 100%;
   margin-left: 2vw;
   filter: contrast(150%) brightness(1.1);

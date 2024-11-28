@@ -16,7 +16,6 @@
   --padding-size: 10px;
 }
 
-
 html,
 body {
   width: 100%;
@@ -36,12 +35,11 @@ header {
 }
 
 header img {
-  max-width: 50%;
+  max-width: 40%;
   height: 100%;
   margin-left: 2vw;
   filter: contrast(150%) brightness(1.1);
 }
-
 
 .contenedorNombreHeader {
   display: flex;
@@ -119,7 +117,6 @@ main {
   align-items: center;
   justify-content: center;
 }
-
 
 .icon-cont:hover {
   background-color: var(--hover--button-color);
@@ -256,7 +253,6 @@ input[type="month"]:hover {
   overflow: hidden;
 }
 
-
 .contenedor-encabezado-modal {
   width: 10%;
   background-color: #d15d5b;
@@ -392,7 +388,6 @@ tbody tr:last-child {
   width: 100%;
   height: 100%;
 }
-
 
 .form-nuevo-turno {
   display: flex;

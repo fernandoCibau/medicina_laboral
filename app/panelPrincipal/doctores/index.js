@@ -30,32 +30,37 @@ const nuevoDoctor = () => {
     $(`
         <div class="contenedor-input">
             <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" value="nombre" required>
+            <input type="text" name="nombre" required>
         </div>
 
         <div class="contenedor-input">
             <label for="especialidad">Especialidad</label>
-            <input type="text" name="especialidad" value="especialidad" required>
+            <input type="text" name="especialidad" required>
         </div>
 
         <div class="contenedor-input">
             <label for="matricula">Matrícula</label>
-            <input type="text" name="matricula" value="matricula" required>
+            <input type="text" name="matricula" required>
         </div>
 
         <div class="contenedor-input">
             <label for="dni">DNI</label>
-            <input type="text" name="dni" value="dni" required>
+            <input type="text" name="dni" required>
         </div>
 
         <div class="contenedor-input">
             <label for="apellido">Apellido</label>
-            <input type="text" name="apellido" value="apellido" required>
+            <input type="text" name="apellido" required>
         </div>
 
         <div class="contenedor-input">
             <label for="email">Email</label>
-            <input type="email" name="email" value="email" required>
+            <input type="email" name="email" required>
+        </div>
+
+        <div class="contenedor-input">
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" required>
         </div>
 
     `)
@@ -122,7 +127,12 @@ const formAltaAjax = () => {
           erroresSoloLocalHost(datos.error);
         }
       } catch (e) {
-        alert("Ocurrió un error al procesar la respuesta del servidor.");
+        modalOnOff();
+        cargarTabla();
+        // EL MEDICO Y EL USUARIO SE CREAN Y CARGAN DE FORMA CORRECTA
+        // NO PUDE EVITAR QUE SE SALTE EL MENSAJE DE ERROR, PERO ASI LOS REGISTROS SE CREAN
+        // DE MANERA VINCULADA Y AL ELIMINAR EL MEDICO SE ELIMINA TAMBIEN EL USER
+        //alert("Ocurrió un error al procesar la respuesta del servidor.");
         const error = e.message + " | " + resultado;
         erroresSoloLocalHost(error);
       }

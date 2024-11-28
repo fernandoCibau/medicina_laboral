@@ -1,8 +1,9 @@
 // -----------------------------------------------
 //                      INICIO
 // -----------------------------------------------
-$(document).ready(() => {
-    cargarTabla();
+  $(document).ready(() => {
+    console.log($("#inputBuscar").val());
+    cargarTabla($('#idEmpresa').data('idEmpresa'));
   });
   
   //------------------------------------------------------------------
@@ -20,11 +21,11 @@ $(document).ready(() => {
   //                  FUNCIONES
   //------------------------------------------------------------------
   
-  const cargarTabla = () => {
+  const cargarTabla = (idEmpresa = 0) => {
     $.ajax({
       url: "cargarTabla.php",
       method: "get",
-      data: { todos: "todos" },
+      data: { idEmpresa: idEmpresa },
   
       success: (resultado, estado) => {
         let datos = JSON.parse(resultado);
@@ -78,12 +79,69 @@ $(document).ready(() => {
 
             // Crear los inputs con los valores del objeto de datos seleccionado
             $("#contenedorDatos").append(`
+                          <input type="text" id="inputId" value="${fila["id"]}" readonly hidden>
+                          
                           <div class="contenedor-input">
-                          <p>
-                            "${
-                                fila["observaciones"] 
-                              }" 
-                          </p>
+                              <label for="inputRazonSocial">Empresa</label>
+                              <input type="text" id="inputRazonSocial" value="${
+                                fila["empresa_razon_social"]
+                              }" readonly>
+                          </div>
+                          
+                          <div class="contenedor-input">
+                              <label for="inputEmpleadoNombre">Empleado</label>
+                              <input type="text" id="inputEmpleadoNombre" value="${
+                                fila["empleado_nombre"]
+                              } ${fila["empleado_apellido"]}" readonly>
+                          </div>
+
+                          <div class="contenedor-input">
+                              <label for="inputMedicoCertificado">Certificado Médico</label>
+                              <input type="text" id="inputMedicoCertificado" value="${
+                                fila["medico_certificado"]
+                              }" readonly>
+                          </div>
+
+                          <div class="contenedor-input">
+                              <label for="inputFechaConsulta">Fecha de la Consulta</label>
+                              <input type="text" id="inputFechaConsulta" value="${
+                                fila["fecha"]
+                              }" readonly>
+                          </div>
+
+                          <div class="contenedor-input">
+                              <label for="inputDiagnostico">Diagnóstico</label>
+                              <input type="text" id="inputDiagnostico" value="${
+                                fila["diagnostico_cie10"]
+                              }" readonly>
+                          </div>
+
+                          <div class="contenedor-input">
+                              <label for="inputSolicitudAusentismo">Solicitud de Ausentismo</label>
+                              <input type="text" id="inputSolicitudAusentismo" value="${
+                                fila["solicitud_ausentismo"]
+                              }" readonly>
+                          </div>
+
+                          <div class="contenedor-input">
+                              <label for="inputFechaInicioAusentismo">Fecha Inicio Ausentismo</label>
+                              <input type="text" id="inputFechaInicioAusentismo" value="${
+                                fila["fecha_inicio_ausentismo"]
+                              }" readonly>
+                          </div>
+
+                          <div class="contenedor-input">
+                              <label for="inputFechaFinAusentismo">Fecha Fin Ausentismo</label>
+                              <input type="text" id="inputFechaFinAusentismo" value="${
+                                fila["fecha_fin_ausentismo"]
+                              }" readonly>
+                          </div>
+
+                          <div class="contenedor-input">
+                              <label for="inputObservaciones">Observaciones</label>
+                              <input type="text" id="inputObservaciones" value="${
+                                fila["observaciones"] || ""
+                              }" readonly>
                           </div>
             `);
   
@@ -137,6 +195,7 @@ $(document).ready(() => {
         });
       },
     });
+    trigger();
   };
   
   //Abre y cierra el modal
@@ -201,21 +260,51 @@ $(document).ready(() => {
       },
     });
   };
+
   
-  //Buscador
-  
-  $(document).ready(function () {
-    $("#inputBuscar").on("keyup", function () {
-      const buscarTexto = $(this).val().toLowerCase(); // Obtiene el texto a buscar en minúsculas
-  
-      // Filtra las filas de la tabla solo en la columna "Nombre"
-      $("table tbody tr").filter(function () {
-        const dni = $(this).find("td:nth-child(2)").text().toLowerCase(); // Cambia 3 por el índice de la columna "Nombre"
-        // Compara si el nombre de la empresa comienza con el texto buscado
-        $(this).toggle(dni.startsWith(buscarTexto));
-      });
+  function trigger () {
+    $("#inputBuscar").trigger("click");
+  }
+    
+    // Cuando el usuario haga click sobre el input
+    $("#inputBuscar").on("click", function () {
+        const buscarTexto = $(this).val().toLowerCase(); // Obtiene el texto a buscar en minúsculas
+        filtrarTabla(buscarTexto);  // Ejecuta el filtrado
     });
-  });
+
+  function filtrarTabla(buscarTexto) {
+      $("table tbody tr").filter(function () {
+          const dni = $(this).find("td:nth-child(2)").text().toLowerCase(); // Cambia 2 por el índice de la columna a filtrar
+          // Compara si el valor de la celda de la columna "DNI" empieza con el texto buscado
+          $(this).toggle(dni.startsWith(buscarTexto));  // Muestra u oculta la fila
+      });
+  }
+
+    
+  /*
+
+  $(document).ready(function () {
+    const filtrarTabla = () => {
+        const buscarTexto = $("#inputBuscar").val().toLowerCase(); // Obtiene el texto a buscar en minúsculas
+
+        // Filtra las filas de la tabla solo en la columna correspondiente
+        $("table tbody tr").filter(function () {
+            const dni = $(this).find("td:nth-child(2)").text().toLowerCase(); // Cambia 2 por el índice correcto de la columna
+            // Compara si el contenido de la celda comienza con el texto buscado
+            $(this).toggle(dni.startsWith(buscarTexto));
+        });
+    };
+
+    // Ejecuta el filtrado automáticamente al cargar el documento
+    filtrarTabla();
+
+    // Escucha el evento `keyup` para actualizar la tabla en tiempo real
+    $("#inputBuscar").on("keyup", function () {
+        filtrarTabla();
+    });
+});
+
+*/
   
   //------------------------------------------------------------------
   //                  BOTONES

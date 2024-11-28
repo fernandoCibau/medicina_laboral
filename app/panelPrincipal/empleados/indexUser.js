@@ -2,7 +2,7 @@
 //                      INICIO
 // -----------------------------------------------
 $(document).ready(() => {
-    cargarTabla( $('#agregarEmpleado').data('idEmpresa') );
+    cargarTabla( $('#idEmpresa').data('idEmpresa') );
 });
 //------------------------------------------------------------------
 //                  FUNCIONES

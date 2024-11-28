@@ -19,7 +19,9 @@ session_start();
 <body>
         
     <header>
-    <img src="../icon/ElSalvadorMarca.png" alt="El Salvador">
+    <a href="../../app/panelPrincipal/index.php"
+        ><img src="../icon/ElSalvadorMarca.png" alt="El Salvador"
+    /></a>
         <div class="contenedorNombreHeader">
         <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
                 

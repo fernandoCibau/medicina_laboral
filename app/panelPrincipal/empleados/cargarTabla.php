@@ -21,7 +21,7 @@ if(isset($_GET['idEmpresa']) ){
                                 EMPR.razon_social AS empresa_nombre,
                                 EMPL.observaciones
                         FROM empleados EMPL 
-                            INNER JOIN empresas EMPR ON EMPL.id_empresa = EMPR.id
+                            LEFT JOIN empresas EMPR ON EMPL.id_empresa = EMPR.id
                         WHERE EMPR.id = '$idEmpresa'
                         ORDER BY EMPL.id_empresa  ASC";
         }else{

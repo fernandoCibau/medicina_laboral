@@ -21,7 +21,9 @@
 <body>
     
 <header>
-        <img src="../../icon/ElSalvadorMarca.png" alt="El Salvador">
+        <a href="../../panelPrincipal/index.php"
+        ><img src="../../icon/ElSalvadorMarca.png" alt="El Salvador"
+        /></a>
         <div class="contenedorNombreHeader">
             <h2>Bienvenido, <?php echo $_SESSION['razon_social']   ?></h2>
         </div>
@@ -51,7 +53,9 @@
         
         <section class="seccion-tabla">
             <div class="buscador">
+                <?php if (isset($_SESSION['admin']) && $_SESSION['admin']) { ?>
                     <input type="text" id="inputBuscar" placeholder="Buscar por empresa..." />
+                <?php } ?>
             </div>
             <table>
                 <thead>
@@ -115,6 +119,7 @@
 <script src="./index.js"></script>
 
     <footer>
+        <input type="text" id="idEmpresa" data-id-empresa=<?php echo $_SESSION['idEmpresa']?> hidden readonly>
         <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
     </footer>
             

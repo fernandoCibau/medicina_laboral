@@ -22,7 +22,9 @@
 <body>
     
     <header>
-        <img src="../../icon/ElSalvadorMarca.png" alt="El Salvador">
+    <a href="../../panelPrincipal/index.php"
+        ><img src="../../icon/ElSalvadorMarca.png" alt="El Salvador"
+    /></a>
         <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
                 
                 <h2>Bienvenido, <?php echo $_SESSION['nombre']   ?></h2>
