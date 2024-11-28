@@ -25,37 +25,33 @@ const consultaCantidadDeTurnos = (anioYMes, cantidadDeDias) => {
     method: "get",
     data: { anioYMes: anioYMes, cantidadDeDias: cantidadDeDias },
 
-        success: (resultado, estado) => {
-            try {
-                
-                const listaDeTurnos = JSON.parse(resultado);
-                
-                ////Agrega la cantidad de turnos en la fecha calendario
-                for (let i = 0; i < listaDeTurnos.length; i++) {
-                    
-                    if( listaDeTurnos[i].turnos != 0 ){
-                        const div = $("<div>").attr("class", "contenedor-numero-turnos");
-                        const p = $("<p>");
-                        p.append(listaDeTurnos[i].turnos);
-                        div.append(p);
-                        const id = $(`#${anioYMes}-${i+1}`).attr("id");
-                        $(`#${id}`).append(div);
-                    }
-                }
-            } catch (e) {
-                alert('Ocurrió un error al procesar la respuesta del servidor.');
-                const error = e.message + " | " + resultado;
-                erroresSoloLocalHost( error )
-            }
-        },
-        error: (jqXHR, textStatus, errorThrown) => {
-            alert('Ocurrió un error en la solicitud. Intenta de nuevo más tarde.');
-            const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
-            erroresSoloLocalHost( error );
+    success: (resultado, estado) => {
+      try {
+        const listaDeTurnos = JSON.parse(resultado);
+
+        ////Agrega la cantidad de turnos en la fecha calendario
+        for (let i = 0; i < listaDeTurnos.length; i++) {
+          if (listaDeTurnos[i].turnos != 0) {
+            const div = $("<div>").attr("class", "contenedor-numero-turnos");
+            const p = $("<p>");
+            p.append(listaDeTurnos[i].turnos);
+            div.append(p);
+            const id = $(`#${anioYMes}-${i + 1}`).attr("id");
+            $(`#${id}`).append(div);
+          }
         }
-
-    });
-
+      } catch (e) {
+        alert("Ocurrió un error al procesar la respuesta del servidor.");
+        const error = e.message + " | " + resultado;
+        erroresSoloLocalHost(error);
+      }
+    },
+    error: (jqXHR, textStatus, errorThrown) => {
+      alert("Ocurrió un error en la solicitud. Intenta de nuevo más tarde.");
+      const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
+      erroresSoloLocalHost(error);
+    },
+  });
 };
 
 // Establecer el valor del input de tipo month a la fecha actual
@@ -264,21 +260,20 @@ const cargarTablaTurnos = (idDelDia) => {
 
           tr.append($("<td>").append(botonEliminar));
 
-                    $('tbody').append(tr);
-                });
-                
-            } catch (e) {
-                alert('Ocurrió un error al procesar la respuesta del servidor.');
-                const error = e.message + " | " + resultado;
-                erroresSoloLocalHost( error )
-            }
-        },
-        error: (jqXHR, textStatus, errorThrown) => {
-            alert('Ocurrió un error en la solicitud. Intenta de nuevo más tarde.');
-            const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
-            erroresSoloLocalHost( error );
-        }
-    })
+          $("tbody").append(tr);
+        });
+      } catch (e) {
+        alert("Ocurrió un error al procesar la respuesta del servidor.");
+        const error = e.message + " | " + resultado;
+        erroresSoloLocalHost(error);
+      }
+    },
+    error: (jqXHR, textStatus, errorThrown) => {
+      alert("Ocurrió un error en la solicitud. Intenta de nuevo más tarde.");
+      const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
+      erroresSoloLocalHost(error);
+    },
+  });
 };
 
 const modalOnOff = () => {
@@ -304,30 +299,30 @@ const guardarNuevoTurno = (formData) => {
       try {
         let datos = JSON.parse(resultado);
 
-                console.log(datos)
+        console.log(datos);
 
-                datos.operacion  ?     Swal.fire({
-                    // position: "top-end",
-                    icon: "success",
-                    title: datos.mensaje,
-                    showConfirmButton: false,
-                    timer: 1500
-                }) 
-                :  Swal.fire(datos.mensaje);
-                matrizMes();
-                
-            } catch (e) {
-                alert('Ocurrió un error al procesar la respuesta del servidor.');
-                const error = e.message + " | " + resultado;
-                erroresSoloLocalHost( error )
-            }
-        },
-        error: (jqXHR, textStatus, errorThrown) => {
-            alert('Ocurrió un error en la solicitud. Intenta de nuevo más tarde.');
-            const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
-            erroresSoloLocalHost( error );
-        }
-    })
+        datos.operacion
+          ? Swal.fire({
+              // position: "top-end",
+              icon: "success",
+              title: datos.mensaje,
+              showConfirmButton: false,
+              timer: 1500,
+            })
+          : Swal.fire(datos.mensaje);
+        matrizMes();
+      } catch (e) {
+        alert("Ocurrió un error al procesar la respuesta del servidor.");
+        const error = e.message + " | " + resultado;
+        erroresSoloLocalHost(error);
+      }
+    },
+    error: (jqXHR, textStatus, errorThrown) => {
+      alert("Ocurrió un error en la solicitud. Intenta de nuevo más tarde.");
+      const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
+      erroresSoloLocalHost(error);
+    },
+  });
 };
 
 //Eliminar turno
@@ -342,16 +337,15 @@ const eliminarTurno = (fecha, hora) => {
         const datos = JSON.parse(resultado);
         // console.log(datos);
 
-                Swal.fire(datos.mensaje)
-                cargarTablaTurnos(fecha);
-                matrizMes();
-                
-            }catch (error) {
-                alert("Error al eliminar el turno.");
-                console.error("Error al eliminar el turno:", error);
-            }
-        }
-    });
+        Swal.fire(datos.mensaje);
+        cargarTablaTurnos(fecha);
+        matrizMes();
+      } catch (error) {
+        alert("Error al eliminar el turno.");
+        console.error("Error al eliminar el turno:", error);
+      }
+    },
+  });
 };
 
 //Eliminar automatico de  turnos
@@ -361,95 +355,110 @@ const eliminarAutomatico = () => {
     method: "get",
     data: { dato: "" },
 
-        success:( resultado, status)=>{
-
-            try {
-                const datos = JSON.parse(resultado);
-                console.log(datos);
-            } catch (e) {
-                alert('Ocurrió un error al procesar la respuesta del servidor.');
-                const error = e.message + " | " + resultado;
-                erroresSoloLocalHost( error )
-            }
-        },
-        error: (jqXHR, textStatus, errorThrown) => {
-            alert('Ocurrió un error en la solicitud. Intenta de nuevo más tarde.');
-            const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
-            erroresSoloLocalHost( error );
-        }
-    });
+    success: (resultado, status) => {
+      try {
+        const datos = JSON.parse(resultado);
+        console.log(datos);
+      } catch (e) {
+        alert("Ocurrió un error al procesar la respuesta del servidor.");
+        const error = e.message + " | " + resultado;
+        erroresSoloLocalHost(error);
+      }
+    },
+    error: (jqXHR, textStatus, errorThrown) => {
+      alert("Ocurrió un error en la solicitud. Intenta de nuevo más tarde.");
+      const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
+      erroresSoloLocalHost(error);
+    },
+  });
 };
 
 //Cargar el select empresa del modal turnos
-const cargarSelectEmpresa = ( idEmpresa =0 ) =>{
-    $.ajax({
-        url : "cargarSelectEmpresa.php",
-        method : "get",
-        data : {idEmpresa : idEmpresa },
+const cargarSelectEmpresa = (idEmpresa = 0) => {
+  $.ajax({
+    url: "cargarSelectEmpresa.php",
+    method: "get",
+    data: { idEmpresa: idEmpresa },
 
-        success:( resultado, estado )=>{
+    success: (resultado, estado) => {
+      try {
+        const datos = JSON.parse(resultado);
+        console.log(datos.datos);
 
-            try {
-                const datos = JSON.parse(resultado);
-                console.log(datos.datos);
-                
-                $('#selectEmpresas').empty().append( $('<option value="" selected>Selecciona una empresa</option>'));
+        $("#selectEmpresas")
+          .empty()
+          .append(
+            $('<option value="" selected>Selecciona una empresa</option>')
+          );
 
-                $('#selectEmpleados').prop('disabled', true).append($('<option value="" selected>Selecciona un empleado</option>') );
-                
-                datos.datos.forEach( fila => {            
-                    $('#selectEmpresas').append( $( `<option value="${fila['id']}">${fila['razon_social']}</option>`) );
-                });
+        $("#selectEmpleados")
+          .prop("disabled", true)
+          .append(
+            $('<option value="" selected>Selecciona un empleado</option>')
+          );
 
-            } catch (e) {
-                alert('Ocurrió un error al procesar la respuesta del servidor.');
-                const error = e.message + " | " + resultado;
-                erroresSoloLocalHost( error )
-            }
-        },
-        error: (jqXHR, textStatus, errorThrown) => {
-            alert('Ocurrió un error en la solicitud. Intenta de nuevo más tarde.');
-            const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
-            erroresSoloLocalHost( error );
-        }
-    })
-}
+        datos.datos.forEach((fila) => {
+          $("#selectEmpresas").append(
+            $(`<option value="${fila["id"]}">${fila["razon_social"]}</option>`)
+          );
+        });
+      } catch (e) {
+        alert("Ocurrió un error al procesar la respuesta del servidor.");
+        const error = e.message + " | " + resultado;
+        erroresSoloLocalHost(error);
+      }
+    },
+    error: (jqXHR, textStatus, errorThrown) => {
+      alert("Ocurrió un error en la solicitud. Intenta de nuevo más tarde.");
+      const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
+      erroresSoloLocalHost(error);
+    },
+  });
+};
 
 //Cargar el select empleados del modal turnos
-const cargarSelectEmpleados = ( idEmpresa = 0  ) =>{
-    if ($('#selectEmpresas').val() === "") {
-        $('#selectEmpleados').prop('disabled', true).append($('<option value="" selected>Selecciona un empleado</option>') );
-    }else{
-        $('#selectEmpleados').empty().prop('disabled', false).append($('<option value="" selected>Selecciona un empleado</option>') );
+const cargarSelectEmpleados = (idEmpresa = 0) => {
+  if ($("#selectEmpresas").val() === "") {
+    $("#selectEmpleados")
+      .prop("disabled", true)
+      .append($('<option value="" selected>Selecciona un empleado</option>'));
+  } else {
+    $("#selectEmpleados")
+      .empty()
+      .prop("disabled", false)
+      .append($('<option value="" selected>Selecciona un empleado</option>'));
 
-        $.ajax({
-        url : "cargarSelectEmpleados.php",
-        method : "get",
-        data : {idEmpresa : idEmpresa },
-        
-        success:( resultado, estado )=>{
+    $.ajax({
+      url: "cargarSelectEmpleados.php",
+      method: "get",
+      data: { idEmpresa: idEmpresa },
 
-            try {
-                const datos = JSON.parse(resultado);
-                console.log(datos.datos);
-                
-                datos.datos.forEach( fila => {
-                    $('#selectEmpleados').append( $( `<option value="${fila['id']}">${fila['nombre']} ${fila['apellido']}</option>`) );
-                });
-            
-            } catch (e) {
-                alert('Ocurrió un error al procesar la respuesta del servidor.');
-                const error = e.message + " | " + resultado;
-                erroresSoloLocalHost( error )
-            }
-        },
-        error: (jqXHR, textStatus, errorThrown) => {
-            alert('Ocurrió un error en la solicitud. Intenta de nuevo más tarde.');
-            const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
-            erroresSoloLocalHost( error );
-        }})
-    }
-}
+      success: (resultado, estado) => {
+        try {
+          const datos = JSON.parse(resultado);
+          console.log(datos.datos);
+
+          datos.datos.forEach((fila) => {
+            $("#selectEmpleados").append(
+              $(
+                `<option value="${fila["id"]}">${fila["nombre"]} ${fila["apellido"]}</option>`
+              )
+            );
+          });
+        } catch (e) {
+          alert("Ocurrió un error al procesar la respuesta del servidor.");
+          const error = e.message + " | " + resultado;
+          erroresSoloLocalHost(error);
+        }
+      },
+      error: (jqXHR, textStatus, errorThrown) => {
+        alert("Ocurrió un error en la solicitud. Intenta de nuevo más tarde.");
+        const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
+        erroresSoloLocalHost(error);
+      },
+    });
+  }
+};
 
 //Cargar el select medicos del modal turnos
 const cargarSelectMedicos = () => {
@@ -457,46 +466,51 @@ const cargarSelectMedicos = () => {
     .empty()
     .append($('<option value="" selected>Selecciona un medico</option>'));
 
-    $.ajax({
-        url : "cargarSelectMedicos.php",
-        method : "get",
-        data : {medicos : 'medicos' },
-        
-        success:( resultado, estado )=>{
+  $.ajax({
+    url: "cargarSelectMedicos.php",
+    method: "get",
+    data: { medicos: "medicos" },
 
-            try {
-                const datos = JSON.parse(resultado);
-                console.log(datos.datos);
-                
-                datos.datos.forEach( fila => {
-                    $('#selectMedicos').append( $( `<option value="${fila['id']}"> ${fila['nombre']} </option>`) );
-                });
-                
-            } catch (e) {
-                alert('Ocurrió un error al procesar la respuesta del servidor.');
-                const error = e.message + " | " + resultado;
-                erroresSoloLocalHost( error );
-            }
-        },
-        error: (jqXHR, textStatus, errorThrown) => {
-            alert('Ocurrió un error en la solicitud. Intenta de nuevo más tarde.');
-            const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
-            erroresSoloLocalHost( error );
-        }
-    })
-}
+    success: (resultado, estado) => {
+      try {
+        const datos = JSON.parse(resultado);
+        console.log(datos.datos);
+
+        datos.datos.forEach((fila) => {
+          $("#selectMedicos").append(
+            $(`<option value="${fila["id"]}"> ${fila["nombre"]} </option>`)
+          );
+        });
+      } catch (e) {
+        alert("Ocurrió un error al procesar la respuesta del servidor.");
+        const error = e.message + " | " + resultado;
+        erroresSoloLocalHost(error);
+      }
+    },
+    error: (jqXHR, textStatus, errorThrown) => {
+      alert("Ocurrió un error en la solicitud. Intenta de nuevo más tarde.");
+      const error = ("Error en la solicitud AJAX:", textStatus, errorThrown);
+      erroresSoloLocalHost(error);
+    },
+  });
+};
 
 //Valida los input del modal nuevo turno para desbloquear boton
-const validarInputTurnos = ( ) =>{
-
-    if($('#selectEmpresas').val() == "" || $('#fecha').val() === "" || $('#selectEmpleados').val()  == "" || $('#horas-del-dia').val() == "" || $('#selectMedicos').val() == ""){
-        $('#btnAgregarTurno').prop('disabled', true);
-        $('#btnAgregarTurno').attr('class', 'btn-color-bloqueado');
-    }else{
-        $('#btnAgregarTurno').prop('disabled', false);
-        $('#btnAgregarTurno').attr('class', 'btnAgregarTurno');
-    }
-}
+const validarInputTurnos = () => {
+  if (
+    $("#selectEmpresas").val() == "" ||
+    $("#fecha").val() === "" ||
+    $("#selectEmpleados").val() == "" ||
+    $("#horas-del-dia").val() == "" ||
+    $("#selectMedicos").val() == ""
+  ) {
+    $("#btnAgregarTurno").prop("disabled", true);
+    $("#btnAgregarTurno").attr("class", "btn-color-bloqueado");
+  } else {
+    $("#btnAgregarTurno").prop("disabled", false);
+    $("#btnAgregarTurno").attr("class", "btnAgregarTurno");
+  }
+};
 
 // -----------------------------------------------
 //     BOTONES Y FORMULARIOS
@@ -524,13 +538,13 @@ $("#btn-cerrar").click(() => {
 });
 
 //Boton del formulario de turnos
-$("#form-nuevo-turno").submit( e =>{
-    e.preventDefault();
-    const form =  $("#form-nuevo-turno")[0];
-    
-    let formData = new FormData(form);
-    
-    guardarNuevoTurno( formData );
+$("#form-nuevo-turno").submit((e) => {
+  e.preventDefault();
+  const form = $("#form-nuevo-turno")[0];
+
+  let formData = new FormData(form);
+
+  guardarNuevoTurno(formData);
 });
 
 //Select empresas del modal nuevo turno
@@ -543,57 +557,40 @@ $("#fecha").on("input", () => {
   buscarHorariosTurnos($("#fecha").val());
 });
 
-$('#form-nuevo-turno').on( 'input', ()=>{
-    validarInputTurnos();
-}) 
-
+$("#form-nuevo-turno").on("input", () => {
+  validarInputTurnos();
+});
 
 //-----------------------------------------------
-//      Cierra la sesion 
+//      Cierra la sesion
 //-----------------------------------------------
 //Cierra la sesion de usuario
 $("#btmCerrarSesion").click(() => {
-    // if (confirm("¿Desea cerrar la sesión?")) {
-    //   window.location.href = "../cerrarSesion.php";
-    // }
-
-    Swal.fire({
-        title: "¿Está seguro de salir del sistema?",
-        text: "Está a punto de cerrar sesión.",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar!"
-    }).then((result) => {
-        if (  result.isConfirmed    ) {
-        cerrarCuentaRegresiva()
-        }
-    });
+  alertaCerrarSistema();
 });
 
 //Cuenta regresiva Cerrar sesion
-const cerrarCuentaRegresiva = ()=>{
-    let timerInterval;
-    Swal.fire({
-        title: "Saliendo del sistama",
-        html: "El sistema se está cerrando... <b></b> milliseconds.",
-        timer: 2000,
-        timerProgressBar: true,
-        didOpen: () => {
-        Swal.showLoading();
-        const timer = Swal.getPopup().querySelector("b");
-        timerInterval = setInterval(() => {
-            timer.textContent = `${Swal.getTimerLeft()}`;
-        }, 100);
+const cerrarCuentaRegresiva = () => {
+  let timerInterval;
+  Swal.fire({
+    title: "Saliendo del sistama",
+    html: "El sistema se está cerrando... <b></b> milliseconds.",
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: () => {
+      Swal.showLoading();
+      const timer = Swal.getPopup().querySelector("b");
+      timerInterval = setInterval(() => {
+        timer.textContent = `${Swal.getTimerLeft()}`;
+      }, 100);
     },
-        willClose: () => {
-        clearInterval(timerInterval);
-    }
-    }).then((result) => {
-      /* Read more about handling dismissals below */
+    willClose: () => {
+      clearInterval(timerInterval);
+    },
+  }).then((result) => {
+    /* Read more about handling dismissals below */
     if (result.dismiss === Swal.DismissReason.timer) {
-        window.location.href = "../cerrarSesion.php";
-        }
-    });
-}
+      window.location.href = "../cerrarSesion.php";
+    }
+  });
+};
