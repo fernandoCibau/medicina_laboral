@@ -287,7 +287,7 @@ const botonAgregar = $("#agregarEmpresas").on("click", () => {
   $("#contenedorDatos").append(`
                 <div class="contenedor-input">  
                   <label for="inputRazonSocial">Razón Social</label>
-                  <input type="text" id="inputRazonSocial">
+                  <input type="text" id="inputRazonSocial" required>
                 </div>
                 <div class="contenedor-input">
                   <label for="inputCuit">CUIT</label>
