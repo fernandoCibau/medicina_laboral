@@ -312,41 +312,48 @@ const botonAgregar = $("#agregarEmpresas").on("click", () => {
 
   // Evento del botón Guardar Cambios
   $("#agregarBtn").on("click", () => {
-    const datosActualizados = {
-      razon_social: $("#inputRazonSocial").val(),
-      cuit: $("#inputCuit").val(),
-      domicilio: $("#inputDomicilio").val(),
-      email: $("#inputEmail").val(),
-    };
+    if (
+      $("#inputRazonSocial").val() !== "" ||
+      $("#inputCuit").val() !== "" ||
+      $("#inputDomicilio").val() !== "" ||
+      $("#inputEmail").val() !== ""
+    ) {
+      const datosActualizados = {
+        razon_social: $("#inputRazonSocial").val(),
+        cuit: $("#inputCuit").val(),
+        domicilio: $("#inputDomicilio").val(),
+        email: $("#inputEmail").val(),
+      };
 
-    $.ajax({
-      url: "altaEmpresa.php",
-      method: "POST",
-      data: datosActualizados,
-      success: (response) => {
-        const resultado = JSON.parse(response);
-        if (resultado.operacion) {
-          Swal.fire({
-            title: "Empresa Agregada.",
-            text: "Los empresa fue agregada con éxito.",
-            icon: "success",
-          }).then(() => {
-            modalOnOff(); // Cerrar modal
-            cargarTabla(); // Recargar la tabla con los datos actualizados
-          });
-        } else {
-          Swal.fire("Error", resultado.mensaje, "error");
-        }
-      },
-      error: (xhr, status, error) => {
-        console.error("Error en la solicitud AJAX:", error);
-        Swal.fire(
-          "Error",
-          "Ocurrió un problema al guardar los cambios.",
-          "error"
-        );
-      },
-    });
+      $.ajax({
+        url: "altaEmpresa.php",
+        method: "POST",
+        data: datosActualizados,
+        success: (response) => {
+          const resultado = JSON.parse(response);
+          if (resultado.operacion) {
+            Swal.fire({
+              title: "Empresa Agregada.",
+              text: "Los empresa fue agregada con éxito.",
+              icon: "success",
+            }).then(() => {
+              modalOnOff(); // Cerrar modal
+              cargarTabla(); // Recargar la tabla con los datos actualizados
+            });
+          } else {
+            Swal.fire("Error", resultado.mensaje, "error");
+          }
+        },
+        error: (xhr, status, error) => {
+          console.error("Error en la solicitud AJAX:", error);
+          Swal.fire(
+            "Error",
+            "Ocurrió un problema al guardar los cambios.",
+            "error"
+          );
+        },
+      });
+    }
   });
 
   // Evento del botón Cancelar
