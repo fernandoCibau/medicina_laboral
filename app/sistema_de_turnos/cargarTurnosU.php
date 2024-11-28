@@ -7,11 +7,10 @@ if( isset($_GET['idEmpresa'])){
         $idEmpresa = $_GET['idEmpresa'];
         
 
-        $sql = "SELECT EMPL.nombre AS Empleado, EMPR.razon_social AS Empresa, T.fecha, M.nombre AS Medico, T.hora 
+        $sql = "SELECT EMPL.nombre AS Empleado, EMPR.razon_social AS Empresa, T.fecha, T.hora 
         FROM turnos T
             JOIN empleados EMPL ON T.empleado_id = EMPL.id
             JOIN empresas EMPR ON T.empresa_id = EMPR.id
-            JOIN medicos M ON T.medico = M.id
             WHERE T.empresa_id = '$idEmpresa' ";
 
 

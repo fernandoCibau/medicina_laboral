@@ -52,7 +52,7 @@ session_start();
                     <div class="icon-cont"> <a href="../panelPrincipal/doctores/index.php"><img src="../icon/personal_medico.png" alt=""><p class="pe">Pers. Medico</p></a></div>
                 <?php } ?>
                 <div class="icon-cont"> <a href="../panelPrincipal/historiasClinicas/index.php"><img src="../icon/historiasClinicasBlanco.png" alt=""><p class="pe">Hist clinicas</p></a></div>
-                  
+
             </div>
         </section>
         
@@ -60,14 +60,19 @@ session_start();
         <section class="seccion-mes" id="seccion-mes">
             
             <div class="contenedor-encabezado">
-                <!-- <h2>Mes</h2> -->
+
                 <?php if( isset($_SESSION['admin']) && $_SESSION['admin']  ) { ?>
+
                     <input type="month" id="mesInput" />
                     <input type="button" value="Buscar" id="btn-buscar">
                     <input type="button" value="Nuevo Turno" id="btn-nuevo-turno">
+
                 <?php  } else { ?>
-                    <input type="button" value="Ver Turnos" id="btnVerTurnos" data-id-empresa=<?php echo $_SESSION['idEmpresa']?>>
+
+                    <input type="button" value="Ver Turnos" id="btnVerTurnos" data-id-empresa=<?php echo $_SESSION['idEmpresa']?> >
+
                 <?php } ?>
+
             </div>
             <?php if( isset($_SESSION['admin']) && $_SESSION['admin']  ) { ?>
                 <div id="mes" class="mes"></div>
@@ -96,11 +101,11 @@ session_start();
                             <label for="selectEmpleados">Empleados</label>
                             <select name="selectEmpleados" id="selectEmpleados" ></select>
                         </div>
-                        
+<!--                         
                         <div class="contenedor-input">
                             <label for="selectMedicos">Medicos</label>
                             <select name="selectMedicos" id="selectMedicos" ></select>
-                        </div>
+                        </div> -->
                         
                         <div class="contenedor-input">
                             <label for="fecha">Fecha</label>
@@ -127,6 +132,7 @@ session_start();
                     <div class="contenedor-encabezado-modal">
                         <button type="button" class="btn-cerrar" id="btn-cerrar" >X</button>
                     </div>
+
                 <?php } ?>
  
                     <div class="contenedor-tabla" id="contenedor-tabla">
@@ -138,7 +144,7 @@ session_start();
                                         <th>Empleado</th>
                                         <th>Empresa</th>
                                         <th>Fecha</th>
-                                        <th>Doctor</th>
+                                        <!-- <th>Doctor</th> -->
                                         <th>Hora</th>
                                         <th>Eliminar</th>
                                     </tr>
@@ -152,7 +158,8 @@ session_start();
 
             </section>
     </main>
-    
+
+    <script src="../alertas.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
