@@ -1,3 +1,11 @@
+
+
+window.hostLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+window.hostDominio = window.location.origin;  // Obtiene la URL base (dominio + protocolo)
+
+console.log(window.hostLocal)
+
 //----------------------------------------------------------------
 //          MODAL ALERTA CERRAR SESION
 //----------------------------------------------------------------
@@ -34,6 +42,7 @@ const cancelarAccion = () => {
   $("#alertModal").remove();
 };
 
+
 const despedida = () => {
   $("#alertModal").remove();
 
@@ -46,7 +55,11 @@ const despedida = () => {
 
     setTimeout(function() {
         $("#mensajeDespedida").remove();
-        window.location.href = "/MEDICINA_LABORAL/app/cerrarSesion.php";
+        if( window.hostLocal ){
+          window.location.href = `${window.hostDominio }/MEDICINA_LABORAL/app/cerrarSesion.php` 
+        }else{
+          window.location.href = `${window.hostDominio }/app/cerrarSesion.php`
+        }
     }, 3000);
 
 }

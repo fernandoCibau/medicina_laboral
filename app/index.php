@@ -61,8 +61,7 @@
         </div>
     </main>
 
-    <!-- script para poder usar el modulo ES6 para poder importar funciones -->
-    <!-- <script type="module" src="index.js"></script>  -->
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./index.js"></script>

@@ -29,7 +29,6 @@ const cargarTabla = (idEmpresa = 0) => {
 
     success: (resultado, estado) => {
       let datos = JSON.parse(resultado);
-      console.log(datos);
 
       // Vaciar el contenido de la tabla antes de agregar nuevas filas
       $("tbody").empty();

@@ -16,6 +16,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../styles.css">
+    
     <title>Clínica El Salvador - Historias Clinicas</title>
 </head>
 <body>
@@ -99,37 +101,22 @@
                 </div>
             </div>
         </div> 
-        
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
-            <script src="./index.js"></script>
-        <?php  } else { ?>
-            <script src="./indexUs.js"></script>
-        <?php  } ?>
-
- 
+                
     </main>
-</body>
-
-<div class="contenedor-modal off" id="contenedorModal">
-    <div class="encabezado-modal">
-        <h2 class="titulo-empleados" id="tituloModal"></h2>
-        <div id="btn-modal-X">X</div>
-    </div>
-    <div id="contenedorDatos" class="contendor-datos">
-        
-        </div>
-    </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="/MEDICINA_LABORAL/app/alertas.js"></script>
-<script src="./index.js"></script>
-
+    
+    <script src="../../alertas.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
+        <script src="./index.js"></script>
+    <?php  } else { ?>
+        <script src="./indexUs.js"></script>
+    <?php  } ?>
     <footer>
         <input type="text" id="idEmpresa" data-id-empresa=<?php echo $_SESSION['idEmpresa']?> hidden readonly>
         <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
     </footer>
+</body>
+
+
             
