@@ -416,6 +416,7 @@ footer {
   color: #fff;
   padding: 20px;
   text-align: center;
+<<<<<<< HEAD
 }
 
 
@@ -563,4 +564,6 @@ footer {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
   }
+=======
+>>>>>>> a8d4f3bb9e6db40d206b0d2909cc6d51832f64ba
 }

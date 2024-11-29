@@ -22,8 +22,17 @@
     <a href="../../panelPrincipal/index.php"
         ><img src="../../icon/ElSalvadorMarca.png" alt="El Salvador"
     /></a>
-        <div class="contenedorNombreHeader">
-            <h2>Bienvenido, <?php echo $_SESSION['razon_social']   ?></h2>
+    <div class="contenedorNombreHeader">
+        <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
+                
+                <h2>Bienvenido, <?php echo $_SESSION['nombre']   ?></h2>
+
+            <?php  } else { ?>
+
+                <h2>Bienvenido, <?php echo $_SESSION['razon_social']   ?></h2>
+
+            <?php } ?>
+        
         </div>
         <div class="contenedorBtnHeader">
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="botonEncendido">Cerrar Sesion</button>

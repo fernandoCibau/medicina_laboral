@@ -3,10 +3,10 @@ if (isset($_POST['razon_social']) && isset($_POST['cuit']) && isset($_POST['emai
     try {
         include "../../conexion.php";
 
-        $razon_social = $_POST['razon_social'];
-        $cuit = $_POST['cuit'];
-        $domicilio = $_POST['domicilio'];
-        $email = $_POST['email'];
+        $razon_social = $_POST['razon_social'] ?? null;
+        $cuit = $_POST['cuit'] ?? null;
+        $domicilio = $_POST['domicilio'] ?? null;
+        $email = $_POST['email'] ?? null;
 
         // Preparar la consulta para verificar si la razon_social ya existe
         $stmt = $conexion->prepare("SELECT 1 FROM empresas WHERE cuit = ?");

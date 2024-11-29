@@ -58,17 +58,13 @@ header .contenedorNombreHeader h2 {
   right: 0%;
 }
 
-.contenedorBtnHeader {
-  width: 10%;
-  position: absolute;
-  right: 0%;
-}
+
 
 .contenedorNombreHeader {
   width: 10%;
   width: 20%;
   position: absolute;
-  right: 20%;
+  right: 10%;
 }
 
 .contenedorBtnHeader .btmCerrarSesion {
@@ -471,97 +467,109 @@ footer {
 /* -------------------------------------------------------------- */
 
 
-    /* Fondo oscuro para el modal */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      animation: fadeIn 0.3s ease-in-out;
+/* Fondo oscuro para el modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Estilos del modal */
+.modal-container {
+  position: absolute;
+  left: 35%;
+  top: 30%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Animación de desvanecimiento del modal */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
 
-  /* Estilos del modal */
-  .modal-container {
-    position: absolute;
-    left: 35%;
-    top: 30%;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    animation: slideUp 0.5s ease-out;
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Animación de subida del modal */
+@keyframes slideUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
   }
 
-  /* Animación de desvanecimiento del modal */
-  @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
+}
 
-  /* Animación de subida del modal */
-  @keyframes slideUp {
-    0% { transform: translateY(30px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
-  }
+/* Logo del modal */
+.modal-logo {
+  margin-bottom: 20px;
+}
 
-  /* Logo del modal */
-  .modal-logo {
-    margin-bottom: 20px;
-  }
+.modal-logo img {
+  width: 60px;
+  height: 60px;
+}
 
-  .modal-logo img {
-    width: 60px;
-    height: 60px;
-  }
+/* Título y mensaje */
+.modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 
-  /* Título y mensaje */
-  .modal-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
+.modal-message {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
 
-  .modal-message {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
+/* Botones */
+.modal-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
 
-  /* Botones */
-  .modal-buttons {
-    display: flex;
-    justify-content: space-evenly;
-  }
+.modal-button {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-  .modal-button {
-      background-color: #007BFF;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-  }
+.modal-button:hover {
+  background-color: #0056b3;
+}
 
-  .modal-button:hover {
-    background-color: #0056b3;
-  }
+.modal-button.cancel {
+  background-color: #dc3545;
+}
 
-  .modal-button.cancel {
-    background-color: #dc3545;
-  }
-
-  .modal-button.cancel:hover {
-    background-color: #c82333;
-  }
+.modal-button.cancel:hover {
+  background-color: #c82333;
+}
 
 
 
@@ -584,7 +592,7 @@ footer {
   animation: bounceIn 1.5s ease-out forwards;
 }
 
-.mensaje-despedida h2{
+.mensaje-despedida h2 {
   background-color: #fff;
   border-radius: 20px;
   color: #333;
@@ -596,13 +604,16 @@ footer {
     transform: translate(-50%, -50%) scale(0.5);
     opacity: 0;
   }
+
   50% {
     transform: translate(-50%, -60%) scale(1.1);
     opacity: 1;
   }
+
   70% {
     transform: translate(-50%, -50%) scale(0.9);
   }
+
   100% {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;

@@ -66,8 +66,15 @@ if (mysqli_num_rows($resultado) > 0) {
 
  $para = $response["email"];
 $de = "From: nachomelga123@gmail.com";
-$asunto = "Prueba de informe";
-$mensaje = "fdasdsadsa";  
+$asunto = "Informe: " . $response['empleado_apellido'] . ", " .  $response['empleado_nombre'];
+$mensaje = "
+    Nos comunicamos con la empresa " . $response['empresa_razon_social'] . " para informar que se vio a " . $response['empleado_nombre'] . " " . $response['empleado_apellido'] . " el día " . $response['fecha'] . ", quien presentaba un certificado otorgado por el/la " . $response['medico_certificado'] . ". Solicita " . $response['solicitud_ausentismo'] . " de reposo por " . $response['diagnostico_cie10'] . ". Se justifican desde el " . $response['fecha_inicio_ausentismo'] . " hasta el " . $response['fecha_fin_ausentismo'] . ".
+
+    Si tiene alguna pregunta o necesita más información, no dude en contactarse.
+
+    Atentamente,
+    El Salvador Salud, SMI.
+";  
 
 
 
