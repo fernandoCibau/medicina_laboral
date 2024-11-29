@@ -282,9 +282,7 @@ $(document).ready(function () {
 //                  BOTONES
 //------------------------------------------------------------------
 $("#btmCerrarSesion").one("click", () => {
-  if (confirm("¿Desea cerrar la sesión?")) {
-    window.location.href = "../../cerrarSesion.php";
-  }
+  alertaCerrarSistema();
 });
 
 $("#btn-modal-X").click(() => {

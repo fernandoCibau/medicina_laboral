@@ -11,7 +11,7 @@ const alertaCerrarSistema = () =>{
             <div class="modal-container">
                 <!-- Logo -->
                 <div class="modal-logo">
-                    <img src='../icon/signo-de-exclamacion.png'  alt="signo-de-exclamacion">
+                    <img src='/MEDICINA_LABORAL/app/icon/signo-de-exclamacion.png'  alt="signo-de-exclamacion">
 
                 </div>
                 <!-- Título y mensaje -->
@@ -52,7 +52,7 @@ const despedida = () =>{
 
     setTimeout(function() {
         $("#mensajeDespedida").remove();
-        window.location.href = "../cerrarSesion.php";
+        window.location.href = "/MEDICINA_LABORAL/app/cerrarSesion.php";
     }, 3000);
 
 }
