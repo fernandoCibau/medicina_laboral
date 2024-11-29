@@ -45,21 +45,21 @@ session_start();
             <section name="accesosDirectos" class="seccionAccesosDirectos">
                 <div class="contenedorAccesos">
 
-                    <!-- Solo administador -->
-                    <?php   if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {  ?>
+                    <?php   if ( $_SESSION['admin']  == 1 ) {  ?>
                             <div class="accesos" id="accesoAltaUsuario">
                                 <div><img src="../icon/nuevo_user_grande.png" alt="nuevo usuario"></div>
                                 <h3>Nuevo usuario</h3>
                             </div>
                     <?php } ?>
 
-                    
-                    <div class="accesos" id="accesoAltaTurnos"> 
-                        <div><img src="../icon/turnos_blanco_grande.png" alt="cita-medica"></div>
-                        <h3>Turnos</h3>
-                    </div>
+                    <?php   if ( $_SESSION['admin']  == 1  || $_SESSION['admin'] == 0) {  ?>
+                        <div class="accesos" id="accesoAltaTurnos"> 
+                            <div><img src="../icon/turnos_blanco_grande.png" alt="cita-medica"></div>
+                            <h3>Turnos</h3>
+                        </div>
+                    <?php } ?>
 
-                    <?php   if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {  ?>
+                    <?php   if ( $_SESSION['admin']  == 1 ) {  ?>
                         <div class="accesos" id="accesoPersMedico">
                             <div><img src="../icon/personal_medico.png" alt="personal medico"></div>
                             <h3>Pers. Medico</h3>
@@ -67,25 +67,28 @@ session_start();
                     <?php } ?>
 
                                     
-                    <?php   if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {  ?>
+                    <?php   if ( $_SESSION['admin'] == 1 ) {  ?>
                         <div class="accesos" id="accesoEmpresas">
                             <div><img src="../icon/empresa_blanco_grande.png" alt="empresas"></div>
                             <h3>Empresas</h3>
                         </div>
                     <?php } ?>
                     
+                    <?php   if ( $_SESSION['admin']  == 1  || $_SESSION['admin'] == 0 || $_SESSION['admin'] == 2 ) {  ?>
+                        <div class="accesos" id="accesoPacientes">
+                            <div><img src="../icon/paciente_grande.png" alt="pacientes"></div>
+                            <h3>Pacientes</h3>
+                        </div>
+                    <?php } ?>
 
-                    <div class="accesos" id="accesoPacientes">
-                        <div><img src="../icon/paciente_grande.png" alt="pacientes"></div>
-                        <h3>Pacientes</h3>
-                    </div>
 
-                    <div class="accesos" id="accesoHistClinic">
-                        <div><img src="../icon/historiasClinicasBlanco.png" alt="historia clinica"></div>
-                        <h3>Historias Clinicas</h3>
-                    </div>
+                        <div class="accesos" id="accesoHistClinic">
+                            <div><img src="../icon/historiasClinicasBlanco.png" alt="historia clinica"></div>
+                            <h3>Historias Clinicas</h3>
+                        </div>
 
-                    <?php   if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {  ?>
+                        
+                    <?php   if ( $_SESSION['admin'] == 1 || $_SESSION['admin'] == 2) {  ?>
                         <div class="accesos" id="accesoCIE-10">
                             <div><img src="../icon/tabla.png" alt="CIE-10"></div>
                             <h3>CIE-10</h3>

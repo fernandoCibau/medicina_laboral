@@ -413,30 +413,3 @@ const eliminarTurno = (fecha, hora) => {
     });
 };
 
-
-// const alertaBorrar = () =>{
-
-//     const modal = 
-//     `
-//         <div id="alertModal" class="modal-overlay">
-//             <div class="modal-container">
-//                 <!-- Logo -->
-//                 <div class="modal-logo">
-//                     <img src="app/sistema_de_turnos/icon/bote-de-basura.png" alt="Logo">
-
-//                 </div>
-//                 <!-- Título y mensaje -->
-//                 <div class="modal-title">¿Está seguro de que desea eliminar?</div>
-//                 <div class="modal-message">¿Estás a punto de eliminar  un turno, continuar con esta acción?</div>
-//                 <!-- Botones -->
-//                 <div class="modal-buttons">
-//                     <button class="modal-button" onclick="acceptAction()">Aceptar</button>
-//                     <button class="modal-button cancel" onclick="cancelAction()">Cancelar</button>
-//                 </div>
-//             </div>
-//         </div>
-//     `
-
-//     $('main').append(modal);
-
-// }

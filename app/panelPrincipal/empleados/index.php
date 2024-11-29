@@ -44,14 +44,21 @@
     <section name="menu" class="secMenu" id="secMenu" >
             
         <div class="contenedorMenu">
+
             <div class="icon-cont"><a href="../index.php"><img src="../../icon/home.png" alt="" class="saturate"><p class="pe">Inicio</p></a></div>
-            <div class="icon-cont"><a href="../../sistema_de_turnos"><img src="../../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
-            <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>
+            <?php if( $_SESSION['admin'] == 1 || $_SESSION['admin'] == 0   ) { ?>
+                <div class="icon-cont"><a href="../../sistema_de_turnos"><img src="../../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
+            <?php } ?>
+            
+            <?php  if( $_SESSION['admin'] == 1){ ?>
                 <div class="icon-cont"> <a href="../doctores/index.php"><img src="../../icon/personal_medico.png" alt=""><p class="pe">Pers. Medico</p></a></div>
                 <div class="icon-cont"> <a href="../empresas/index.php"><img src="../../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
             <?php } ?>
+
+
             <div class="icon-cont"> <a href="../historiasClinicas/index.php"><img src="../../icon/historiasClinicasBlanco.png" alt=""><p class="pe">Hist clinicas</p></a></div>
-            <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>
+            
+            <?php  if( $_SESSION['admin'] ==1 || $_SESSION['admin'] == 2 ){ ?>
                 <div class="icon-cont"> <a href="../../cie_10/index.php"><img src="../../icon/tabla.png" alt=""><p class="pe">CIE-10</p ></a></div>
             <?php } ?>
         </div>

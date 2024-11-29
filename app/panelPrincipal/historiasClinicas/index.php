@@ -26,7 +26,7 @@
         <a href="../../panelPrincipal/index.php"
         ><img src="../../icon/ElSalvadorMarca.png" alt="El Salvador"
         /></a>
-         <div class="contenedorNombreHeader">
+        <div class="contenedorNombreHeader">
         <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
                 
                 <h2>Bienvenido, <?php echo $_SESSION['nombre']   ?></h2>
@@ -47,20 +47,26 @@
         
     <section name="menu" class="secMenu" id="secMenu" >
             
-            <div class="contenedorMenu">
-                <div class="icon-cont"><a href="../index.php"><img src="../../icon/home.png" alt="" class="saturate"><p class="pe">Inicio</p></a></div>
+        <div class="contenedorMenu">
+
+            <div class="icon-cont"><a href="../index.php"><img src="../../icon/home.png" alt="" class="saturate"><p class="pe">Inicio</p></a></div>
+            <?php if( $_SESSION['admin'] == 1 || $_SESSION['admin'] == 0   ) { ?>
                 <div class="icon-cont"><a href="../../sistema_de_turnos"><img src="../../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
-                <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>
-                    <div class="icon-cont"> <a href="../doctores/index.php"><img src="../../icon/personal_medico.png" alt=""><p class="pe">Pers. Medico</p></a></div>
-                    <div class="icon-cont"> <a href="../empresas/index.php"><img src="../../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
-                <?php } ?>
-                <div class="icon-cont"> <a href="../empleados/index.php"><img src="../../icon/paciente_blanco.png" alt=""><p class="pe">Pacientes</p ></a></div>
-                <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>
-                    <div class="icon-cont"> <a href="../../cie_10/index.php"><img src="../../icon/tabla.png" alt=""><p class="pe">CIE-10</p ></a></div>
-                <?php } ?>
-            </div>
-                
-        </section>
+            <?php } ?>
+            
+            <?php  if( $_SESSION['admin'] == 1){ ?>
+                <div class="icon-cont"> <a href="../doctores/index.php"><img src="../../icon/personal_medico.png" alt=""><p class="pe">Pers. Medico</p></a></div>
+                <div class="icon-cont"> <a href="../empresas/index.php"><img src="../../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
+            <?php } ?>
+
+            <div class="icon-cont"> <a href="../empleados/index.php"><img src="../../icon/paciente_blanco.png" alt=""><p class="pe">Pacientes</p ></a></div>
+            
+            <?php  if( $_SESSION['admin'] ==1 || $_SESSION['admin'] == 2 ){ ?>
+                <div class="icon-cont"> <a href="../../cie_10/index.php"><img src="../../icon/tabla.png" alt=""><p class="pe">CIE-10</p ></a></div>
+            <?php } ?>
+        </div>
+            
+    </section>
         
         <section class="seccion-tabla">
             <div class="buscador">

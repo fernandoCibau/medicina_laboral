@@ -38,20 +38,30 @@ session_start();
             <button type="button" class="btmCerrarSesion" id="btmCerrarSesion" alt="btmCerrarSesion">Cerrar Sesion</button>
         </div>
     </header>
-    
-<main>
-<section name="menu" class="secMenu" id="secMenu" >
-            
+        
+    <main>
+        <section name="menu" class="secMenu" id="secMenu" >
+                
             <div class="contenedorMenu">
+        
                 <div class="icon-cont"><a href="../index.php"><img src="../icon/home.png" alt="" class="saturate"><p class="pe">Inicio</p></a></div>
-                <div class="icon-cont"><a href="../sistema_de_turnos/index.php"><img src="../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
-                <div class="icon-cont"> <a href="../panelPrincipal/doctores/index.php"><img src="../icon/personal_medico.png" alt=""><p class="pe">Pers. Medico</p></a></div>
-                <div class="icon-cont"> <a href="../panelPrincipal/empresas/index.php"><img src="../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
-                <div class="icon-cont"> <a href="../panelPrincipal/empleados/index.php"><img src="../icon/paciente_blanco.png" alt=""><p class="pe">Pacientes</p ></a></div>
-                <div class="icon-cont"> <a href="../panelPrincipal/historiasClinicas/index.php"><img src="../icon/historiasClinicasBlanco.png" alt=""><p class="pe">Hist clinicas</p></a></div>
-            </div>
-            
+                    <?php if( $_SESSION['admin'] == 1 || $_SESSION['admin'] == 0   ) { ?>
+                        <div class="icon-cont"><a href="../sistema_de_turnos/index.php"><img src="../icon/turnos_blanco.png" alt=""><p class="pe">Turnos</p></a></div>
+                    <?php } ?>
+                    
+                    <?php  if( $_SESSION['admin'] == 1){ ?>
+                        <div class="icon-cont"> <a href="../panelPrincipal/doctores/index.php"><img src="../icon/personal_medico.png" alt=""><p class="pe">Pers. Medico</p></a></div>
+                        <div class="icon-cont"> <a href="../panelPrincipal/empresas/index.php"><img src="../icon/empresa_blanco.png" alt=""><p class="pe">Empresas</p></a></div>
+                    <?php } ?>
+
+                    <div class="icon-cont"> <a href="../panelPrincipal/empleados/index.php"><img src="../icon/paciente_blanco.png" alt=""><p class="pe">Pacientes</p ></a></div>
+        
+                    <div class="icon-cont"> <a href="../panelPrincipal/historiasClinicas/index.php"><img src="../icon/historiasClinicasBlanco.png" alt=""><p class="pe">Hist clinicas</p></a></div>
+
+                </div>
+                
         </section>
+
         <section class="seccion-tabla">
             <div class="contenedor-encabezado-tabla">
                 <div class="encabezado-tabla-inputs" >
