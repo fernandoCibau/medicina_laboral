@@ -70,9 +70,11 @@
         
         <section class="seccion-tabla">
             <div class="buscador">
-                <?php if (isset($_SESSION['admin']) && $_SESSION['admin']) { ?>
+
+                <?php if ( $_SESSION['admin'] == 1) { ?>
                     <input type="text" id="inputBuscar" placeholder="Buscar por empresa..." />
                 <?php } ?>
+
             </div>
             <table>
                 <thead>
@@ -85,8 +87,9 @@
                         <th>Fecha de Inicio</th>
                         <th>Fecha Finalizacion</th>
                         <th>Ver</th>
-                        <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>
-                        <th>Eliminar</th>
+
+                        <?php  if( $_SESSION['admin'] == 1 ){ ?>
+                            <th>Eliminar</th>
                         <?php } ?>
                     </tr>
                 </thead>
@@ -113,13 +116,19 @@
     <script src="../../alertas.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
-        <script src="./index.js"></script>
-    <?php  } else { ?>
-        <script src="./indexUs.js"></script>
-    <?php  } ?>
+    <?php  if( $_SESSION['admin'] == 1 ){ ?>
+        <script src="index.js"></script>
+    <?php } ?>
+    <?php  if( $_SESSION['admin'] == 0 ){ ?>
+        <script src="indexUser.js"></script>
+    <?php } ?>
+    <?php  if( $_SESSION['admin'] == 2){ ?>
+        <script src="indexMed.js"></script>
+    <?php } ?>
+
+    <input type="text" id="idEmpresa" data-id-empresa=<?php echo $_SESSION['idEmpresa']?> hidden readonly>
+
     <footer>
-        <input type="text" id="idEmpresa" data-id-empresa=<?php echo $_SESSION['idEmpresa']?> hidden readonly>
         <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
     </footer>
 </body>

@@ -77,12 +77,12 @@ session_start();
                 <?php } ?>
 
             </div>
-            <?php if( isset($_SESSION['admin']) && $_SESSION['admin']  ) { ?>
+            <?php if(  $_SESSION['admin'] == 1  ) { ?>
                 <div id="mes" class="mes"></div>
             <?php } ?>
         </section>
         
-        <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
+        <?php if( $_SESSION['admin'] == 1   ) { ?>
             <section class="seccion-modal" id="seccion-modal">
                     <div class="contenedor-encabezado-modal">
                         <button type="button" class="btn-cerrar" id="btn-cerrar" >X</button>
@@ -104,12 +104,14 @@ session_start();
                             <label for="selectEmpleados">Empleados</label>
                             <select name="selectEmpleados" id="selectEmpleados" ></select>
                         </div>
-<!--                         
-                        <div class="contenedor-input">
-                            <label for="selectMedicos">Medicos</label>
-                            <select name="selectMedicos" id="selectMedicos" ></select>
-                        </div> -->
                         
+                        <?php if( $_SESSION['admin'] == 1  ) { ?>
+                            <!-- <div class="contenedor-input">
+                                <label for="selectMedicos">Medicos</label>
+                                <select name="selectMedicos" id="selectMedicos" ></select>
+                            </div> -->
+                        <?php } ?>
+
                         <div class="contenedor-input">
                             <label for="fecha">Fecha</label>
                             <input  type="date" name="fecha" id="fecha" />

@@ -249,6 +249,7 @@ td {
 }
 
 .buscador button {
+  width: 15em;
   padding: 10px 20px;
   /* Espaciado interno del botón */
   background-color: var(--secondary-color);

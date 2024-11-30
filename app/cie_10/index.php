@@ -14,6 +14,7 @@ session_start();
     <title>Códigos CIE-10</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 
@@ -94,6 +95,7 @@ session_start();
             
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../alertas.js"></script>
     <script src="index.js"></script>
 
     <footer>

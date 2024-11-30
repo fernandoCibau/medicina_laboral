@@ -187,7 +187,7 @@ main {
 }
 
 .contenedor-encabezado-tabla input[type="button"] {
-  width: 25%;
+  width: 15em;
   padding: 10px 20px;
   background-color: #ed5f5f;
   color: white;

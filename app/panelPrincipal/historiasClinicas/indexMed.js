@@ -1,10 +1,10 @@
 // -----------------------------------------------
 //                      INICIO
 // -----------------------------------------------
-  $(document).ready(() => {
-    console.log($("#inputBuscar").val());
-    cargarTabla($('#idEmpresa').data('idEmpresa'));
-    console.log($('#idEmpresa').val())
+$(document).ready(() => {
+    // console.log($("#inputBuscar").val());
+    cargarTabla();
+    // console.log($('#idEmpresa').val())
   });
   
   //------------------------------------------------------------------

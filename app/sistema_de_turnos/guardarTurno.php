@@ -29,7 +29,7 @@ if (isset($_POST['fecha']) && isset($_POST['horas-del-dia']) ) {
             if ($resultado) {
                 echo json_encode(['mensaje' => 'Turno agendado correctamente.', 'fecha' => $fecha, 'hora' => $hora, 'operacion'=> TRUE ]);
             } else {
-                echo json_encode(['mensaje' => 'Error al guardar los datos: ' ]);
+                echo json_encode(['mensaje' => 'Error al guardar el turno. Linea : ' .  __LINE__ ]);
             }
         }
         

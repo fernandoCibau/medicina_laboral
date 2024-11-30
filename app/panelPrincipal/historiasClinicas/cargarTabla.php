@@ -67,7 +67,7 @@ if(isset($_GET['idEmpresa']) ){
                 $datos[] = $fila;
             }
             
-            echo json_encode(['mensaje' => 'Datos cargados exitosamente...!', 'datos' => $datos, 'operacion'=> TRUE] );
+            echo json_encode(['mensaje' => 'Datos cargados exitosamente...!' , 'datos' => $datos, 'operacion'=> TRUE] );
     
             mysqli_close($conexion);
             mysqli_free_result($resultado);

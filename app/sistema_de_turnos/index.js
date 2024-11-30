@@ -5,6 +5,7 @@ $(document).ready(() => {
   eliminarAutomatico();
   setFechaActual();
   matrizMes();
+  vaciarInputTurnos();
   window.isDevelopment =
     window.location.hostname === "localhost" ||
     window.location.hostname === "127.0.0.1";
@@ -512,6 +513,16 @@ const validarInputTurnos = () => {
   }
 };
 
+
+const vaciarInputTurnos = () =>{
+  $('#selectEmpleados').val('');
+  $('#fecha').val('dd/mm/aaaa'); 
+  $('#horas-del-dia').val('');
+  $('#horas-del-dia').prop('disabled', true);
+  // $('#selectMedicos').val('');
+}
+
+
 // -----------------------------------------------
 //     BOTONES Y FORMULARIOS
 // -----------------------------------------------
@@ -545,6 +556,7 @@ $("#form-nuevo-turno").submit((e) => {
   let formData = new FormData(form);
 
   guardarNuevoTurno(formData);
+  vaciarInputTurnos();
 });
 
 //Select empresas del modal nuevo turno
@@ -554,6 +566,11 @@ $("#selectEmpresas").on("input", () => {
 
 //Select fecha del modal nuevo turno
 $("#fecha").on("input", () => {
+  if( $('#fecha').val() === '' ){
+    $('#horas-del-dia').prop('disabled', true);
+}else{
+    $('#horas-del-dia').prop('disabled', false);
+}
   buscarHorariosTurnos($("#fecha").val());
 });
 
@@ -569,28 +586,3 @@ $("#btmCerrarSesion").click(() => {
   alertaCerrarSistema();
 });
 
-//Cuenta regresiva Cerrar sesion
-const cerrarCuentaRegresiva = () => {
-  let timerInterval;
-  Swal.fire({
-    title: "Saliendo del sistama",
-    html: "El sistema se está cerrando... <b></b> milliseconds.",
-    timer: 2000,
-    timerProgressBar: true,
-    didOpen: () => {
-      Swal.showLoading();
-      const timer = Swal.getPopup().querySelector("b");
-      timerInterval = setInterval(() => {
-        timer.textContent = `${Swal.getTimerLeft()}`;
-      }, 100);
-    },
-    willClose: () => {
-      clearInterval(timerInterval);
-    },
-  }).then((result) => {
-    /* Read more about handling dismissals below */
-    if (result.dismiss === Swal.DismissReason.timer) {
-      window.location.href = "../cerrarSesion.php";
-    }
-  });
-};

@@ -4,7 +4,7 @@ window.hostLocal = window.location.hostname === 'localhost' || window.location.h
 
 window.hostDominio = window.location.origin;  // Obtiene la URL base (dominio + protocolo)
 
-console.log(window.hostLocal)
+// console.log(window.hostLocal)
 
 //----------------------------------------------------------------
 //          MODAL ALERTA CERRAR SESION

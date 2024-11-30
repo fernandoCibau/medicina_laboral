@@ -369,30 +369,8 @@ $("#btn-modal-X").click(() => {
   modalOnOff();
 });
 
-// $("#btmCerrarSesion").one("click", () => {
-//   if (confirm("¿Desea cerrar la sesión?")) {
-//     window.location.href = "../../cerrarSesion.php";
-//   }
-// });
-
 $("#btmCerrarSesion").click(() => {
-  // if (confirm("¿Desea cerrar la sesión?")) {
-  //   window.location.href = "../cerrarSesion.php";
-  // }
-
-  Swal.fire({
-    title: "¿Está seguro de salir del sistema?",
-    text: "Está a punto de cerrar sesión.",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Confirmar!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      cerrarCuentaRegresiva();
-    }
-  });
+  alertaCerrarSistema();
 });
 
 const cerrarCuentaRegresiva = () => {

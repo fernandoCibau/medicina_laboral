@@ -4,6 +4,20 @@
 $(document).ready(() => {
     cargarTabla( $('#idEmpresa').data('idEmpresa') );
 });
+
+$(document).ready(function () {
+    $("#inputBuscar").on("keyup", function () {
+        const buscarTexto = $(this).val(); // Obtiene el texto a buscar
+
+      // Filtra las filas de la tabla solo en la columna "DNI"
+        $("table tbody tr").filter(function () {
+        const dni = $(this).find("td:nth-child(3)").text(); // Cambia 3 por el índice de la columna "DNI"
+        // Compara si el DNI comienza con el texto buscado
+        $(this).toggle(dni.startsWith(buscarTexto));
+    });
+    });
+});
+
 //------------------------------------------------------------------
 //                  FUNCIONES
 //------------------------------------------------------------------
@@ -84,46 +98,5 @@ const erroresSoloLocalHost = ( error ) =>{
 //      Cierra la sesion de usuario
 //-----------------------------------------------
 $("#btmCerrarSesion").click(() => {
-    // if (confirm("¿Desea cerrar la sesión?")) {
-    //   window.location.href = "../cerrarSesion.php";
-    // }
-
-    Swal.fire({
-        title: "¿Está seguro de salir del sistema?",
-        text: "Está a punto de cerrar sesión.",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar!"
-    }).then((result) => {
-        if (  result.isConfirmed    ) {
-            cerrarCuentaRegresiva()
-        }
-    });
+    alertaCerrarSistema();
 });
-
-const cerrarCuentaRegresiva = ()=>{
-    let timerInterval;
-    Swal.fire({
-        title: "Saliendo del sistama",
-        html: "El sistema se está cerrando... <b></b> milliseconds.",
-        timer: 2000,
-        timerProgressBar: true,
-        didOpen: () => {
-            Swal.showLoading();
-            const timer = Swal.getPopup().querySelector("b");
-            timerInterval = setInterval(() => {
-                timer.textContent = `${Swal.getTimerLeft()}`;
-            }, 100);
-        },
-        willClose: () => {
-            clearInterval(timerInterval);
-        }
-    }).then((result) => {
-      /* Read more about handling dismissals below */
-    if (result.dismiss === Swal.DismissReason.timer) {
-        window.location.href = "../../cerrarSesion.php";
-    }
-    });
-}

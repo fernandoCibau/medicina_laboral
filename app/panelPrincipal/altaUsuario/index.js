@@ -97,9 +97,7 @@ $(document).ready(function () {
 //------------------------------------------------------------------
 
 $("#btmCerrarSesion").one("click", () => {
-  if (confirm("¿Desea cerrar la sesión?")) {
-    window.location.href = "../../cerrarSesion.php";
-  }
+  alertaCerrarSistema();
 });
 
 //Boton dni formulario alta usuario

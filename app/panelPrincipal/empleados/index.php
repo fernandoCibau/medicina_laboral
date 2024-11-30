@@ -14,24 +14,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../styles.css">
     <title>El Salvador Salud - Pacientes</title>
 </head>
 <body>
     
     <header>
-    <a href="../../panelPrincipal/index.php"
-        ><img src="../../icon/ElSalvadorMarca.png" alt="El Salvador"
-    /></a>
-    <div class="contenedorNombreHeader">
-        <?php if( isset($_SESSION['admin']) && $_SESSION['admin']   ) { ?>
-                
+        <a href="../../panelPrincipal/index.php"
+            ><img src="../../icon/ElSalvadorMarca.png" alt="El Salvador"
+        /></a>
+        <div class="contenedorNombreHeader">
+        <?php if( $_SESSION['admin'] == 1  || $_SESSION['admin'] == 2 ) { ?>
                 <h2>Bienvenido, <?php echo $_SESSION['nombre']   ?></h2>
+            <?php  } ?>
 
-            <?php  } else { ?>
-
+            <?php if( $_SESSION['admin'] == 0   ) { ?>
                 <h2>Bienvenido, <?php echo $_SESSION['razon_social']   ?></h2>
-
             <?php } ?>
+
         
         </div>
         <div class="contenedorBtnHeader">
@@ -68,11 +68,14 @@
         <section class="seccion-tabla">
             <!-- Input de búsqueda -->
             <div class="buscador">
+
                 <input type="text" id="inputBuscar" placeholder="Buscar DNI..." />
-                <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>
+
+                <?php  if( $_SESSION['admin']  == 1){ ?>
                     <button id="agregarEmpleado" data-id-empresa=<?php echo $_SESSION['idEmpresa']?> >Agregar Paciente</button>
-                    <?php }?>
-                </div>
+                <?php }?>
+            
+            </div>
             
             <table>
                 <thead>
@@ -82,10 +85,12 @@
                         <th>DNI</th>
                         <th>Apellido</th>
                         <th>Nombre</th>
-                        <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>
+                        <?php  if(  $_SESSION['admin'] == 2){ ?>
                             <th>Historia Clinica</th>
                             <th>Editar</th>
-                            <th>Eliminar</th> 
+                            <?php  if(  $_SESSION['admin'] == 1){ ?>
+                                <th>Eliminar</th>
+                            <?php }?> 
                         <?php }?>
                     </tr>
                 </thead>
@@ -99,23 +104,27 @@
     </main>
     
     <div class="contenedor-modal off" id="contenedorModal">
-            <div class="encabezado-modal">
-                <h2 class="titulo-empleados" id="tituloModal"></h2>
-                <div id="btn-modal-X">X</div>
-            </div>
-            <div id="contenedorDatos" class="contendor-datos">
-        
-            </div>
+        <div class="encabezado-modal">
+            <h2 class="titulo-empleados" id="tituloModal"></h2>
+            <div id="btn-modal-X">X</div>
         </div>
+        <div id="contenedorDatos" class="contendor-datos">
+    
+        </div>
+    </div>
 
+    <script src="../../alertas.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <?php  if( isset($_SESSION['admin']) && $_SESSION['admin'] ){ ?>
+    <?php  if( $_SESSION['admin'] == 1 ){ ?>
         <script src="index.js"></script>
-    <?php }else{ ?>
+    <?php } ?>
+    <?php  if( $_SESSION['admin'] == 0 ){ ?>
         <script src="indexUser.js"></script>
     <?php } ?>
-
+    <?php  if( $_SESSION['admin'] == 2){ ?>
+        <script src="indexMed.js"></script>
+    <?php } ?>
     <footer>
         <input type="text" id="idEmpresa" data-id-empresa=<?php echo $_SESSION['idEmpresa']?> hidden readonly>
         <p>© 2024 Tecnicatura Universitaria en Programacion UTN FRH.</p>
